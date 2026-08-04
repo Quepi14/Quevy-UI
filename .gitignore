@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+pnpm-lock.yaml
+
+# build outputs
+/dist/
+/build/
+/out/
+coverage/
+*.tsbuildinfo
+
+# environment
+.env
+.env.*
+!.env.example
+
+# editor / OS noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
