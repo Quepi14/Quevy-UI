@@ -71,13 +71,3 @@ export type TagName = `qv-${string}`;
  * Generic slot name.
  */
 export type SlotName = string;
-
-/**
- * Generic component state.
- * 
- * Component may extend this union if needed.
- */
-export type ComponentState  =
- | "idle"
- | "loading"
- | "disabled"

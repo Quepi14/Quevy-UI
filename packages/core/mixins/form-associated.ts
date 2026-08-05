@@ -31,10 +31,15 @@ export type FormAssociatedElement = QvElement;
  * 
  * @returns A class with form-association capabilities.
  */
+export interface FormAssociatedInterface {
+    readonly form: HTMLFormElement | null;
+    readonly internals: ElementInternals | null;
+}
+
 export function FormAssociatedMixin<
     TBase extends Constructor<FormAssociatedElement>,
->(Base: TBase) {
-    return class extends Base {
+>(Base: TBase): TBase & Constructor<FormAssociatedInterface> {
+    class Mixin extends Base implements FormAssociatedInterface {
         /**
          * Enables the Form-Associated Custom Element
          * behavior for the derived custom element.
@@ -42,56 +47,52 @@ export function FormAssociatedMixin<
         public static readonly formAssociated = true;
 
         /**
-         * Element internals used for native form
-         * association.
+         * Lazily initialized internals used for native form association.
          */
-        private readonly _internals: ElementInternals | null;
-
-        /**
-         * Creates the form-associated component.
-         */
-        protected constructor(...args: any[]) {
-            super(...args)
-
-            this._internals = this.attachInternalSafely()
-        }
+        private _internals: ElementInternals | null = null;
 
         /**
          * Returns the ElementInternals instance associated
          * with the component.
-         * 
+         *
          * @returns ElementInternals when supported, otherwise null.
          */
-        protected get internals(): ElementInternals | null {
+        public get internals(): ElementInternals | null {
+            if (this._internals === null) {
+                this._internals = this.attachInternalSafely();
+            }
+
             return this._internals;
         }
 
         /**
          * Returns the form associated with the component.
-         * 
+         *
          * @return The associated form or null when the component
          * is not associated with a form.
          */
-        protected get form(): HTMLFormElement | null {
-            return this._internals?.form ?? null;
+        public get form(): HTMLFormElement | null {
+            return this.internals?.form ?? null;
         }
 
         /**
          * Attaches ElementInternals without allowing an
          * unsupported environment to break component creation.
-         * 
+         *
          * @return The attached ElementInternals instance or null.
          */
         private attachInternalSafely(): ElementInternals | null {
-            if(!('attachInternals' in this)){
+            if (!('attachInternals' in this)) {
                 return null;
             }
 
-            try{
+            try {
                 return this.attachInternals();
-            }catch{
+            } catch {
                 return null;
             }
         }
     }
+
+    return Mixin;
 }

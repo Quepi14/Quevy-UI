@@ -2,7 +2,7 @@
  * packages/core/utils/slot.ts
  */
 
-import { listen } from "./event.js"
+import { listen } from "../events/listener.js"
 
 /**
  * Return all nodes assigned to a slot

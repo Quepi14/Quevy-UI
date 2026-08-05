@@ -8,15 +8,20 @@
  * 
  * Responsibilities
  * ----------------
- * - Component  metadata
+ * - Component metadata
  * - Lifecylce bridge
  * - Shadow DOM access
- * - Internal helpers
+ * - Event helpers (instance-bound: emit, dispatch)
+ * - Slot helpers (instance-bould: getSlot, hasSlot, getAssignedNodes/Elements)
+ * - Controller integration (QvControllerManager wired via addController())
  * 
  * NOTE:
- * Event helpers, Slot helpers, CSS Variable helpers,
- * Accessability helpers, and ID helpers will be implemented
- * in the next parts of this file.
+ * CSS Variable, Accessability, and ID helpers are intentionally
+ * Not exposed as methods here, They live as standalone, element-
+ * agnostic function in utils/css.ts, utils/accessibility.ts, adn
+ * utils/id.ts, since they operate on any element passed explicitly
+ * (not necessarily `this`) -  e.g. applying ARIA attributes to a 
+ * child inside the shadow root, not just the host itself.
  * 
  * @packageDocumentation
  */
@@ -37,6 +42,12 @@ import type {
     QvLifecycle,
 } from './lifecycle.js';
 
+import { QvControllerManager } from '../controllers/controller.js';
+import type { ControllerConstructor } from '../controllers/types.js';
+import type { QvController } from './qv-controller.js';
+
+import { dispatch as dispatchEvent } from '../events/dispatch.js';
+import type { CreateEventOptions } from '../events/types.js';
 /**
  * Base class for every QUEVY UI component.
  * 
@@ -63,13 +74,6 @@ export abstract class QvElement extends LitElement implements BaseComponent, QvL
     protected hasRendered: boolean = false;
 
     /**
-     * Creates the component.
-     */
-    protected constructor() {
-        super();
-    }
-
-    /**
      * -----------
      * Lifecycle Section
      * -----------
@@ -78,10 +82,10 @@ export abstract class QvElement extends LitElement implements BaseComponent, QvL
     /**
      * Called when the component is attached to the DOM.
      */
-    public override connectedCallback(): void{
-        (this as QvLifecycle).onConnected?.();
+    public override connectedCallback(): void {
+        super.connectedCallback();
 
-        super.connectedCallback()
+        (this as QvLifecycle).onConnected?.();
     }
 
     /**
@@ -129,6 +133,31 @@ export abstract class QvElement extends LitElement implements BaseComponent, QvL
     }
 
     /**
+     * Manages QvController instance attached to this component.
+     */
+    private readonly controllerManager = new QvControllerManager<this>(this);
+
+    /**
+     * Creates the component.
+     */
+    protected constructor() {
+        super();
+        this.addController(this.controllerManager);
+    }
+
+    /**
+     * Creates and registers a QvController for this component.
+     * 
+     * @param Controller - Controller constructor to instantiate.
+     * @returns The created controller instance.
+     */
+    protected useController<TController extends  QvController<this>>(
+        Controller: ControllerConstructor<TController, this>,
+    ): TController {
+        return this.controllerManager.create(Controller)
+    }
+
+    /**
      * -----------
      * Internal Lifecycle Hooks
      * -----------
@@ -172,17 +201,9 @@ export abstract class QvElement extends LitElement implements BaseComponent, QvL
     protected emit<T = unknown>(
         type: string,
         detail?: T,
-        options: CustomEventInit<T> = {},
+        options: CreateEventOptions<T> = {},
     ): boolean {
-        return this.dispatchEvent(
-            new CustomEvent<T>(type, {
-                detail,
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                ...options,
-            }),
-        );
+        return dispatchEvent(this, type, { detail, ...options });
     }
 
     /**

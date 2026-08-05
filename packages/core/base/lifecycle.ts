@@ -10,7 +10,7 @@
  * @packageDocumentation
 */
 
-import { PropertyValues } from "lit";
+import type { PropertyValues } from "lit";
 
 /**
  * called after the component has been connected to the Document

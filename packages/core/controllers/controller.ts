@@ -147,6 +147,19 @@ export class QvControllerManager <
     }
 
     /**
+     * Forwards the updated lifecylce to all controllers.
+     * 
+     * Called after the host component has completed an update
+     * (i.e. after render), mirroring Lit's ReactiveController
+     * hostUpadted() hook. 
+     */
+    public hostUpdated(): void {
+        for  (const controller of this.controllers) {
+            controller.hostUpdated()
+        }
+    }
+
+    /**
      * Forward the disconnected lifecycle to all controllers.
      */
     public hostDisconnected(): void {

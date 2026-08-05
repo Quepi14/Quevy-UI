@@ -32,10 +32,14 @@ export type FocusableElement = QvElement;
  *
  * @returns A class with focus state helpers.
  */
+export interface FocusableInterface {
+    readonly isFocused: boolean;
+}
+
 export function FocusableMixin<
     TBase extends Constructor<FocusableElement>,
->(Base: TBase) {
-    return class extends Base {
+>(Base: TBase): TBase & Constructor<FocusableInterface>{
+    class Mixin extends Base implements FocusableInterface{
         /**
          * Returns whether the component currently has focus.
          *
@@ -44,5 +48,6 @@ export function FocusableMixin<
         public get isFocused(): boolean {
             return document.activeElement === this;
         }
-    };
+    }
+    return Mixin;
 }

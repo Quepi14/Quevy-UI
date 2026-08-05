@@ -22,10 +22,16 @@
  *
  * @returns A constructed CSSStyleSheet.
  */
+const styleSheetCache = new Map<string, CSSStyleSheet>();
+
 export function createStyles(cssText: string): CSSStyleSheet {
-    const styleSheet = new CSSStyleSheet();
+    let styleSheet = styleSheetCache.get(cssText);
 
-    styleSheet.replaceSync(cssText);
-
+    if(!styleSheet) {
+        styleSheet = new CSSStyleSheet();
+        styleSheet.replaceSync(cssText);
+        styleSheetCache.set(cssText, styleSheet);
+    }
+    
     return styleSheet;
 }
