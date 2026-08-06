@@ -1,0 +1,23 @@
+{
+  "name": "@quevy/state",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./lit": {
+      "types": "./dist/lit.d.ts",
+      "default": "./dist/lit.js"
+    }
+  },
+  "dependencies": {
+    "@quevy/core": "workspace:*",
+    "lit": "^3.3.3"
+  }
+}
