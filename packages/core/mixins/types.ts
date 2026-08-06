@@ -12,6 +12,6 @@
  * 
  * @template TInstance - Instance type produced by the constructor.
  */
-export type Constructor<TInstance = object> = new (
+export type Constructor<TInstance = object> = abstract new (
     ...args: any[]
 ) => TInstance;

@@ -39,7 +39,7 @@ export interface FocusableInterface {
 export function FocusableMixin<
     TBase extends Constructor<FocusableElement>,
 >(Base: TBase): TBase & Constructor<FocusableInterface>{
-    class Mixin extends Base implements FocusableInterface{
+    abstract class Mixin extends Base implements FocusableInterface{
         /**
          * Returns whether the component currently has focus.
          *

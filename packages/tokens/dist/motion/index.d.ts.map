@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../motion/index.ts"],"names":[],"mappings":"AAAA;;;;;;;;;GASG;AAEH,eAAO,MAAM,MAAM;aACjB,QAAQ;iBACN,OAAO,EAAE,KAAK;iBACd,IAAI,EAAE,OAAO;iBACb,MAAM,EAAE,OAAO;iBACf,IAAI,EAAE,OAAO;;aAGf,MAAM;iBACJ,QAAQ,EAAE,4BAA4B;iBACtC,UAAU,EAAE,iCAAiC;iBAC7C,KAAK,EAAE,4BAA4B;iBACnC,IAAI,EAAE,4BAA4B;;CAE5B,CAAC"}

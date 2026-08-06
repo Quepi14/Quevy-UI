@@ -3,5 +3,13 @@
   "private": true,
   "dependencies": {
     "lit": "^3.3.3"
+  },
+  "scripts": {
+    "dev:button": "vite --config packages/components/dev/vite.config.ts"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.2.0",
+    "@types/node": "^20.11.0"
   }
 }

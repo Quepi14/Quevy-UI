@@ -1,0 +1,1 @@
+{"version":3,"file":"watch.d.ts","sourceRoot":"","sources":["../../decorators/watch.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;GAYG;AAEH;;GAEG;AACH,MAAM,WAAW,aAAa;IAC1B;;OAEG;IACH,QAAQ,EAAE,MAAM,CAAC;IAEjB;;OAEG;IACH,MAAM,EAAE,MAAM,GAAG,MAAM,CAAC;CAC3B;AAED;;GAEG;AACH,eAAO,MAAM,cAAc,eAAqB,CAAC;AAEjD;;;;;;GAMG;AACH,wBAAgB,KAAK,CAAC,QAAQ,EAAE,MAAM,GAAG,eAAe,CAmBvD"}

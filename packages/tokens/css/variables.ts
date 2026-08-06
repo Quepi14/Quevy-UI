@@ -10,14 +10,14 @@
  * ----------------------------------------------------------
  */
 
-import { primitiveColors, semanticColors } from '../colors';
-import { motion } from '../motion';
-import { radius } from '../radius';
-import { shadows } from '../shadows';
-import { sizing } from '../sizing';
-import { spacing } from '../spacing';
-import { typography } from '../typography';
-import { zIndex } from '../z-index';
+import { primitiveColors, semanticColors } from '../colors/index.js';
+import { motion } from '../motion/index.js';
+import { radius } from '../radius/index.js';
+import { shadows } from '../shadows/index.js';
+import { sizing } from '../sizing/index.js';
+import { spacing } from '../spacing/index.js';
+import { typography } from '../typography/index.js';
+import { zIndex } from '../z-index/index.js';
 
 type TokenValue = string | number;
 

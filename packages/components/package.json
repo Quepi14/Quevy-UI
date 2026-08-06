@@ -1,0 +1,14 @@
+{
+  "name": "@quevy/components",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "@quevy/core": "workspace:*",
+    "@quevy/tokens": "workspace:*",
+    "lit": "^3.3.3"
+  }
+}

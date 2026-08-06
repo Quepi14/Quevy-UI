@@ -41,7 +41,7 @@ export interface DisabledInterface {
 export function DisabledMixin<
     TBase extends Constructor<DisableableElement>,
 >(Base: TBase): TBase & Constructor<DisabledInterface> {
-    class Mixin extends Base implements DisabledInterface {
+    abstract class Mixin extends Base implements DisabledInterface {
         /**
          * Returns whether the component is disabled.
          *

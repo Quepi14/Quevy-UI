@@ -13,16 +13,7 @@
  */
 
 import type { ReactiveController } from "lit";
-
-/**
- * Minimal local `QvElement` shape used by this file.
- * Avoid importing the full `@quevy/core` package here to
- * prevent cross-package `rootDir` resolution errors.
- */
-interface QvElement {
-    addController(controller: ReactiveController): void;
-    requestUpdate(): void;
-}
+import type { QvElement } from '@quevy/core';
 
 import { createSignal, type Signal, } from '../../primitives/signal.js';
 import { createComputed, type Computed} from '../../primitives/computed.js';

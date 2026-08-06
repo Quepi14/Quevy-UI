@@ -140,7 +140,7 @@ export abstract class QvElement extends LitElement implements BaseComponent, QvL
     /**
      * Creates the component.
      */
-    protected constructor() {
+    public constructor() {
         super();
         this.addController(this.controllerManager);
     }

@@ -8,41 +8,46 @@
 
 export {
   breakpoints,
-} from './breakpoints';
+} from './breakpoints/index.js';
 
 export {
   primitiveColors,
   semanticColors,
-} from './colors';
+} from './colors/index.js';
 
 export {
   motion,
-} from './motion';
+} from './motion/index.js';
 
 export {
   radius,
-} from './radius';
+} from './radius/index.js';
 
 export {
   shadows,
-} from './shadows';
+} from './shadows/index.js';
 
 export {
   sizing,
-} from './sizing';
+} from './sizing/index.js';
 
 export {
   spacing,
-} from './spacing';
+} from './spacing/index.js';
 
 export {
   typography,
-} from './typography';
+} from './typography/index.js';
 
 export {
   zIndex,
-} from './z-index';
+} from './z-index/index.js';
 
 export {
   cssVariables,
-} from './css/variables';
+} from './css/variables.js';
+
+export {
+  applyTokens, 
+  tokenToCssText,
+} from './css/inject.js'

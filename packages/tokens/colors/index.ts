@@ -6,5 +6,5 @@
  * ----------------------------------------------------------
  */
 
-export { primitiveColors } from './primitive';
-export { semanticColors } from './semantic';
+export { primitiveColors } from './primitive.js';
+export { semanticColors } from './semantic.js';

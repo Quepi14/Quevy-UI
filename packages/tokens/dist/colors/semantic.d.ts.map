@@ -1,0 +1,1 @@
+{"version":3,"file":"semantic.d.ts","sourceRoot":"","sources":["../../colors/semantic.ts"],"names":[],"mappings":"AAAA;;;;;;;;;GASG;AAIH,eAAO,MAAM,cAAc;aACvB,KAAK;iBACD,OAAO;iBACP,SAAS;;aAGb,UAAU;iBACN,OAAO;iBACP,OAAO;iBACP,KAAK;;aAGT,UAAU;iBACN,OAAO;iBACP,KAAK;iBACL,OAAO;;aAGX,MAAM;iBACF,OAAO;iBACP,MAAM;;aAGV,MAAM;iBACF,OAAO;iBACP,OAAO;iBACP,KAAK;iBACL,IAAI;;CAEF,CAAC"}

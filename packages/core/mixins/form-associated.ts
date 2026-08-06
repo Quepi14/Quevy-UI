@@ -39,7 +39,7 @@ export interface FormAssociatedInterface {
 export function FormAssociatedMixin<
     TBase extends Constructor<FormAssociatedElement>,
 >(Base: TBase): TBase & Constructor<FormAssociatedInterface> {
-    class Mixin extends Base implements FormAssociatedInterface {
+    abstract class Mixin extends Base implements FormAssociatedInterface {
         /**
          * Enables the Form-Associated Custom Element
          * behavior for the derived custom element.

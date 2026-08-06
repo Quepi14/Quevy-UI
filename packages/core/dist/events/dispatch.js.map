@@ -1,0 +1,1 @@
+{"version":3,"file":"dispatch.js","sourceRoot":"","sources":["../../events/dispatch.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;GAUG;AAEH,OAAO,EAAE,WAAW,EAAE,MAAM,mBAAmB,CAAC;AAGhD;;;;;;;;;;;;GAYG;AACH,MAAM,UAAU,QAAQ,CACpB,MAAmB,EACnB,IAAY,EACZ,OAAO,GAA0B,EAAE;IAEnC,MAAM,KAAK,GAAG,WAAW,CAAC,IAAI,EAAE,OAAO,CAAC,CAAA;IAExC,OAAO,MAAM,CAAC,aAAa,CAAC,KAAK,CAAC,CAAA;AACtC,CAAC"}
