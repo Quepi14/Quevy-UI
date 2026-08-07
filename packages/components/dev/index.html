@@ -82,5 +82,31 @@
             <p style="color: white;">Konten di atas background gradient/gambar.</p>
         </qv-card>
     </div>
+
+    <!-- divided for skeleton load -->
+     <!-- Skeleton buat avatar -->
+    <qv-skeleton shape="circle" style="width: 48px; height: 48px;"></qv-skeleton>
+
+    <!-- Skeleton multi-baris teks (manual, sesuai keputusan kamu — 
+        tanpa preset otomatis) -->
+    <div style="display:flex; flex-direction:column; gap:8px; width:240px;">
+        <qv-skeleton shape="text" style="width: 100%;"></qv-skeleton>
+        <qv-skeleton shape="text" style="width: 100%;"></qv-skeleton>
+        <qv-skeleton shape="text" style="width: 60%;"></qv-skeleton>
+    </div>
+
+    <!-- Skeleton gambar/rectangle -->
+    <qv-skeleton shape="rectangle" style="width: 320px; height: 180px;"></qv-skeleton>
+
+    <!-- Bandingkan animation pulse vs shimmer -->
+    <qv-skeleton shape="rectangle" animation="pulse" style="width: 200px; height: 100px;"></qv-skeleton>
+    <qv-skeleton shape="rectangle" animation="shimmer" style="width: 200px; height: 100px;"></qv-skeleton>
+
+    <!-- Kombinasi realistis: skeleton loading state buat qv-card -->
+    <qv-card variant="outlined" style="width: 320px;">
+        <qv-skeleton slot="media" shape="rectangle" style="width: 100%; height: 180px;"></qv-skeleton>
+        <div slot="title"><qv-skeleton shape="text" style="width: 60%;"></qv-skeleton></div>
+        <div slot="description"><qv-skeleton shape="text" style="width: 40%;"></qv-skeleton></div>
+    </qv-card>
   </body>
 </html>
