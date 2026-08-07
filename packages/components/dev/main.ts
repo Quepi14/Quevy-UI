@@ -9,3 +9,9 @@ document
         e.preventDefault();
         alert('Form submitted! (qv-button type="submit" jalan)');
     });
+
+document
+    .getElementById('pick-card')
+    ?.addEventListener('click', () => {
+        alert('Card diklik - bukan navigasi, cuma custom aciton');
+    })

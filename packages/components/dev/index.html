@@ -30,5 +30,57 @@
       <qv-button type="submit" variant="primary">Submit form</qv-button>
       <qv-button type="reset" variant="outline">Reset form</qv-button>
     </form>
+
+    <!-- 1. Card teks doang, tanpa media -->
+    <qv-card variant="elevated" style="width: 320px;">
+        <span slot="title">Judul Artikel</span>
+        <span slot="description">Sub-judul singkat di bawah title.</span>
+        <p>Ini isi body card, bisa paragraf panjang, list, atau konten apapun — masuk ke slot default.</p>
+    </qv-card>
+
+    <!-- 2. Card dengan gambar (slot media) -->
+    <qv-card variant="outlined" style="width: 320px;">
+        <img slot="media" src="https://picsum.photos/320/180" alt="Contoh gambar" />
+        <span slot="title">Produk A</span>
+        <span slot="description">Kategori: Elektronik</span>
+        <p>Deskripsi produk singkat ada di sini.</p>
+    </qv-card>
+
+    <!-- 3. Card dengan footer berisi qv-button — ini kasus penting buat 
+        buktikan guard nested-interactive-nya jalan -->
+    <qv-card variant="elevated" interactive style="width: 320px;">
+        <img slot="media" src="https://picsum.photos/320/180?2" alt="" />
+        <span slot="title">Sepatu Lari X</span>
+        <span slot="description">Rp 899.000</span>
+        <p>Ringan, breathable, cocok buat lari jarak jauh.</p>
+        <div slot="footer">
+            <qv-button variant="primary" size="sm">Beli</qv-button>
+            <qv-button variant="outline" size="sm">Wishlist</qv-button>
+        </div>
+    </qv-card>
+
+    <!-- 4. Card sebagai link (role="link", navigasi via href) -->
+    <qv-card variant="flat" href="https://example.com" target="_blank" style="width: 320px;">
+        <span slot="title">Baca artikel lengkap</span>
+        <span slot="description">example.com</span>
+        <p>Klik di mana saja pada card ini (kecuali tombol di footer) untuk membuka tab baru.</p>
+    </qv-card>
+
+    <!-- 5. Card interactive tanpa href — button-like, custom event doang -->
+    <qv-card variant="outlined" interactive style="width: 320px;" id="pick-card">
+        <span slot="title">Pilih paket ini</span>
+        <p>Klik card ini untuk memicu event, bukan navigasi.</p>
+    </qv-card>
+
+    <!-- 6. Glassmorphism — perlu background bercorak/gradient di belakangnya 
+        biar efek blur-nya kelihatan, background putih polos tidak akan 
+        menunjukkan bedanya -->
+    <div style="background: linear-gradient(135deg, #6366f1, #ec4899); padding: 2rem; border-radius: 12px;">
+        <qv-card variant="glass" style="width: 320px;">
+            <span slot="title">Glass Card</span>
+            <span slot="description">Efek frosted glass</span>
+            <p style="color: white;">Konten di atas background gradient/gambar.</p>
+        </qv-card>
+    </div>
   </body>
 </html>
