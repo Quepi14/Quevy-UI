@@ -8,6 +8,7 @@
   "sideEffects": false,
   "dependencies": {
     "@quevy/core": "workspace:*",
+    "@quevy/state": "workspace:*",
     "@quevy/tokens": "workspace:*",
     "lit": "^3.3.3"
   }

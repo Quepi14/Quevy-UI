@@ -1,0 +1,1 @@
+export type QvBannerVariant = 'info' | 'success' | 'warning' | 'error' | 'neutral';

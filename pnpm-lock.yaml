@@ -27,6 +27,9 @@ importers:
       '@quevy/core':
         specifier: workspace:*
         version: link:../core
+      '@quevy/state':
+        specifier: workspace:*
+        version: link:../state
       '@quevy/tokens':
         specifier: workspace:*
         version: link:../tokens
