@@ -108,5 +108,53 @@
         <div slot="title"><qv-skeleton shape="text" style="width: 60%;"></qv-skeleton></div>
         <div slot="description"><qv-skeleton shape="text" style="width: 40%;"></qv-skeleton></div>
     </qv-card>
+
+    <!-- ===== qv-chip ===== -->
+    <div style="display:flex; gap:8px;">
+        <qv-chip selectable value="sepatu">Sepatu</qv-chip>
+        <qv-chip selectable value="sandal">Sandal</qv-chip>
+        <qv-chip selectable value="tas">Tas</qv-chip>
+        <qv-chip selectable value="seragam">Seragam</qv-chip>
+    </div>
+
+    <div id="active-filters" style="display:flex; gap:8px;"></div>
+
+    <!-- ===== qv-breadcrumbs ===== -->
+    <qv-breadcrumbs id="nav-crumbs"></qv-breadcrumbs>
+
+    <qv-breadcrumbs id="filter-crumbs">
+        <span slot="separator">/</span>
+    </qv-breadcrumbs>
+
+    <qv-breadcrumbs id="long-crumbs" max-visible="3"></qv-breadcrumbs>
+
+    <!-- ===== qv-banner ===== -->
+    <qv-banner variant="warning" dismissible>
+        Sesi login kamu akan berakhir dalam 5 menit.
+    </qv-banner>
+
+    <qv-banner id="promo-banner" variant="neutral" dismissible open>
+        Diskon 20% berlaku sampai akhir bulan!
+    </qv-banner>
+
+    <!-- ===== qv-state ===== -->
+    <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <qv-state status="loading" style="width:220px; border:1px solid #eee;">
+            <span slot="title">Memuat data</span>
+            <span slot="description">Mohon tunggu sebentar</span>
+        </qv-state>
+
+        <qv-state status="error" style="width:220px; border:1px solid #eee;">
+            <span slot="title">Gagal memuat</span>
+            <span slot="description">Terjadi kesalahan saat mengambil data</span>
+            <qv-button slot="action" variant="outline" size="sm">Coba lagi</qv-button>
+        </qv-state>
+
+        <qv-state status="empty" style="width:220px; border:1px solid #eee;">
+            <span slot="title">Belum ada data</span>
+            <span slot="description">Mulai dengan menambah data pertama</span>
+            <qv-button slot="action" variant="primary" size="sm">Tambah data</qv-button>
+        </qv-state>
+    </div>
   </body>
 </html>
