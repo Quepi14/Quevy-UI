@@ -1,0 +1,1 @@
+export type QvStateStatus = 'loading' | 'error' | 'success' | 'empty';
