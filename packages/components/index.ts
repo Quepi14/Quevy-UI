@@ -5,4 +5,5 @@ export * from './qv-banner/index.js';
 export * from './qv-state/index.js';
 export * from './qv-breadcrumbs/index.js';
 export * from './qv-chip/index.js';
-export  * from './qv-stepper/index.js';
+export * from './qv-stepper/index.js';
+export * from './qv-pagination/index.js'; 
