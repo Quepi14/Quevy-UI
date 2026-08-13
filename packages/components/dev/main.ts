@@ -7,68 +7,24 @@ import '../qv-banner/index.js';
 import '../qv-state/index.js';
 import '../qv-breadcrumbs/index.js';
 import '../qv-chip/index.js';
+import '../qv-stepper/index.js';
+import '../qv-pagination/index.js';
+import '../qv-dropdown/index.js';
 
 applyTokens();
 
-document
-    .getElementById('test-form')
-    ?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Form submitted! (qv-button type="submit" jalan)');
-    });
-
-document
-    .getElementById('pick-card')
-    ?.addEventListener('click', () => {
-        alert('Card diklik - bukan navigasi, cuma custom action');
-    });
-
-// qv-banner: controlled example
-const promoBanner = document.getElementById('promo-banner');
-promoBanner?.addEventListener('close', (e) => {
-    const detail = (e as CustomEvent).detail;
-    console.log('Banner ditutup, next state:', detail.open);
-    (promoBanner as any).open = false;
+// ===== qv-button =====
+document.getElementById('test-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Form submitted! (qv-button type="submit" jalan)');
 });
 
-// qv-breadcrumbs: perlu di-set lewat property (bukan attribute),
-// karena `items` array tidak bisa ditulis sebagai HTML attribute biasa.
-const navCrumbs = document.getElementById('nav-crumbs') as any;
-if (navCrumbs) {
-    navCrumbs.items = [
-        { label: 'Home', href: '/' },
-        { label: 'Electronics', href: '/electronics' },
-        { label: 'Laptops', href: '/electronics/laptops' },
-        { label: 'Gaming Laptops' },
-    ];
-}
+// ===== qv-card =====
+document.getElementById('pick-card')?.addEventListener('click', () => {
+    alert('Card diklik - bukan navigasi, cuma custom action');
+});
 
-const filterCrumbs = document.getElementById('filter-crumbs') as any;
-if (filterCrumbs) {
-    filterCrumbs.items = [
-        { id: 'cat', label: 'Sepatu' },
-        { id: 'type', label: 'Sneakers' },
-        { id: 'color', label: 'Hitam' },
-        { id: 'size', label: 'Ukuran 43' },
-    ];
-    filterCrumbs.addEventListener('select', (e: Event) => {
-        console.log('Hapus filter dari level:', (e as CustomEvent).detail);
-    });
-}
-
-const longCrumbs = document.getElementById('long-crumbs') as any;
-if (longCrumbs) {
-    longCrumbs.items = [
-        { label: 'Home', href: '/' },
-        { label: 'A', href: '/a' },
-        { label: 'B', href: '/a/b' },
-        { label: 'C', href: '/a/b/c' },
-        { label: 'D', href: '/a/b/c/d' },
-        { label: 'Current Page' },
-    ];
-}
-
-// qv-chip: dismissible demo, chip dihapus dari array lalu di-render ulang
+// ===== qv-chip (dismissible demo) =====
 let activeFilters = [
     { value: 'sneakers', label: 'Sneakers' },
     { value: 'hitam', label: 'Hitam' },
@@ -94,3 +50,79 @@ function renderActiveFilters(): void {
     }
 }
 renderActiveFilters();
+
+// ===== qv-breadcrumbs =====
+const navCrumbs = document.getElementById('nav-crumbs') as any;
+if (navCrumbs) {
+    navCrumbs.items = [
+        { label: 'Home', href: '/' },
+        { label: 'Electronics', href: '/electronics' },
+        { label: 'Laptops', href: '/electronics/laptops' },
+        { label: 'Gaming Laptops' },
+    ];
+}
+
+const filterCrumbs = document.getElementById('filter-crumbs') as any;
+if (filterCrumbs) {
+    filterCrumbs.items = [
+        { id: 'cat', label: 'Sepatu' },
+        { id: 'type', label: 'Sneakers' },
+        { id: 'color', label: 'Hitam' },
+        { id: 'size', label: 'Ukuran 43' },
+    ];
+    filterCrumbs.addEventListener('select', (e: Event) => {
+        console.log('[breadcrumbs] hapus filter dari level:', (e as CustomEvent).detail);
+    });
+}
+
+const longCrumbs = document.getElementById('long-crumbs') as any;
+if (longCrumbs) {
+    longCrumbs.items = [
+        { label: 'Home', href: '/' },
+        { label: 'A', href: '/a' },
+        { label: 'B', href: '/a/b' },
+        { label: 'C', href: '/a/b/c' },
+        { label: 'D', href: '/a/b/c/d' },
+        { label: 'Current Page' },
+    ];
+}
+
+// ===== qv-banner (controlled) =====
+const promoBanner = document.getElementById('promo-banner');
+promoBanner?.addEventListener('close', (e) => {
+    const detail = (e as CustomEvent).detail;
+    console.log('[banner] ditutup, next state:', detail.open);
+    (promoBanner as any).open = false;
+});
+
+// ===== qv-stepper =====
+document.querySelectorAll('qv-stepper').forEach((el) => {
+    el.addEventListener('change', (e) => {
+        console.log('[stepper]', el.id || '(no id)', (e as CustomEvent).detail);
+    });
+});
+
+document.getElementById('qty-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    alert(`Qty submitted: ${formData.get('qty')}`);
+});
+
+// ===== qv-pagination =====
+document.getElementById('big-list')?.addEventListener('change', (e) => {
+    console.log('[pagination] pindah ke halaman:', (e as CustomEvent).detail.page);
+});
+
+// ===== qv-dropdown =====
+const fruitDropdown = document.getElementById('fruit-dropdown') as any;
+if (fruitDropdown) {
+    fruitDropdown.items = [
+        { value: 'apple', label: 'Apel' },
+        { value: 'banana', label: 'Pisang' },
+        { value: 'grape', label: 'Anggur', disabled: true },
+        { value: 'mango', label: 'Mangga' },
+    ];
+    fruitDropdown.addEventListener('change', (e: Event) => {
+        console.log('[dropdown] value terpilih:', (e as CustomEvent).detail.value);
+    });
+}
