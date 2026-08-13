@@ -38,7 +38,7 @@ export class QvCard extends QvCardBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCard',
         tagName: createTagName('card'),
-        version:  '0.1.0',
+        version:  '0.1.1',
     });
 
     @property({ reflect: true})

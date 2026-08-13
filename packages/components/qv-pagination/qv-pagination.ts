@@ -115,7 +115,7 @@ export class QvPagination extends  QvElement {
                             aria-current=${item === current ? 'page' : nothing}
                             aria-label=${`Page ${item}`}
                             @click=${() => this.handlePageClick(item)}
-                        >{item}</button>
+                        >${item}</button>
                     `
                     : html`<span class="ellipsis" aria-hidden="true">&hellip;</span>`,
             )}
