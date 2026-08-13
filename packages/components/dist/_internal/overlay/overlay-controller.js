@@ -1,0 +1,124 @@
+import { getFocusableElement } from '@quevy/core';
+import { computeOverlayPosition } from './overlay-position.js';
+export class OverlayController {
+    constructor(host, options = {}) {
+        this.host = host;
+        this.trigger = null;
+        this.panel = null;
+        this._open = false;
+        this.previouslyFocused = null;
+        this.reposition = () => {
+            if (!this._open || !this.trigger || !this.panel)
+                return;
+            const triggerRect = this.trigger.getBoundingClientRect();
+            const panelRect = this.panel.getBoundingClientRect();
+            const { top, left } = computeOverlayPosition(triggerRect, { width: panelRect.width, height: panelRect.height }, { width: window.innerWidth, height: window.innerHeight }, this.options.placement);
+            this.panel.style.position = 'fixed';
+            this.panel.style.top = `${top}px`;
+            this.panel.style.left = `${left}px`;
+        };
+        this.handleOutsidePointerDown = (event) => {
+            if (!this.options.closeOnOutsideClick)
+                return;
+            const path = event.composedPath();
+            if (path.includes(this.host) || (this.panel && path.includes(this.panel))) {
+                return;
+            }
+            this.close();
+        };
+        this.handleDocumentKeyDown = (event) => {
+            if (this.options.closeOnEscape && event.key === 'Escape') {
+                event.preventDefault();
+                this.close();
+                return;
+            }
+            if (this.options.trapFocus && event.key === 'Tab' && this.panel) {
+                this.trapTab(event);
+            }
+        };
+        this.options = {
+            placement: options.placement ?? 'bottom-start',
+            closeOnOutsideClick: options.closeOnOutsideClick ?? true,
+            closeOnEscape: options.closeOnEscape ?? true,
+            trapFocus: options.trapFocus ?? true,
+            restoreFocus: options.restoreFocus ?? true,
+            onOpenChange: options.onOpenChange,
+        };
+        this.host.addController(this);
+    }
+    get isOpen() {
+        return this._open;
+    }
+    open() {
+        if (this._open)
+            return;
+        this._open = true;
+        this.previouslyFocused = document.activeElement;
+        document.addEventListener('pointerdown', this.handleOutsidePointerDown, true);
+        document.addEventListener('keydown', this.handleDocumentKeyDown, true);
+        window.addEventListener('resize', this.reposition);
+        window.addEventListener('scroll', this.reposition, true);
+        this.host.requestUpdate();
+        this.options.onOpenChange?.(true);
+        // Wait for the panel to actually be in the DOM (it's
+        // conditionally rendered by the host) before positioning
+        // or moving focus into it.
+        void this.host.updateComplete.then(() => {
+            this.reposition();
+            if (this.options.trapFocus) {
+                getFocusableElement(this.panel ?? this.host)[0]?.focus();
+            }
+        });
+    }
+    close() {
+        if (!this._open)
+            return;
+        this._open = false;
+        document.removeEventListener('pointerdown', this.handleOutsidePointerDown, true);
+        document.removeEventListener('keydown', this.handleDocumentKeyDown, true);
+        window.removeEventListener('resize', this.reposition);
+        window.removeEventListener('scroll', this.reposition, true);
+        this.host.requestUpdate();
+        this.options.onOpenChange?.(false);
+        if (this.options.restoreFocus) {
+            this.previouslyFocused?.focus();
+        }
+        this.previouslyFocused = null;
+    }
+    toggle() {
+        this._open ? this.close() : this.open();
+    }
+    trapTab(event) {
+        const focusable = getFocusableElement(this.panel);
+        if (focusable.length === 0)
+            return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+        if (event.shiftKey && active == first) {
+            event.preventDefault();
+            last.focus();
+        }
+        else if (!event.shiftKey && active === last) {
+            event.preventDefault();
+            first.focus();
+        }
+    }
+    // ReactiveController lifecycle
+    hostConnected() {
+        // Intentionally empty: listeners are attached is open(),
+        // not here - no need to listen document-wide while closed.
+    }
+    hostUpdate() {
+        if (this._open) {
+            this.reposition();
+        }
+    }
+    hostDisconnected() {
+        // Safety net if the host is removed from the DOM while
+        // the overlay is still open - without this, the document
+        // listeners from open() would leak.
+        this.close();
+    }
+}
+//# sourceMappingURL=overlay-controller.js.map
