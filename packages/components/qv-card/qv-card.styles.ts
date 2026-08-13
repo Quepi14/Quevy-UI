@@ -59,7 +59,7 @@ ${host()} {
 }
 
 .body {
-    padding: var(--qv-spacing-lg, 16px)'
+    padding: var(--qv-spacing-lg, 16px);
     flex: 1;
     font-size: var(--qv-font-size-md, 16px);
     line-height: var(--qv-line-height-normal, 1.5);

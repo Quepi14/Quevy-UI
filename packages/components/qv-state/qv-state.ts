@@ -41,7 +41,7 @@ function roleFor(status: QvStateStatus): string | null {
     return null;
 }
 
-@customElement('qv-status')
+@customElement('qv-state')
 export class QvState extends QvElement {
     static override styles = qvStateStyles;
 

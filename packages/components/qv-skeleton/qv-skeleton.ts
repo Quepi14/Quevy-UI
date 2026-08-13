@@ -16,9 +16,8 @@ import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 
 import { qvSkeletonStyles } from "./qv-skeleton.styles.js";
 import type { QvSkeletonShape, QvSkeletonAnimation } from "./qv-skeleton.types.js";
-import type { CSSResultGroup } from "lit";
 
-@customElement('qv-element')
+@customElement('qv-skeleton')
 export class QvSkeleton extends QvElement {
     static override styles = qvSkeletonStyles;
 

@@ -27,7 +27,7 @@ ${hostAttribute('shape="text"')} {
     border-radius: var(--qv-radius-sm, 4px);
 }
 
-${hostAttribute('shpae="circle"')} {
+${hostAttribute('shape="circle"')} {
     aspect-ratio: 1 / 1;
     border-radius: var(--qv-radius-full,  9999px);
 }

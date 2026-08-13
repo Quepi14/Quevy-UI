@@ -189,7 +189,7 @@ export class QvCard extends QvCardBase {
 
     protected override render(): unknown {
         return html`
-            <div clas=${classMap({ media: true, empty: !this.hasMedia})} part="media">
+            <div class=${classMap({ media: true, empty: !this.hasMedia})} part="media">
                 <slot name="media" @slotchange=${this.handleMediaSlotChange}></slot>
             </div>
 

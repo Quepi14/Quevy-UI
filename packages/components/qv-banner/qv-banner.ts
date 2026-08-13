@@ -58,7 +58,7 @@ export class QvBanner extends QvElement {
     public variant: QvBannerVariant = 'info';
 
     @property({ type: Boolean, reflect: true})
-    public dismissable = false;
+    public dismissible = false;
 
     /**
      * Controlled visibility prop. Leave  unset for uncontrolled
@@ -104,7 +104,7 @@ export class QvBanner extends QvElement {
         const defaultIcon = DEFAULT_ICONS[this.variant];
 
         return html`
-            <span clas=${classMap({ icon: true, empty: !this.hasIcon && !defaultIcon})} part="icon">
+            <span class=${classMap({ icon: true, empty: !this.hasIcon && !defaultIcon})} part="icon">
                 <slot name="icon" @slotchange=${this.handleIconSlotChange}>
                     ${this.hasIcon ? nothing : defaultIcon}
                 </slot>
@@ -114,7 +114,7 @@ export class QvBanner extends QvElement {
                 <slot></slot>
             </div>
 
-            ${this.dismissable
+            ${this.dismissible
                 ? html`
                     <button
                         class="close"

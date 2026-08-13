@@ -73,7 +73,7 @@ ${hostAttribute('size="md"')}{
 
 ${hostAttribute('size="lg"')}{
     height: var(--qv-sizing-lg, 48px);
-    padding-inline: var(--qv-spicing-xl, 20px);
+    padding-inline: var(--qv-spacing-xl, 20px);
     font-size: var(--qv-font-size-lg, 18px);
 }
 `)
