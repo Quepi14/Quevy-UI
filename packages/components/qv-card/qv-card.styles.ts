@@ -22,7 +22,19 @@ ${host()} {
     color: var(--qv-color-foreground-default, #171717);
     box-sizing: border-box;
     outline: none;
+    position: relative;
 }    
+
+.actions {
+    position: absolute;
+    top: var(--qv-spacing-sm, 8px);
+    right: var(--qv-spacing-sm, 8px);
+    z-index: 1;
+}
+
+.actions.empty {
+    display: none;
+}
 
 .media.empty,
 .header.empty,

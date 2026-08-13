@@ -10,6 +10,7 @@ import '../qv-chip/index.js';
 import '../qv-stepper/index.js';
 import '../qv-pagination/index.js';
 import '../qv-dropdown/index.js';
+import '../qv-menu/index.js';
 
 applyTokens();
 
@@ -125,4 +126,40 @@ if (fruitDropdown) {
     fruitDropdown.addEventListener('change', (e: Event) => {
         console.log('[dropdown] value terpilih:', (e as CustomEvent).detail.value);
     });
+}
+
+// ===== qv-menu (kebab di dalam card) =====
+for (const id of ['card-menu', 'card-menu-2']) {
+    const menu = document.getElementById(id) as any;
+    if (!menu) continue;
+
+    menu.items = [
+        { id: 'edit', label: 'Edit' },
+        { id: 'duplicate', label: 'Duplikat' },
+        { id: 'delete', label: 'Hapus', disabled: id === 'card-menu-2' },
+    ];
+    menu.addEventListener('select', (e: Event) => {
+        console.log(`[menu:${id}] aksi dipilih:`, (e as CustomEvent).detail);
+    });
+}
+
+// ===== qv-menu (standalone  navbar style) =====
+const standaloneMenu = document.getElementById('standalone-menu') as any;
+if (standaloneMenu) {
+    standaloneMenu.items = [
+        { id: 'share', label: 'Share' },
+        { id: 'report', label: 'Report' },
+    ];
+    standaloneMenu.addEventListener('select', (e: Event) => {
+        console.log('[menu:standalone] aksi dipilih:', (e as CustomEvent).detail);
+    });
+}
+
+const navProducts = document.getElementById('nav-products') as any;
+if (navProducts) {
+    navProducts.items = [
+        { label: 'Analytics', href: '/products/analytics' },
+        { label: 'Automation', href: '/products/automation' },
+        { label: 'Insights', href: '/products/insights' },
+    ];
 }

@@ -38,7 +38,7 @@ export class QvCard extends QvCardBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCard',
         tagName: createTagName('card'),
-        version:  '0.1.1',
+        version:  '0.2.1',
     });
 
     @property({ reflect: true})
@@ -57,6 +57,7 @@ export class QvCard extends QvCardBase {
     @state() private hasTitle = false;
     @state() private hasDescription = false;
     @state() private hasFooter = false;
+    @state() private hasActions = false;
 
     private get isInteractive(): boolean{
         return this.interactive || Boolean(this.href);
@@ -187,8 +188,16 @@ export class QvCard extends QvCardBase {
         this.hasFooter = this.hasSlot('footer');
     };
 
+    private readonly handleActionsSlotChange = (): void => {
+        this.hasActions = this.hasSlot('actions');
+    }
+
     protected override render(): unknown {
         return html`
+            <div class=${classMap({ actions: true, empty: !this.hasActions})} part="actions">
+                <slot name="actions" @slotchange=${this.handleActionsSlotChange}></slot>
+            </div>
+
             <div class=${classMap({ media: true, empty: !this.hasMedia})} part="media">
                 <slot name="media" @slotchange=${this.handleMediaSlotChange}></slot>
             </div>

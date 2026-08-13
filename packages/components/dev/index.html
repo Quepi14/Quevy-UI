@@ -10,6 +10,7 @@
         margin: 0;
         padding: 0 2rem 6rem;
         color: #171717;
+        background-color: #f0f0f3;
       }
       nav.toc {
         position: sticky;
@@ -44,12 +45,19 @@
         color: #737373;
         margin: 0 0 1rem;
       }
+      nav.toc {
+        background-color: #fff;
+      }
       .row {
         display: flex;
         gap: 0.75rem;
         flex-wrap: wrap;
         align-items: center;
         margin-bottom: 1rem;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 1.25rem;
       }
       .row:last-child { margin-bottom: 0; }
       .row-label {
@@ -74,13 +82,14 @@
       <a href="#section-stepper">Stepper</a>
       <a href="#section-pagination">Pagination</a>
       <a href="#section-dropdown">Dropdown</a>
+      <a href="#section-menu">Menu</a>
     </nav>
 
     <!-- QV-BUTTON -->
     <section id="section-button">
       <h2>qv-button</h2>
 
-      <div class="row-label">variant</div>
+      <div class="row-label">variant</div><br>
       <div class="row">
         <qv-button variant="primary">Primary</qv-button>
         <qv-button variant="secondary">Secondary</qv-button>
@@ -89,20 +98,20 @@
         <qv-button variant="danger">Danger</qv-button>
       </div>
 
-      <div class="row-label">size</div>
+      <div class="row-label">size</div><br>
       <div class="row">
         <qv-button size="sm">Small</qv-button>
         <qv-button size="md">Medium</qv-button>
         <qv-button size="lg">Large</qv-button>
       </div>
 
-      <div class="row-label">state</div>
+      <div class="row-label">state</div><br>
       <div class="row">
         <qv-button disabled>Disabled</qv-button>
         <qv-button loading>Loading</qv-button>
       </div>
 
-      <div class="row-label">form association (type=submit/reset)</div>
+      <div class="row-label">form association (type=submit/reset)</div><br>
       <form id="test-form" class="row">
         <qv-button type="submit" variant="primary">Submit form</qv-button>
         <qv-button type="reset" variant="outline">Reset form</qv-button>
@@ -114,7 +123,7 @@
     <section id="section-card">
       <h2>qv-card</h2>
 
-      <div class="row-label">1. text only (no media)</div>
+      <div class="row-label">1. text only (no media)</div><br>
       <div class="row">
         <qv-card variant="elevated" style="width: 320px;">
           <span slot="title">Judul Artikel</span>
@@ -123,7 +132,7 @@
         </qv-card>
       </div>
 
-      <div class="row-label">2. with media</div>
+      <div class="row-label">2. with media</div><br>
       <div class="row">
         <qv-card variant="outlined" style="width: 320px;">
           <img slot="media" src="https://picsum.photos/320/180" alt="Contoh gambar" />
@@ -133,7 +142,7 @@
         </qv-card>
       </div>
 
-      <div class="row-label">3. interactive + nested qv-button in footer (guard test)</div>
+      <div class="row-label">3. interactive  nested qv-button in footer (guard test)</div><br>
       <div class="row">
         <qv-card variant="elevated" interactive style="width: 320px;">
           <img slot="media" src="https://picsum.photos/320/180?2" alt="" />
@@ -147,7 +156,7 @@
         </qv-card>
       </div>
 
-      <div class="row-label">4. href (role=link, navigates)</div>
+      <div class="row-label">4. href (role=link, navigates)</div><br>
       <div class="row">
         <qv-card variant="flat" href="https://example.com" target="_blank" style="width: 320px;">
           <span slot="title">Baca artikel lengkap</span>
@@ -156,7 +165,7 @@
         </qv-card>
       </div>
 
-      <div class="row-label">5. interactive, no href (button-like, custom event)</div>
+      <div class="row-label">5. interactive, no href (button-like, custom event)</div><br>
       <div class="row">
         <qv-card variant="outlined" interactive style="width: 320px;" id="pick-card">
           <span slot="title">Pilih paket ini</span>
@@ -164,7 +173,7 @@
         </qv-card>
       </div>
 
-      <div class="row-label">6. glass variant (needs contrasting background)</div>
+      <div class="row-label">6. glass variant (needs contrasting background)</div><br>
       <div class="row">
         <div style="background: linear-gradient(135deg, #6366f1, #ec4899); padding: 2rem; border-radius: 12px;">
           <qv-card variant="glass" style="width: 320px;">
@@ -174,6 +183,24 @@
           </qv-card>
         </div>
       </div>
+
+      <div class="row-label">7. actions slot — kebab menu (qv-menu) di pojok kanan-atas</div>
+      <div class="row">
+        <qv-card variant="elevated" style="width: 320px;">
+          <img slot="media" src="https://picsum.photos/320/180?3" alt="" />
+          <qv-menu slot="actions" id="card-menu"></qv-menu>
+          <span slot="title">Produk B</span>
+          <span slot="description">Rp 250.000</span>
+          <p>Kebab menu ini ada di atas foto — cek nested-interactive guard-nya juga jalan (klik menu tidak trigger card).</p>
+        </qv-card>
+
+        <qv-card variant="outlined" style="width: 320px;">
+          <qv-menu slot="actions" id="card-menu-2"></qv-menu>
+          <span slot="title">Card tanpa foto</span>
+          <span slot="description">Kebab tetap sejajar title</span>
+          <p>Card tanpa media — posisi kebab otomatis jatuh sejajar header karena tidak ada foto di atasnya.</p>
+        </qv-card>
+      </div>
     </section>
 
     <!-- QV-SKELETON -->
@@ -181,7 +208,7 @@
     <section id="section-skeleton">
       <h2>qv-skeleton</h2>
 
-      <div class="row-label">shape: circle / text (multi-line) / rectangle</div>
+      <div class="row-label">shape: circle / text (multi-line) / rectangle</div><br>
       <div class="row">
         <qv-skeleton shape="circle" style="width: 48px; height: 48px;"></qv-skeleton>
 
@@ -194,13 +221,13 @@
         <qv-skeleton shape="rectangle" style="width: 200px; height: 100px;"></qv-skeleton>
       </div>
 
-      <div class="row-label">animation: pulse vs shimmer</div>
+      <div class="row-label">animation: pulse vs shimmer</div><br>
       <div class="row">
         <qv-skeleton shape="rectangle" animation="pulse" style="width: 200px; height: 100px;"></qv-skeleton>
         <qv-skeleton shape="rectangle" animation="shimmer" style="width: 200px; height: 100px;"></qv-skeleton>
       </div>
 
-      <div class="row-label">combined with qv-card (loading state)</div>
+      <div class="row-label">combined with qv-card (loading state)</div><br>
       <div class="row">
         <qv-card variant="outlined" style="width: 320px;">
           <qv-skeleton slot="media" shape="rectangle" style="width: 100%; height: 180px;"></qv-skeleton>
@@ -215,7 +242,7 @@
     <section id="section-chip">
       <h2>qv-chip</h2>
 
-      <div class="row-label">selectable (standalone, multi-select)</div>
+      <div class="row-label">selectable (standalone, multi-select)</div><br>
       <div class="row">
         <qv-chip selectable value="sepatu">Sepatu</qv-chip>
         <qv-chip selectable value="sandal">Sandal</qv-chip>
@@ -223,7 +250,7 @@
         <qv-chip selectable value="seragam">Seragam</qv-chip>
       </div>
 
-      <div class="row-label">dismissible (removed from array on X click)</div>
+      <div class="row-label">dismissible (removed from array on X click)</div><br>
       <div class="row" id="active-filters"></div>
     </section>
 
@@ -232,19 +259,19 @@
     <section id="section-breadcrumbs">
       <h2>qv-breadcrumbs</h2>
 
-      <div class="row-label">navigation mode (href → link)</div>
+      <div class="row-label">navigation mode (href → link)</div><br>
       <div class="row">
         <qv-breadcrumbs id="nav-crumbs"></qv-breadcrumbs>
       </div>
 
-      <div class="row-label">filter mode (no href → button, emits "select") + custom slash separator</div>
+      <div class="row-label">filter mode (no href → button, emits "select")  custom slash separator</div><br>
       <div class="row">
         <qv-breadcrumbs id="filter-crumbs">
           <span slot="separator">/</span>
         </qv-breadcrumbs>
       </div>
 
-      <div class="row-label">collapse (max-visible=3, click "…" to expand)</div>
+      <div class="row-label">collapse (max-visible=3, click "…" to expand)</div><br>
       <div class="row">
         <qv-breadcrumbs id="long-crumbs" max-visible="3"></qv-breadcrumbs>
       </div>
@@ -255,21 +282,21 @@
     <section id="section-banner">
       <h2>qv-banner</h2>
 
-      <div class="row-label">uncontrolled, dismissible</div>
+      <div class="row-label">uncontrolled, dismissible</div><br>
       <div class="row">
         <qv-banner variant="warning" dismissible style="width: 100%;">
           Sesi login kamu akan berakhir dalam 5 menit.
         </qv-banner>
       </div>
 
-      <div class="row-label">controlled (open prop driven by JS)</div>
+      <div class="row-label">controlled (open prop driven by JS)</div><br>
       <div class="row">
         <qv-banner id="promo-banner" variant="neutral" dismissible open style="width: 100%;">
           Diskon 20% berlaku sampai akhir bulan!
         </qv-banner>
       </div>
 
-      <div class="row-label">all semantic variants</div>
+      <div class="row-label">all semantic variants</div><br>
       <div class="row" style="flex-direction: column; align-items: stretch;">
         <qv-banner variant="info">Info banner — pengumuman netral.</qv-banner>
         <qv-banner variant="success">Success banner — aksi berhasil.</qv-banner>
@@ -282,7 +309,7 @@
     <section id="section-state">
       <h2>qv-state</h2>
 
-      <div class="row">
+      <div class="row"><br>
         <qv-state status="loading" style="width:220px; border:1px solid #eee;">
           <span slot="title">Memuat data</span>
           <span slot="description">Mohon tunggu sebentar</span>
@@ -307,13 +334,13 @@
     <section id="section-stepper">
       <h2>qv-stepper</h2>
 
-      <div class="row-label">basic (min/max/value)</div>
+      <div class="row-label">basic (min/max/value)</div><br>
       <div class="row">
         <qv-stepper min="0" max="10" value="3"></qv-stepper>
         <qv-stepper min="0" max="99" step="5"></qv-stepper>
       </div>
 
-      <div class="row-label">form-associated</div>
+      <div class="row-label">form-associated</div><br>
       <form id="qty-form" class="row">
         <qv-stepper name="qty" min="1" max="20" value="1"></qv-stepper>
         <qv-button type="submit">Order</qv-button>
@@ -325,12 +352,12 @@
     <section id="section-pagination">
       <h2>qv-pagination</h2>
 
-      <div class="row-label">small total (no collapse needed)</div>
+      <div class="row-label">small total (no collapse needed)</div><br>
       <div class="row">
         <qv-pagination total-pages="6" page="1"></qv-pagination>
       </div>
 
-      <div class="row-label">large total (ellipsis collapse) + jump-to-page</div>
+      <div class="row-label">large total (ellipsis collapse)  jump-to-page</div>
       <div class="row">
         <qv-pagination id="big-list" total-pages="100" sibling-count="2"></qv-pagination>
       </div>
@@ -345,9 +372,26 @@
         checklist manual: klik trigger → panel muncul di bawah •
         klik luar → nutup • Escape → nutup • pilih opsi → fokus balik ke trigger •
         keyboard: Tab ke trigger, Enter buka, Arrow Up/Down pindah opsi
-      </div>
+      </div><br>
       <div class="row">
         <qv-dropdown id="fruit-dropdown" placeholder="Pilih buah"></qv-dropdown>
+      </div>
+    </section>
+
+    <!-- QV MENU -->
+     <section id="section-menu">
+      <h2>qv-menu</h2>
+
+      <div class="row-label">default trigger (kebab icon)</div> <br>
+      <div class="row">
+        <qv-menu id="standalone-menu"></qv-menu>
+      </div>
+
+      <div class="row-label">custom trigger  href items (navbar-style dropdown)</div> <br>
+      <div class="row">
+        <qv-menu id="nav-products">
+          <span slot="trigger">Products ▾</span>
+        </qv-menu>
       </div>
     </section>
   </body>

@@ -8,3 +8,4 @@ export * from './qv-chip/index.js';
 export * from './qv-stepper/index.js';
 export * from './qv-pagination/index.js'; 
 export * from './qv-dropdown/index.js';
+export * from './qv-menu/index.js';
