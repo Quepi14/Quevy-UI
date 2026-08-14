@@ -11,3 +11,5 @@ export * from './qv-dropdown/index.js';
 export * from './qv-menu/index.js';
 export * from './qv-toast/index.js';
 export * from './qv-modal/index.js';
+export * from './qv-bottom-sheet/index.js';
+export * from './qv-bottom-sheet-inline/index.js';

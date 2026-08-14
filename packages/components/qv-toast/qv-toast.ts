@@ -13,7 +13,6 @@ import { generateId } from "@quevy/core";
 import { toastStore } from "../_internal/toast/toast-store.js";
 import { ensureToastRegion } from "../_internal/toast/ensure-region.js";
 import type { QvToastEntry, QvToastOptions, QvToastVariant } from "./qv-toast.types.js";
-import { state } from "lit/decorators.js";
 
 const DEFAULT_DURATION = 4000;
 const DEFAULT_POSITION = 'bottom-center';
