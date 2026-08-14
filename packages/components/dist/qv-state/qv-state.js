@@ -132,7 +132,7 @@ __decorate([
     state()
 ], QvState.prototype, "hasAction", void 0);
 QvState = __decorate([
-    customElement('qv-status')
+    customElement('qv-state')
 ], QvState);
 export { QvState };
 //# sourceMappingURL=qv-state.js.map

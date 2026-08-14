@@ -49,10 +49,10 @@ let QvBanner = class QvBanner extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvBanner',
             tagName: createTagName('banner'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.variant = 'info';
-        this.dismissable = false;
+        this.dismissible = false;
         this.visibility = createControllableValue(true);
         this.hasIcon = false;
         this.handleIconSlotChange = () => {
@@ -81,7 +81,7 @@ let QvBanner = class QvBanner extends QvElement {
     render() {
         const defaultIcon = DEFAULT_ICONS[this.variant];
         return html `
-            <span clas=${classMap({ icon: true, empty: !this.hasIcon && !defaultIcon })} part="icon">
+            <span class=${classMap({ icon: true, empty: !this.hasIcon && !defaultIcon })} part="icon">
                 <slot name="icon" @slotchange=${this.handleIconSlotChange}>
                     ${this.hasIcon ? nothing : defaultIcon}
                 </slot>
@@ -91,7 +91,7 @@ let QvBanner = class QvBanner extends QvElement {
                 <slot></slot>
             </div>
 
-            ${this.dismissable
+            ${this.dismissible
             ? html `
                     <button
                         class="close"
@@ -114,7 +114,7 @@ __decorate([
 ], QvBanner.prototype, "variant", void 0);
 __decorate([
     property({ type: Boolean, reflect: true })
-], QvBanner.prototype, "dismissable", void 0);
+], QvBanner.prototype, "dismissible", void 0);
 __decorate([
     property({ type: Boolean, reflect: true })
 ], QvBanner.prototype, "open", void 0);

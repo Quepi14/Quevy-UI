@@ -17,7 +17,7 @@ export declare class QvBanner extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: ComponentMetadata;
     variant: QvBannerVariant;
-    dismissable: boolean;
+    dismissible: boolean;
     /**
      * Controlled visibility prop. Leave  unset for uncontrolled
      * usage (banner manages its own open/closed state and closes

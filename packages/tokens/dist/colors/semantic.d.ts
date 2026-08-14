@@ -10,7 +10,7 @@
  */
 export declare const semanticColors: {
     readonly brand: {
-        readonly primary: "#2563EB";
+        readonly primary: '#3157c7';
         readonly secondary: "#374151";
     };
     readonly background: {

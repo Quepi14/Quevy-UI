@@ -1,0 +1,1 @@
+{"version":3,"file":"qv-bottom-sheet.d.ts","sourceRoot":"","sources":["../../qv-bottom-sheet/qv-bottom-sheet.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,wBAAwB,EAAE,MAAM,4CAA4C,CAAC;AAC3F,OAAO,EAAE,iBAAiB,EAAE,MAAM,gDAAgD,CAAC;AAEnF,qBACa,aAAc,SAAQ,iBAAiB;IAChD,SAAyB,QAAQ,0CAI9B;IAGI,WAAW,UAAQ;IAE1B,UAAmB,cAAc,IAAI,wBAAwB,CAO5D;IAED,cAAuB,WAAW,IAAI,OAAO,CAE5C;CACJ"}

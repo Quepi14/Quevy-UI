@@ -35,7 +35,7 @@ let QvChip = class QvChip extends QvChipBase {
         this.metadata = createComponentMetadata({
             name: 'QvChip',
             tagName: createTagName('chip'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.selectable = false;
         this.dismissible = false;

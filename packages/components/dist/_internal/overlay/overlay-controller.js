@@ -1,5 +1,21 @@
 import { getFocusableElement } from '@quevy/core';
 import { computeOverlayPosition } from './overlay-position.js';
+let scrollLockCount = 0;
+let previousHtmlOverflow = null;
+function acquireScrollLock() {
+    if (scrollLockCount === 0) {
+        previousHtmlOverflow = document.documentElement.style.overflow;
+        document.documentElement.style.overflow = 'hidden';
+    }
+    scrollLockCount += 1;
+}
+function releaseScrollLock() {
+    scrollLockCount = Math.max(0, scrollLockCount - 1);
+    if (scrollLockCount === 0) {
+        document.documentElement.style.overflow = previousHtmlOverflow ?? '';
+        previousHtmlOverflow = null;
+    }
+}
 export class OverlayController {
     constructor(host, options = {}) {
         this.host = host;
@@ -18,7 +34,10 @@ export class OverlayController {
             this.panel.style.left = `${left}px`;
         };
         this.handleOutsidePointerDown = (event) => {
-            if (!this.options.closeOnOutsideClick)
+            const shouldClose = typeof this.options.closeOnOutsideClick === 'function'
+                ? this.options.closeOnOutsideClick()
+                : this.options.closeOnOutsideClick;
+            if (!shouldClose)
                 return;
             const path = event.composedPath();
             if (path.includes(this.host) || (this.panel && path.includes(this.panel))) {
@@ -42,6 +61,7 @@ export class OverlayController {
             closeOnEscape: options.closeOnEscape ?? true,
             trapFocus: options.trapFocus ?? true,
             restoreFocus: options.restoreFocus ?? true,
+            lockScroll: options.lockScroll ?? false,
             onOpenChange: options.onOpenChange,
         };
         this.host.addController(this);
@@ -54,6 +74,9 @@ export class OverlayController {
             return;
         this._open = true;
         this.previouslyFocused = document.activeElement;
+        if (this.options.lockScroll) {
+            acquireScrollLock();
+        }
         document.addEventListener('pointerdown', this.handleOutsidePointerDown, true);
         document.addEventListener('keydown', this.handleDocumentKeyDown, true);
         window.addEventListener('resize', this.reposition);
@@ -74,6 +97,9 @@ export class OverlayController {
         if (!this._open)
             return;
         this._open = false;
+        if (this.options.lockScroll) {
+            releaseScrollLock();
+        }
         document.removeEventListener('pointerdown', this.handleOutsidePointerDown, true);
         document.removeEventListener('keydown', this.handleDocumentKeyDown, true);
         window.removeEventListener('resize', this.reposition);

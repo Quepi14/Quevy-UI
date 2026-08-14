@@ -22,7 +22,7 @@ ${host()}{
     justify-content: center;
     box-sizing: border-box;
     gap: var(--qv-spacing-xs, 4px);
-    border-radius: var(--qv-radius-md, 8px);
+    border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-md, 8px) var(--qv-radius-md, 8px) var(--qv-radius-md, 8px);
     border: 1px solid transparent;
     font-family: var(--qv-font-family-sans, system-ui, sans-serif);
     font-weight: var(--qv-font-weight-medium, 500);

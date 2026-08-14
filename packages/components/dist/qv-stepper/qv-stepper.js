@@ -96,7 +96,7 @@ let QvStepper = class QvStepper extends QvStepperBase {
                 aria-label="Decrease"
                 ?disabled=${!this.canDecrement}
                 @click=${this.hadnleDecrement}
-            >& minus;</button>
+            >&minus;</button>
             <input 
                 type="text"
                 inputMode="numeric"

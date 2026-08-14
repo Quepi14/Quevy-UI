@@ -10,6 +10,7 @@
  */
 export const radius = {
     none: '0px',
+    signature: '2px',
     sm: '4px',
     md: '8px',
     lg: '12px',

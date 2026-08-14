@@ -30,7 +30,7 @@ let QvCard = class QvCard extends QvCardBase {
         this.metadata = createComponentMetadata({
             name: 'QvCard',
             tagName: createTagName('card'),
-            version: '0.1.0',
+            version: '0.2.2',
         });
         this.variant = 'elevated';
         this.interactive = false;
@@ -38,6 +38,7 @@ let QvCard = class QvCard extends QvCardBase {
         this.hasTitle = false;
         this.hasDescription = false;
         this.hasFooter = false;
+        this.hasActions = false;
         this.handleClick = (event) => {
             if (!this.isInteractive || this.originatesFromInteractiveDescendant(event)) {
                 return;
@@ -76,6 +77,9 @@ let QvCard = class QvCard extends QvCardBase {
         };
         this.handleFooterSlotChange = () => {
             this.hasFooter = this.hasSlot('footer');
+        };
+        this.handleActionsSlotChange = () => {
+            this.hasActions = this.hasSlot('actions');
         };
     }
     static { this.styles = qvCardStyles; }
@@ -146,7 +150,11 @@ let QvCard = class QvCard extends QvCardBase {
     }
     render() {
         return html `
-            <div clas=${classMap({ media: true, empty: !this.hasMedia })} part="media">
+            <div class=${classMap({ actions: true, empty: !this.hasActions })} part="actions">
+                <slot name="actions" @slotchange=${this.handleActionsSlotChange}></slot>
+            </div>
+
+            <div class=${classMap({ media: true, empty: !this.hasMedia })} part="media">
                 <slot name="media" @slotchange=${this.handleMediaSlotChange}></slot>
             </div>
 
@@ -205,6 +213,9 @@ __decorate([
 __decorate([
     state()
 ], QvCard.prototype, "hasFooter", void 0);
+__decorate([
+    state()
+], QvCard.prototype, "hasActions", void 0);
 QvCard = __decorate([
     customElement('qv-card')
 ], QvCard);

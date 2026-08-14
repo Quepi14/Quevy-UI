@@ -23,10 +23,11 @@ import type { QvElement } from '@quevy/core';
 import { type OverlayPlacement } from './overlay-position.js';
 export interface OverlayControllerOptions {
     placement?: OverlayPlacement;
-    closeOnOutsideClick?: boolean;
+    closeOnOutsideClick?: boolean | (() => boolean);
     closeOnEscape?: boolean;
     trapFocus?: boolean;
     restoreFocus?: boolean;
+    lockScroll?: boolean;
     onOpenChange?: (open: boolean) => void;
 }
 export declare class OverlayController implements ReactiveController {

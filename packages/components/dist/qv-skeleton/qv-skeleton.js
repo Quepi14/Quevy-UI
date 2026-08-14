@@ -24,7 +24,7 @@ let QvSkeleton = class QvSkeleton extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvSkeleton',
             tagName: createTagName('skeleton'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.shape = 'text';
         this.animation = 'pulse';
@@ -47,7 +47,7 @@ __decorate([
     property({ reflect: true })
 ], QvSkeleton.prototype, "animation", void 0);
 QvSkeleton = __decorate([
-    customElement('qv-element')
+    customElement('qv-skeleton')
 ], QvSkeleton);
 export { QvSkeleton };
 //# sourceMappingURL=qv-skeleton.js.map

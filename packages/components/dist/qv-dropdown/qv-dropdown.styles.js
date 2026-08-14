@@ -50,12 +50,12 @@ ${hostAttribute('open')}  .chevron {
     margin: 0;
     padding: var(--qv-spacing-xs, 4px);
     list-style: none;
-    min-widht: 180px;
+    min-width: 180px;
     max-height: 260px;
     overflow-y: auto;
     background-color: var(--qv-color-background-surface, #fff);
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
-    border-radius: var(0--qv-radius-md, 8px);
+    border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     z-index: var(--qv-z-index-dropdown, 1000);
 }

@@ -4,7 +4,7 @@ ${host()} {
     display: flex;
     align-items: flex-start;
     gap: var(--qv-spacing-sm, 8px);
-    padding: var(--qv-spacing-md, 12px) var (--qv-spacing=lg, 16px);
+    padding: var(--qv-spacing-md, 12px) var (--qv-spacing-lg, 16px);
     border: 1px solid transparent;
     font-size: var(--qv-font-size-md, 14px);
     line-height: var(--qv-line-height-normal, 1.5);
@@ -67,7 +67,7 @@ ${hostAttribute('variant="info"')} {
 }    
 
 ${hostAttribute('variant="success"')} {
-    background-color: var(--qv-color-greem-50, #f0fdf4);
+    background-color: var(--qv-color-green-50, #f0fdf4);
     border-color: var(--qv-color-green-200, #bbf7d0);
     color: var(--qv-color-green-900, #14532d);
 }   

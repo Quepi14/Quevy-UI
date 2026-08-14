@@ -26,6 +26,7 @@ export declare class QvCard extends QvCardBase {
     private hasTitle;
     private hasDescription;
     private hasFooter;
+    private hasActions;
     private get isInteractive();
     onConnected(): void;
     onDisconnected(): void;
@@ -47,6 +48,7 @@ export declare class QvCard extends QvCardBase {
     private readonly handleTitleSlotChange;
     private readonly handleDescriptionSlotChange;
     private readonly handleFooterSlotChange;
+    private readonly handleActionsSlotChange;
     protected render(): unknown;
 }
 export {};

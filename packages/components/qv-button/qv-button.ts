@@ -45,7 +45,7 @@ export class QvButton extends QvButtonBase {
     public readonly metadata = createComponentMetadata({
         name: 'QvButton',
         tagName: createTagName('button'),
-        version:  '0.1.1',
+        version:  '0.1.2',
     });
 
     @property({ reflect: true })

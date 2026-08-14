@@ -15,12 +15,24 @@ ${host()} {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px);
     background-color: var(--qv-color-background-surface, #fff);
     color: var(--qv-color-foreground-default, #171717);
     box-sizing: border-box;
     outline: none;
+    position: relative;
 }    
+
+.actions {
+    position: absolute;
+    top: var(--qv-spacing-sm, 8px);
+    right: var(--qv-spacing-sm, 8px);
+    z-index: 1;
+}
+
+.actions.empty {
+    display: none;
+}
 
 .media.empty,
 .header.empty,
@@ -57,7 +69,7 @@ ${host()} {
 }
 
 .body {
-    padding: var(--qv-spacing-lg, 16px)'
+    padding: var(--qv-spacing-lg, 16px);
     flex: 1;
     font-size: var(--qv-font-size-md, 16px);
     line-height: var(--qv-line-height-normal, 1.5);
