@@ -1,0 +1,1 @@
+export type QvModalSize = 'sm' | 'md' | 'lg' | 'fullscreen';
