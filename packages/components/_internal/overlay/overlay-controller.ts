@@ -26,11 +26,31 @@ import { computeOverlayPosition, type OverlayPlacement } from './overlay-positio
 
 export interface OverlayControllerOptions {
     placement?: OverlayPlacement;
-    closeOnOutsideClick?: boolean;
+    closeOnOutsideClick?: boolean | (() => boolean);
     closeOnEscape?: boolean;
     trapFocus?: boolean;
     restoreFocus?: boolean;
+    lockScroll?: boolean;
     onOpenChange?: (open: boolean) => void;
+}
+
+let scrollLockCount = 0;
+let previousHtmlOverflow: string | null = null;
+
+function acquireScrollLock(): void {
+    if (scrollLockCount === 0) {
+        previousHtmlOverflow = document.documentElement.style.overflow;
+        document.documentElement.style.overflow = 'hidden';
+    }
+    scrollLockCount += 1; 
+}
+
+function releaseScrollLock(): void {
+    scrollLockCount = Math.max(0, scrollLockCount -1);
+    if (scrollLockCount === 0){
+        document.documentElement.style.overflow = previousHtmlOverflow ?? '';
+        previousHtmlOverflow = null;
+    }
 }
 
 export class OverlayController implements  ReactiveController {
@@ -53,6 +73,7 @@ public constructor(
             closeOnEscape: options.closeOnEscape ?? true,
             trapFocus: options.trapFocus  ?? true,
             restoreFocus: options.restoreFocus ?? true,
+            lockScroll: options.lockScroll ?? false,
             onOpenChange: options.onOpenChange,
         }
         this.host.addController(this);
@@ -67,6 +88,10 @@ public constructor(
 
         this._open = true;
         this.previouslyFocused = document.activeElement as HTMLElement | null;
+
+        if (this.options.lockScroll) {
+            acquireScrollLock();
+        }
 
         document.addEventListener('pointerdown', this.handleOutsidePointerDown, true);
         document.addEventListener('keydown', this.handleDocumentKeyDown, true);
@@ -91,6 +116,10 @@ public constructor(
         if  (!this._open) return;
 
         this._open  = false;
+
+        if (this.options.lockScroll) {
+            releaseScrollLock();
+        }
 
         document.removeEventListener('pointerdown', this.handleOutsidePointerDown, true);
         document.removeEventListener('keydown', this.handleDocumentKeyDown, true);
@@ -129,7 +158,12 @@ public constructor(
     };
 
     private readonly handleOutsidePointerDown = (event: PointerEvent): void => {
-        if (!this.options.closeOnOutsideClick) return;
+        const shouldClose = 
+            typeof this.options.closeOnOutsideClick === 'function'
+                ? this.options.closeOnOutsideClick()
+                : this.options.closeOnOutsideClick;
+
+            if (!shouldClose) return;
 
         const path = event.composedPath();
         if (path.includes(this.host) || (this.panel && path.includes(this.panel))) {

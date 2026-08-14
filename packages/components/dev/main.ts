@@ -129,7 +129,7 @@ if (fruitDropdown) {
 }
 
 // ===== qv-menu (kebab di dalam card) =====
-for (const id of ['card-menu', 'card-menu-2']) {
+for (const id of ['card-menu', 'card-menu-2', 'card-menu-3']) {
     const menu = document.getElementById(id) as any;
     if (!menu) continue;
 
@@ -142,6 +142,11 @@ for (const id of ['card-menu', 'card-menu-2']) {
         console.log(`[menu:${id}] aksi dipilih:`, (e as CustomEvent).detail);
     });
 }
+
+// ===== stress test: interactive card + kebab bersamaan =====
+document.getElementById('stress-card')?.addEventListener('click', () => {
+    console.log('[stress-card] card diklik — INI HANYA BOLEH MUNCUL kalau klik di luar kebab/menu/tombol Beli')
+})
 
 // ===== qv-menu (standalone  navbar style) =====
 const standaloneMenu = document.getElementById('standalone-menu') as any;

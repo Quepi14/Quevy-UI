@@ -201,6 +201,25 @@
           <p>Card tanpa media — posisi kebab otomatis jatuh sejajar header karena tidak ada foto di atasnya.</p>
         </qv-card>
       </div>
+
+      <div class="row-label">
+        8. STRESS TEST — card interactive (href)  kebab menu bersamaan.
+        Checklist: klik body card → navigasi/alert card. Klik kebab → buka menu,
+        TIDAK trigger card. Klik salah satu item menu → aksi item jalan,
+        TIDAK trigger card. Klik luar card → menu nutup (kalau lagi terbuka),
+        card tidak ikut ter-trigger.
+      </div>
+      <div class="row">
+        <qv-card variant="elevated" interactive style="width: 320px;" id="stress-card">
+          <img slot="media" src="https://picsum.photos/320/180?4" alt="" />
+          <qv-menu slot="actions" id="card-menu-3"></qv-menu>
+          <span slot="title">Card Interactive  Kebab</span>
+          <span slot="description">Dua lapis overlay sekaligus</span>
+          <div slot="footer">
+            <qv-button variant="primary" size="sm">Beli</qv-button>
+          </div>
+        </qv-card>
+      </div>
     </section>
 
     <!-- QV-SKELETON -->
