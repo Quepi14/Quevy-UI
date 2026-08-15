@@ -13,3 +13,5 @@ export * from './qv-toast/index.js';
 export * from './qv-modal/index.js';
 export * from './qv-bottom-sheet/index.js';
 export * from './qv-bottom-sheet-inline/index.js';
+export * from './qv-spinner/index.js';
+export * from './qv-progress/index.js';

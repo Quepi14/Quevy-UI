@@ -1,0 +1,1 @@
+export type QvSpinnerSize = 'sm' | 'md' | 'lg';

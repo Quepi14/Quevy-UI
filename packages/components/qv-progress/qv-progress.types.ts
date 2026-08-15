@@ -1,0 +1,1 @@
+export type QvProgressVariant = 'default' | 'success' | 'warning' | 'error';
