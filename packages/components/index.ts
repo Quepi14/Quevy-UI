@@ -17,3 +17,5 @@ export * from './qv-spinner/index.js';
 export * from './qv-progress/index.js';
 export * from  './qv-bar/index.js';
 export * from './qv-table/index.js';
+export * from './qv-badge/index.js';
+export * from './qv-textarea/index.js';
