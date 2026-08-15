@@ -85,7 +85,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
 .close:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #2563eb); outline-offset: 2px;}
 
 .body {
-    padding: 0 var(--qv-spacing-lg, 160px) var(--qv-spacing-lg, 16px);
+    padding: 0 var(--qv-spacing-lg, 16px) var(--qv-spacing-lg, 16px);
     overflow-y: auto;
     flex: 1;
 }

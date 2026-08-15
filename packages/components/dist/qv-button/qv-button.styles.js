@@ -56,10 +56,10 @@ ${host()}{
 }
 `);
 const sizes = css(`
-${hostAttribute('size="lg"')}{
-    height: var(--qv-sizing-lg, 48px);
-    padding-inline: var(--qv-spacing-xl, 20px);
-    font-size: var(--qv-font-size-lg, 18px);
+${hostAttribute('size="sm"')}{
+    height: var(--qv-sizing-sm, 32px);
+    padding-inline: var(--qv-spacing-md, 12px);
+    font-size: var(--qv-font-size-sm, 14px);
 }
 )
 ${hostAttribute('size="md"')}{

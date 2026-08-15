@@ -1,0 +1,1 @@
+export type QvBadgeVariant = 'default' | 'success' | 'warning' | 'error';
