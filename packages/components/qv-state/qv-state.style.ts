@@ -18,7 +18,7 @@ ${host()} {
     align-items: center;
     text-align: center;
     gap: var(--qv-spacing-xs, 4px);
-    padding: var(--qv-spacing-2xl, 32px) var(--qv-spacing-lg, 16px);
+    padding: var(--qv-spacing-2xl, 24px) var(--qv-spacing-lg, 16px);
 }    
     
 .icon {

@@ -21,11 +21,11 @@ ${host()} {
     position: relative;
     display: flex;
     flex-direction: column;
-    max-hieght: calc(100hv - var(--qv-spacing-2xl, 32px) * 2);
+    max-height: calc(100vh - var(--qv-spacing-2xl, 24px) * 2);
     width: 100%;
     background-color: var(--qv-color-background-surface, #fff);
     border-radius: var(--qv-radius-lg, 12px);
-    box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb (0 0 0 /0.1));
+    box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     animation: qv-modal-panel-in 150ms ease-out;
     outline: none;
 }

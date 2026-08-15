@@ -55,7 +55,7 @@ ${host()} {
     display: flex;
     flex-direction: column;
     gap: var(--qv-spacing-xs, 4px);
-    padding: var(--qv-spacing-lg, 16px) var(--qv-spacing-lg, 16px) 0;
+    padding: var(--qv-spacing-lg, 16px) var(--qv-spacing-lg, 16px) var(--qv-spacing-sm, 8px);
 }
 
 .title {

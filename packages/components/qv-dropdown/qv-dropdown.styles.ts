@@ -12,10 +12,10 @@ ${host()} {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--qv-spacing-sm, 8px);
+    gap: var(--qv-spacing-xs, 4px);
     min-width: 180px;
     height: var(--qv-sizing-sm, 32px);
-    padding-inline: var(--qv-spacing-md, 32px);
+    padding-inline: var(--qv-spacing-md, 12px);
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
     border-radius: var(--qv-radius-md, 8px);
     color: var(--qv-color-foreground-default, #171717);

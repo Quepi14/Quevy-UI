@@ -12,11 +12,12 @@ button {
     all: unset;
     display: inline-flex;
     align-items: center;
-    justify-content: var(--qv-sizing-sm, 32px);
-    height: var(--qv-sizing-xs, 4px);
+    justify-content: center;
+    min-width: var(--qv-sizing-sm, 32px);
+    height: var(--qv-sizing-sm, 32px);
     border-radius: var(--qv-radius-sm, 4px);
     cursor: pointer;
-    color: var(-qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #171717);
 }
 
 butotn:hover:not(:disabled) {

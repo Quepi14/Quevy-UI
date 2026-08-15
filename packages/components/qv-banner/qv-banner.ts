@@ -51,7 +51,7 @@ export class QvBanner extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBanner',
         tagName: createTagName('banner'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ reflect: true})
