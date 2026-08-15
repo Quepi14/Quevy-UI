@@ -16,3 +16,4 @@ export * from './qv-bottom-sheet-inline/index.js';
 export * from './qv-spinner/index.js';
 export * from './qv-progress/index.js';
 export * from  './qv-bar/index.js';
+export * from './qv-table/index.js';
