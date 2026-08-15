@@ -1,0 +1,1 @@
+export type QvBarPosition = 'top' | 'bottom' | 'left' | 'right';
