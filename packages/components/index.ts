@@ -19,3 +19,6 @@ export * from  './qv-bar/index.js';
 export * from './qv-table/index.js';
 export * from './qv-badge/index.js';
 export * from './qv-textarea/index.js';
+export * from './qv-slider/index.js';
+export * from './qv-file-input/index.js';
+export * from './qv-list/index.js';
