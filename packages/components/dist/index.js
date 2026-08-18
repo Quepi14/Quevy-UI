@@ -22,4 +22,7 @@ export * from './qv-textarea/index.js';
 export * from './qv-slider/index.js';
 export * from './qv-file-input/index.js';
 export * from './qv-list/index.js';
+export * from './qv-checkbox/index.js';
+export * from './qv-switch/index.js';
+export * from './qv-radio/index.js';
 //# sourceMappingURL=index.js.map
