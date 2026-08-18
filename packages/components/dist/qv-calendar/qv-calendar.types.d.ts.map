@@ -1,0 +1,1 @@
+{"version":3,"file":"qv-calendar.types.d.ts","sourceRoot":"","sources":["../../qv-calendar/qv-calendar.types.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,cAAc,GAAG,QAAQ,GAAG,OAAO,CAAC;AAEhD,MAAM,WAAW,2BAA2B;IACxC,KAAK,CAAC,EAAE,IAAI,CAAC;IACb,UAAU,CAAC,EAAE,IAAI,CAAC;IAClB,QAAQ,CAAC,EAAE,IAAI,CAAC;CACnB"}

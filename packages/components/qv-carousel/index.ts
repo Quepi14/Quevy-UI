@@ -1,0 +1,1 @@
+export { QvCarousel } from './qv-carousel.js';
