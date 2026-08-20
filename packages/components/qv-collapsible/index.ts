@@ -1,0 +1,1 @@
+export { QvCollapsible } from './qv-collapsible.js'
