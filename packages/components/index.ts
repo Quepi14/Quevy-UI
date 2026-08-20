@@ -29,3 +29,4 @@ export * from './qv-input/index.js';
 export * from './qv-tooltip/index.js';
 export * from './qv-avatar/index.js';
 export * from './qv-collapsible/index.js';
+export * from './qv-accordion/index.js';

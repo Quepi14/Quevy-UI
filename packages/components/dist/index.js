@@ -25,4 +25,9 @@ export * from './qv-list/index.js';
 export * from './qv-checkbox/index.js';
 export * from './qv-switch/index.js';
 export * from './qv-radio/index.js';
+export * from './qv-input/index.js';
+export * from './qv-tooltip/index.js';
+export * from './qv-avatar/index.js';
+export * from './qv-collapsible/index.js';
+export * from './qv-accordion/index.js';
 //# sourceMappingURL=index.js.map
