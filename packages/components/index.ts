@@ -27,3 +27,4 @@ export * from './qv-switch/index.js';
 export * from './qv-radio/index.js';
 export * from './qv-input/index.js';
 export * from './qv-tooltip/index.js';
+export * from './qv-avatar/index.js';
