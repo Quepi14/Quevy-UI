@@ -1,0 +1,1 @@
+export type QvTooltipPlacement = 'top' | 'bottom' | 'left' | 'right';
