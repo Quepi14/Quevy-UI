@@ -21,7 +21,7 @@ ${host()} {
 
 ${hostAttribute('dragging')} .dropzone {
     border-color: var(-qv-color-brand-primary, #3157c7);
-    background-color: var(--qv-color-blue-60, #eff6ff);
+    background-color: var(--qv-color-blue-50, #eff6ff);
 }
 
 .browse {
