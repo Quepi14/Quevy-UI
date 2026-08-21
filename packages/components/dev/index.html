@@ -83,6 +83,13 @@
       <a href="#section-pagination">Pagination</a>
       <a href="#section-dropdown">Dropdown</a>
       <a href="#section-menu">Menu</a>
+      <a href="#section-form-fields">Form Fields</a>
+      <a href="#section-collapsible">Collapsible</a>
+      <a href="#section-overlay-extra">Modal/Sheet/Toast</a>
+      <a href="#section-misc">Misc</a>
+      <a href="#section-table">Table</a>
+      <a href="#section-calendar">Calendar/Datepicker</a>
+      <a href="#section-carousel">Carousel</a>
     </nav>
 
     <!-- QV-BUTTON -->
@@ -411,6 +418,256 @@
         <qv-menu id="nav-products">
           <span slot="trigger">Products ▾</span>
         </qv-menu>
+      </div>
+    </section>
+
+    <!-- Form Field -->
+    <section id="section-form-fields">
+      <h2>Form Fields</h2>
+
+      <div class="row-label">qv-checkbox (checked, unchecked, indeterminate, disabled)</div> <br>
+      <div class="row">
+        <qv-checkbox>Default</qv-checkbox>
+        <qv-checkbox checked>Checked</qv-checkbox>
+        <qv-checkbox indeterminate>Indeterminate</qv-checkbox>
+        <qv-checkbox disabled>Disabled</qv-checkbox>
+      </div>
+
+      <div class="row-label">qv-switch</div><br>
+      <div class="row">
+        <qv-switch>Default</qv-switch>
+        <qv-switch checked>Checked</qv-switch>
+        <qv-switch disabled>Disabled</qv-switch>
+      </div>
+
+      <div class="row-label">qv-radio-group (keyboard: Tab masuk group, Arrow pindah opsi)</div> <br>
+      <div class="row">
+        <qv-radio-group id="payment-method" name="payment">
+          <qv-radio value="transfer">Transfer Bank</qv-radio>
+          <qv-radio value="ewallet">E-Wallet</qv-radio>
+          <qv-radio value="cod">Bayar di Tempat</qv-radio>
+        </qv-radio-group>
+      </div>
+
+      <div class="row-label">qv-input — default vs floating label</div> <br>
+      <div class="row">
+        <qv-input variant="default" label="Email" placeholder="nama@email.com" type="email" style="width:220px;"></qv-input>
+        <qv-input variant="floating" label="Nama Lengkap" style="width:220px;"></qv-input>
+        <qv-input variant="floating" label="Password" type="password" invalid helper-text="Minimal 8 karakter" style="width:220px;"></qv-input>
+      </div>
+
+      <div class="row-label">qv-textarea</div><br>
+      <div class="row">
+        <qv-textarea label="Keterangan" placeholder="Masukkan keterangan..." maxlength="120" helper-text="Opsional" style="width:300px;"></qv-textarea>
+      </div>
+
+      <div class="row-label">qv-slider — single vs range (checklist: drag mouse, klik di track, keyboard Arrow/Home/End)</div> <br>
+      <div class="row" style="flex-direction:column; align-items:stretch; gap:20px;">
+        <div>
+          <div style="font-size:12px; margin-bottom:6px;">Single</div>
+          <qv-slider id="single-slider" min="0" max="100" value="40" style="width:280px;"></qv-slider>
+        </div>
+        <div>
+          <div style="font-size:12px; margin-bottom:6px;">Range</div>
+          <qv-slider id="range-slider" range min="0" max="1000000" step="10000" value-start="200000" value-end="800000" style="width:280px;"></qv-slider>
+        </div>
+      </div>
+
+      <div class="row-label">qv-file-input — coba drag-drop file ke area, dan klik buat browse</div> <br>
+      <div class="row">
+        <qv-file-input id="file-upload" multiple accept="image/*" style="width:320px;"></qv-file-input>
+      </div>
+
+      <div class="row-label">qv-list — simpel vs rich item</div><br>
+      <div class="row">
+        <qv-list style="width:280px;">
+          <qv-list-item>Item satu</qv-list-item>
+          <qv-list-item>Item dua</qv-list-item>
+        </qv-list>
+
+        <qv-list style="width:280px;">
+          <qv-list-item label="John Doe" description="john@email.com" clickable>
+            <qv-avatar slot="leading" name="John Doe" size="sm"></qv-avatar>
+            <qv-badge slot="trailing" dot variant="success"></qv-badge>
+          </qv-list-item>
+          <qv-list-item label="Jane Smith" description="jane@email.com" clickable>
+            <qv-avatar slot="leading" name="Jane Smith" size="sm"></qv-avatar>
+            <qv-badge slot="trailing" dot variant="offline"></qv-badge>
+          </qv-list-item>
+        </qv-list>
+      </div>
+    </section>
+
+    <!-- COLLAPSIBLE / ACCORDION-->
+    <section id="section-collapsible">
+      <h2>qv-collapsible / qv-accordion</h2> <br>
+
+      <div class="row-label">standalone, header bawaan</div><br>
+      <div class="row">
+        <qv-collapsible label="Apa itu Quevy UI?" style="width:360px;">
+          <p>Sebuah design system berbasis Web Components.</p>
+        </qv-collapsible>
+      </div>
+
+      <div class="row-label">trigger custom (slot="trigger")</div> <br>
+      <div class="row">
+        <qv-collapsible style="width:360px;">
+          <div slot="trigger" style="display:flex; align-items:center; gap:8px; padding:8px 16px; width:100%; box-sizing:border-box;">
+            <qv-badge dot variant="error"></qv-badge>
+            <span>Ada masalah? Klik untuk detail</span>
+          </div>
+          <p>Detail error di sini...</p>
+        </qv-collapsible>
+      </div>
+
+      <div class="row-label">accordion exclusive (checklist: buka salah satu otomatis nutup yang lain)</div> <br>
+      <div class="row">
+        <qv-accordion exclusive style="width:360px;">
+          <qv-collapsible label="Section 1" open><p>Konten 1</p></qv-collapsible>
+          <qv-collapsible label="Section 2"><p>Konten 2</p></qv-collapsible>
+          <qv-collapsible label="Section 3"><p>Konten 3</p></qv-collapsible>
+        </qv-accordion>
+      </div>
+    </section>
+
+    <!-- MODAL / BOTTOM SHEET / TOAST -->
+    <section id="section-overlay-extra">
+      <h2>qv-modal / qv-bottom-sheet / qv-toast</h2> <br>
+
+      <div class="row-label">
+        checklist modal: buka \u2192 scroll body TERKUNCI \u2192 Escape/backdrop/X nutup \u2192
+        scroll body balik normal
+      </div>
+      <div class="row">
+        <qv-button id="open-modal-btn">Buka Modal</qv-button>
+        <qv-button id="open-modal-accent-btn" variant="outline">Buka Modal (accent header)</qv-button>
+      </div>
+
+      <qv-modal id="confirm-modal" size="sm">
+        <span slot="title">Hapus item ini?</span>
+        <p>Tindakan ini tidak bisa dibatalkan.</p>
+        <div slot="footer">
+          <qv-button variant="outline" size="sm" id="cancel-btn">Batal</qv-button>
+          <qv-button variant="danger" size="sm" id="confirm-btn">Hapus</qv-button>
+        </div>
+      </qv-modal>
+
+      <qv-modal id="accent-modal" size="sm" accent-header>
+        <span slot="title">Kebijakan Privacy</span>
+        <p>Isi kebijakan privacy...</p>
+        <div slot="footer"><qv-button variant="primary">Setuju</qv-button></div>
+      </qv-modal>
+
+      <div class="row-label">
+        checklist bottom sheet: modal version = scroll lock  backdrop.
+        inline version = TANPA backdrop, halaman tetap bisa discroll/diklik.
+        keduanya: coba drag handle ke bawah buat nutup (swipe).
+      </div>
+      <div class="row">
+        <qv-button id="open-sheet-btn">Buka Bottom Sheet (modal)</qv-button>
+        <qv-button id="open-sheet-inline-btn" variant="outline">Buka Bottom Sheet (inline)</qv-button>
+      </div>
+
+      <qv-bottom-sheet id="filter-sheet" size="md">
+        <span slot="title">Filter</span>
+        <p>Konten filter di sini — coba drag handle ke bawah.</p>
+      </qv-bottom-sheet>
+
+      <qv-bottom-sheet-inline id="player-sheet" size="sm">
+        <span slot="title">Mini Player</span>
+        <p>Halaman tetap bisa di-scroll selagi ini terbuka.</p>
+      </qv-bottom-sheet-inline>
+
+      <div class="row-label">
+        checklist toast: klik tombol \u2192 muncul di pojok kanan-bawah \u2192
+        hilang otomatis beberapa detik (kecuali error, duration 0)
+      </div>
+      <div class="row">
+        <qv-button id="toast-info-btn" size="sm">Info</qv-button>
+        <qv-button id="toast-success-btn" variant="primary" size="sm">Success</qv-button>
+        <qv-button id="toast-error-btn" variant="danger" size="sm">Error (sticky)</qv-button>
+      </div>
+    </section>
+
+    <!-- MISC: badge, tooltip, avatar, progress, spinner,   -->
+    <!-- bar -->
+    <section id="section-misc">
+      <h2>Misc</h2> <br>
+
+      <div class="row-label">qv-badge — overlap mode vs standalone</div> <br>
+      <div class="row">
+        <qv-badge count="5"><qv-button variant="text" size="sm">Inbox</qv-button></qv-badge>
+        <qv-badge dot variant="error"><qv-avatar name="Test User"></qv-avatar></qv-badge>
+        <qv-badge variant="success">Active</qv-badge>
+      </div>
+
+      <div class="row-label">qv-tooltip — hover/focus trigger, cek delay & posisi flip kalau mepet tepi layar</div> <br>
+      <div class="row">
+        <qv-tooltip text="Tooltip di atas" placement="top"><qv-button size="sm">Hover aku</qv-button></qv-tooltip>
+        <qv-tooltip text="Tooltip di bawah" placement="bottom"><qv-button size="sm">Hover aku</qv-button></qv-tooltip>
+      </div>
+
+      <div class="row-label">qv-avatar — dengan foto, fallback initial, broken image fallback</div> <br>
+      <div class="row">
+        <qv-avatar name="Budi Santoso" size="md" status="online"></qv-avatar>
+        <qv-avatar name="Fallback Test" src="https://broken-url-test.invalid/x.jpg" size="lg"></qv-avatar>
+        <qv-avatar name="Ana" shape="square" size="sm"></qv-avatar>
+      </div>
+
+      <div class="row-label">qv-spinner / qv-progress</div> <br>
+      <div class="row">
+        <qv-spinner size="md" label="Memuat"></qv-spinner>
+        <div style="width:200px;"><qv-progress></qv-progress></div>
+        <div style="width:200px;"><qv-progress value="65"></qv-progress></div>
+      </div>
+
+      <div class="row-label">qv-bar (topbar contoh mini, di luar konteks full-page)</div> <br>
+      <div class="row" style="padding:0; overflow:hidden;">
+        <qv-bar position="top" style="position:static; width:100%;">
+          <span slot="start" style="font-weight:600;">Quevy UI</span>
+          <div slot="end" style="display:flex; gap:8px;">
+            <qv-button variant="text" size="sm">Login</qv-button>
+            <qv-button variant="primary" size="sm">Sign up</qv-button>
+          </div>
+        </qv-bar>
+      </div>
+    </section>
+
+    <!-- TABLE -->
+    <section id="section-table">
+      <h2>qv-table</h2> <br>
+      <div class="row">
+        <qv-table id="pegawai-table" title="LIST PEGAWAI" selectable style="width:100%;"></qv-table>
+      </div>
+    </section>
+
+    <!-- CALENDAR / DATEPICKER -->
+    <section id="section-calendar">
+      <h2>qv-calendar / qv-datepicker</h2> <br>
+
+      <div class="row-label">calendar berdiri sendiri — single vs range</div>
+      <div class="row">
+        <qv-calendar mode="single"></qv-calendar>
+        <qv-calendar mode="range"></qv-calendar>
+      </div>
+
+      <div class="row-label">datepicker (dalam overlay) — checklist sama seperti dropdown: buka/tutup/posisi/keyboard</div>
+      <div class="row">
+        <qv-datepicker id="checkin" mode="single" placeholder="Tanggal check-in"></qv-datepicker>
+        <qv-datepicker id="stay" mode="range" placeholder="Rentang menginap"></qv-datepicker>
+      </div>
+    </section>
+
+    <!-- CAROUSEL -->
+    <section id="section-carousel">
+      <h2>qv-carousel</h2> <br>
+      <div class="row-label">checklist: autoplay jalan, PAUSE pas hover, arrow/dots manual override, cleanup pas navigasi keluar section</div>
+      <div class="row">
+        <qv-carousel autoplay interval="3000" style="width:360px; height:200px;">
+          <div style="background:#3157C7; height:200px; display:flex; align-items:center; justify-content:center; color:white;">Slide 1</div>
+          <div style="background:#0F9B8E; height:200px; display:flex; align-items:center; justify-content:center; color:white;">Slide 2</div>
+          <div style="background:#C9711A; height:200px; display:flex; align-items:center; justify-content:center; color:white;">Slide 3</div>
+        </qv-carousel>
       </div>
     </section>
   </body>

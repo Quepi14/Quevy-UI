@@ -13,7 +13,7 @@ let QvBottomSheet = class QvBottomSheet extends QvBottomSheetBase {
         this.metadata = createComponentMetadata({
             name: 'QvBottomSheet',
             tagName: createTagName('botton-sheet'),
-            version: '0.1.2',
+            version: '0.1.3',
         });
         this.dismissible = true;
     }

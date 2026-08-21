@@ -8,7 +8,7 @@ export class QvBottomSheet extends QvBottomSheetBase {
     public override readonly metadata = createComponentMetadata({
         name:'QvBottomSheet',
         tagName: createTagName('botton-sheet'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property({ type: Boolean, reflect: true})

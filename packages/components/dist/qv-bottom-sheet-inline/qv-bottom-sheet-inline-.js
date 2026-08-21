@@ -19,7 +19,7 @@ let QvBottomSheetInline = class QvBottomSheetInline extends QvBottomSheetBase {
         this.metadata = createComponentMetadata({
             name: 'QvBottomSheetInline',
             tagName: createTagName('bottom-sheet-inline'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
     }
     overlayOptions() {

@@ -28,7 +28,7 @@ let QvModal = class QvModal extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvModal',
             tagName: createTagName('modal'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.size = 'md';
         this.dismissible = true;

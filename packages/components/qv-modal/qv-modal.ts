@@ -28,7 +28,7 @@ export class QvModal extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvModal',
         tagName: createTagName('modal'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ reflect: true })

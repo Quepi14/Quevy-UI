@@ -37,7 +37,7 @@ let QvBreadcrumbs = class QvBreadcrumbs extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvBreadcrumbs',
             tagName: createTagName('breadcrumbs'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.items = [];
         this.maxVisible = 5;

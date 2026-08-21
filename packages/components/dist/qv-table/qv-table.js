@@ -28,12 +28,13 @@ let QvTable = class QvTable extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvTable',
             tagName: createTagName('table'),
-            version: '0.1.0',
+            version: '0.2.0',
         });
         this.colums = [];
         this.rows = [];
         this.title = '';
         this.rowKey = 'id';
+        this.variant = 'bordered';
         this.selectable = false;
         this.emptyMessage = 'No data available';
         this.hasFooter = false;
@@ -148,6 +149,9 @@ __decorate([
 __decorate([
     property()
 ], QvTable.prototype, "rowKey", void 0);
+__decorate([
+    property()
+], QvTable.prototype, "variant", void 0);
 __decorate([
     property({ type: Boolean, reflect: true })
 ], QvTable.prototype, "selectable", void 0);

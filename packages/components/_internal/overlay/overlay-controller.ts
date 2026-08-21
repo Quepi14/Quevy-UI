@@ -83,6 +83,8 @@ public constructor(
         return this._open;
     }
 
+    private focusableCache: HTMLElement[] | null = null;
+
     public open(): void {
         if (this._open) return;
 
@@ -110,6 +112,8 @@ public constructor(
                 getFocusableElement(this.panel ?? this.host)[0]?.focus();
             }
         });
+
+        this.focusableCache = null;
     }
 
     public close(): void {
@@ -139,19 +143,34 @@ public constructor(
         this._open ? this.close() : this.open();
     }
 
+    private repositionScheduled = false;
+
     private readonly reposition = (): void => {
         if  (!this._open || !this.trigger || !this.panel)return;
 
+        if (this.repositionScheduled) return;
+        this.repositionScheduled = true;
+
+        requestAnimationFrame(() => {
+            this.repositionScheduled = false;
+            this.applyPosition();
+        });
+    
+    }
+    
+    private applyPosition(): void {
+        if (!this._open || !this.trigger || !this.panel) return;
+        
         const triggerRect = this.trigger.getBoundingClientRect();
         const panelRect = this.panel.getBoundingClientRect();
-
+    
         const { top, left } = computeOverlayPosition(
             triggerRect,
             { width: panelRect.width, height:  panelRect.height},
             { width: window.innerWidth, height: window.innerHeight},
             this.options.placement,
         );
-
+    
         this.panel.style.position = 'fixed';
         this.panel.style.top = `${top}px`;
         this.panel.style.left = `${left}px`;
@@ -186,7 +205,11 @@ public constructor(
     };
 
     private trapTab(event: KeyboardEvent): void {
-        const focusable = getFocusableElement(this.panel!);
+        if (!this.focusableCache) {
+            this.focusableCache = getFocusableElement(this.panel!);
+        }
+        const focusable = this.focusableCache;
+
         if (focusable.length === 0) return;
 
         const first = focusable[0];

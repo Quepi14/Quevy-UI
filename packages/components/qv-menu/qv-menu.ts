@@ -41,7 +41,7 @@ export class QvMenu extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvMenu',
         tagName: createTagName('menu'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property({ attribute: false})

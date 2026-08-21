@@ -29,12 +29,12 @@ button:disabled {
 }
 
 button:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #2563eb);
+    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
     outline-offset: 2px;
 }
 
 butotn[aria-current="page"]  {
-    background-color: var(--qv-color-brand-primary, #2563eb);
+    background-color: var(--qv-color-brand-primary, #3157c7);
     color: var(--qv-color-foreground-inverse, #fff);
 }
 
@@ -66,7 +66,7 @@ butotn[aria-current="page"]  {
 }
 
 .jump input:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #2563eb);
+    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
     outline-offset: -2px;
 }
 `));

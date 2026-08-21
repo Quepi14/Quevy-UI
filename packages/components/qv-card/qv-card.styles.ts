@@ -133,7 +133,7 @@ ${hostAttribute('href')}:active {
 ${host()}:focus-visible {
     box-shadow:
         0 0 0 2px var(--qv-color-background-default, #fff),
-        0 0 0 4px var(--color-brand-primary, #2563eb);
+        0 0 0 4px var(--qv-color-brand-primary, #3157c7);
 }
 `);
 

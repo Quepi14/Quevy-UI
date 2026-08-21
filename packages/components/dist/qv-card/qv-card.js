@@ -30,7 +30,7 @@ let QvCard = class QvCard extends QvCardBase {
         this.metadata = createComponentMetadata({
             name: 'QvCard',
             tagName: createTagName('card'),
-            version: '0.2.3',
+            version: '0.2.4',
         });
         this.variant = 'elevated';
         this.interactive = false;

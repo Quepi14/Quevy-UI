@@ -23,15 +23,18 @@ export class OverlayController {
         this.panel = null;
         this._open = false;
         this.previouslyFocused = null;
+        this.focusableCache = null;
+        this.repositionScheduled = false;
         this.reposition = () => {
             if (!this._open || !this.trigger || !this.panel)
                 return;
-            const triggerRect = this.trigger.getBoundingClientRect();
-            const panelRect = this.panel.getBoundingClientRect();
-            const { top, left } = computeOverlayPosition(triggerRect, { width: panelRect.width, height: panelRect.height }, { width: window.innerWidth, height: window.innerHeight }, this.options.placement);
-            this.panel.style.position = 'fixed';
-            this.panel.style.top = `${top}px`;
-            this.panel.style.left = `${left}px`;
+            if (this.repositionScheduled)
+                return;
+            this.repositionScheduled = true;
+            requestAnimationFrame(() => {
+                this.repositionScheduled = false;
+                this.applyPosition();
+            });
         };
         this.handleOutsidePointerDown = (event) => {
             const shouldClose = typeof this.options.closeOnOutsideClick === 'function'
@@ -92,6 +95,7 @@ export class OverlayController {
                 getFocusableElement(this.panel ?? this.host)[0]?.focus();
             }
         });
+        this.focusableCache = null;
     }
     close() {
         if (!this._open)
@@ -114,8 +118,22 @@ export class OverlayController {
     toggle() {
         this._open ? this.close() : this.open();
     }
+    applyPosition() {
+        if (!this._open || !this.trigger || !this.panel)
+            return;
+        const triggerRect = this.trigger.getBoundingClientRect();
+        const panelRect = this.panel.getBoundingClientRect();
+        const { top, left } = computeOverlayPosition(triggerRect, { width: panelRect.width, height: panelRect.height }, { width: window.innerWidth, height: window.innerHeight }, this.options.placement);
+        this.panel.style.position = 'fixed';
+        this.panel.style.top = `${top}px`;
+        this.panel.style.left = `${left}px`;
+    }
+    ;
     trapTab(event) {
-        const focusable = getFocusableElement(this.panel);
+        if (!this.focusableCache) {
+            this.focusableCache = getFocusableElement(this.panel);
+        }
+        const focusable = this.focusableCache;
         if (focusable.length === 0)
             return;
         const first = focusable[0];

@@ -27,7 +27,7 @@ let QvPagination = class QvPagination extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvPagination',
             tagName: createTagName('pagination'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.siblingCount = 1;
         this.controllablePage = createControllableValue(1);

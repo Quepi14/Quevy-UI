@@ -39,10 +39,13 @@ export declare class OverlayController implements ReactiveController {
     private previouslyFocused;
     constructor(host: QvElement, options?: OverlayControllerOptions);
     get isOpen(): boolean;
+    private focusableCache;
     open(): void;
     close(): void;
     toggle(): void;
+    private repositionScheduled;
     private readonly reposition;
+    private applyPosition;
     private readonly handleOutsidePointerDown;
     private readonly handleDocumentKeyDown;
     private trapTab;

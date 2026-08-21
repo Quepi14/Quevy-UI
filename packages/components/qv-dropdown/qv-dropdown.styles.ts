@@ -23,12 +23,12 @@ ${host()} {
 }
 
 .trigger:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #2563eb);
+    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
     outline-offset: 2px;
 }
 
 .trigger:focus-visible{
-    outline: 2px solid var(--qv-color-brand-primary, #2563eb);
+    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
     outline-offset: 2px;
 }
 
@@ -77,13 +77,13 @@ ${hostAttribute('open')}  .chevron {
 }
 
 .option:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #2563eb);
+    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
     outline-offset: -2px;
 }
 
 .option[aria-selected="true"] {
     background-color: var(--qv-color-blue-50, #eff6ff);
-    color: var(--qv-color-brand-primary, #2563eb);
+    color: var(--qv-color-brand-primary, #3157c7);
     font-weight: var(--qv-font-weight-medium, 500);
 }
 

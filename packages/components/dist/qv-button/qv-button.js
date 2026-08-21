@@ -27,7 +27,7 @@ let QvButton = class QvButton extends QvButtonBase {
         this.metadata = createComponentMetadata({
             name: 'QvButton',
             tagName: createTagName('button'),
-            version: '0.1.3',
+            version: '0.1.4',
         });
         this.variant = 'primary';
         this.size = 'md';

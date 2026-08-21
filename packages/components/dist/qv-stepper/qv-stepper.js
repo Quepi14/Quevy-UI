@@ -32,7 +32,7 @@ let QvStepper = class QvStepper extends QvStepperBase {
         this.metadata = createComponentMetadata({
             name: 'QvStepper',
             tagName: createTagName('stepper'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.step = 1;
         this.controllableValue = createControllableValue(0);

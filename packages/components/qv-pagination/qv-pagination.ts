@@ -27,7 +27,7 @@ export class QvPagination extends  QvElement {
     public override readonly metadata = createComponentMetadata ({
         name: 'QvPagination',
         tagName: createTagName('pagination'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ type: Number})

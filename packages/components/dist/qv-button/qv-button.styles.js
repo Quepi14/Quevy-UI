@@ -76,7 +76,7 @@ ${hostAttribute('size="lg"')}{
 `);
 const variant = css(`
 ${hostAttribute('variant="primary"')}{
-    background-color: var(--qv-color-brand-primary, #2563eb);
+    background-color: var(--qv-color-brand-primary, #3157c7);
     color: var(--qv-color-foreground-inverse, #ffffff);
 }
 
@@ -93,7 +93,7 @@ ${hostAttribute('variant="outline"')}{
 
 ${hostAttribute('variant="text"')}{
     background-color: transparent;
-    color: var(--qv-color-brand-primary, #2563eb);
+    color: var(--qv-color-brand-primary, #3157c7);
 }
 
 ${hostAttribute('variant="danger"')}{
@@ -112,7 +112,7 @@ ${host()}:not([disabled]):not([loading]):active {
 const states = css(`
 ${host()}:focus-visible {
     box-shadow: 0 0 0 2px var(--qv-color-background-default, #ffffff),
-        0 0 0 4px var(--qv-color-brand-primary, #2563eb);
+        0 0 0 4px var(--qv-color-brand-primary, #3157c7);
 }    
 
 ${hostAttribute('disabled')}{

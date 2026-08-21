@@ -42,7 +42,7 @@ export class QvBreadcrumbs extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBreadcrumbs',
         tagName: createTagName('breadcrumbs'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property({  attribute: false })

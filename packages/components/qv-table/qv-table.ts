@@ -28,7 +28,7 @@ export class QvTable extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvTable',
         tagName: createTagName('table'),
-        version: '0.1.0',
+        version: '0.2.0',
     });
 
     @property({ attribute: false})
@@ -42,6 +42,9 @@ export class QvTable extends QvElement {
 
     @property()
     public rowKey = 'id';
+
+    @property()
+    public variant: 'bordered' | 'plain' = 'bordered';
 
     @property({ type: Boolean, reflect: true })
     public selectable = false;

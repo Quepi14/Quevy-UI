@@ -11,6 +11,29 @@ import '../qv-stepper/index.js';
 import '../qv-pagination/index.js';
 import '../qv-dropdown/index.js';
 import '../qv-menu/index.js';
+import '../qv-modal/index.js';
+import '../qv-bottom-sheet/index.js';
+import '../qv-bottom-sheet-inline/index.js';
+import '../qv-spinner/index.js';
+import '../qv-progress/index.js';
+import '../qv-bar/index.js';
+import '../qv-table/index.js';
+import '../qv-badge/index.js';
+import '../qv-textarea/index.js';
+import '../qv-slider/index.js';
+import '../qv-file-input/index.js';
+import '../qv-list/index.js';
+import '../qv-calendar/index.js';
+import '../qv-datepicker/index.js';
+import '../qv-carousel/index.js';
+import '../qv-checkbox/index.js';
+import '../qv-switch/index.js';
+import '../qv-radio/index.js';
+import '../qv-input/index.js';
+import '../qv-tooltip/index.js';
+import '../qv-avatar/index.js';
+import '../qv-collapsible/index.js';
+import '../qv-accordion/index.js';
 
 applyTokens();
 
@@ -143,7 +166,7 @@ for (const id of ['card-menu', 'card-menu-2', 'card-menu-3']) {
     });
 }
 
-// ===== stress test: interactive card + kebab bersamaan =====
+// ===== stress test: interactive card  kebab bersamaan =====
 document.getElementById('stress-card')?.addEventListener('click', () => {
     console.log('[stress-card] card diklik — INI HANYA BOLEH MUNCUL kalau klik di luar kebab/menu/tombol Beli')
 })
@@ -168,3 +191,75 @@ if (navProducts) {
         { label: 'Insights', href: '/products/insights' },
     ];
 }
+
+// ===== qv-radio-group =====
+document.getElementById('payment-method')?.addEventListener('change', (e) => {
+    console.log('[radio-group] metode terpilih:', (e as CustomEvent).detail);
+});
+
+// ===== qv-slider =====
+document.getElementById('single-slider')?.addEventListener('change', (e) => {
+    console.log('[slider:single]', (e as CustomEvent).detail);
+});
+document.getElementById('range-slider')?.addEventListener('change', (e) => {
+    console.log('[slider:range]', (e as CustomEvent).detail);
+});
+
+// ===== qv-file-input =====
+document.getElementById('file-upload')?.addEventListener('change', (e) => {
+    console.log('[file-input] files:', (e as CustomEvent).detail.files.map((f: File) => f.name));
+});
+
+// ===== qv-collapsible/qv-accordion =====
+document.querySelectorAll('qv-collapsible').forEach((el) => {
+    el.addEventListener('toggle', (e) => console.log('[collapsible]', (e as CustomEvent).detail));
+});
+
+// ===== qv-modal =====
+const confirmModal = document.getElementById('confirm-modal') as any;
+document.getElementById('open-modal-btn')?.addEventListener('click', () => confirmModal?.show());
+document.getElementById('cancel-btn')?.addEventListener('click', () => confirmModal?.close());
+document.getElementById('confirm-btn')?.addEventListener('click', () => {
+    console.log('[modal] terkonfirmasi hapus');
+    confirmModal?.close();
+});
+
+const accentModal = document.getElementById('accent-modal') as any;
+document.getElementById('open-modal-accent-btn')?.addEventListener('click', () => accentModal?.show());
+
+// ===== qv-bottom-sheet =====
+const filterSheet = document.getElementById('filter-sheet') as any;
+document.getElementById('open-sheet-btn')?.addEventListener('click', () => filterSheet?.show());
+
+const playerSheet = document.getElementById('player-sheet') as any;
+document.getElementById('open-sheet-inline-btn')?.addEventListener('click', () => playerSheet?.show());
+
+// ===== qv-toast =====
+import('../qv-toast/qv-toast.js').then(({ toast }) => {
+    document.getElementById('toast-info-btn')?.addEventListener('click', () => toast.info('Update tersedia'));
+    document.getElementById('toast-success-btn')?.addEventListener('click', () => toast.success('Data berhasil disimpan'));
+    document.getElementById('toast-error-btn')?.addEventListener('click', () => toast.error('Gagal upload file', { duration: 0 }));
+});
+
+// ===== qv-table =====
+const pegawaiTable = document.getElementById('pegawai-table') as any;
+if (pegawaiTable) {
+    pegawaiTable.columns = [
+        { key: 'nama', label: 'Nama Pegawai' },
+        { key: 'bagian', label: 'Bagian' },
+        { key: 'gaji', label: 'Gaji', align: 'right' },
+    ];
+    pegawaiTable.rows = [
+        { id: 1, nama: 'Budi', bagian: 'Kasir', gaji: 'Rp 3.500.000' },
+        { id: 2, nama: 'Siti', bagian: 'Gudang', gaji: 'Rp 3.200.000' },
+        { id: 3, nama: 'Andi', bagian: 'Kasir', gaji: 'Rp 3.500.000' },
+    ];
+    pegawaiTable.addEventListener('select', (e: Event) => {
+        console.log('[table] baris terpilih:', (e as CustomEvent).detail);
+    });
+}
+
+// ===== qv-datepicker =====
+document.querySelectorAll('qv-datepicker').forEach((el) => {
+    el.addEventListener('change', (e) => console.log('[datepicker]', el.id, (e as CustomEvent).detail));
+});

@@ -20,6 +20,7 @@ export declare class QvTable extends QvElement {
     rows: Record<string, unknown>[];
     title: string;
     rowKey: string;
+    variant: 'bordered' | 'plain';
     selectable: boolean;
     emptyMessage: string;
     private hasFooter;

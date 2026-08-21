@@ -62,7 +62,7 @@ ${hostAttribute('selectable')}:not(${hostAttribute('disabled')}) {
 } 
     
 ${hostAttribute('selectable')}{aria-pressed="true"} {
-    background-color: var(--qv-color-brand-primary, #2563eb);
+    background-color: var(--qv-color-brand-primary, #3157c7);
     color: var(--qv-color-foreground-inverse, #fff);
 }
 
@@ -73,7 +73,7 @@ ${hostAttribute('selectable')}:not([aria-pressed="true"]):not(${hostAttribute('d
 ${host()}:focus-visible {
     box-shadow:
         0 0 0 2px var(--qv-color-background-default, #fff),
-        0 0 0 4px var(--qv-color-brand-primary, #2563eb); 
+        0 0 0 4px var(--qv-color-brand-primary, #3157c7); 
 }
 `);
 

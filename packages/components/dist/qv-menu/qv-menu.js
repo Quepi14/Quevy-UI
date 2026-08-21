@@ -39,7 +39,7 @@ let QvMenu = class QvMenu extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvMenu',
             tagName: createTagName('menu'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.items = [];
         this.label = 'Open menu';

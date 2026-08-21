@@ -31,7 +31,7 @@ let QvDropdown = class QvDropdown extends QvDropdownBase {
         this.metadata = createComponentMetadata({
             name: 'QvDropdown',
             tagName: createTagName('dropdown'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.items = [];
         this.placeholder = 'Select an option';

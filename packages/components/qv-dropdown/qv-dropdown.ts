@@ -33,7 +33,7 @@ export class QvDropdown extends QvDropdownBase {
     public override readonly metadata = createComponentMetadata ({
         name: 'QvDropdown',
         tagName: createTagName('dropdown'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ attribute: false})
