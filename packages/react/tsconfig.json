@@ -3,19 +3,34 @@
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+
     "strict": true,
     "skipLibCheck": true,
     "verbatimModuleSyntax": true,
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
+
+    "jsx": "react-jsx",
+
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
+
+    "rootDir": "./src",
     "outDir": "./dist",
-    "rootDir": "./",
+
     "types": ["react"]
   },
-  "include": ["./**/*.ts", "./**/*.tsx"],
-  "exclude": ["./dist", "./node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }

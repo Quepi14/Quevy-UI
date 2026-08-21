@@ -21,7 +21,7 @@ ${host()} {
 
 .panel {
     position: relative;
-    pointer-event: auto;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     width: 100%;

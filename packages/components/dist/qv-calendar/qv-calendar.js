@@ -26,7 +26,7 @@ let QvCalendar = class QvCalendar extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvCalendar',
             tagName: createTagName('calendar'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.mode = 'single';
         this.viewYear = new Date().getFullYear();

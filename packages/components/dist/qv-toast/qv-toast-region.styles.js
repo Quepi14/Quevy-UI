@@ -1,14 +1,14 @@
 import { host, createStyles } from "@quevy/core";
 export const qvToastRegionStyles = createStyles(`
 ${host()}{
-    positon: fixed;
+    position: fixed;
     inset: 0;
-    pointer-event: none;
-    z-index: var(--qv-z-index-toastm 1700);
+    pointer-events: none;
+    z-index: var(--qv-z-index-toast, 1500);
 }    
 
 .viewport {
-    positon: fixed;
+    position: fixed;
     display: flex;
     flex-direction: column;
     gap: var(--qv-spacing-sm, 8px);

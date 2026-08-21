@@ -27,14 +27,14 @@ ${host()} {
 .box svg { width: 12px; height: 12px; color: var(--qv-color-foreground-inverse, #ffffff); opacity: 0; }
 
 ${host()}:focus-visible .box {
-    outline: 2px solid var(--qv-color-brand-priamry, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
     outline-offset: 2px;
 }
 
 ${hostAttribute('checked')} .box,
 ${hostAttribute('indeterminate')} .box {
-    background-color: var(--qv-color-brand-priamry, #3157c7);
-    border-color: var(--qv-color-brand-priamry, #3157c7);
+    background-color: var(--qv-color-brand-primary, #3157c7);
+    border-color: var(--qv-color-brand-primary, #3157c7);
 }
 
 ${hostAttribute('checked')} .box svg,

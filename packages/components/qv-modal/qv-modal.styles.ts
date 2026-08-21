@@ -4,7 +4,7 @@ export const qvModalStyles = createStyles(`
 ${host()} {
     position: fixed;
     inset: 0;
-    z-index: var(--qv-z-index-modal, 1600);
+    z-index: var(--qv-z-index-modal, 1300);
     display: flex;
     align-items: center;
     justify-content: center;

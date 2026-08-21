@@ -10,15 +10,16 @@
  * @packageDocumentation
  */
 import { cssVariables } from "./variables.js";
+let applied = false;
 /**
  * Convert the flattened token  map into a `:root { ... }`
  * Css text block.
  */
 export function tokenToCssText() {
     const declarations = Object.entries(cssVariables)
-        .map(([name, value]) => ` ${name}: ${value}`)
+        .map(([name, value]) => ` ${name}: ${value};`)
         .join('\n');
-    return `:root {\n${declarations}`;
+    return `:root {\n${declarations}\n}`;
 }
 /**
  * Injects Quevy UI design tokens inot the document as a
@@ -29,6 +30,9 @@ export function tokenToCssText() {
  * application - not per-component.
  */
 export function applyTokens(target = document) {
+    if (applied)
+        return;
+    applied = true;
     const cssText = tokenToCssText();
     if ('adoptedStyleSheets' in target) {
         const sheet = new CSSStyleSheet();

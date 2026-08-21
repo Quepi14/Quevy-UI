@@ -26,7 +26,7 @@ export class QvCalendar extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCalendar',
         tagName: createTagName('calendar'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property({ reflect: true}) public mode: QvCalendarMode = 'single';

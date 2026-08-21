@@ -3,7 +3,7 @@ import { host, createStyles } from "@quevy/core";
 export const qvCarouselStyles = createStyles(`
 ${host()}{
     display: block;
-    positon: relative;
+    position: relative;
     overflow: hidden;
     border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px)
 } 

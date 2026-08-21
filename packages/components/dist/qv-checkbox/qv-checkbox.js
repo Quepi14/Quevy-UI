@@ -33,7 +33,7 @@ let QvCheckbox = class QvCheckbox extends QvCheckboxBase {
         this.metadata = createComponentMetadata({
             name: 'QvCheckbox',
             tagName: createTagName('checkbox'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.indeterminate = false;
         this.value = 'on';

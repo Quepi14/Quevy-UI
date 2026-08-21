@@ -2,7 +2,7 @@ import { host, hostAttribute, createStyles } from "@quevy/core";
 export const qvProgressStyles = createStyles(`
 ${host()} {
     display: block;
-    widht: 100%;
+    width: 100%;
 }    
 
 .track {
@@ -21,7 +21,7 @@ ${host()} {
     left: 0;
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-brand-primary, #3157c7);
-    transition: width var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standart, ease);
+    transition: width var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, ease);
 }
 
 ${hostAttribute('variant="success"')} .bar { background-color: var(--qv-color-status-success, #16a34a); }

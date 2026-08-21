@@ -34,7 +34,7 @@ let QvToastRegion = class QvToastRegion extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvToastRegion',
             tagName: createTagName('toast-region'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.toasts = [];
     }

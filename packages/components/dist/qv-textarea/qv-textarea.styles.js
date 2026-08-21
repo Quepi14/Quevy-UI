@@ -57,7 +57,7 @@ ${hostAttribute('invalid')} textarea:focus-visible {
     color: var(--qv-color-foreground-muted, #737373);
 }
 
-.helper.error { color: var(--qv-color-staus-error, #dc2626); }
+.helper.error { color: var(--qv-color-status-error, #dc2626); }
 
 .counter.exceed { color: var(--qv-color-status-error, #dc2626); }
 `));

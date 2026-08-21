@@ -34,7 +34,7 @@ export class QvToastRegion extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvToastRegion',
         tagName: createTagName('toast-region'),
-        version: '0.1.0',
+        version: '0.1.1',
     })
 
     @state() private toasts: QvToastEntry[] = [];

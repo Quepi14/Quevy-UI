@@ -37,7 +37,7 @@ export class QvTooltip extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvTooltip',
         tagName: createTagName('tooltip'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property() public text = '';

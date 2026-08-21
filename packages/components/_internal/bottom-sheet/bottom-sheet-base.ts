@@ -54,7 +54,7 @@ export abstract class QvBottomSheetBase extends QvElement {
     @state() protected hasHeaderTitle = false;
     @state() protected hasFooter = false;
 
-    protected constructor() {
+    constructor() {
         super();
         this.overlay = new OverlayController(this, this.overlayOptions());
     }

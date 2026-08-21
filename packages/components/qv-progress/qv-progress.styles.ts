@@ -3,7 +3,7 @@ import { host, hostAttribute, createStyles } from "@quevy/core";
 export const qvProgressStyles = createStyles(`
 ${host()} {
     display: block;
-    widht: 100%;
+    width: 100%;
 }    
 
 .track {

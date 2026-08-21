@@ -34,7 +34,7 @@ export declare abstract class QvBottomSheetBase extends QvElement {
     private handleEl;
     protected hasHeaderTitle: boolean;
     protected hasFooter: boolean;
-    protected constructor();
+    constructor();
     protected abstract overlayOptions(): OverlayControllerOptions;
     protected abstract get hasBackdrop(): boolean;
     protected get isOpen(): boolean;

@@ -36,7 +36,7 @@ let QvTooltip = class QvTooltip extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvTooltip',
             tagName: createTagName('tooltip'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.text = '';
         this.placement = 'top';

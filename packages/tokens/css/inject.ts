@@ -12,16 +12,18 @@
 
 import { cssVariables } from "./variables.js";
 
+let applied = false;
+
 /**
  * Convert the flattened token  map into a `:root { ... }`
  * Css text block.
  */
-export function tokenToCssText(): string {
+export function tokensToCssText(): string {
     const declarations = Object.entries(cssVariables)
-    .map(([name, value]) => ` ${name}: ${value}`)
+    .map(([name, value]) => ` ${name}: ${value};`)
     .join('\n')
 
-    return `:root {\n${declarations}`;
+    return `:root {\n${declarations}\n}`;
 }
 
 /**
@@ -33,7 +35,10 @@ export function tokenToCssText(): string {
  * application - not per-component.
  */
 export function applyTokens(target: Document = document): void {
-    const cssText = tokenToCssText();
+    if (applied) return;
+    applied = true;
+    
+    const cssText = tokensToCssText();
 
     if ('adoptedStyleSheets' in target) {
         const sheet = new CSSStyleSheet();

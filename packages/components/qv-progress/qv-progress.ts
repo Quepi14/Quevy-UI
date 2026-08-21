@@ -23,7 +23,7 @@ export class QvProgress extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvProgress',
         tagName: createTagName('progress'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     /** Leave unset for indeterminate mode. */

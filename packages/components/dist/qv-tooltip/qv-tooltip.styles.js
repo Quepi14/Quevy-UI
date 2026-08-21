@@ -7,7 +7,7 @@ ${host()} {
 
 .bubble {
     position: fixed;
-    z-index: var(--qv-z-index-tooltip, 1800);
+    z-index: var(--qv-z-index-tooltip, 1600);
     max-width: 240px;
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
     border-radius: var(--qv-radius-sm, 4px);
