@@ -1,0 +1,16 @@
+{
+  "name": "@quevy/react",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "@quevy/components": "workspace:*",
+    "@lit/react": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  }
+}
