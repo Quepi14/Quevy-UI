@@ -45,7 +45,7 @@ export class QvButton extends QvButtonBase {
     public readonly metadata = createComponentMetadata({
         name: 'QvButton',
         tagName: createTagName('button'),
-        version:  '0.1.4',
+        version:  '0.2.0',
     });
 
     @property({ reflect: true })
@@ -59,6 +59,9 @@ export class QvButton extends QvButtonBase {
 
     @property()
     public type: QvButtonType = 'button';
+
+    @property({ type: Boolean, reflect: true, attribute: 'icon-only' })
+    public iconOnly = false;
 
     /**
      * Whether the button currently rejects all interaction.
@@ -93,6 +96,16 @@ export class QvButton extends QvButtonBase {
         // it never appears in `changedProperties` even though it
         // does call requestUpdate() itself when it changes.
         this.syncAccessibility();
+    }
+
+    protected override firstUpdated(changedProperties: PropertyValues): void {
+        super.firstUpdated(changedProperties);
+
+        if (this.iconOnly && !this.getAttribute('aria-label') && !this.hasAttribute('aria-labelledby')) {
+            console.warn(
+                '[qv-button] icon-only button is missing an aria-label — screen reader users will not know what this button does.',
+            )
+        }
     }
 
     private syncAccessibility(): void{
