@@ -49,5 +49,5 @@ export {
 
 export {
   applyTokens, 
-  tokenToCssText,
+  tokensToCssText,
 } from './css/inject.js'

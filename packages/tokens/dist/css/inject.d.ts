@@ -13,7 +13,7 @@
  * Convert the flattened token  map into a `:root { ... }`
  * Css text block.
  */
-export declare function tokenToCssText(): string;
+export declare function tokensToCssText(): string;
 /**
  * Injects Quevy UI design tokens inot the document as a
  * global stylesheet, using adoptedStyleSheets when available

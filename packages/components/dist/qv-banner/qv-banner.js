@@ -100,7 +100,7 @@ let QvBanner = class QvBanner extends QvElement {
                         aria-label="Dismiss"
                         @click=${this.handleDismiss}
                     >
-                        <svg viewBox=" 0 0 20 20" fill="currentColor" width="14 height="14">
+                        <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14">
                             <path d="M4.3 4.3a1 1 0 011.4 0L10 8.6l4.3-4.3a1 1 0 111.4 1.4L11.4 10l4.3 4.3a1 1 0 01-1.4 1.4L10 11.4l-4.3 4.3a1 1 0 01-1.4-1.4L8.6 10 4.3 5.7a1 1 0 010-1.4z"/>
                         </svg>
                     </button>

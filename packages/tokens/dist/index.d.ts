@@ -15,5 +15,5 @@ export { spacing, } from './spacing/index.js';
 export { typography, } from './typography/index.js';
 export { zIndex, } from './z-index/index.js';
 export { cssVariables, } from './css/variables.js';
-export { applyTokens, tokenToCssText, } from './css/inject.js';
+export { applyTokens, tokensToCssText, } from './css/inject.js';
 //# sourceMappingURL=index.d.ts.map

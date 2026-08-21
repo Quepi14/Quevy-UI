@@ -77,6 +77,7 @@ export class QvModal extends QvElement {
     protected override updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
         this.overlay.panel = this.panelEl;
+        this.toggleAttribute('open', this.overlay.isOpen);
     }
 
     /** Public method - consumers can call modelEl.show() directly (uncontrolled usage)*/

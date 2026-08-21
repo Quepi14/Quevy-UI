@@ -4,7 +4,7 @@ export const qvCollapsibleStyles = createStyles(`
 ${host()} {
     display: block;
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
-    border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-lg, 12px);
     overflow: hidden;
 }    
 

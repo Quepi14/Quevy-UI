@@ -15,7 +15,7 @@ let applied = false;
  * Convert the flattened token  map into a `:root { ... }`
  * Css text block.
  */
-export function tokenToCssText() {
+export function tokensToCssText() {
     const declarations = Object.entries(cssVariables)
         .map(([name, value]) => ` ${name}: ${value};`)
         .join('\n');
@@ -33,7 +33,7 @@ export function applyTokens(target = document) {
     if (applied)
         return;
     applied = true;
-    const cssText = tokenToCssText();
+    const cssText = tokensToCssText();
     if ('adoptedStyleSheets' in target) {
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(cssText);

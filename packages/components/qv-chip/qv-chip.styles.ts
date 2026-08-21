@@ -6,7 +6,7 @@ ${host()} {
     align-items: center;
     gap: var(--qv-spacing-xs, 4px);
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-md, 12px);
-    border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-full, 9999px) var(--qv-radius-full, 9999px) var(--qv-radius-full, 9999px);
+    border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-background-muted, #e5e5e5);
     color: var(--qv-color-foreground-default, #171717);
     font-size: var(--qv-font-size-sm, 14px);

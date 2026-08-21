@@ -22,7 +22,7 @@ img {
 }
 
 ${hostAttribute('shape="circle"')} { border-radius: var(--qv-radius-full, 9999px); }
-${hostAttribute('shape="square"')} { border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-md, 8px) var(--qv-radius-md, 8px) var(--qv-radius-md, 8px); }
+${hostAttribute('shape="square"')} { border-radius: var(--qv-radius-md, 8px); }
 
 ${hostAttribute('size="xs"')} { width: 24px; height: 24px; font-size: 10px; }
 ${hostAttribute('size="sm"')} { width: 32px; height: 32px; font-size: 12px; }

@@ -8,7 +8,12 @@ ${host()} {
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
 }    
+
+${host()}[open] {
+    pointer-events: auto;
+}
 
 .backdrop {
     position: fixed;

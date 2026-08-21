@@ -26,7 +26,7 @@ let QvCalendar = class QvCalendar extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvCalendar',
             tagName: createTagName('calendar'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.mode = 'single';
         this.viewYear = new Date().getFullYear();
@@ -100,9 +100,9 @@ let QvCalendar = class QvCalendar extends QvElement {
         const grid = buildMonthGrip(this.viewYear, this.viewMonth);
         return html `
             <div class="header">
-                <button aria-label="Previous month" @click=${() => this.goToPrevMonth()}>&lsaqueo;</button>
+                <button aria-label="Previous month" @click=${() => this.goToPrevMonth()}>&lsaquo;</button>
                 <span class="label">${formatMonthLabel(this.viewYear, this.viewMonth)}</span>
-                <button aria-label="Next month" @click=${() => this.goToNextMonth}>&rsauo;</button>
+                <button aria-label="Next month" @click=${() => this.goToNextMonth}>&rsaquo;</button>
             </div>
 
             <div class="grid" role="grid">

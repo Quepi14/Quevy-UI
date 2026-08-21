@@ -126,7 +126,7 @@ let QvTable = class QvTable extends QvElement {
             })}
                 </tbody>
 
-                </tfoot class=${this.hasFooter ? '' : 'empty'}>
+                <tfoot class=${this.hasFooter ? '' : 'empty'}>
                     <tr>
                         <td colspan=${this.colums.length + (this.selectable ? 1 : 0)}>
                             <slot name="footer" @slotchange=${this.handleFooterSlotChange}></slot>
