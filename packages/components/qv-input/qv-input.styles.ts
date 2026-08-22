@@ -44,33 +44,45 @@ input:focus-visible {
 .label.empty { display: none; }
 
 /* Floating variant */
-${hostAttribute('variant="floating"')} .field { margin-top: var(--qv-spacing-sm, 8px); }
-${hostAttribute('variant="floating"')} .label { display: none; }
-
-.floating-label {
+${hostAttribute('variant="floating"')} .field { 
+    margin-top: var(--qv-spacing-sm, 8px); 
+}
+${hostAttribute('variant="floating"')} .label { 
     display: none;
+}
+
+${hostAttribute('variant="floating"')} .floating-label {
+    display: block;
     position: absolute;
     left: var(--qv-spacing-md, 12px);
     top: 50%;
-    transform: translateY(-50%);
-    padding-inline: 4px;
-    background-color: var(--qv-color-background-surface, #fff);
+    transform: translateY(-50%) slace(1);
+    transform-origin: left center;
+    padding-inline: var(--qv-spacing-xs, 4px);
+    background-color: var(--qv-color-bakcground-surface, #fff);
     color: var(--qv-color-foreground-muted, #737373);
+    font-size: var(--qv-font-size-sm, 14px);
+    line-height: 1;
     pointer-events: none;
-    transition: top var(--qv-motion-duration-fast, 100ms) ease, font-size var(--qv-motion-duration-fast, 100ms) ease, color var(--qv-motion-duration-fast, 100ms) ease;   
+    transition: transform var(--qv-motion-duration-normal, 200ms) cubic-bezier(0.2, 0, 0, 1), color var(--qv-motion-duration-fast, 100ms) ease
 }
 
 ${hostAttribute('variant="floating"')} .floating label { display: block; }
 
 /* Floats up when focused, OR when the input already has a
    value (i.e. is NOT showing its placeholder). */
+${hostAttribute('variant="floating"')}
 input:focus ~ .floating-label,
+${hostAttribute('variant="floating"')}
 input:not(:placeholder-shown) ~ .floating-label {
     top: 0;
-    font-size: var(--qv-font-size-xs, 12px);
+    transform: translateY(-50%) scale(0.85);
 }
 
-input:focus ~ .floating-label { color: var(--qv-color-brand-primary, #3157c7); }
+${hostAttribute('variant="floating"')}
+input:focus ~ .floating-label { 
+    color: var(--qv-color-brand-primary, #3157c7); 
+}
 
 /* Shared states */
 ${hostAttribute('disabled')} input { background-color: var(--qv-color-background-muted, #f5f5f5); cursor: not-allowed; opacity: 0.6; }

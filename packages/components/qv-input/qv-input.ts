@@ -33,7 +33,7 @@ export class QvInput extends QvInputBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvInput',
         tagName: createTagName('input'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property({ reflect: true }) public variant: QvInputVariant = 'default';
@@ -105,7 +105,7 @@ export class QvInput extends QvInputBase {
                 />
 
                 ${this.variant === 'floating' && this.label
-                    ? html `<label class="floating-label" part="floating-label">${this.label}</label>`
+                    ? html `<span class="floating-label" part="floating-label" aria-hidden="true">${this.label}</span>`
                     : nothing}
 
                 <span class=${classMap({ icon: true, trailing: true, empty: !this.hasTrailing})}>
