@@ -3,6 +3,8 @@ export interface QvMenuItem {
     label: string;
     href?: string;
     disabled?: boolean;
+    /** Optional leading icon */
+    icon?: unknown;
 }
 
 export interface QvMenuSelectEventDetail {

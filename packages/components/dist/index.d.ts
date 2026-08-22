@@ -33,4 +33,5 @@ export * from './qv-accordion/index.js';
 export * from './qv-calendar/index.js';
 export * from './qv-carousel/index.js';
 export * from './qv-datepicker/index.js';
+export * from './qv-button-group/index.js';
 //# sourceMappingURL=index.d.ts.map

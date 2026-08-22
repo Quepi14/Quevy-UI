@@ -33,7 +33,7 @@ let QvInput = class QvInput extends QvInputBase {
         this.metadata = createComponentMetadata({
             name: 'QvInput',
             tagName: createTagName('input'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.variant = 'default';
         this.type = 'text';
@@ -77,7 +77,7 @@ let QvInput = class QvInput extends QvInputBase {
             </label>
 
             <div class="field">
-                <span class=${classMap({ icon: true, leading: true, emppty: !this.hasLeading })}>
+                <span class=${classMap({ icon: true, leading: true, empty: !this.hasLeading })}>
                     <slot name="leading" @slotchange=${this.handleLeadingSlotChange}></slot>
                 </span>
 
@@ -95,7 +95,7 @@ let QvInput = class QvInput extends QvInputBase {
                 />
 
                 ${this.variant === 'floating' && this.label
-            ? html `<label class="floating-label" part="floating-label">${this.label}</label>`
+            ? html `<span class="floating-label" part="floating-label" aria-hidden="true">${this.label}</span>`
             : nothing}
 
                 <span class=${classMap({ icon: true, trailing: true, empty: !this.hasTrailing })}>

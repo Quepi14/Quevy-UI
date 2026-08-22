@@ -30,6 +30,7 @@ let QvPagination = class QvPagination extends QvElement {
             version: '0.1.2',
         });
         this.siblingCount = 1;
+        this.variant = 'default';
         this.controllablePage = createControllableValue(1);
         this.jumpValue = '';
         this.handlePageClick = (page) => {
@@ -126,6 +127,9 @@ __decorate([
 __decorate([
     property({ type: Number, attribute: 'sibling-count' })
 ], QvPagination.prototype, "siblingCount", void 0);
+__decorate([
+    property({ reflect: true })
+], QvPagination.prototype, "variant", void 0);
 QvPagination = __decorate([
     customElement('qv-pagination')
 ], QvPagination);

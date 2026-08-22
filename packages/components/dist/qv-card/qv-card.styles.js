@@ -15,7 +15,7 @@ ${host()} {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-lg, 12px);
     background-color: var(--qv-color-background-surface, #fff);
     color: var(--qv-color-foreground-default, #171717);
     box-sizing: border-box;

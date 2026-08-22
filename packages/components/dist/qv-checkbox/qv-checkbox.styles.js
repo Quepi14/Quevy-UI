@@ -19,7 +19,7 @@ ${host()} {
     height: 18px;
     flex-shrink: 0;
     border: 1.5px solid var(--qv-color-border-strong, #3a3a3a);
-    border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-sm, 4px) var(--qv-radius-sm, 4px) var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 4px);
     background-color: var(--qv-color-background-surface, #fff);
     transition: background-color var(--qv-motion-duration-fast, 100ms) ease border-color var(--qv-motion-duration-fast, 100ms) ease;
 }

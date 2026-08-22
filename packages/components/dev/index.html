@@ -54,7 +54,7 @@
         flex-wrap: wrap;
         align-items: center;
         margin-bottom: 1rem;
-        background-color: #fff;
+        background-color: #e0d8ff;
         border: 1px solid #e5e5e5;
         border-radius: 8px;
         padding: 1.25rem;
@@ -380,12 +380,18 @@
 
       <div class="row-label">small total (no collapse needed)</div><br>
       <div class="row">
-        <qv-pagination total-pages="6" page="1"></qv-pagination>
+        <qv-pagination total-pages="3" page="1"></qv-pagination>
+      </div>
+
+      <div class="row-label"> Shape</div>
+      <div class="row">
+        <qv-pagination total-pages="6" variant="default" shape="rectangle"></qv-pagination>
+        <qv-pagination total-pages="6" variant="default" shape="circle"></qv-pagination>
       </div>
 
       <div class="row-label">large total (ellipsis collapse)  jump-to-page</div>
       <div class="row">
-        <qv-pagination id="big-list" total-pages="100" sibling-count="2"></qv-pagination>
+        <qv-pagination id="big-list" total-pages="100" variant="outline" sibling-count="2"></qv-pagination>
       </div>
     </section>
 

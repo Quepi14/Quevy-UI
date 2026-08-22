@@ -67,6 +67,7 @@ let QvModal = class QvModal extends QvElement {
     updated(changedProperties) {
         super.updated(changedProperties);
         this.overlay.panel = this.panelEl;
+        this.toggleAttribute('open', this.overlay.isOpen);
     }
     /** Public method - consumers can call modelEl.show() directly (uncontrolled usage)*/
     show() {

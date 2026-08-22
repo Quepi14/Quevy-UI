@@ -12,7 +12,7 @@ ${host()} {
     gap: var(--qv-spacing-xs, 4px);
     padding: var(--qv-spacing-2xl, 24px);
     border: 2px dashed var(--qv-color-border-default, #e5e5e5);
-    border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-lg, 12px);
     color: var(--qv-color-foreground-muted, #737373);
     cursor: pointer;
     text-align: center;

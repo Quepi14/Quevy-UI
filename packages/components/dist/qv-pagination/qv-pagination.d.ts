@@ -10,6 +10,7 @@
  * @packageDocumentation
  */
 import { QvElement } from "@quevy/core";
+import type { QvPaginationVariant } from "./qv-pagination.types.js";
 export declare class QvPagination extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
@@ -17,6 +18,7 @@ export declare class QvPagination extends QvElement {
     /** Controled current-page prop. Leave unset for uncontrolled usage. */
     page?: number;
     siblingCount: number;
+    variant: QvPaginationVariant;
     private readonly controllablePage;
     private jumpValue;
     onConnected(): void;

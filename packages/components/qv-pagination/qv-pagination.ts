@@ -18,7 +18,7 @@ import { createControllableValue } from "@quevy/state";
 
 import { qvPaginationStyles } from "./qv-pagination.styles.js";
 import { buildPageItems } from "./qv-pagination.utils.js";
-import type { QvPaginationChangeEventDetail } from "./qv-pagination.types.js";
+import type { QvPaginationChangeEventDetail, QvPaginationShape, QvPaginationVariant } from "./qv-pagination.types.js";
 
 @customElement('qv-pagination')
 export class QvPagination extends  QvElement {
@@ -27,7 +27,7 @@ export class QvPagination extends  QvElement {
     public override readonly metadata = createComponentMetadata ({
         name: 'QvPagination',
         tagName: createTagName('pagination'),
-        version: '0.1.2',
+        version: '0.2.0',
     });
 
     @property({ type: Number})
@@ -39,6 +39,12 @@ export class QvPagination extends  QvElement {
 
     @property({ type: Number, attribute: 'sibling-count'})
     public siblingCount = 1;
+
+    @property({ reflect: true})
+    public variant: QvPaginationVariant = 'default'
+
+    @property({ reflect: true})
+    public shape: QvPaginationShape = 'circle';
 
     private readonly controllablePage = createControllableValue<number>(1);
 

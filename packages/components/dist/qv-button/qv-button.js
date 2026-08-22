@@ -27,12 +27,13 @@ let QvButton = class QvButton extends QvButtonBase {
         this.metadata = createComponentMetadata({
             name: 'QvButton',
             tagName: createTagName('button'),
-            version: '0.1.4',
+            version: '0.2.0',
         });
         this.variant = 'primary';
         this.size = 'md';
         this.loading = false;
         this.type = 'button';
+        this.iconOnly = false;
         this.handleClick = (event) => {
             if (this.isInert) {
                 event.preventDefault();
@@ -98,6 +99,12 @@ let QvButton = class QvButton extends QvButtonBase {
         // does call requestUpdate() itself when it changes.
         this.syncAccessibility();
     }
+    firstUpdated(changedProperties) {
+        super.firstUpdated(changedProperties);
+        if (this.iconOnly && !this.getAttribute('aria-label') && !this.hasAttribute('aria-labelledby')) {
+            console.warn('[qv-button] icon-only button is missing an aria-label — screen reader users will not know what this button does.');
+        }
+    }
     syncAccessibility() {
         if (!this.hasAttribute('role')) {
             this.setAttribute('role', 'button');
@@ -151,6 +158,9 @@ __decorate([
 __decorate([
     property()
 ], QvButton.prototype, "type", void 0);
+__decorate([
+    property({ type: Boolean, reflect: true, attribute: 'icon-only' })
+], QvButton.prototype, "iconOnly", void 0);
 QvButton = __decorate([
     customElement('qv-button')
 ], QvButton);

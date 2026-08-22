@@ -21,6 +21,7 @@ export declare class QvButton extends QvButtonBase {
     size: QvButtonSize;
     loading: boolean;
     type: QvButtonType;
+    iconOnly: boolean;
     /**
      * Whether the button currently rejects all interaction.
      *
@@ -33,6 +34,7 @@ export declare class QvButton extends QvButtonBase {
     onConnected(): void;
     onDisconnected(): void;
     protected update(changedProperties: PropertyValues): void;
+    protected firstUpdated(changedProperties: PropertyValues): void;
     private syncAccessibility;
     private readonly handleClick;
     private readonly handleKeyDown;

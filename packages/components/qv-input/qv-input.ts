@@ -87,7 +87,7 @@ export class QvInput extends QvInputBase {
             </label>
 
             <div class="field">
-                <span class=${classMap({ icon: true, leading: true, emppty: !this.hasLeading})}>
+                <span class=${classMap({ icon: true, leading: true, empty: !this.hasLeading})}>
                     <slot name="leading" @slotchange=${this.handleLeadingSlotChange}></slot>
                 </span>
 

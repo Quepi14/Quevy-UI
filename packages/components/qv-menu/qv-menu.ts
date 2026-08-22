@@ -41,7 +41,7 @@ export class QvMenu extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvMenu',
         tagName: createTagName('menu'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ attribute: false})
@@ -140,7 +140,9 @@ export class QvMenu extends QvElement {
                                                 aria-disabled=${item.disabled ? 'ture' : 'false'}
                                                 @click=${(e: Event) => this.selectItem(item, index, e)}
                                                 @keydown=${(e: KeyboardEvent) => this.handleItemKeyDown(e, index)}
-                                            >${item.label}</a>
+                                            >${item.icon ? html`<span class="item-icon" part="item-icon" aria-hidden="true">${item.icon}</span>` : nothing}
+                                                <span part="item-label">${item.label}</span>
+                                            </a>
                                         `
                                         : html`
                                             <button 
@@ -152,7 +154,9 @@ export class QvMenu extends QvElement {
                                                 aria-disabled=${item.disabled ? 'true' : 'false'}
                                                 @click=${(e: Event) => this.selectItem(item, index, e)}
                                                 @keydown=${(e: KeyboardEvent) => this.handleItemKeyDown(e, index)}
-                                            >${item.label}</button>
+                                            >${item.icon ? html`<span class="item-icon" part="item-icon" aria-hidden="true"><${item.icon}</span>` : nothing}
+                                                </span>${item.label}</span>
+                                            </button>
                                         `}
                                 </li>    
                             `,       

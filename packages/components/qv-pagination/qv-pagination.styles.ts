@@ -5,7 +5,7 @@ ${host()} {
     display: flex;
     align-items: center;
     gap: var(--qv-spacing-xs, 4px);
-    font-size: var(--qv-font=size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 14px);
 }    
 
 button {
@@ -15,12 +15,19 @@ button {
     justify-content: center;
     min-width: var(--qv-sizing-sm, 32px);
     height: var(--qv-sizing-sm, 32px);
-    border-radius: var(--qv-radius-sm, 4px);
     cursor: pointer;
     color: var(--qv-color-foreground-default, #171717);
 }
 
-butotn:hover:not(:disabled) {
+${hostAttribute('shape="circle"')} button {
+    border-radius: var(--qv-radius-full, 9999px);
+}
+
+${hostAttribute('shape="rectangle"')} button {
+    border-radius: var(--qv-radius-full, 9999px);
+}
+
+button:hover:not(:disabled) {
     background-color: var(--qv-color-background-muted, #f5f5f5);
 }
 
@@ -34,7 +41,7 @@ button:focus-visible {
     outline-offset: 2px;
 }
 
-butotn[aria-current="page"]  {
+button[aria-current="page"]  {
     background-color: var(--qv-color-brand-primary, #3157c7);
     color: var(--qv-color-foreground-inverse, #fff);
 }
@@ -61,7 +68,7 @@ butotn[aria-current="page"]  {
     all: unset;
     width: 40px;
     text-align: center;
-    border: 1px solid (--qv-color-border-default, #e5e5e5);
+    border: 1px solid var(--qv-color-border-default, #e5e5e5);
     border-radius: var(--qv-radius-sm, 4px);
     height: var(--qv-sizing-sm, 32px);
 }
@@ -70,4 +77,25 @@ butotn[aria-current="page"]  {
     outline: 2px solid var(--qv-color-brand-primary, #3157c7);
     outline-offset: -2px;
 }
+
+/* Variant="outline"*/
+${hostAttribute('variant="outline"')} button {
+    color: inherit;
+    opacity: 0.6;
+}
+
+${hostAttribute('outline="button"')} button:hover:not(:disabled) {
+    opacity: 1;
+    background-color: transparent;
+}
+${hostAttribute('outline="button"')} button[aria-current="page"] {
+    background-color: transparent;
+    color: inherit;
+    opacity: 1;
+    border: 1.5px solid currentColor;
+}
+${hostAttribute('outline="button"')} .ellipsis {
+    color: inherit;
+    opacity: 0.5;
+} 
 `));

@@ -28,7 +28,7 @@ ${host()} {
     max-width: 560px;
     max-height: 65vh;
     background-color: var(--qv-color-background-surface, #fff);
-    border-radius: var(--qv-radius-signature, 2px) var(--qv-radius-lg, 12px) 0 0;
+    border-radius: var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) 0 0;
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     animation: qv-sheet-panel-in 200ms ease-out;
     outline: none;

@@ -48,7 +48,7 @@ let QvState = class QvState extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvState',
             tagName: createTagName('state'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.status = 'loading';
         this.hasIcon = false;
@@ -94,7 +94,7 @@ let QvState = class QvState extends QvElement {
                     ${this.hasIcon
             ? nothing
             : this.status === 'loading'
-                ? html `<span class="spinner" part="spinner"></span>`
+                ? html `<span class="spinner" part="spinner" aria-hidden="true"></span>`
                 : DEFAULT_ICONS[this.status]}
                 </slot>
             </div>
