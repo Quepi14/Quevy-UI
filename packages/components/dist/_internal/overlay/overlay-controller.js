@@ -17,10 +17,28 @@ function releaseScrollLock() {
     }
 }
 export class OverlayController {
+    get panel() {
+        return this._panel;
+    }
+    /**
+     * Hides the panel the instant it's assigned - before the
+     * browser gets a chance to paint it at whatever default (or
+     * stale) position it currently has. applyPosition() reveals
+     * it again once real coordinates are set. This is what eliminate
+     * the "flashes in the wrong spot, then snaps into place" glitch
+     * - the panel is simply never visible before it's correctly ,
+     * positione, regardless of how many microtasks/frames that takes.
+     */
+    set panel(element) {
+        if (element && element !== this._panel) {
+            element.style.visibility = 'hidden';
+        }
+        this._panel = element;
+    }
     constructor(host, options = {}) {
         this.host = host;
         this.trigger = null;
-        this.panel = null;
+        this._panel = null;
         this._open = false;
         this.previouslyFocused = null;
         this.focusableCache = null;
@@ -101,6 +119,12 @@ export class OverlayController {
         if (!this._open)
             return;
         this._open = false;
+        // Reset for next open - otherwise a panel that stays
+        // mounted (future overlay types that don't fully unmount
+        // on close) would remain permanently hidden.
+        if (this.panel) {
+            this.panel.style.visibility = '';
+        }
         if (this.options.lockScroll) {
             releaseScrollLock();
         }
@@ -127,6 +151,7 @@ export class OverlayController {
         this.panel.style.position = 'fixed';
         this.panel.style.top = `${top}px`;
         this.panel.style.left = `${left}px`;
+        this.panel.style.visibility = 'visible';
     }
     ;
     trapTab(event) {

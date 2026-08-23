@@ -50,7 +50,7 @@ ${host()} {
     min-width: 180px;
     background-color: var(--qv-color-background-surface, #fff);
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
-    border-radius: var(--qv-raidus-md, 8px);
+    border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     z-index: var(--qv-z-index-dropdown, 1000);
 }

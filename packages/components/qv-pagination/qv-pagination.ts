@@ -27,10 +27,10 @@ export class QvPagination extends  QvElement {
     public override readonly metadata = createComponentMetadata ({
         name: 'QvPagination',
         tagName: createTagName('pagination'),
-        version: '0.2.0',
+        version: '0.2.1',
     });
 
-    @property({ type: Number})
+    @property({ type: Number, attribute: 'total-pages' })
     public totalPages!: number;
 
     /** Controled current-page prop. Leave unset for uncontrolled usage. */
@@ -117,7 +117,7 @@ export class QvPagination extends  QvElement {
                 typeof item === 'number'
                     ? html`
                         <button
-                            type="butotn"
+                            type="button"
                             aria-current=${item === current ? 'page' : nothing}
                             aria-label=${`Page ${item}`}
                             @click=${() => this.handlePageClick(item)}

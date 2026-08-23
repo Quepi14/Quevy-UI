@@ -32,11 +32,13 @@ let QvStepper = class QvStepper extends QvStepperBase {
         this.metadata = createComponentMetadata({
             name: 'QvStepper',
             tagName: createTagName('stepper'),
-            version: '0.1.1',
+            version: '0.2.0',
         });
         this.step = 1;
+        this.variant = 'default';
+        this.shape = 'rectangle';
         this.controllableValue = createControllableValue(0);
-        this.hadnleDecrement = () => {
+        this.handleDecrement = () => {
             if (!this.canDecrement)
                 return;
             this.commit(this.currentValue - this.step);
@@ -58,7 +60,7 @@ let QvStepper = class QvStepper extends QvStepperBase {
             }
             if (event.key === 'ArrowDown') {
                 event.preventDefault();
-                this.hadnleDecrement();
+                this.handleDecrement();
             }
         };
     }
@@ -95,7 +97,7 @@ let QvStepper = class QvStepper extends QvStepperBase {
                 type="button"
                 aria-label="Decrease"
                 ?disabled=${!this.canDecrement}
-                @click=${this.hadnleDecrement}
+                @click=${this.handleDecrement}
             >&minus;</button>
             <input 
                 type="text"
@@ -134,6 +136,12 @@ __decorate([
 __decorate([
     property()
 ], QvStepper.prototype, "name", void 0);
+__decorate([
+    property({ reflect: true })
+], QvStepper.prototype, "variant", void 0);
+__decorate([
+    property({ reflect: true })
+], QvStepper.prototype, "shape", void 0);
 QvStepper = __decorate([
     customElement('qv-stepper')
 ], QvStepper);

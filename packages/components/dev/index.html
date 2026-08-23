@@ -362,8 +362,9 @@
 
       <div class="row-label">basic (min/max/value)</div><br>
       <div class="row">
-        <qv-stepper min="0" max="10" value="3"></qv-stepper>
-        <qv-stepper min="0" max="99" step="5"></qv-stepper>
+        <qv-stepper min="0" max="10"></qv-stepper>   
+        <qv-stepper min="0" max="10" variant="outline"></qv-stepper>
+        <qv-stepper min="0" max="10" variant="outline" shape="circle"></qv-stepper>
       </div>
 
       <div class="row-label">form-associated</div><br>
@@ -392,6 +393,16 @@
       <div class="row-label">large total (ellipsis collapse)  jump-to-page</div>
       <div class="row">
         <qv-pagination id="big-list" total-pages="100" variant="outline" sibling-count="2"></qv-pagination>
+      </div>
+
+      <div class="row-label">variant="outline" di atas background gelap (replikasi referensi gambar)</div>
+        <div class="row">
+          <div style="background:#0d1424; padding:16px; border-radius:8px; color:white;">
+            <qv-pagination total-pages="6" page="1" variant="outline" shape="circle"></qv-pagination>
+          </div>
+          <div style="background:#0d1424; padding:16px; border-radius:8px; color:white;">
+            <qv-pagination total-pages="6" page="1" variant="outline" shape="rectangle"></qv-pagination>
+          </div>
       </div>
     </section>
 

@@ -16,6 +16,7 @@
  */
 import { type PropertyValues } from 'lit';
 import { QvElement } from '@quevy/core';
+import type { QvStepperShape, QvStepperVariant } from './qv-stepper.types.js';
 export interface QvStepperChangeEventDetail {
     value: number;
 }
@@ -29,6 +30,8 @@ export declare class QvStepper extends QvStepperBase {
     /**Controlled value prop, Leave unset for uncontrolled usage. */
     value?: number;
     name?: string;
+    variant: QvStepperVariant;
+    shape: QvStepperShape;
     private readonly controllableValue;
     private get currentValue();
     private get canDecrement();
@@ -36,7 +39,7 @@ export declare class QvStepper extends QvStepperBase {
     private clamp;
     protected updated(changedProperties: PropertyValues): void;
     private commit;
-    private readonly hadnleDecrement;
+    private readonly handleDecrement;
     private readonly handleIncrement;
     private readonly handleInputChange;
     private readonly handleKeyDown;

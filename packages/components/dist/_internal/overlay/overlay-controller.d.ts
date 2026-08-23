@@ -33,7 +33,18 @@ export interface OverlayControllerOptions {
 export declare class OverlayController implements ReactiveController {
     private readonly host;
     trigger: HTMLElement | null;
-    panel: HTMLElement | null;
+    _panel: HTMLElement | null;
+    get panel(): HTMLElement | null;
+    /**
+     * Hides the panel the instant it's assigned - before the
+     * browser gets a chance to paint it at whatever default (or
+     * stale) position it currently has. applyPosition() reveals
+     * it again once real coordinates are set. This is what eliminate
+     * the "flashes in the wrong spot, then snaps into place" glitch
+     * - the panel is simply never visible before it's correctly ,
+     * positione, regardless of how many microtasks/frames that takes.
+     */
+    set panel(element: HTMLElement | null);
     private readonly options;
     private _open;
     private previouslyFocused;

@@ -88,7 +88,7 @@ ${hostAttribute('outline="button"')} button:hover:not(:disabled) {
     opacity: 1;
     background-color: transparent;
 }
-${hostAttribute('outline="button"')} button[aria-current="page"] {
+${hostAttribute('variant="outline"')} button[aria-current="page"] {
     background-color: transparent;
     color: inherit;
     opacity: 1;

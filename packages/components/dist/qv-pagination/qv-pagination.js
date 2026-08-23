@@ -27,10 +27,11 @@ let QvPagination = class QvPagination extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvPagination',
             tagName: createTagName('pagination'),
-            version: '0.1.2',
+            version: '0.2.1',
         });
         this.siblingCount = 1;
         this.variant = 'default';
+        this.shape = 'circle';
         this.controllablePage = createControllableValue(1);
         this.jumpValue = '';
         this.handlePageClick = (page) => {
@@ -89,7 +90,7 @@ let QvPagination = class QvPagination extends QvElement {
             ${items.map((item) => typeof item === 'number'
             ? html `
                         <button
-                            type="butotn"
+                            type="button"
                             aria-current=${item === current ? 'page' : nothing}
                             aria-label=${`Page ${item}`}
                             @click=${() => this.handlePageClick(item)}
@@ -119,7 +120,7 @@ let QvPagination = class QvPagination extends QvElement {
     }
 };
 __decorate([
-    property({ type: Number })
+    property({ type: Number, attribute: 'total-pages' })
 ], QvPagination.prototype, "totalPages", void 0);
 __decorate([
     property({ type: Number })
@@ -130,6 +131,9 @@ __decorate([
 __decorate([
     property({ reflect: true })
 ], QvPagination.prototype, "variant", void 0);
+__decorate([
+    property({ reflect: true })
+], QvPagination.prototype, "shape", void 0);
 QvPagination = __decorate([
     customElement('qv-pagination')
 ], QvPagination);

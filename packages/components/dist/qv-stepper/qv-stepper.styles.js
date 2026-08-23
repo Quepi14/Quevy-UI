@@ -3,11 +3,21 @@ export const qvStepperStyles = createStyles(css(`
 ${host()} {
     display: inline-flex;
     align-items: strect;
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
-    border-radius: var(--qv-radius-md,  8px);
     overflow: hidden;
     height: var(--qv-sizing-sm, 32px);
 }    
+
+${hostAttribute('variant="default"')} {
+    border: 1px solid var(--qv-color-border-default, #171717);
+}
+    
+${hostAttribute('shape="rectangle"')} {
+    border-radius: var(--qv-radius-md, 8px);
+}
+
+${hostAttribute('shape="circle"')} {
+    border-radius: var(--qv-radius-full, 9999px);
+}
 
 button {
     all: unset;
@@ -18,6 +28,15 @@ button {
     cursor: pointer;
     color: var(--qv-color-foreground-default,  #171717);
     background-color: var(--qv-color-background-surface,  #fff);
+}
+
+${hostAttribute('variant="outline"')} button {
+    background-color: transparent;
+    border: 1.5px solid var(--qv-color-border-strong, #e3e3e3);
+}
+
+${hostAttribute('variant="outline"')} ${hostAttribute('shape="circle"')} button {
+    border-radius: var(--qv-radius-full, 9999px);
 }
 
 button:hover:not(:disabled) {

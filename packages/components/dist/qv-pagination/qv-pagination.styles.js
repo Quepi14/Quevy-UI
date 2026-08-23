@@ -14,9 +14,16 @@ button {
     justify-content: center;
     min-width: var(--qv-sizing-sm, 32px);
     height: var(--qv-sizing-sm, 32px);
-    border-radius: var(--qv-radius-sm, 4px);
     cursor: pointer;
     color: var(--qv-color-foreground-default, #171717);
+}
+
+${hostAttribute('shape="circle"')} button {
+    border-radius: var(--qv-radius-full, 9999px);
+}
+
+${hostAttribute('shape="rectangle"')} button {
+    border-radius: var(--qv-radius-full, 9999px);
 }
 
 button:hover:not(:disabled) {
@@ -80,12 +87,11 @@ ${hostAttribute('outline="button"')} button:hover:not(:disabled) {
     opacity: 1;
     background-color: transparent;
 }
-${hostAttribute('outline="button"')} button[aria-current="page"] {
+${hostAttribute('variant="outline"')} button[aria-current="page"] {
     background-color: transparent;
     color: inherit;
     opacity: 1;
     border: 1.5px solid currentColor;
-    border-radius: var(--qv-radius-full, 9999px);
 }
 ${hostAttribute('outline="button"')} .ellipsis {
     color: inherit;

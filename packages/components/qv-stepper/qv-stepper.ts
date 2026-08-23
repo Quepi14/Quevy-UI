@@ -21,6 +21,7 @@ import { property, customElement } from 'lit/decorators.js';
 import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, removeStyles } from '@quevy/core';
 import { qvStepperStyles } from './qv-stepper.styles.js';
 import { createControllableValue } from '@quevy/state';
+import type { QvStepperShape, QvStepperVariant } from './qv-stepper.types.js';
 
 export interface QvStepperChangeEventDetail {
     value: number;
@@ -35,7 +36,7 @@ export class QvStepper extends QvStepperBase {
     public override readonly metadata = createComponentMetadata ({
         name: 'QvStepper',
         tagName: createTagName('stepper'),
-        version: '0.1.1',
+        version: '0.2.0',
     });
 
     @property({ type: Number })
@@ -53,6 +54,12 @@ export class QvStepper extends QvStepperBase {
 
     @property()
     public name?: string;
+
+    @property({ reflect: true })
+    public variant: QvStepperVariant = 'default';
+     
+    @property({ reflect: true })
+    public shape: QvStepperShape = 'rectangle';
     
     private readonly controllableValue = createControllableValue<number>(0);
 
@@ -88,7 +95,7 @@ export class QvStepper extends QvStepperBase {
         this.invalidate();
     }
 
-    private readonly hadnleDecrement = (): void  => {
+    private readonly handleDecrement = (): void  => {
         if(!this.canDecrement) return;
         this.commit(this.currentValue - this.step);
     };
@@ -112,7 +119,7 @@ export class QvStepper extends QvStepperBase {
 
         if (event.key === 'ArrowDown') {
             event.preventDefault();
-            this.hadnleDecrement();
+            this.handleDecrement();
         }
     };
 
@@ -124,7 +131,7 @@ export class QvStepper extends QvStepperBase {
                 type="button"
                 aria-label="Decrease"
                 ?disabled=${!this.canDecrement}
-                @click=${this.hadnleDecrement}
+                @click=${this.handleDecrement}
             >&minus;</button>
             <input 
                 type="text"

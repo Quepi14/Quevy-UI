@@ -83,13 +83,13 @@ export class QvCarousel extends QvElement {
     protected override render() {
         return html`
             <div class="track" style="transform: translateX(-${this.index * 100}%)">
-                <slot @slotChange=${this.handleSlotChange}></slot>
+                <slot @slotchange=${this.handleSlotChange}></slot>
             </div>
 
             ${this.slideCount > 1
                 ? html`
-                <button class="arrow prev" aria-label="Previous slide" @click=${() => this.prev}>&lsaquo;</button>
-                <button class="arrow next" aria-label="Next slide" @click=${() => this.next}>&rsaquo;</button>
+                <button class="arrow prev" aria-label="Previous slide" @click=${() => this.prev()}>&lsaquo;</button>
+                <button class="arrow next" aria-label="Next slide" @click=${() => this.next()}>&rsaquo;</button>
                 <div class="dots" role="tablist">
                     ${Array.from({ length: this.slideCount }, (_, i) => html`
                         <button
@@ -98,6 +98,7 @@ export class QvCarousel extends QvElement {
                             @click=${() => this.goTo(i)}
                         ></button>
                     `)}
+                </div>
                 `
             : ''}
         `;

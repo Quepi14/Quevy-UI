@@ -28,7 +28,7 @@ let QvTable = class QvTable extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvTable',
             tagName: createTagName('table'),
-            version: '0.2.0',
+            version: '0.2.1',
         });
         this.colums = [];
         this.rows = [];
@@ -147,7 +147,7 @@ __decorate([
     property()
 ], QvTable.prototype, "title", void 0);
 __decorate([
-    property()
+    property({ attribute: 'row-key' })
 ], QvTable.prototype, "rowKey", void 0);
 __decorate([
     property()
@@ -156,7 +156,7 @@ __decorate([
     property({ type: Boolean, reflect: true })
 ], QvTable.prototype, "selectable", void 0);
 __decorate([
-    property()
+    property({ attribute: 'empty-message' })
 ], QvTable.prototype, "emptyMessage", void 0);
 __decorate([
     state()

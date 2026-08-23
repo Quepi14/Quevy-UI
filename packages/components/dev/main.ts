@@ -126,6 +126,11 @@ document.querySelectorAll('qv-stepper').forEach((el) => {
     });
 });
 
+const controlledStepper = document.getElementById('controlled-stepper') as any;
+controlledStepper?.addEventListener('change', (e: Event) => {
+    controlledStepper.value = (e as CustomEvent).detail.value;
+});
+
 document.getElementById('qty-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
