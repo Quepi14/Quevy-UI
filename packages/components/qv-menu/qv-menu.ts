@@ -22,6 +22,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName, queryDecorator as query } from "@quevy/core";
 
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
+import type { OverlayPlacement } from "../_internal/overlay/overlay-position.js";
 
 import { qvMenuStyles } from "./qv-menu.styles.js";
 import type { QvMenuItem, QvMenuSelectEventDetail } from "./qv-menu.types.js";
@@ -47,13 +48,16 @@ export class QvMenu extends QvElement {
     @property({ attribute: false})
     public items: QvMenuItem[] = [];
 
+    @property({ reflect: true })
+    public placement: OverlayPlacement = 'bottom-end';
+
     @property({ reflect: true, attribute: 'aria-label' })
     public label = 'Open menu';
 
     @state() private hasCustomTrigger = false;
 
     private readonly overlay: OverlayController = new OverlayController(this, {
-        placement: 'bottom-end',
+        placement: this.placement,
         onOpenChange: () => this.requestUpdate(),
     })
 
@@ -62,7 +66,7 @@ export class QvMenu extends QvElement {
 
     protected override updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
-
+        this.overlay.setPlacement(this.placement);
         this.overlay.trigger = this.triggerEl;
         this.overlay.panel = this.panelEl;
     }

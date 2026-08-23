@@ -4,3 +4,4 @@ export interface QvStepperChangeEventDetail {
 
 export type QvStepperVariant = 'default' | 'outline';
 export type QvStepperShape = 'circle' | 'rectangle';
+export type QvStepperSize = 'sm' | 'lg';

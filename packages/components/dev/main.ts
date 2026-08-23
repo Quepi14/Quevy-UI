@@ -1,4 +1,5 @@
 import { applyTokens } from '@quevy/tokens';
+import { html } from 'lit';
 
 import '../qv-button/index.js';
 import '../qv-card/index.js';
@@ -157,14 +158,18 @@ if (fruitDropdown) {
 }
 
 // ===== qv-menu (kebab di dalam card) =====
+const EDIT_ICON = html`<svg viewBox="0 0 20 20" fill="currentColor"><path d="M13.6 2.3a1 1 0 011.4 0l2.7 2.7a1 1 0 010 1.4L7 17.1l-4 1 1-4L13.6 2.3z"/></svg>`;
+const DUPLICATE_ICON = html`<svg viewBox="0 0 20 20" fill="currentColor"><path d="M5 3h9v2H7v9H5V3zm4 4h9v11H9V7z"/></svg>`;
+const DELETE_ICON = html`<svg viewBox="0 0 20 20" fill="currentColor"><path d="M6 7h8l-1 10H7L6 7zm2-3h4l1 1h3v2H4V5h3l1-1z"/></svg>`;
+
 for (const id of ['card-menu', 'card-menu-2', 'card-menu-3']) {
     const menu = document.getElementById(id) as any;
     if (!menu) continue;
 
     menu.items = [
-        { id: 'edit', label: 'Edit' },
-        { id: 'duplicate', label: 'Duplikat' },
-        { id: 'delete', label: 'Hapus', disabled: id === 'card-menu-2' },
+        { id: 'edit', label: 'Edit', icon: EDIT_ICON },
+        { id: 'duplicate', label: 'Duplikat', icon: DUPLICATE_ICON },
+        { id: 'delete', label: 'Hapus', icon: DELETE_ICON, disabled: id === 'card-menu-2' },
     ];
     menu.addEventListener('select', (e: Event) => {
         console.log(`[menu:${id}] aksi dipilih:`, (e as CustomEvent).detail);

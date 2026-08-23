@@ -21,7 +21,7 @@ import { property, customElement } from 'lit/decorators.js';
 import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, removeStyles } from '@quevy/core';
 import { qvStepperStyles } from './qv-stepper.styles.js';
 import { createControllableValue } from '@quevy/state';
-import type { QvStepperShape, QvStepperVariant } from './qv-stepper.types.js';
+import type { QvStepperShape, QvStepperVariant, QvStepperSize } from './qv-stepper.types.js';
 
 export interface QvStepperChangeEventDetail {
     value: number;
@@ -36,7 +36,7 @@ export class QvStepper extends QvStepperBase {
     public override readonly metadata = createComponentMetadata ({
         name: 'QvStepper',
         tagName: createTagName('stepper'),
-        version: '0.2.0',
+        version: '0.2.1',
     });
 
     @property({ type: Number })
@@ -61,6 +61,9 @@ export class QvStepper extends QvStepperBase {
     @property({ reflect: true })
     public shape: QvStepperShape = 'rectangle';
     
+    @property({ reflect: true })
+    public size: QvStepperSize = 'sm';
+
     private readonly controllableValue = createControllableValue<number>(0);
 
     private get currentValue(): number {

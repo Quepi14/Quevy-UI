@@ -127,7 +127,21 @@ public constructor(
         // conditionally rendered by the host) before positioning
         // or moving focus into it.
         void this.host.updateComplete.then(() => {
-            this.reposition();
+            
+            /**Double rAF: waits for the browser to complete a
+             * full layout pass across ALL pending component
+             * udpates (not just this host's), not just the next
+             * paint tick - cheap insurance againts the first
+             * position calculation using stale ancestor layout
+             * (e.g. a parent's slot positioning not fully settled
+             * yet), which single-rAF wasn't reliably catching.
+             */
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    this.applyPosition();
+                });
+            });
+
             if(this.options.trapFocus) {
                 getFocusableElement(this.panel ?? this.host)[0]?.focus();
             }
@@ -168,6 +182,10 @@ public constructor(
 
     public toggle(): void{
         this._open ? this.close() : this.open();
+    }
+
+    public setPlacement(placement: OverlayPlacement): void {
+        this.options.placement = placement;
     }
 
     private repositionScheduled = false;

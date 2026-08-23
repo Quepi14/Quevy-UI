@@ -1,3 +1,5 @@
+import { mathml } from "lit/static-html.js";
+
 /**
  * ----------------------------------------------------------
  * QUEVY UI (internal) — overlay positioning
@@ -65,7 +67,31 @@ export function computeOverlayPosition(
                 ? trigger.top + trigger.height + gap
                 : trigger.top - panel.height - gap;
 
-        const left = align === 'start' ? trigger.left : trigger.left + trigger.width - panel.width;
-    
-    return { top, left, placement: `${side}-${align}`};
+        /**
+         * Horizontal flip: if the preferred alignment would push the
+         * panel off either edge of the viewport, try the other alignment
+         * instead - same "does it fit? if not, flip" logic already used
+         * above for vertical placement.
+         */
+
+        const leftForStart = trigger.left;
+        const leftForEnd = trigger.left + trigger.width - panel.width;
+
+        const startFits = leftForStart + panel.width <= viewport.width;
+        const endFits = leftForEnd >= 0;
+
+        const resolvedAlign: 'start' | 'end' = 
+            align === 'start'
+                ? startFits || !endFits
+                    ? 'start'
+                    : 'end'
+                : endFits || !startFits
+                    ? 'end'
+                    : 'start';
+                    
+        let left = resolvedAlign === 'start' ? leftForStart : leftForEnd;
+        // Last-resort clamp: viewport smaller than the panel itself.
+        left = Math.max(0, Math.min(left, viewport.width - panel.width));
+
+    return { top, left, placement: `${side}-${resolvedAlign}`};
 }
