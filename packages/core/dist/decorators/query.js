@@ -20,17 +20,18 @@
  */
 export function query(selector, cache = false) {
     return (target, propertyKey) => {
-        let cachedValue;
         Object.defineProperty(target, propertyKey, {
             configurable: true,
             enumerable: true,
             get() {
-                if (cache && cachedValue !== undefined) {
-                    return cachedValue;
+                if (cache && this.__queryCache?.[propertyKey] !== undefined) {
+                    return this.__queryCache[propertyKey];
                 }
                 const result = this.renderRoot.querySelector(selector);
-                if (cache)
-                    cachedValue = result;
+                if (cache) {
+                    this.__queryCache ??= {};
+                    this.__queryCache[propertyKey] = result;
+                }
                 return result;
             },
         });

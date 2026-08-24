@@ -1,1 +1,1 @@
-{"version":3,"file":"query.d.ts","sourceRoot":"","sources":["../../decorators/query.ts"],"names":[],"mappings":"AAAA;;;;;;;;GAQG;AAEH;;;;;;;;;;GAUG;AACH,wBAAgB,KAAK,CAAC,QAAQ,EAAE,MAAM,EAAE,KAAK,UAAQ,GAAG,iBAAiB,CAiBxE"}
+{"version":3,"file":"query.d.ts","sourceRoot":"","sources":["../../decorators/query.ts"],"names":[],"mappings":"AAAA;;;;;;;;GAQG;AAEH;;;;;;;;;;GAUG;AACH,wBAAgB,KAAK,CAAC,QAAQ,EAAE,MAAM,EAAE,KAAK,UAAQ,GAAG,iBAAiB,CAmBxE"}

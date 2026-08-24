@@ -32,11 +32,12 @@ let QvStepper = class QvStepper extends QvStepperBase {
         this.metadata = createComponentMetadata({
             name: 'QvStepper',
             tagName: createTagName('stepper'),
-            version: '0.2.0',
+            version: '0.2.1',
         });
         this.step = 1;
         this.variant = 'default';
         this.shape = 'rectangle';
+        this.size = 'sm';
         this.controllableValue = createControllableValue(0);
         this.handleDecrement = () => {
             if (!this.canDecrement)
@@ -142,6 +143,9 @@ __decorate([
 __decorate([
     property({ reflect: true })
 ], QvStepper.prototype, "shape", void 0);
+__decorate([
+    property({ reflect: true })
+], QvStepper.prototype, "size", void 0);
 QvStepper = __decorate([
     customElement('qv-stepper')
 ], QvStepper);

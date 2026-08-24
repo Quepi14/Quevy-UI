@@ -42,10 +42,11 @@ let QvMenu = class QvMenu extends QvElement {
             version: '0.1.2',
         });
         this.items = [];
+        this.placement = 'bottom-end';
         this.label = 'Open menu';
         this.hasCustomTrigger = false;
         this.overlay = new OverlayController(this, {
-            placement: 'bottom-end',
+            placement: this.placement,
             onOpenChange: () => this.requestUpdate(),
         });
         this.handleTriggerSlotChange = () => {
@@ -75,6 +76,7 @@ let QvMenu = class QvMenu extends QvElement {
     static { this.styles = qvMenuStyles; }
     updated(changedProperties) {
         super.updated(changedProperties);
+        this.overlay.setPlacement(this.placement);
         this.overlay.trigger = this.triggerEl;
         this.overlay.panel = this.panelEl;
     }
@@ -135,7 +137,7 @@ let QvMenu = class QvMenu extends QvElement {
                                                 aria-disabled=${item.disabled ? 'true' : 'false'}
                                                 @click=${(e) => this.selectItem(item, index, e)}
                                                 @keydown=${(e) => this.handleItemKeyDown(e, index)}
-                                            >${item.icon ? html `<span class="item-icon" part="item-icon" aria-hidden="true"><${item.icon}</span>` : nothing}
+                                            >${item.icon ? html `<span class="item-icon" part="item-icon" aria-hidden="true">${item.icon}</span>` : nothing}
                                                 </span>${item.label}</span>
                                             </button>
                                         `}
@@ -150,6 +152,9 @@ let QvMenu = class QvMenu extends QvElement {
 __decorate([
     property({ attribute: false })
 ], QvMenu.prototype, "items", void 0);
+__decorate([
+    property({ reflect: true })
+], QvMenu.prototype, "placement", void 0);
 __decorate([
     property({ reflect: true, attribute: 'aria-label' })
 ], QvMenu.prototype, "label", void 0);

@@ -2,13 +2,13 @@ import { css, host, hostAttribute, createStyles } from '@quevy/core';
 export const qvStepperStyles = createStyles(css(`
 ${host()} {
     display: inline-flex;
-    align-items: strect;
+    align-items: streect;
     overflow: hidden;
     height: var(--qv-sizing-sm, 32px);
 }    
 
 ${hostAttribute('variant="default"')} {
-    border: 1px solid var(--qv-color-border-default, #171717);
+    border: 1px solid var(--qv-color-border-default, #e5e5e5);
 }
     
 ${hostAttribute('shape="rectangle"')} {
@@ -40,7 +40,7 @@ ${hostAttribute('variant="outline"')} ${hostAttribute('shape="circle"')} button 
 }
 
 button:hover:not(:disabled) {
-    background-color; var(--qv-color-background-muted, #f5f5f5);
+    background-color: var(--qv-color-background-muted, #f5f5f5);
 }
 
 button:disabled {
@@ -53,12 +53,25 @@ button:focus-visible {
     outline-offset: -2px;
 }
 
+${hostAttribute('size="lg"')} {
+    height: var(--qv-sizing-xl, 56px);
+}
+${hostAttribute('size="lg"')} {
+    width: var(--qv-sizing-xl, 56px);
+}
+${hostAttribute('size="lg"')} {
+    width: 64px;
+    font-size: var(--qv-font-size-xl, 20px);
+}
 input {
     all: unset;
     width: 48px;
     text-align: center;
     font-size: var(--qv-font-size-sm, 14px);
     color: var(--qv-color-foreground-default, #171717);
+}
+
+${hostAttribute('variant="default"')} {
     border-inline: 1px solid var(--qv-color-border-default, #e5e5e5);
 }
 

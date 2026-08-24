@@ -54,6 +54,7 @@ export declare class OverlayController implements ReactiveController {
     open(): void;
     close(): void;
     toggle(): void;
+    setPlacement(placement: OverlayPlacement): void;
     private repositionScheduled;
     private readonly reposition;
     private applyPosition;

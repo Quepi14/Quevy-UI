@@ -181,7 +181,7 @@ export class QvButton extends QvButtonBase {
         return html `
             <span class="icon" part="prefix" aria-hidden="true">
                 ${this.loading
-                    ? html`<span class="spinner" part"spinner"></span>`
+                    ? html`<span class="spinner" part="spinner"></span>`
                     : html`<slot name="prefix"></slot>`}
             </span>
             <span class="label" part="label">

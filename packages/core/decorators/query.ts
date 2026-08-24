@@ -21,17 +21,19 @@
  */
 export function query(selector: string, cache = false): PropertyDecorator {
     return (target, propertyKey) => {
-        let cachedValue: Element | null | undefined;
 
         Object.defineProperty(target, propertyKey, {
             configurable: true,
             enumerable: true,
             get(this: { renderRoot: ParentNode }): Element | null {
-                if (cache && cachedValue !== undefined) {
-                    return cachedValue;
+                if (cache && (this as any).__queryCache?.[propertyKey as string] !== undefined) {
+                    return (this as any).__queryCache[propertyKey as string];
                 }
                 const result = this.renderRoot.querySelector(selector);
-                if (cache) cachedValue = result;
+                if (cache) {
+                    (this as any).__queryCache ??= {};
+                    (this as any).__queryCache[propertyKey as string] = result;
+                }
                 return result;
             },
         });

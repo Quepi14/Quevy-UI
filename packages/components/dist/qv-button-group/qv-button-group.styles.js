@@ -7,6 +7,7 @@ ${host()} {
 
 ::slotted(qv-button) {
     flex: 1 1 0;
+    min-width: 0;
     border-radius: 0 !important;
 }
 
@@ -16,7 +17,7 @@ ${host()} {
 
 ::slotted(qv-button:first-child) {
     border-start-start-radius: var(--qv-radius-sm, 4px) !important;
-    border-end-start-radiusL var(--qv-radius-sm, 4px) !importnant;
+    border-end-start-radius: var(--qv-radius-sm, 4px) !important;
 }
 
 ::slotted(qv-button:last-child) {

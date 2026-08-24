@@ -1,5 +1,3 @@
-import { mathml } from "lit/static-html.js";
-
 /**
  * ----------------------------------------------------------
  * QUEVY UI (internal) — overlay positioning

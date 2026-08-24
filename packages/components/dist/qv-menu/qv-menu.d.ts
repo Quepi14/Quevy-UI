@@ -16,11 +16,13 @@
  */
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
+import type { OverlayPlacement } from "../_internal/overlay/overlay-position.js";
 import type { QvMenuItem } from "./qv-menu.types.js";
 export declare class QvMenu extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
     items: QvMenuItem[];
+    placement: OverlayPlacement;
     label: string;
     private hasCustomTrigger;
     private readonly overlay;

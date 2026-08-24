@@ -102,13 +102,26 @@ export class OverlayController {
         document.addEventListener('keydown', this.handleDocumentKeyDown, true);
         window.addEventListener('resize', this.reposition);
         window.addEventListener('scroll', this.reposition, true);
+        document.addEventListener('load', this.reposition, true);
         this.host.requestUpdate();
         this.options.onOpenChange?.(true);
         // Wait for the panel to actually be in the DOM (it's
         // conditionally rendered by the host) before positioning
         // or moving focus into it.
         void this.host.updateComplete.then(() => {
-            this.reposition();
+            /**Double rAF: waits for the browser to complete a
+             * full layout pass across ALL pending component
+             * udpates (not just this host's), not just the next
+             * paint tick - cheap insurance againts the first
+             * position calculation using stale ancestor layout
+             * (e.g. a parent's slot positioning not fully settled
+             * yet), which single-rAF wasn't reliably catching.
+             */
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    this.applyPosition();
+                });
+            });
             if (this.options.trapFocus) {
                 getFocusableElement(this.panel ?? this.host)[0]?.focus();
             }
@@ -132,6 +145,7 @@ export class OverlayController {
         document.removeEventListener('keydown', this.handleDocumentKeyDown, true);
         window.removeEventListener('resize', this.reposition);
         window.removeEventListener('scroll', this.reposition, true);
+        document.removeEventListener('load', this.reposition, true);
         this.host.requestUpdate();
         this.options.onOpenChange?.(false);
         if (this.options.restoreFocus) {
@@ -142,12 +156,23 @@ export class OverlayController {
     toggle() {
         this._open ? this.close() : this.open();
     }
+    setPlacement(placement) {
+        this.options.placement = placement;
+    }
     applyPosition() {
         if (!this._open || !this.trigger || !this.panel)
             return;
         const triggerRect = this.trigger.getBoundingClientRect();
         const panelRect = this.panel.getBoundingClientRect();
         const { top, left } = computeOverlayPosition(triggerRect, { width: panelRect.width, height: panelRect.height }, { width: window.innerWidth, height: window.innerHeight }, this.options.placement);
+        console.log('[overlay-debug]', {
+            hostTag: this.host.tagName,
+            hostId: this.host.id || '(no id)',
+            triggerRect,
+            panelRect,
+            computed: { top, left },
+            placement: this.options.placement,
+        });
         this.panel.style.position = 'fixed';
         this.panel.style.top = `${top}px`;
         this.panel.style.left = `${left}px`;

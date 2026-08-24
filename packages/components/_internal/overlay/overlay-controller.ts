@@ -119,6 +119,7 @@ public constructor(
         document.addEventListener('keydown', this.handleDocumentKeyDown, true);
         window.addEventListener('resize', this.reposition);
         window.addEventListener('scroll', this.reposition, true);
+        document.addEventListener('load', this.reposition, true);
 
         this.host.requestUpdate();
         this.options.onOpenChange?.(true);
@@ -170,6 +171,7 @@ public constructor(
         document.removeEventListener('keydown', this.handleDocumentKeyDown, true);
         window.removeEventListener('resize', this.reposition);
         window.removeEventListener('scroll', this.reposition, true);
+        document.removeEventListener('load', this.reposition, true);
 
         this.host.requestUpdate();
         this.options.onOpenChange?.(false);
@@ -216,6 +218,16 @@ public constructor(
             this.options.placement,
         );
     
+        console.log('[overlay-debug]', {
+            hostTag: this.host.tagName,
+            hostId: (this.host as HTMLElement).id || '(no id)',
+            triggerRect,
+            panelRect,
+            computed: { top, left },
+            placement: this.options.placement,
+        });
+        
+
         this.panel.style.position = 'fixed';
         this.panel.style.top = `${top}px`;
         this.panel.style.left = `${left}px`;

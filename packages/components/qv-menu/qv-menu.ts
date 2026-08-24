@@ -158,7 +158,7 @@ export class QvMenu extends QvElement {
                                                 aria-disabled=${item.disabled ? 'true' : 'false'}
                                                 @click=${(e: Event) => this.selectItem(item, index, e)}
                                                 @keydown=${(e: KeyboardEvent) => this.handleItemKeyDown(e, index)}
-                                            >${item.icon ? html`<span class="item-icon" part="item-icon" aria-hidden="true"><${item.icon}</span>` : nothing}
+                                            >${item.icon ? html`<span class="item-icon" part="item-icon" aria-hidden="true">${item.icon}</span>` : nothing}
                                                 </span>${item.label}</span>
                                             </button>
                                         `}

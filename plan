@@ -1,0 +1,32 @@
+fix all bugs first
+1. qv-button-grup: should be can do 1:3 or 2:3, variant with icon 
+2. qv-card variant glass need to be polished more
+3. pastikan card ini ketika di isi beberapa foto atau text deskripsi yg panjang ukuran nya selalu sama dan tidak beda satu sama lain
+4. qv-banner sebaiknya untuk testing atau demo diberikan button untuk testing 
+5. qv-banner warn masih terpotong, dan memungkinkan untuk qv-banner mungkin ditambahkan button untuk mengecek hasil inputan (kondisional) 
+6. qv-stepper shape circle masih bermasalah
+7. qv-pagination juga untuk shape rectangle masih bermasalah
+8. qv-dropdown perlu dipoles kembali
+9. qv-menu masih perlu ditambahkan variant untuk icon nya
+10. qv-checkbox, qv-toggle, qv-radio masih biasa bug dan tampilan masih biasa saja
+11. qv-input bagian floating label atau placeholder nya kurang menengah diantara
+12. qv-textarea masih terlihat seperti komponen biasa saja 
+13. qv-slider masih bug (tambahkan persentase ketika sliding atau disamping slider)
+14. qv-file-input masih terlihat biasa saja
+15. qv-list masih bug
+16. qv-collapsible / qv-accordian toggle untuk menutup masih bug
+17. qv-modal masih bug juga
+18. qv-badge masih sedikit bug kurang presisi dan biasa saja
+19. qv-avatar masih bug seperti busy, dnd
+20. qv-spinner dan qv-progress perlu diperbaiki 
+21. qv-topbar perlu dipoles
+22. qv-table perlu dibuat variant beda warna dan button opsi untuk select all atau mungkin tanpa checkbox
+23. qv-calendar dan qv-datepicker masih terlihat biasa saja, button next masih bug, tidak bisa jump in bulan atau tahun
+24. qv-carousel perlu diberi beberapa variant
+
+
+
+Rebranding to be better UI
+1. One signature accent color (not a framework default)
+2. A radius personality (sharp? round? pick a side)
+3. A motion signature (your own duration/easing pair)

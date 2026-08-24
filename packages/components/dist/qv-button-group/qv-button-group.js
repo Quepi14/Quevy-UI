@@ -30,7 +30,7 @@ let QvButtonGroup = class QvButtonGroup extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvButtonGroup',
             tagName: createTagName('button-group'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
     }
     static { this.styles = qvButtonGroupStyles; }
