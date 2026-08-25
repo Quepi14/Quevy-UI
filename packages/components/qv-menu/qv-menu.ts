@@ -49,7 +49,7 @@ export class QvMenu extends QvElement {
     public items: QvMenuItem[] = [];
 
     @property({ reflect: true })
-    public placement: OverlayPlacement = 'bottom-end';
+    public placement: OverlayPlacement = 'bottom-start';
 
     @property({ reflect: true, attribute: 'aria-label' })
     public label = 'Open menu';

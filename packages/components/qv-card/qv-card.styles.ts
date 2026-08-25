@@ -1,16 +1,4 @@
-/**
- * ----------------------------------------------------------
- * QUEVY UI — qv-card styles
- * ----------------------------------------------------------
- * NOTE: the "glass" variant's translucency/blur values are
- * hardcoded — @quevy/tokens has no blur/opacity token
- * category yet. Revisit once a real design decision exists
- * for that (this is a placeholder, not a final value).
- *
- * @packageDocumentation
- */
-
-import { css, host,  hostAttribute, createStyles } from '@quevy/core';
+import { css, host, hostAttribute, createStyles } from '@quevy/core';
 
 const layout = css(`
 ${host()} {
@@ -18,38 +6,25 @@ ${host()} {
     flex-direction: column;
     overflow: hidden;
     border-radius: var(--qv-radius-lg, 12px);
-    background-color: var(--qv-color-background-surface, #fff);
+    background-color: var(--qv-color-background-surface, #ffffff);
     color: var(--qv-color-foreground-default, #171717);
     box-sizing: border-box;
     outline: none;
     position: relative;
-}    
+    border: 1px solid transparent;
+}
 
 .actions {
     position: absolute;
     top: var(--qv-spacing-sm, 8px);
     right: var(--qv-spacing-sm, 8px);
-    z-index: 1;
+    z-index: 2;
 }
+.actions.empty { display: none; }
 
-.actions.empty {
-    display: none;
-}
-
-.media.empty,
-.header.empty,
-.title.empty,
-.description.empty,
-.footer.empty{
-    display: none;
-}
-
-.media ::slotted(*) {
-    display: block;
-    width: 100%;
-    max-height: 240px;
-    object-fit: cover;
-}
+.media { position: relative; }
+.media.empty { display: none; }
+.media ::slotted(*) { display: block; width: 100%; max-height: 240px; object-fit: cover; }
 
 .header {
     display: flex;
@@ -60,15 +35,17 @@ ${host()} {
 
 .title {
     font-size: var(--qv-font-size-lg, 18px);
-    font-weight: var(qv-font-weight-semibold, 600);
-    line-height: var(--qv-line-height-tight,  1.25);
+    font-weight: var(--qv-font-weight-semibold, 600);
+    line-height: var(--qv-line-height-tight, 1.25);
 }
+.title.empty { display: none; }
 
 .description {
     font-size: var(--qv-font-size-sm, 14px);
     color: var(--qv-color-foreground-muted, #737373);
     line-height: var(--qv-line-height-normal, 1.5);
 }
+.description.empty { display: none; }
 
 .body {
     padding: var(--qv-spacing-lg, 16px);
@@ -83,27 +60,21 @@ ${host()} {
     gap: var(--qv-spacing-sm, 8px);
     padding: 0 var(--qv-spacing-lg, 16px) var(--qv-spacing-lg, 16px);
 }
+.footer.empty { display: none; }
 `);
 
 const variants = css(`
 ${hostAttribute('variant="elevated"')} {
-    border: 1px solid transparent;
     box-shadow: var(--qv-shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
 }
-    
 ${hostAttribute('variant="outlined"')} {
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
-    box-shadow: none;
+    border-color: var(--qv-color-border-default, #e5e5e5);
 }
-
 ${hostAttribute('variant="flat"')} {
-    border: 1px solid transparent;
-    box-shadow: none;
-    background-color: var(--qv-color-background-muted,  #f5f5f5);
+    background-color: var(--qv-color-background-muted, #f5f5f5);
 }
-
-${ hostAttribute('variant="glass"')} {
-    border: 1px solid rgba(255, 255, 255, 0.25);
+${hostAttribute('variant="glass"')} {
+    border-color: rgba(255, 255, 255, 0.25);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     background-color: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(16px);
@@ -111,29 +82,33 @@ ${ hostAttribute('variant="glass"')} {
 }
 `);
 
+// Interactive hover/active feedback uses ONLY border-color and
+// box-shadow — deliberately never filter/transform. Both of
+// those create a new CSS containing block for any
+// position:fixed descendant (e.g. an open qv-menu/qv-dropdown
+// panel nested via the actions slot), which silently breaks
+// its fixed positioning relative to the viewport. Ruling this
+// out structurally, not just patching one symptom of it.
 const interactive = css(`
 ${hostAttribute('interactive')},
 ${hostAttribute('href')} {
     cursor: pointer;
-    transition-property: transform, box-shadow, filter;
-    transition-duration: var(--qv-motion-duration-fast, 100ms);
-    transition-timing-function: var(--qv-motion-easing-standard, cubic-bazier(0.2, 0, 0, 1));  
 }
 
 ${hostAttribute('interactive')}:hover,
 ${hostAttribute('href')}:hover {
-    filter: brightness(0.98);
+    border-color: var(--qv-color-brand-primary, #3157C7);
 }
 
 ${hostAttribute('interactive')}:active,
 ${hostAttribute('href')}:active {
-    transform: scale(0.99);
+    box-shadow: inset 0 0 0 1px var(--qv-color-brand-primary, #3157C7);
 }
 
 ${host()}:focus-visible {
     box-shadow:
-        0 0 0 2px var(--qv-color-background-default, #fff),
-        0 0 0 4px var(--qv-color-brand-primary, #3157c7);
+        0 0 0 2px var(--qv-color-background-default, #ffffff),
+        0 0 0 4px var(--qv-color-brand-primary, #3157C7);
 }
 `);
 

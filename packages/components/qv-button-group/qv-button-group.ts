@@ -36,6 +36,10 @@ export class QvButtonGroup extends QvElement {
     }
 
     protected override render() {
-        return html`<slot></slot>`;
+        return html`
+            <div clas="group">
+                <slot></slot>
+            </div>
+        `;
     }
 }

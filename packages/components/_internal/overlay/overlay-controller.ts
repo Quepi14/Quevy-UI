@@ -42,7 +42,7 @@ function acquireScrollLock(): void {
         previousHtmlOverflow = document.documentElement.style.overflow;
         document.documentElement.style.overflow = 'hidden';
     }
-    scrollLockCount += 1; 
+    scrollLockCount = 1; 
 }
 
 function releaseScrollLock(): void {
@@ -194,6 +194,7 @@ public constructor(
 
     private readonly reposition = (): void => {
         if  (!this._open || !this.trigger || !this.panel)return;
+        if (this.host.tagName !== 'QV-MENU') return;
 
         if (this.repositionScheduled) return;
         this.repositionScheduled = true;
@@ -218,14 +219,13 @@ public constructor(
             this.options.placement,
         );
     
-        console.log('[overlay-debug]', {
-            hostTag: this.host.tagName,
-            hostId: (this.host as HTMLElement).id || '(no id)',
-            triggerRect,
-            panelRect,
-            computed: { top, left },
-            placement: this.options.placement,
-        });
+        console.log(
+            `[overlay-debug] ${this.host.tagName}#${(this.host as HTMLElement).id || 'noid'}`,
+            '| trigger:', `top=${triggerRect.top.toFixed(1)} left=${triggerRect.left.toFixed(1)} w=${triggerRect.width.toFixed(1)} h=${triggerRect.height.toFixed(1)}`,
+            '| panel:', `w=${panelRect.width.toFixed(1)} h=${panelRect.height.toFixed(1)}`,
+            '| computed:', `top=${top.toFixed(1)} left=${left.toFixed(1)}`,
+            '| placement:', this.options.placement,
+        );
         
 
         this.panel.style.position = 'fixed';
