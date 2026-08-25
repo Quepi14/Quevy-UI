@@ -218,15 +218,6 @@ public constructor(
             { width: window.innerWidth, height: window.innerHeight},
             this.options.placement,
         );
-    
-        console.log(
-            `[overlay-debug] ${this.host.tagName}#${(this.host as HTMLElement).id || 'noid'}`,
-            '| trigger:', `top=${triggerRect.top.toFixed(1)} left=${triggerRect.left.toFixed(1)} w=${triggerRect.width.toFixed(1)} h=${triggerRect.height.toFixed(1)}`,
-            '| panel:', `w=${panelRect.width.toFixed(1)} h=${panelRect.height.toFixed(1)}`,
-            '| computed:', `top=${top.toFixed(1)} left=${left.toFixed(1)}`,
-            '| placement:', this.options.placement,
-        );
-        
 
         this.panel.style.position = 'fixed';
         this.panel.style.top = `${top}px`;

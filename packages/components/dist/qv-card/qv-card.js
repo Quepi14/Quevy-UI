@@ -2,12 +2,11 @@
  * ----------------------------------------------------------
  * QUEVY UI — qv-card
  * ----------------------------------------------------------
- * Same interaction pattern as qv-button (Pola 1: host is the
- * interactive element). The click/keydown/keyup trio here is
- * structurally identical to qv-button's — if a third component
- * ends up needing the same "clickable host" behavior, that's
- * the signal to extract a shared internal controller. Two
- * occurrences isn't (rule of three); not extracted yet.
+ * Pola 1 (host is the interactive element when `interactive`
+ * or `href` is set). Guards against nested-interactive
+ * descendants (e.g. a qv-button in the footer slot, or a
+ * qv-menu in the actions slot) triggering the card's own
+ * click/keyboard handling.
  *
  * @packageDocumentation
  */
@@ -17,11 +16,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { html } from "lit";
-import { property, state, customElement } from "lit/decorators.js";
-import { classMap } from "lit/directives/class-map.js";
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin } from '@quevy/core';
-import { qvCardStyles } from "./qv-card.styles.js";
+import { html, nothing } from 'lit';
+import { property, state, customElement } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, } from '@quevy/core';
+import { qvCardStyles } from './qv-card.styles.js';
 const QvCardBase = FocusableMixin(QvElement);
 const INTERACTIVE_SELECTOR = 'a,button,input,select,textarea,summary,[tabindex],[role="button"],[role="link"]';
 let QvCard = class QvCard extends QvCardBase {
@@ -30,7 +29,7 @@ let QvCard = class QvCard extends QvCardBase {
         this.metadata = createComponentMetadata({
             name: 'QvCard',
             tagName: createTagName('card'),
-            version: '0.2.4',
+            version: '0.1.0',
         });
         this.variant = 'elevated';
         this.interactive = false;
@@ -40,47 +39,33 @@ let QvCard = class QvCard extends QvCardBase {
         this.hasFooter = false;
         this.hasActions = false;
         this.handleClick = (event) => {
-            if (!this.isInteractive || this.originatesFromInteractiveDescendant(event)) {
+            if (!this.isInteractive || this.originatesFromInteractiveDescendant(event))
                 return;
-            }
             this.activate();
         };
         this.handleKeyDown = (event) => {
-            if (!this.isInteractive || this.originatesFromInteractiveDescendant(event)) {
+            if (!this.isInteractive || this.originatesFromInteractiveDescendant(event))
                 return;
-            }
-            if (event.key === ' ') {
+            if (event.key === ' ')
                 event.preventDefault();
-            }
             if (event.key === 'Enter') {
                 event.preventDefault();
                 this.click();
             }
         };
         this.handleKeyUp = (event) => {
-            if (!this.isInteractive || this.originatesFromInteractiveDescendant(event)) {
+            if (!this.isInteractive || this.originatesFromInteractiveDescendant(event))
                 return;
-            }
             if (event.key === ' ') {
                 event.preventDefault();
                 this.click();
             }
         };
-        this.handleMediaSlotChange = () => {
-            this.hasMedia = this.hasSlot('media');
-        };
-        this.handleTitleSlotChange = () => {
-            this.hasTitle = this.hasSlot('title');
-        };
-        this.handleDescriptionSlotChange = () => {
-            this.hasDescription = this.hasSlot('description');
-        };
-        this.handleFooterSlotChange = () => {
-            this.hasFooter = this.hasSlot('footer');
-        };
-        this.handleActionsSlotChange = () => {
-            this.hasActions = this.hasSlot('actions');
-        };
+        this.handleMediaSlotChange = () => { this.hasMedia = this.hasSlot('media'); };
+        this.handleTitleSlotChange = () => { this.hasTitle = this.hasSlot('title'); };
+        this.handleDescriptionSlotChange = () => { this.hasDescription = this.hasSlot('description'); };
+        this.handleFooterSlotChange = () => { this.hasFooter = this.hasSlot('footer'); };
+        this.handleActionsSlotChange = () => { this.hasActions = this.hasSlot('actions'); };
     }
     static { this.styles = qvCardStyles; }
     get isInteractive() {
@@ -103,46 +88,29 @@ let QvCard = class QvCard extends QvCardBase {
     syncAccessibility() {
         if (!this.isInteractive) {
             this.removeAttribute('role');
-            this.removeAttribute('tabIndex');
+            this.removeAttribute('tabindex');
             return;
         }
         this.setAttribute('role', this.href ? 'link' : 'button');
         this.tabIndex = 0;
     }
-    /**
-     * True if the event originated form a genuinely interactive
-     * descendant (e.g. a <qv-button> in the footer slot), so  the
-     * card can avoid firing its own action on top of whatever
-     * that inner element already did.
-     */
     originatesFromInteractiveDescendant(event) {
         for (const node of event.composedPath()) {
-            if (node === this) {
+            if (node === this)
                 return false;
-            }
-            if (node instanceof Element && node.matches(INTERACTIVE_SELECTOR)) {
+            if (node instanceof Element && node.matches(INTERACTIVE_SELECTOR))
                 return true;
-            }
         }
         return false;
     }
     activate() {
-        if (this.href) {
+        if (this.href)
             this.navigate();
-        }
-        // Button-like mode (no href): no default action beyond
-        // the native 'click' event, already bubbled to whatever
-        // listener the consumer attached to <qv-card>.
     }
     navigate() {
-        if (!this.href) {
+        if (!this.href)
             return;
-        }
         if (this.target && this.target !== '_self') {
-            // noopener, noreferrer: prevents the opened page from
-            // getting a `window.opener` reference back to this one
-            // (reverse tabnabbing) - same as rel="noopener noreferrer"
-            // on a real  <a target="_blank">.
             window.open(this.href, this.target, 'noopener,noreferrer');
             return;
         }
@@ -159,23 +127,14 @@ let QvCard = class QvCard extends QvCardBase {
             </div>
 
             <div
-                class=${classMap({
-            header: true,
-            empty: !this.hasTitle && !this.hasDescription,
-        })}
+                class=${classMap({ header: true, empty: !this.hasTitle && !this.hasDescription })}
                 part="header"
             >
                 <div class=${classMap({ title: true, empty: !this.hasTitle })} part="title">
                     <slot name="title" @slotchange=${this.handleTitleSlotChange}></slot>
                 </div>
-                <div
-                    class=${classMap({ description: true, empty: !this.hasDescription })}
-                    part="description"
-                >
-                    <slot
-                        name="description"
-                        @slotchange=${this.handleDescriptionSlotChange}
-                    ></slot>
+                <div class=${classMap({ description: true, empty: !this.hasDescription })} part="description">
+                    <slot name="description" @slotchange=${this.handleDescriptionSlotChange}></slot>
                 </div>
             </div>
 

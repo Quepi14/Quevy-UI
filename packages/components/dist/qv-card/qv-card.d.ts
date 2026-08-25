@@ -2,18 +2,17 @@
  * ----------------------------------------------------------
  * QUEVY UI — qv-card
  * ----------------------------------------------------------
- * Same interaction pattern as qv-button (Pola 1: host is the
- * interactive element). The click/keydown/keyup trio here is
- * structurally identical to qv-button's — if a third component
- * ends up needing the same "clickable host" behavior, that's
- * the signal to extract a shared internal controller. Two
- * occurrences isn't (rule of three); not extracted yet.
+ * Pola 1 (host is the interactive element when `interactive`
+ * or `href` is set). Guards against nested-interactive
+ * descendants (e.g. a qv-button in the footer slot, or a
+ * qv-menu in the actions slot) triggering the card's own
+ * click/keyboard handling.
  *
  * @packageDocumentation
  */
-import { type PropertyValues } from "lit";
+import { type PropertyValues } from 'lit';
 import { QvElement } from '@quevy/core';
-import type { QvCardVariant, QvCardTarget } from "./qv-card.types.js";
+import type { QvCardVariant, QvCardTarget } from './qv-card.types.js';
 declare const QvCardBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/focusable.js").FocusableInterface>;
 export declare class QvCard extends QvCardBase {
     static styles: CSSStyleSheet;
@@ -32,12 +31,6 @@ export declare class QvCard extends QvCardBase {
     onDisconnected(): void;
     protected updated(changedProperties: PropertyValues): void;
     private syncAccessibility;
-    /**
-     * True if the event originated form a genuinely interactive
-     * descendant (e.g. a <qv-button> in the footer slot), so  the
-     * card can avoid firing its own action on top of whatever
-     * that inner element already did.
-     */
     private originatesFromInteractiveDescendant;
     private readonly handleClick;
     private readonly handleKeyDown;
@@ -49,7 +42,7 @@ export declare class QvCard extends QvCardBase {
     private readonly handleDescriptionSlotChange;
     private readonly handleFooterSlotChange;
     private readonly handleActionsSlotChange;
-    protected render(): unknown;
+    protected render(): import("lit").TemplateResult<1>;
 }
 export {};
 //# sourceMappingURL=qv-card.d.ts.map

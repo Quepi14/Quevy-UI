@@ -27,7 +27,7 @@ let QvButton = class QvButton extends QvButtonBase {
         this.metadata = createComponentMetadata({
             name: 'QvButton',
             tagName: createTagName('button'),
-            version: '0.2.0',
+            version: '0.3.0',
         });
         this.variant = 'primary';
         this.size = 'md';
@@ -158,6 +158,9 @@ __decorate([
 __decorate([
     property()
 ], QvButton.prototype, "type", void 0);
+__decorate([
+    property({ reflect: true })
+], QvButton.prototype, "ratio", void 0);
 __decorate([
     property({ type: Boolean, reflect: true, attribute: 'icon-only' })
 ], QvButton.prototype, "iconOnly", void 0);

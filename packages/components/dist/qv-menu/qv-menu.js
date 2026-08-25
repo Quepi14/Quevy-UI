@@ -42,7 +42,7 @@ let QvMenu = class QvMenu extends QvElement {
             version: '0.1.2',
         });
         this.items = [];
-        this.placement = 'bottom-end';
+        this.placement = 'bottom-start';
         this.label = 'Open menu';
         this.hasCustomTrigger = false;
         this.overlay = new OverlayController(this, {

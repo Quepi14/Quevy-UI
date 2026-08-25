@@ -45,7 +45,7 @@ export class QvButton extends QvButtonBase {
     public readonly metadata = createComponentMetadata({
         name: 'QvButton',
         tagName: createTagName('button'),
-        version:  '0.2.0',
+        version:  '0.3.0',
     });
 
     @property({ reflect: true })
@@ -59,6 +59,15 @@ export class QvButton extends QvButtonBase {
 
     @property()
     public type: QvButtonType = 'button';
+
+    /**
+     * Only meaningful inside a qv-button-group. Format
+     * "numerator:denominator", e.g "1:3" - this button claims
+     * 1 part of a 3-part whole. Sibling buttons without an
+     * explicit ratio automatically split the remainder
+     */
+    @property({ reflect: true })
+    public ratio?: string;
 
     @property({ type: Boolean, reflect: true, attribute: 'icon-only' })
     public iconOnly = false;

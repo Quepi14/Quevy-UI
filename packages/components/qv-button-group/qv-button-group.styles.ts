@@ -13,7 +13,9 @@ ${host()} {
 }
 
 ::slotted(qv-button) {
-    flex: 1 1 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
     min-width: 0;
     align-self: stretch;
     border-radius: 0 !important;

@@ -7,7 +7,7 @@ function acquireScrollLock() {
         previousHtmlOverflow = document.documentElement.style.overflow;
         document.documentElement.style.overflow = 'hidden';
     }
-    scrollLockCount += 1;
+    scrollLockCount = 1;
 }
 function releaseScrollLock() {
     scrollLockCount = Math.max(0, scrollLockCount - 1);
@@ -45,6 +45,8 @@ export class OverlayController {
         this.repositionScheduled = false;
         this.reposition = () => {
             if (!this._open || !this.trigger || !this.panel)
+                return;
+            if (this.host.tagName !== 'QV-MENU')
                 return;
             if (this.repositionScheduled)
                 return;
@@ -165,14 +167,6 @@ export class OverlayController {
         const triggerRect = this.trigger.getBoundingClientRect();
         const panelRect = this.panel.getBoundingClientRect();
         const { top, left } = computeOverlayPosition(triggerRect, { width: panelRect.width, height: panelRect.height }, { width: window.innerWidth, height: window.innerHeight }, this.options.placement);
-        console.log('[overlay-debug]', {
-            hostTag: this.host.tagName,
-            hostId: this.host.id || '(no id)',
-            triggerRect,
-            panelRect,
-            computed: { top, left },
-            placement: this.options.placement,
-        });
         this.panel.style.position = 'fixed';
         this.panel.style.top = `${top}px`;
         this.panel.style.left = `${left}px`;

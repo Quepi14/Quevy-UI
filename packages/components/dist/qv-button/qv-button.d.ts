@@ -21,6 +21,13 @@ export declare class QvButton extends QvButtonBase {
     size: QvButtonSize;
     loading: boolean;
     type: QvButtonType;
+    /**
+     * Only meaningful inside a qv-button-group. Format
+     * "numerator:denominator", e.g "1:3" - this button claims
+     * 1 part of a 3-part whole. Sibling buttons without an
+     * explicit ratio automatically split the remainder
+     */
+    ratio?: string;
     iconOnly: boolean;
     /**
      * Whether the button currently rejects all interaction.
