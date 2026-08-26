@@ -59,7 +59,7 @@ let QvCheckbox = class QvCheckbox extends QvCheckboxBase {
         return this.controllableChecked.value(this.checked);
     }
     onConnected() {
-        this.addEventListener('clicked', this.handleClick);
+        this.addEventListener('click', this.handleClick);
         this.addEventListener('keydown', this.handleKeyDown);
         this.addEventListener('keyup', this.handleKeyUp);
     }
@@ -88,7 +88,7 @@ let QvCheckbox = class QvCheckbox extends QvCheckboxBase {
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
                     ${this.indeterminate
             ? html `<path d="M4 8h8" stroke-linecap="round" />`
-            : html `<path d="M3 813.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/>`}
+            : html `<path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/>`}
                 </svg>
             </span>
             <slot></slot>

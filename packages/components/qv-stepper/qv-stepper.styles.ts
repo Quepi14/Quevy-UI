@@ -40,6 +40,10 @@ ${hostAttribute('variant="outline"')} ${hostAttribute('shape="circle"')} button 
     border-radius: var(--qv-radius-full, 9999px);
 }
 
+${hostAttribute('variant="outline"')} ${hostAttribute('shape="rectangle"')} button {
+    border-radius: var(--qv-radius-md, 8px);
+}
+
 button:hover:not(:disabled) {
     background-color: var(--qv-color-background-muted, #f5f5f5);
 }
@@ -57,13 +61,14 @@ button:focus-visible {
 ${hostAttribute('size="lg"')} {
     height: var(--qv-sizing-xl, 56px);
 }
-${hostAttribute('size="lg"')} {
+${hostAttribute('size="lg"')} button {
     width: var(--qv-sizing-xl, 56px);
 }
-${hostAttribute('size="lg"')} {
+${hostAttribute('size="lg"')} input {
     width: 64px;
     font-size: var(--qv-font-size-xl, 20px);
 }
+
 input {
     all: unset;
     width: 48px;
