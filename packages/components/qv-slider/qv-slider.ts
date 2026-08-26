@@ -17,7 +17,7 @@ import { QvElement, createComponentMetadata, createTagName, queryDecorator as qu
 import { createControllableValue } from "@quevy/state";
 
 import { qvSliderStyles } from "./qv-slider.styles.js";
-import type { QvSliderChangeEventDetail } from "./qv-slider.types.js";
+import type { QvSliderChangeEventDetail, QvSliderLabelPosition } from "./qv-slider.types.js";
 
 const QvSliderBase = DisabledMixin(QvElement);
 
@@ -28,13 +28,16 @@ export class QvSlider extends QvSliderBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvSlider',
         tagName: createTagName('slider'),
-        version: '0.1.0',
+        version: '0.2.0',
     });
 
     @property({ type: Number }) public min = 0;
     @property({ type: Number }) public max = 100;
     @property({ type: Number }) public step = 1;
     @property({ type: Boolean, reflect: true }) public range = false;
+
+    @property({ reflect: true, attribute: 'label-position' })
+    public labelPosition: QvSliderLabelPosition = 'none';
 
     /** Single mode. Leave unset for uncontrolled usage. */
     @property({ type: Number }) public value?: number;
@@ -67,7 +70,7 @@ export class QvSlider extends QvSliderBase {
     }
 
     private percentOf(v: number): number {
-        return this.max === this.min ? 0 : ((v - this.min) / (this.max = this.min)) * 100;
+        return this.max === this.min ? 0 : ((v - this.min) / (this.max - this.min)) * 100;
     }
 
     private valueFromClientX(clientX: number): number {
@@ -104,7 +107,7 @@ export class QvSlider extends QvSliderBase {
         }
 
         this.applyDrag(clicked);
-        (event.target as Element).setPointerCapture(event.pointerId);
+        this.trackEl?.setPointerCapture(event.pointerId);
         this.trackEl?.addEventListener('pointermove', this.handlePointerMove);
         this.trackEl?.addEventListener('pointerup', this.handlePointerUp);
     };
@@ -155,11 +158,22 @@ export class QvSlider extends QvSliderBase {
         }
     }
 
+    private renderThumbLabel(value: number, thumbId: string) {
+        if (this.labelPosition !== 'floaing') return nothing;
+        return html`<span class="label-floating" part="label-floating">${value}</span>`
+    }
+
     protected override render() {
+        const sideLabel = (value: number) => 
+            this.labelPosition === 'side'
+                ? html`<span class="label-slide" part="label-slide">${value}</span>`
+                : nothing;
+
         if (this.range) {
             const start = this.currentStart;
             const end = this.currentEnd;
             return html`
+                ${sideLabel(start)}
                 <div class="track" part="track" @pointerdown=${this.handleTrackPointerDown}>
                     <div class="fill" part="fill" style="left:${this.percentOf(start)}%; width:${this.percentOf(end) - this.percentOf(start)}%"></div>
                     <div
@@ -167,28 +181,31 @@ export class QvSlider extends QvSliderBase {
                         aria-valuemin=${this.min} aria-valuemax=${end} aria-valuenow=${start}
                         style="left:${this.percentOf(start)}%"
                         @keydown=${(e: KeyboardEvent) => this.handleThumbKeyDown(e, 'start')}
-                    ></div>
+                    >${this.renderThumbLabel(start, 'start')}</div>
                     <div
                         class="thumb" part="thumb-end" role="slider" tabindex=${this.disabled ? -1 : 0}
                         aria-valuemin=${start} aria-valuemax=${this.max} aria-valuenow=${end}
                         style="left:${this.percentOf(end)}%"
                         @keydown=${(e: KeyboardEvent) => this.handleThumbKeyDown(e, 'end')}
-                    ></div>
+                    >${this.renderThumbLabel(end, 'end')}</div>
                 </div>
+                ${sideLabel(end)}
             `;
         }
 
         const value = this.currentValue;
         return html `
-            <div class="track" part="track" @poiterdown=${this.handleTrackPointerDown}>
+            ${sideLabel(this.min)}
+            <div class="track" part="track" @pointerdown=${this.handleTrackPointerDown}>
                 <div class="fill" part="fill" style="left:0; width:${this.percentOf(value)}%"></div>
                 <div
                     class="thumb" part="thumb" role="slider" tabindex=${this.disabled ? -1 : 0}
                     aria-valuemin=${this.min} aria-valuemax=${this.max} aria-valuenow=${value}
                     style="left:${this.percentOf(value)}%"
                     @keydown=${(e: KeyboardEvent) => this.handleThumbKeyDown(e, 'single')}
-                ></div>
+                >${this.renderThumbLabel(value, 'single')}</div>
             </div>
+            ${sideLabel(value)}
         `;
     }
 }

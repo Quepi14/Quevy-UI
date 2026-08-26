@@ -3,3 +3,5 @@ export interface QvSliderChangeEventDetail {
     valueStart?: number;
     valueEnd?: number;
 }
+
+export type QvSliderLabelPosition = 'none' | 'floaing' | 'side';

@@ -524,12 +524,9 @@
       <div class="row-label">qv-slider — single vs range (checklist: drag mouse, klik di track, keyboard Arrow/Home/End)</div> <br>
       <div class="row" style="flex-direction:column; align-items:stretch; gap:20px;">
         <div>
-          <div style="font-size:12px; margin-bottom:6px;">Single</div>
-          <qv-slider id="single-slider" min="0" max="100" value="40" style="width:280px;"></qv-slider>
-        </div>
-        <div>
-          <div style="font-size:12px; margin-bottom:6px;">Range</div>
-          <qv-slider id="range-slider" range min="0" max="1000000" step="10000" value-start="200000" value-end="800000" style="width:280px;"></qv-slider>
+          <qv-slider min="0" max="100" value="40" label-position="floating"></qv-slider>
+          <qv-slider min="0" max="1000000" step="10000" value="500000" label-position="side"></qv-slider>
+          <qv-slider range min="0" max="100" value-start="20" value-end="80" label-position="floating"></qv-slider>
         </div>
       </div>
 
