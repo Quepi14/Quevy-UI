@@ -12,6 +12,7 @@ ${host()} {
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-background-muted, #e5e5e5);
     cursor: pointer;
+    touch-action: none;
 }
 
 .fill {

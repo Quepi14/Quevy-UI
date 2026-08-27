@@ -23,7 +23,7 @@ ${hostAttribute('shape="circle"')} button {
 }
 
 ${hostAttribute('shape="rectangle"')} button {
-    border-radius: var(--qv-radius-full, 9999px);
+    border-radius: var(--qv-radius-md, 8px);
 }
 
 button:hover:not(:disabled) {
@@ -83,7 +83,7 @@ ${hostAttribute('variant="outline"')} button {
     opacity: 0.6;
 }
 
-${hostAttribute('outline="button"')} button:hover:not(:disabled) {
+${hostAttribute('variant="outline"')} button:hover:not(:disabled) {
     opacity: 1;
     background-color: transparent;
 }
@@ -93,7 +93,7 @@ ${hostAttribute('variant="outline"')} button[aria-current="page"] {
     opacity: 1;
     border: 1.5px solid currentColor;
 }
-${hostAttribute('outline="button"')} .ellipsis {
+${hostAttribute('variant="outline"')} .ellipsis {
     color: inherit;
     opacity: 0.5;
 } 

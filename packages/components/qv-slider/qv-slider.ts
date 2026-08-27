@@ -7,11 +7,13 @@
  * mode) and drags that one — consistent with native OS slider
  * behavior of "click near a thumb moves that thumb".
  *
+ * @event {CustomEvent<QvSliderChangeEventDetail>} change - Fired when the value (or range) commits.
+ *
  * @packageDocumentation
  */
 
-import { html, nothing, type PropertyValues } from "lit";
-import { property, customElement } from "lit/decorators.js";
+import { html, nothing } from "lit";
+import { property, customElement, state } from "lit/decorators.js";
 
 import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, prevent } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
@@ -28,7 +30,7 @@ export class QvSlider extends QvSliderBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvSlider',
         tagName: createTagName('slider'),
-        version: '0.2.0',
+        version: '0.2.1',
     });
 
     @property({ type: Number }) public min = 0;
@@ -41,19 +43,19 @@ export class QvSlider extends QvSliderBase {
 
     /** Single mode. Leave unset for uncontrolled usage. */
     @property({ type: Number }) public value?: number;
-    /** Range mode. */
-    @property({ type: Number}) public valueStart?: number;
-    @property({ type: Number}) public valueEnd?: number;
+    /** Range mode. Leave unset for uncontrolled usage. */
+    @property({ type: Number, attribute: 'value-start' }) public valueStart?: number;
+    @property({ type: Number, attribute: 'value-end' }) public valueEnd?: number;
 
     private readonly controllableValue = createControllableValue<number>(0);
     private readonly controllableStart = createControllableValue<number>(0);
     private readonly controllableEnd = createControllableValue<number>(100);
 
     @query('.track', false) private trackEl!: HTMLElement | null;
-    private activeThumb: 'single' | 'start' | 'end' | null = null;
+    @state() private activeThumb: 'single' | 'start' | 'end' | null = null;
 
     private get currentValue(): number {
-        return this.clamp(this.controllableValue.value(this.value))
+        return this.clamp(this.controllableValue.value(this.value));
     }
 
     private get currentStart(): number {
@@ -65,6 +67,7 @@ export class QvSlider extends QvSliderBase {
     }
 
     private clamp(v: number): number {
+        if (v == null || Number.isNaN(v)) return this.min;
         const stepped = Math.round((v - this.min) / this.step) * this.step + this.min;
         return Math.min(this.max, Math.max(this.min, stepped));
     }
@@ -76,12 +79,12 @@ export class QvSlider extends QvSliderBase {
     private valueFromClientX(clientX: number): number {
         const rect = this.trackEl!.getBoundingClientRect();
         const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-        return this.clamp(this.min + ratio * (this.max - this.min))
+        return this.clamp(this.min + ratio * (this.max - this.min));
     }
 
     private commitSingle(next: number): void {
         const resolved = this.controllableValue.request(this.value, this.clamp(next));
-        this.emit<QvSliderChangeEventDetail>('change', { value: resolved});
+        this.emit<QvSliderChangeEventDetail>('change', { value: resolved });
         this.invalidate();
     }
 
@@ -90,17 +93,19 @@ export class QvSlider extends QvSliderBase {
         const e = Math.max(start, end);
         const resolvedStart = this.controllableStart.request(this.valueStart, s);
         const resolvedEnd = this.controllableEnd.request(this.valueEnd, e);
-        this.emit<QvSliderChangeEventDetail>('change', { valueStart: resolvedStart, valueEnd: resolvedEnd});
+        this.emit<QvSliderChangeEventDetail>('change', { valueStart: resolvedStart, valueEnd: resolvedEnd });
         this.invalidate();
     }
 
     private readonly handleTrackPointerDown = (event: PointerEvent): void => {
         if (this.disabled) return;
-        
+
+        prevent(event);
+
         const clicked = this.valueFromClientX(event.clientX);
 
         if (this.range) {
-            this.activeThumb = 
+            this.activeThumb =
                 Math.abs(clicked - this.currentStart) <= Math.abs(clicked - this.currentEnd) ? 'start' : 'end';
         } else {
             this.activeThumb = 'single';
@@ -113,15 +118,16 @@ export class QvSlider extends QvSliderBase {
     };
 
     private readonly handlePointerMove = (event: PointerEvent): void => {
-        if(!this.activeThumb) return;
+        if (!this.activeThumb) return;
         this.applyDrag(this.valueFromClientX(event.clientX));
-    }
+    };
 
     private readonly handlePointerUp = (event: PointerEvent): void => {
         this.activeThumb = null;
+        this.trackEl?.releasePointerCapture(event.pointerId);
         this.trackEl?.removeEventListener('pointermove', this.handlePointerMove);
         this.trackEl?.removeEventListener('pointerup', this.handlePointerUp);
-    }
+    };
 
     private applyDrag(next: number): void {
         if (this.activeThumb === 'single') {
@@ -136,10 +142,10 @@ export class QvSlider extends QvSliderBase {
     private handleThumbKeyDown(event: KeyboardEvent, thumb: 'single' | 'start' | 'end'): void {
         if (this.disabled) return;
 
-        const delta = 
+        const delta =
             event.key === 'ArrowRight' || event.key === 'ArrowUp' ? this.step :
             event.key === 'ArrowLeft' || event.key === 'ArrowDown' ? -this.step :
-            event.key === 'Home' ? - Infinity :
+            event.key === 'Home' ? -Infinity :
             event.key === 'End' ? Infinity :
             null;
 
@@ -154,17 +160,17 @@ export class QvSlider extends QvSliderBase {
             this.commitRange(next, this.currentEnd);
         } else {
             const next = delta === Infinity ? this.max : delta === -Infinity ? this.currentStart : this.currentEnd + delta;
-            this.commitRange(this.currentStart, next)
+            this.commitRange(this.currentStart, next);
         }
     }
 
-    private renderThumbLabel(value: number, thumbId: string) {
+    private renderThumbLabel(value: number) {
         if (this.labelPosition !== 'floating') return nothing;
-        return html`<span class="label-floating" part="label-floating">${value}</span>`
+        return html`<span class="label-floating" part="label-floating">${value}</span>`;
     }
 
     protected override render() {
-        const sideLabel = (value: number) => 
+        const sideLabel = (value: number) =>
             this.labelPosition === 'side'
                 ? html`<span class="label-side" part="label-side">${value}</span>`
                 : nothing;
@@ -181,20 +187,20 @@ export class QvSlider extends QvSliderBase {
                         aria-valuemin=${this.min} aria-valuemax=${end} aria-valuenow=${start}
                         style="left:${this.percentOf(start)}%"
                         @keydown=${(e: KeyboardEvent) => this.handleThumbKeyDown(e, 'start')}
-                    >${this.renderThumbLabel(start, 'start')}</div>
+                    >${this.renderThumbLabel(start)}</div>
                     <div
                         class="thumb" part="thumb-end" role="slider" tabindex=${this.disabled ? -1 : 0}
                         aria-valuemin=${start} aria-valuemax=${this.max} aria-valuenow=${end}
                         style="left:${this.percentOf(end)}%"
                         @keydown=${(e: KeyboardEvent) => this.handleThumbKeyDown(e, 'end')}
-                    >${this.renderThumbLabel(end, 'end')}</div>
+                    >${this.renderThumbLabel(end)}</div>
                 </div>
                 ${sideLabel(end)}
             `;
         }
 
         const value = this.currentValue;
-        return html `
+        return html`
             ${sideLabel(this.min)}
             <div class="track" part="track" @pointerdown=${this.handleTrackPointerDown}>
                 <div class="fill" part="fill" style="left:0; width:${this.percentOf(value)}%"></div>
@@ -203,7 +209,7 @@ export class QvSlider extends QvSliderBase {
                     aria-valuemin=${this.min} aria-valuemax=${this.max} aria-valuenow=${value}
                     style="left:${this.percentOf(value)}%"
                     @keydown=${(e: KeyboardEvent) => this.handleThumbKeyDown(e, 'single')}
-                >${this.renderThumbLabel(value, 'single')}</div>
+                >${this.renderThumbLabel(value)}</div>
             </div>
             ${sideLabel(value)}
         `;

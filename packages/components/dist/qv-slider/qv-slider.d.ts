@@ -7,9 +7,12 @@
  * mode) and drags that one — consistent with native OS slider
  * behavior of "click near a thumb moves that thumb".
  *
+ * @event {CustomEvent<QvSliderChangeEventDetail>} change - Fired when the value (or range) commits.
+ *
  * @packageDocumentation
  */
 import { QvElement } from "@quevy/core";
+import type { QvSliderLabelPosition } from "./qv-slider.types.js";
 declare const QvSliderBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface>;
 export declare class QvSlider extends QvSliderBase {
     static styles: CSSStyleSheet;
@@ -18,6 +21,7 @@ export declare class QvSlider extends QvSliderBase {
     max: number;
     step: number;
     range: boolean;
+    labelPosition: QvSliderLabelPosition;
     /** Single mode. Leave unset for uncontrolled usage. */
     value?: number;
     /** Range mode. */
@@ -41,6 +45,7 @@ export declare class QvSlider extends QvSliderBase {
     private readonly handlePointerUp;
     private applyDrag;
     private handleThumbKeyDown;
+    private renderThumbLabel;
     protected render(): import("lit").TemplateResult<1>;
 }
 export {};

@@ -7,6 +7,8 @@
  * mode) and drags that one — consistent with native OS slider
  * behavior of "click near a thumb moves that thumb".
  *
+ * @event {CustomEvent<QvSliderChangeEventDetail>} change - Fired when the value (or range) commits.
+ *
  * @packageDocumentation
  */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -27,12 +29,13 @@ let QvSlider = class QvSlider extends QvSliderBase {
         this.metadata = createComponentMetadata({
             name: 'QvSlider',
             tagName: createTagName('slider'),
-            version: '0.1.0',
+            version: '0.2.0',
         });
         this.min = 0;
         this.max = 100;
         this.step = 1;
         this.range = false;
+        this.labelPosition = 'none';
         this.controllableValue = createControllableValue(0);
         this.controllableStart = createControllableValue(0);
         this.controllableEnd = createControllableValue(100);
@@ -40,6 +43,7 @@ let QvSlider = class QvSlider extends QvSliderBase {
         this.handleTrackPointerDown = (event) => {
             if (this.disabled)
                 return;
+            prevent(event);
             const clicked = this.valueFromClientX(event.clientX);
             if (this.range) {
                 this.activeThumb =
@@ -49,7 +53,7 @@ let QvSlider = class QvSlider extends QvSliderBase {
                 this.activeThumb = 'single';
             }
             this.applyDrag(clicked);
-            event.target.setPointerCapture(event.pointerId);
+            this.trackEl?.setPointerCapture(event.pointerId);
             this.trackEl?.addEventListener('pointermove', this.handlePointerMove);
             this.trackEl?.addEventListener('pointerup', this.handlePointerUp);
         };
@@ -79,7 +83,7 @@ let QvSlider = class QvSlider extends QvSliderBase {
         return Math.min(this.max, Math.max(this.min, stepped));
     }
     percentOf(v) {
-        return this.max === this.min ? 0 : ((v - this.min) / (this.max = this.min)) * 100;
+        return this.max === this.min ? 0 : ((v - this.min) / (this.max - this.min)) * 100;
     }
     valueFromClientX(clientX) {
         const rect = this.trackEl.getBoundingClientRect();
@@ -134,11 +138,20 @@ let QvSlider = class QvSlider extends QvSliderBase {
             this.commitRange(this.currentStart, next);
         }
     }
+    renderThumbLabel(value, thumbId) {
+        if (this.labelPosition !== 'floating')
+            return nothing;
+        return html `<span class="label-floating" part="label-floating">${value}</span>`;
+    }
     render() {
+        const sideLabel = (value) => this.labelPosition === 'side'
+            ? html `<span class="label-side" part="label-side">${value}</span>`
+            : nothing;
         if (this.range) {
             const start = this.currentStart;
             const end = this.currentEnd;
             return html `
+                ${sideLabel(start)}
                 <div class="track" part="track" @pointerdown=${this.handleTrackPointerDown}>
                     <div class="fill" part="fill" style="left:${this.percentOf(start)}%; width:${this.percentOf(end) - this.percentOf(start)}%"></div>
                     <div
@@ -146,27 +159,30 @@ let QvSlider = class QvSlider extends QvSliderBase {
                         aria-valuemin=${this.min} aria-valuemax=${end} aria-valuenow=${start}
                         style="left:${this.percentOf(start)}%"
                         @keydown=${(e) => this.handleThumbKeyDown(e, 'start')}
-                    ></div>
+                    >${this.renderThumbLabel(start, 'start')}</div>
                     <div
                         class="thumb" part="thumb-end" role="slider" tabindex=${this.disabled ? -1 : 0}
                         aria-valuemin=${start} aria-valuemax=${this.max} aria-valuenow=${end}
                         style="left:${this.percentOf(end)}%"
                         @keydown=${(e) => this.handleThumbKeyDown(e, 'end')}
-                    ></div>
+                    >${this.renderThumbLabel(end, 'end')}</div>
                 </div>
+                ${sideLabel(end)}
             `;
         }
         const value = this.currentValue;
         return html `
-            <div class="track" part="track" @poiterdown=${this.handleTrackPointerDown}>
+            ${sideLabel(this.min)}
+            <div class="track" part="track" @pointerdown=${this.handleTrackPointerDown}>
                 <div class="fill" part="fill" style="left:0; width:${this.percentOf(value)}%"></div>
                 <div
                     class="thumb" part="thumb" role="slider" tabindex=${this.disabled ? -1 : 0}
                     aria-valuemin=${this.min} aria-valuemax=${this.max} aria-valuenow=${value}
                     style="left:${this.percentOf(value)}%"
                     @keydown=${(e) => this.handleThumbKeyDown(e, 'single')}
-                ></div>
+                >${this.renderThumbLabel(value, 'single')}</div>
             </div>
+            ${sideLabel(value)}
         `;
     }
 };
@@ -182,6 +198,9 @@ __decorate([
 __decorate([
     property({ type: Boolean, reflect: true })
 ], QvSlider.prototype, "range", void 0);
+__decorate([
+    property({ reflect: true, attribute: 'label-position' })
+], QvSlider.prototype, "labelPosition", void 0);
 __decorate([
     property({ type: Number })
 ], QvSlider.prototype, "value", void 0);

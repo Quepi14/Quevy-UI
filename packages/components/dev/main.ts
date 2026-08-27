@@ -211,6 +211,9 @@ document.getElementById('payment-method')?.addEventListener('change', (e) => {
 document.getElementById('single-slider')?.addEventListener('change', (e) => {
     console.log('[slider:single]', (e as CustomEvent).detail);
 });
+document.getElementById('big-step-slider')?.addEventListener('change', (e) => {
+    console.log('[slider:big-step]', (e as CustomEvent).detail);
+});
 document.getElementById('range-slider')?.addEventListener('change', (e) => {
     console.log('[slider:range]', (e as CustomEvent).detail);
 });
