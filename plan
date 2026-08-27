@@ -3,12 +3,10 @@ fix all bugs first
 3. pastikan card ini ketika di isi beberapa foto atau text deskripsi yg panjang ukuran nya selalu sama dan tidak beda satu sama lain
 4. qv-banner sebaiknya untuk testing atau demo diberikan button untuk testing 
 5. qv-banner warn masih terpotong, dan memungkinkan untuk qv-banner mungkin ditambahkan button untuk mengecek hasil inputan (kondisional) 
-6. qv-stepper shape circle masih bermasalah (form associated)
 8. qv-dropdown perlu dipoles kembali
 10. qv-toggle, qv-radio masih biasa bug dan tampilan masih biasa saja
 11. qv-input bagian floating label atau placeholder nya kurang menengah diantara
 12. qv-textarea masih terlihat seperti komponen biasa saja 
-13. qv-slider masih bug (tambahkan persentase ketika sliding atau disamping slider)
 14. qv-file-input masih terlihat biasa saja
 15. qv-list masih bug
 16. qv-collapsible / qv-accordian toggle untuk menutup masih bug
@@ -27,3 +25,4 @@ Rebranding to be better UI
 1. One signature accent color (not a framework default)
 2. A radius personality (sharp? round? pick a side)
 3. A motion signature (your own duration/easing pair)
+4. Change font size into golden ratio nominal

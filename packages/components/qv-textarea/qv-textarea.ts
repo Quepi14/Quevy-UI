@@ -13,7 +13,7 @@
 import { html, nothing, type PropertyValues } from "lit";
 import { property, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, queryDecorator as query } from "@quevy/core";
 
 import { qvTextareaStyles } from "./qv-textarea.styles.js";
 import type { QvTextareaChangeEventDetail } from "./qv-textarea.types.js";
@@ -40,14 +40,26 @@ export class QvTextarea extends QvTextAreaBase {
     @property({ type: Number }) public rows = 4;
     @property({ reflect: true }) public resize: 'vertical' | 'none' = 'vertical';
     
+    @property({ type: Boolean, reflect: true, attribute: 'auto-resize' })
+    public autoResize = false;
+    
+    @query('textarea', false) private textareaEl!: HTMLTextAreaElement | null;
+    
+    private resizeToFit(): void {
+        if (!this.autoResize || !this.textareaEl) return;
+        this.textareaEl.style.height = 'auto';
+        this.textareaEl.style.height = `${this.textareaEl.scrollHeight}px`;
+    }
     protected override updated(changeProperties: PropertyValues): void {
         super.updated(changeProperties);
         this.internals?.setFormValue(this.value);
+        this.resizeToFit();
     }
 
     private readonly handleInput = (event: Event): void => {
         this.value = (event.target as HTMLTextAreaElement).value;
         this.emit<QvTextareaChangeEventDetail>('input', { value: this.value });
+        this.resizeToFit();
     };
 
     private readonly handleChange = (): void => {
@@ -58,11 +70,12 @@ export class QvTextarea extends QvTextAreaBase {
         return this.maxlength ? `${this.value.length}/${this.maxlength}` : null;
     }
 
+
     protected override render() {
         const hasFooter = Boolean(this.helperText || this.counterText);
 
         return html`
-            <label class=${this.label ? 'label' : 'label empty'}>${this.label ?? ''}></label>
+            <label class=${this.label ? 'label' : 'label empty'}>${this.label ?? ''}</label>
 
             <textarea
                 .value=${this.value}
