@@ -159,14 +159,14 @@ export class QvSlider extends QvSliderBase {
     }
 
     private renderThumbLabel(value: number, thumbId: string) {
-        if (this.labelPosition !== 'floaing') return nothing;
+        if (this.labelPosition !== 'floating') return nothing;
         return html`<span class="label-floating" part="label-floating">${value}</span>`
     }
 
     protected override render() {
         const sideLabel = (value: number) => 
             this.labelPosition === 'side'
-                ? html`<span class="label-slide" part="label-slide">${value}</span>`
+                ? html`<span class="label-side" part="label-side">${value}</span>`
                 : nothing;
 
         if (this.range) {

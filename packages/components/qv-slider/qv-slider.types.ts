@@ -4,4 +4,4 @@ export interface QvSliderChangeEventDetail {
     valueEnd?: number;
 }
 
-export type QvSliderLabelPosition = 'none' | 'floaing' | 'side';
+export type QvSliderLabelPosition = 'none' | 'floating' | 'side';
