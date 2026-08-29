@@ -140,12 +140,14 @@ public constructor(
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     this.applyPosition();
+
+                    if(this.options.trapFocus) {
+                        getFocusableElement(this.panel ?? this.host)[0]?.focus();
+                    }
+
                 });
             });
 
-            if(this.options.trapFocus) {
-                getFocusableElement(this.panel ?? this.host)[0]?.focus();
-            }
         });
 
         this.focusableCache = null;
