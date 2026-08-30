@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { html, nothing } from "lit";
-import { property, customElement } from "lit/decorators.js";
+import { property, customElement, state } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, prevent } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 import { qvSliderStyles } from "./qv-slider.styles.js";
@@ -29,7 +29,7 @@ let QvSlider = class QvSlider extends QvSliderBase {
         this.metadata = createComponentMetadata({
             name: 'QvSlider',
             tagName: createTagName('slider'),
-            version: '0.2.0',
+            version: '0.2.2',
         });
         this.min = 0;
         this.max = 100;
@@ -64,6 +64,7 @@ let QvSlider = class QvSlider extends QvSliderBase {
         };
         this.handlePointerUp = (event) => {
             this.activeThumb = null;
+            this.trackEl?.releasePointerCapture(event.pointerId);
             this.trackEl?.removeEventListener('pointermove', this.handlePointerMove);
             this.trackEl?.removeEventListener('pointerup', this.handlePointerUp);
         };
@@ -79,6 +80,8 @@ let QvSlider = class QvSlider extends QvSliderBase {
         return this.clamp(this.controllableEnd.value(this.valueEnd));
     }
     clamp(v) {
+        if (v == null || Number.isNaN(v))
+            return this.min;
         const stepped = Math.round((v - this.min) / this.step) * this.step + this.min;
         return Math.min(this.max, Math.max(this.min, stepped));
     }
@@ -138,7 +141,7 @@ let QvSlider = class QvSlider extends QvSliderBase {
             this.commitRange(this.currentStart, next);
         }
     }
-    renderThumbLabel(value, thumbId) {
+    renderThumbLabel(value) {
         if (this.labelPosition !== 'floating')
             return nothing;
         return html `<span class="label-floating" part="label-floating">${value}</span>`;
@@ -159,13 +162,13 @@ let QvSlider = class QvSlider extends QvSliderBase {
                         aria-valuemin=${this.min} aria-valuemax=${end} aria-valuenow=${start}
                         style="left:${this.percentOf(start)}%"
                         @keydown=${(e) => this.handleThumbKeyDown(e, 'start')}
-                    >${this.renderThumbLabel(start, 'start')}</div>
+                    >${this.renderThumbLabel(start)}</div>
                     <div
                         class="thumb" part="thumb-end" role="slider" tabindex=${this.disabled ? -1 : 0}
                         aria-valuemin=${start} aria-valuemax=${this.max} aria-valuenow=${end}
                         style="left:${this.percentOf(end)}%"
                         @keydown=${(e) => this.handleThumbKeyDown(e, 'end')}
-                    >${this.renderThumbLabel(end, 'end')}</div>
+                    >${this.renderThumbLabel(end)}</div>
                 </div>
                 ${sideLabel(end)}
             `;
@@ -180,7 +183,7 @@ let QvSlider = class QvSlider extends QvSliderBase {
                     aria-valuemin=${this.min} aria-valuemax=${this.max} aria-valuenow=${value}
                     style="left:${this.percentOf(value)}%"
                     @keydown=${(e) => this.handleThumbKeyDown(e, 'single')}
-                >${this.renderThumbLabel(value, 'single')}</div>
+                >${this.renderThumbLabel(value)}</div>
             </div>
             ${sideLabel(value)}
         `;
@@ -205,14 +208,17 @@ __decorate([
     property({ type: Number })
 ], QvSlider.prototype, "value", void 0);
 __decorate([
-    property({ type: Number })
+    property({ type: Number, attribute: 'value-start' })
 ], QvSlider.prototype, "valueStart", void 0);
 __decorate([
-    property({ type: Number })
+    property({ type: Number, attribute: 'value-end' })
 ], QvSlider.prototype, "valueEnd", void 0);
 __decorate([
     query('.track', false)
 ], QvSlider.prototype, "trackEl", void 0);
+__decorate([
+    state()
+], QvSlider.prototype, "activeThumb", void 0);
 QvSlider = __decorate([
     customElement('qv-slider')
 ], QvSlider);

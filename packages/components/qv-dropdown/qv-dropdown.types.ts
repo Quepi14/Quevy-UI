@@ -1,3 +1,5 @@
+export type QvDropdownVariant = 'normal' | 'combobox' | 'search';
+
 export interface QvDropdownItem {
     value: string;
     label: string;

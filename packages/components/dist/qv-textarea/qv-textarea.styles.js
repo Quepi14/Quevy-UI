@@ -10,6 +10,11 @@ ${host()} {
 .label {
     font-weight: var(--qv-font-weight-medium, 500);
     color: var(--qv-color-foreground-default, #171717);
+    transition: color var(--qv-motion-duration-fast, 100ms) ease;
+}
+
+:host(:focus-within) .label {
+    color: var(--qv-color-brand-primary, #3157c7);
 }
 
 .label.empty { display: none; }
@@ -25,6 +30,16 @@ textarea {
     color: var(--qv-color-foreground-default, #171717);
     resize: vertical;
     min-height: 80px;
+    transition: border-color var(--qv-motion-duration-fast, 100ms) ease,
+                box-shadow var(--qv-motion-duration-fast, 100ms) ease;
+}
+
+textarea:placeholder {
+    color: var(--qv-color-foreground-muted, #3a3a3a);
+}
+
+textarea:hover:not(:disabled) {
+    border-color: var(--qv-color-foreground-muted, #3a3a3a);
 }
 
 textarea:focus-visible {
@@ -59,6 +74,19 @@ ${hostAttribute('invalid')} textarea:focus-visible {
 
 .helper.error { color: var(--qv-color-status-error, #dc2626); }
 
-.counter.exceed { color: var(--qv-color-status-error, #dc2626); }
+:host([auto-resize]) textarea {
+    resize: none;
+    overflow: hidden;
+}
+
+.counter {
+    padding: 2px 6px;
+    border-radius: var(--qv-radius-full, 9999px);
+    background-color: var(--qv-color-background-muted, #f5f5f5);
+}
+
+.counter.exceed {
+    background-color: rgba(220, 38, 38, 0.1);
+}
 `));
 //# sourceMappingURL=qv-textarea.styles.js.map

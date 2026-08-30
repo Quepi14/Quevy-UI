@@ -460,7 +460,12 @@
         keyboard: Tab ke trigger, Enter buka, Arrow Up/Down pindah opsi
       </div><br>
       <div class="row">
-        <qv-dropdown id="fruit-dropdown" placeholder="Pilih buah" searchable search-placeholder="Cari buah..."></qv-dropdown>
+        <!-- normal, default -->
+        <qv-dropdown id="fruit-dropdown" placeholder="Pilih buah"></qv-dropdown>
+        <!-- cuma filter dari list -->                          
+        <qv-dropdown id="fruit-search" variant="search" placeholder="Pilih buah"></qv-dropdown>       
+        <!-- boleh teks bebas -->
+        <qv-dropdown id="fruit-combobox" variant="combobox" placeholder="Ketik/pilih buah"></qv-dropdown>
       </div>
     </section>
 

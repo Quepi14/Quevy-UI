@@ -26,6 +26,7 @@ export interface OverlayControllerOptions {
     closeOnOutsideClick?: boolean | (() => boolean);
     closeOnEscape?: boolean;
     trapFocus?: boolean;
+    autoFocusPanel?: boolean | (() => boolean);
     restoreFocus?: boolean;
     lockScroll?: boolean;
     onOpenChange?: (open: boolean) => void;

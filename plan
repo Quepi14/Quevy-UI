@@ -1,7 +1,6 @@
 fix all bugs first
 4. qv-banner sebaiknya untuk testing atau demo diberikan button untuk testing 
 5. qv-banner warn masih terpotong, dan memungkinkan untuk qv-banner mungkin ditambahkan button untuk mengecek hasil inputan (kondisional) 
-8. qv-dropdown perlu dipoles kembali
 10. qv-toggle, qv-radio masih biasa bug dan tampilan masih biasa saja
 11. qv-input bagian floating label atau placeholder nya kurang menengah diantara 
 14. qv-file-input masih terlihat biasa saja

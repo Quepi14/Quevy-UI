@@ -24,7 +24,7 @@ export declare class QvSlider extends QvSliderBase {
     labelPosition: QvSliderLabelPosition;
     /** Single mode. Leave unset for uncontrolled usage. */
     value?: number;
-    /** Range mode. */
+    /** Range mode. Leave unset for uncontrolled usage. */
     valueStart?: number;
     valueEnd?: number;
     private readonly controllableValue;

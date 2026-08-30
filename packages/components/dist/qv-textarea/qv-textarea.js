@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  */
 import { html, nothing } from "lit";
 import { property, customElement } from "lit/decorators.js";
-import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, queryDecorator as query } from "@quevy/core";
 import { qvTextareaStyles } from "./qv-textarea.styles.js";
 const QvTextAreaBase = FormAssociatedMixin(DisabledMixin(QvElement));
 let QvTextarea = class QvTextarea extends QvTextAreaBase {
@@ -27,25 +27,34 @@ let QvTextarea = class QvTextarea extends QvTextAreaBase {
         this.metadata = createComponentMetadata({
             name: 'QvTextarea',
             tagName: createTagName('textarea'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.placeholder = '';
         this.value = '';
         this.invalid = false;
         this.rows = 4;
         this.resize = 'vertical';
+        this.autoResize = false;
         this.handleInput = (event) => {
             this.value = event.target.value;
             this.emit('input', { value: this.value });
+            this.resizeToFit();
         };
         this.handleChange = () => {
             this.emit('change', { value: this.value });
         };
     }
     static { this.styles = qvTextareaStyles; }
+    resizeToFit() {
+        if (!this.autoResize || !this.textareaEl)
+            return;
+        this.textareaEl.style.height = 'auto';
+        this.textareaEl.style.height = `${this.textareaEl.scrollHeight}px`;
+    }
     updated(changeProperties) {
         super.updated(changeProperties);
         this.internals?.setFormValue(this.value);
+        this.resizeToFit();
     }
     get counterText() {
         return this.maxlength ? `${this.value.length}/${this.maxlength}` : null;
@@ -53,7 +62,7 @@ let QvTextarea = class QvTextarea extends QvTextAreaBase {
     render() {
         const hasFooter = Boolean(this.helperText || this.counterText);
         return html `
-            <label class=${this.label ? 'label' : 'label empty'}>${this.label ?? ''}></label>
+            <label class=${this.label ? 'label' : 'label empty'}>${this.label ?? ''}</label>
 
             <textarea
                 .value=${this.value}
@@ -111,6 +120,12 @@ __decorate([
 __decorate([
     property({ reflect: true })
 ], QvTextarea.prototype, "resize", void 0);
+__decorate([
+    property({ type: Boolean, reflect: true, attribute: 'auto-resize' })
+], QvTextarea.prototype, "autoResize", void 0);
+__decorate([
+    query('textarea', false)
+], QvTextarea.prototype, "textareaEl", void 0);
 QvTextarea = __decorate([
     customElement('qv-textarea')
 ], QvTextarea);

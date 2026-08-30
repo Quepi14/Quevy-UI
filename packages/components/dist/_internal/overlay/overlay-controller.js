@@ -83,6 +83,7 @@ export class OverlayController {
             closeOnOutsideClick: options.closeOnOutsideClick ?? true,
             closeOnEscape: options.closeOnEscape ?? true,
             trapFocus: options.trapFocus ?? true,
+            autoFocusPanel: options.autoFocusPanel ?? true,
             restoreFocus: options.restoreFocus ?? true,
             lockScroll: options.lockScroll ?? false,
             onOpenChange: options.onOpenChange,
@@ -122,11 +123,14 @@ export class OverlayController {
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     this.applyPosition();
+                    const shouldAutoFocus = typeof this.options.autoFocusPanel === 'function'
+                        ? this.options.autoFocusPanel()
+                        : this.options.autoFocusPanel;
+                    if (shouldAutoFocus) {
+                        getFocusableElement(this.panel ?? this.host)[0]?.focus();
+                    }
                 });
             });
-            if (this.options.trapFocus) {
-                getFocusableElement(this.panel ?? this.host)[0]?.focus();
-            }
         });
         this.focusableCache = null;
     }

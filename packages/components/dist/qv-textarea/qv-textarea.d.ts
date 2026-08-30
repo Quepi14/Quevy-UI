@@ -25,6 +25,9 @@ export declare class QvTextarea extends QvTextAreaBase {
     maxlength?: number;
     rows: number;
     resize: 'vertical' | 'none';
+    autoResize: boolean;
+    private textareaEl;
+    private resizeToFit;
     protected updated(changeProperties: PropertyValues): void;
     private readonly handleInput;
     private readonly handleChange;

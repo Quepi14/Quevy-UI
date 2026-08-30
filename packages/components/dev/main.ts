@@ -144,16 +144,20 @@ document.getElementById('big-list')?.addEventListener('change', (e) => {
 });
 
 // ===== qv-dropdown =====
-const fruitDropdown = document.getElementById('fruit-dropdown') as any;
-if (fruitDropdown) {
-    fruitDropdown.items = [
-        { value: 'apple', label: 'Apel' },
-        { value: 'banana', label: 'Pisang' },
-        { value: 'grape', label: 'Anggur', disabled: true },
-        { value: 'mango', label: 'Mangga' },
-    ];
-    fruitDropdown.addEventListener('change', (e: Event) => {
-        console.log('[dropdown] value terpilih:', (e as CustomEvent).detail.value);
+const fruitItems = [
+    { value: 'apple', label: 'Apel' },
+    { value: 'banana', label: 'Pisang' },
+    { value: 'grape', label: 'Anggur', disabled: true },
+    { value: 'mango', label: 'Mangga' },
+];
+
+for (const id of ['fruit-dropdown', 'fruit-search', 'fruit-combobox']) {
+    const dropdown = document.getElementById(id) as any;
+    if (!dropdown) continue;
+
+    dropdown.items = fruitItems;
+    dropdown.addEventListener('change', (e: Event) => {
+        console.log(`[dropdown:${id}] value terpilih:`, (e as CustomEvent).detail.value);
     });
 }
 
