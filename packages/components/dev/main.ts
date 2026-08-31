@@ -206,6 +206,12 @@ if (navProducts) {
     ];
 }
 
+// ===== qv-switch =====
+const controlledSwitch = document.getElementById('controlled-switch') as any;
+controlledSwitch?.addEventListener('change', (e: Event) => {
+    controlledSwitch.checked = (e as CustomEvent).detail.checked;
+});
+
 // ===== qv-radio-group =====
 document.getElementById('payment-method')?.addEventListener('change', (e) => {
     console.log('[radio-group] metode terpilih:', (e as CustomEvent).detail);

@@ -31,7 +31,7 @@ export class QvList extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvList',
         tagName: createTagName('list'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     public override onConnected(): void {
@@ -39,6 +39,6 @@ export class QvList extends QvElement {
     }
 
     protected override render() {
-        return html`</slot></slot>`;
+        return html`<slot></slot>`;
     }
 }

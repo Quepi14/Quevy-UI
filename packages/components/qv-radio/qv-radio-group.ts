@@ -34,14 +34,14 @@ ${host()} {
 
 const QvRadioGroupBase = FormAssociatedMixin(QvElement);
 
-@customElement('qv-radio-gruop')
+@customElement('qv-radio-group')
 export class QvRadioGroup extends QvRadioGroupBase {
     static override styles = qvRadioGroupStyles;
 
     public override readonly metadata = createComponentMetadata({
         name: 'QvRadioGroup',
         tagName: createTagName('radio-group'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     /** Controlled prop. Leave unset for uncontrolled usage. */
@@ -120,6 +120,6 @@ export class QvRadioGroup extends QvRadioGroupBase {
     };
 
     protected override render() {
-        return html `<slov></slot>`;
+        return html `<slot></slot>`;
     }
 }

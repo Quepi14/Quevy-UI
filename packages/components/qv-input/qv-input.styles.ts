@@ -56,7 +56,7 @@ ${hostAttribute('variant="floating"')} .floating-label {
     position: absolute;
     left: var(--qv-spacing-md, 12px);
     top: 50%;
-    transform: translateY(-50%) slace(1);
+    transform: translateY(-50%) scale(1);
     transform-origin: left center;
     padding-inline: var(--qv-spacing-xs, 4px);
     background-color: var(--qv-color-bakcground-surface, #fff);

@@ -28,7 +28,7 @@ export class QvListItem extends QvListItemBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvListItem',
         tagName: createTagName('list-item'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property() public label?: string;
@@ -52,7 +52,7 @@ export class QvListItem extends QvListItemBase {
 
     protected override updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
-        this.setAttribute('role', 'listItem');
+        this.setAttribute('role', 'listitem');
         this.tabIndex = this.clickable ? 0 : -1;
     }
 
@@ -69,17 +69,17 @@ export class QvListItem extends QvListItemBase {
         if (event.key === ' ') { event.preventDefault(); this.click(); }
     };
 
-    private readonly handleLeadingSlotChange = (): void => { this.hasLeading = this.hasSlot('leadding'); };
+    private readonly handleLeadingSlotChange = (): void => { this.hasLeading = this.hasSlot('leading'); };
     private readonly handleTrailingSlotChange = (): void => { this.hasTrailing = this.hasSlot('trailing'); }
 
     protected override render() {
         return html`
-            <span class=${classMap({ leading: true, empty: !this.hasLeading})} part="leading>
+            <span class=${classMap({ leading: true, empty: !this.hasLeading})} part="leading">
                 <slot name="leading" @slotchange=${this.handleLeadingSlotChange}></slot>
             </span>
 
             <span class="content" part="content">
-                ${this.label ? html`<span class="label">${this.label}</span>` : html`</slot></slot>`}
+                ${this.label ? html`<span class="label">${this.label}</span>` : html`<slot></slot>`}
                 <span class=${classMap({ description: true, empty: !this.description})}>${this.description ?? ''}</span>
             </span>
 
