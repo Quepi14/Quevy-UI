@@ -1,7 +1,6 @@
 fix all bugs first
 4. qv-banner sebaiknya untuk testing atau demo diberikan button untuk testing 
-5. qv-banner warn masih terpotong, dan memungkinkan untuk qv-banner mungkin ditambahkan button untuk mengecek hasil inputan (kondisional)  
-16. qv-collapsible / qv-accordian toggle untuk menutup masih bug
+5. qv-banner warn masih terpotong, dan memungkinkan untuk qv-banner mungkin ditambahkan button untuk mengecek hasil inputan (kondisional)
 17. qv-modal masih bug juga
 18. qv-badge masih sedikit bug kurang presisi dan biasa saja
 19. qv-avatar masih bug seperti busy, dnd

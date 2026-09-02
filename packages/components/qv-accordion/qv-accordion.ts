@@ -51,12 +51,12 @@ export class QvAccordion extends QvElement {
     }
 
     private readonly handleChildToggle = (event: Event): void => {
-        if (!this.exclusive) return;
-
         const detail = (event as CustomEvent<{ open: boolean}>).detail;
-        if (!detail.open) return;
-
         const source = event.target as QvCollapsible;
+        source.open = detail.open;
+
+        if (!this.exclusive || !detail.open) return;
+
         for (const item of this.items) {
             if (item !== source) item.open = false;
         }

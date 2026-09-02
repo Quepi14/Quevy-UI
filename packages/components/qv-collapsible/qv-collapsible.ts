@@ -54,7 +54,7 @@ export class QvCollapsible extends QvElement {
 
     protected override updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
-        this.toggleAttribute('open', this.isOpen);
+        this.classList.toggle('is-open', this.isOpen);
     }
 
     private toggle(): void {
