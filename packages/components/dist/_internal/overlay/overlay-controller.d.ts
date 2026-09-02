@@ -53,6 +53,7 @@ export declare class OverlayController implements ReactiveController {
     get isOpen(): boolean;
     private focusableCache;
     open(): void;
+    private lockedPlacement;
     close(): void;
     toggle(): void;
     setPlacement(placement: OverlayPlacement): void;

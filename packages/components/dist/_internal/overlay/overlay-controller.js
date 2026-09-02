@@ -32,6 +32,7 @@ export class OverlayController {
     set panel(element) {
         if (element && element !== this._panel) {
             element.style.visibility = 'hidden';
+            element.style.position = 'fixed';
         }
         this._panel = element;
     }
@@ -42,11 +43,12 @@ export class OverlayController {
         this._open = false;
         this.previouslyFocused = null;
         this.focusableCache = null;
+        this.lockedPlacement = null;
         this.repositionScheduled = false;
         this.reposition = () => {
             if (!this._open || !this.trigger || !this.panel)
                 return;
-            if (this.host.tagName !== 'QV-MENU')
+            if (this.host.tagName.toUpperCase() !== 'QV-MENU')
                 return;
             if (this.repositionScheduled)
                 return;
@@ -144,6 +146,7 @@ export class OverlayController {
         if (this.panel) {
             this.panel.style.visibility = '';
         }
+        this.lockedPlacement = null;
         if (this.options.lockScroll) {
             releaseScrollLock();
         }
@@ -170,11 +173,23 @@ export class OverlayController {
             return;
         const triggerRect = this.trigger.getBoundingClientRect();
         const panelRect = this.panel.getBoundingClientRect();
-        const { top, left } = computeOverlayPosition(triggerRect, { width: panelRect.width, height: panelRect.height }, { width: window.innerWidth, height: window.innerHeight }, this.options.placement);
-        this.panel.style.position = 'fixed';
-        this.panel.style.top = `${top}px`;
-        this.panel.style.left = `${left}px`;
-        this.panel.style.visibility = 'visible';
+        if (!this.lockedPlacement) {
+            const { top, left, placement } = computeOverlayPosition(triggerRect, { width: panelRect.width, height: panelRect.height }, { width: window.innerWidth, height: window.innerHeight }, this.options.placement);
+            this.lockedPlacement = placement;
+            this.panel.style.position = 'fixed';
+            this.panel.style.top = `${top}px`;
+            this.panel.style.left = `${left}px`;
+            this.panel.style.visibility = 'visible';
+            return;
+        }
+        const [side, align] = this.lockedPlacement.split('-');
+        const gap = 4;
+        this.panel.style.top = `${side === 'bottom'
+            ? triggerRect.top + triggerRect.height + gap
+            : triggerRect.top - panelRect.height - gap}px`;
+        this.panel.style.left = `${align === 'start'
+            ? triggerRect.left
+            : triggerRect.left + triggerRect.width - panelRect.width}px`;
     }
     ;
     trapTab(event) {

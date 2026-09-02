@@ -39,7 +39,7 @@ let QvRadioGroup = class QvRadioGroup extends QvRadioGroupBase {
         this.metadata = createComponentMetadata({
             name: 'QvRadioGroup',
             tagName: createTagName('radio-group'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.controllableValue = createControllableValue(undefined);
         this.handleActivate = (event) => {
@@ -104,7 +104,7 @@ let QvRadioGroup = class QvRadioGroup extends QvRadioGroupBase {
         });
     }
     render() {
-        return html `<slov></slot>`;
+        return html `<slot></slot>`;
     }
 };
 __decorate([
@@ -114,7 +114,7 @@ __decorate([
     property()
 ], QvRadioGroup.prototype, "name", void 0);
 QvRadioGroup = __decorate([
-    customElement('qv-radio-gruop')
+    customElement('qv-radio-group')
 ], QvRadioGroup);
 export { QvRadioGroup };
 //# sourceMappingURL=qv-radio-group.js.map

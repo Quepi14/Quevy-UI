@@ -74,6 +74,7 @@ export class OverlayController implements  ReactiveController {
     public set panel(element: HTMLElement | null) {
         if (element && element !== this._panel) {
             element.style.visibility = 'hidden';
+            element.style.position = 'fixed';
         }
         this._panel = element;
     }
@@ -224,13 +225,13 @@ public constructor(
         const panelRect = this.panel.getBoundingClientRect();
     
         if (!this.lockedPlacement) {
-            const { top, left } = computeOverlayPosition(
+            const { top, left, placement } = computeOverlayPosition(
                 triggerRect,
                 { width: panelRect.width, height:  panelRect.height},
                 { width: window.innerWidth, height: window.innerHeight},
                 this.options.placement,
             );
-            this.lockedPlacement = this.options.placement;
+            this.lockedPlacement = placement;
             this.panel.style.position = 'fixed';
             this.panel.style.top = `${top}px`;
             this.panel.style.left = `${left}px`;

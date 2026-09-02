@@ -33,7 +33,7 @@ let QvInput = class QvInput extends QvInputBase {
         this.metadata = createComponentMetadata({
             name: 'QvInput',
             tagName: createTagName('input'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.variant = 'default';
         this.type = 'text';

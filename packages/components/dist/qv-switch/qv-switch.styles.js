@@ -17,7 +17,7 @@ ${host()} {
     height: 20px;
     flex-shrink: 0;
     border-radius: var(--qv-radius-full, 9999px);
-    backrground-color: var(--qv-color-background-muted, #d4d4d4);
+    background-color: var(--qv-color-background-muted, #d4d4d4);
     transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
 }
 

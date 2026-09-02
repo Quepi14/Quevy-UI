@@ -33,7 +33,7 @@ let QvFileInput = class QvFileInput extends QvFileInputBase {
         this.metadata = createComponentMetadata({
             name: 'QvFileInput',
             tagName: createTagName('file-input'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.multiple = false;
         this.files = [];
@@ -86,8 +86,11 @@ let QvFileInput = class QvFileInput extends QvFileInputBase {
                 @keydown=${(e) => e.key === 'Enter' && this.handleClick()}
                 @dragover=${this.handleDragOver}
                 @dragleave=${this.handleDragLeave}
-                @dragdrop=${this.handleDrop}
+                @drop=${this.handleDrop}
             >
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0L7 9m5-5l5 5M5 20h14"/>
+                </svg>
                 <span>Seret file ke sini, atau <span class="browse">pilih file</span></span>
             </div>
 

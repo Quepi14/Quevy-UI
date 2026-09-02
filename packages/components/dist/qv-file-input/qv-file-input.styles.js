@@ -18,8 +18,18 @@ ${host()} {
     text-align: center;
 }
 
+.upload-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--qv-color-foreground-muted, #737373);
+}
+
+${hostAttribute('dragging')} .upload-icon {
+    color: var(--qv-color-brand-primary, #3157c7);
+}
+
 ${hostAttribute('dragging')} .dropzone {
-    border-color: var(-qv-color-brand-primary, #3157c7);
+    border-color: var(--qv-color-brand-primary, #3157c7);
     background-color: var(--qv-color-blue-50, #eff6ff);
 }
 
@@ -32,14 +42,14 @@ ${hostAttribute('dragging')} .dropzone {
     display: flex; 
     flex-direction: column; 
     gap: var(--qv-spacing-xs, 4px);
-    margin-top: var(-qv-spacing-sm, 8px);
+    margin-top: var(--qv-spacing-sm, 8px);
 }
 
 .file-row {
     display: flex;
     align-items: center;
-    gap: var(--qv-spacing-sm, 8px)l
-    padding: var(--qv-spacing-xs, 4px) var(-qv-spacing-sm, 8px);
+    gap: var(--qv-spacing-sm, 8px);
+    padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
     border-radius: var(--qv-radius-sm, 4px);
     background-color: var(--qv-color-background-muted, #f5f5f5);
 }
@@ -64,7 +74,7 @@ ${hostAttribute('dragging')} .dropzone {
 }
 
 .file-remove:hover {
-    colot: var(--qv-color-status-error, #dc2626);
+    color: var(--qv-color-status-error, #dc2626);
 }
 
 input[type="file"] { display: none; }

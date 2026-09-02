@@ -30,7 +30,7 @@ let QvSwitch = class QvSwitch extends QvSwitchBase {
         this.metadata = createComponentMetadata({
             name: 'QvSwitch',
             tagName: createTagName('switch'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.value = 'on';
         this.controllableChecked = createControllableValue(false);

@@ -32,7 +32,7 @@ let QvList = class QvList extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvList',
             tagName: createTagName('list'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
     }
     static { this.styles = qvListStyles; }
@@ -40,7 +40,7 @@ let QvList = class QvList extends QvElement {
         this.setAttribute('role', 'list');
     }
     render() {
-        return html `</slot></slot>`;
+        return html `<slot></slot>`;
     }
 };
 QvList = __decorate([
