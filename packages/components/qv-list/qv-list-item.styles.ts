@@ -66,11 +66,11 @@ ${hostAttribute('clickable')} {
     cursor: pointer;
 }
 
-${hostAttribute('clickable')}:hover {
+${host('[clickable]:hover')} {
     background-color: var(--qv-color-background-muted, #f5f5f5);
 }
 
-${hostAttribute('clickable')}:activate {
+${host('[clickable]:active')} {
     background-color: var(--qv-color-background-muted, #ebebeb);
 }
 

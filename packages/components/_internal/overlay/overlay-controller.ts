@@ -158,6 +158,8 @@ public constructor(
 
         this.focusableCache = null;
     }
+    
+    private lockedPlacement: OverlayPlacement | null = null;
 
     public close(): void {
         if  (!this._open) return;
@@ -170,6 +172,7 @@ public constructor(
         if(this.panel) {
             this.panel.style.visibility = '';
         }
+        this.lockedPlacement = null;
 
         if (this.options.lockScroll) {
             releaseScrollLock();
@@ -202,7 +205,7 @@ public constructor(
 
     private readonly reposition = (): void => {
         if  (!this._open || !this.trigger || !this.panel)return;
-        if (this.host.tagName !== 'QV-MENU') return;
+        if (this.host.tagName.toUpperCase() !== 'QV-MENU') return;
 
         if (this.repositionScheduled) return;
         this.repositionScheduled = true;
@@ -220,17 +223,33 @@ public constructor(
         const triggerRect = this.trigger.getBoundingClientRect();
         const panelRect = this.panel.getBoundingClientRect();
     
-        const { top, left } = computeOverlayPosition(
-            triggerRect,
-            { width: panelRect.width, height:  panelRect.height},
-            { width: window.innerWidth, height: window.innerHeight},
-            this.options.placement,
-        );
+        if (!this.lockedPlacement) {
+            const { top, left } = computeOverlayPosition(
+                triggerRect,
+                { width: panelRect.width, height:  panelRect.height},
+                { width: window.innerWidth, height: window.innerHeight},
+                this.options.placement,
+            );
+            this.lockedPlacement = this.options.placement;
+            this.panel.style.position = 'fixed';
+            this.panel.style.top = `${top}px`;
+            this.panel.style.left = `${left}px`;
+            this.panel.style.visibility = 'visible';
+            return;
+        }
+        const [side, align] = this.lockedPlacement.split('-') as ['bottom' | 'top', 'start' | 'end'];
+        const gap =  4;
 
-        this.panel.style.position = 'fixed';
-        this.panel.style.top = `${top}px`;
-        this.panel.style.left = `${left}px`;
-        this.panel.style.visibility = 'visible';
+        this.panel.style.top = `${
+            side === 'bottom'
+                ? triggerRect.top + triggerRect.height + gap
+                : triggerRect.top - panelRect.height - gap
+        }px`;
+        this.panel.style.left = `${
+            align === 'start'
+            ? triggerRect.left
+            : triggerRect.left + triggerRect.width - panelRect.width
+        }px`;
     };
 
     private readonly handleOutsidePointerDown = (event: PointerEvent): void => {
