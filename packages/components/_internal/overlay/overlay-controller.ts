@@ -219,7 +219,13 @@ public constructor(
     }
     
     private applyPosition(): void {
-        if (!this._open || !this.trigger || !this.panel) return;
+        if (!this._open || !this.panel) return;
+
+        if (!this.trigger) {
+            // No Anchor for counting position - just show the panel in the middle of the viewport.
+            this.panel.style.visibility = 'visible';
+            return;
+        }
         
         const triggerRect = this.trigger.getBoundingClientRect();
         const panelRect = this.panel.getBoundingClientRect();
@@ -262,7 +268,7 @@ public constructor(
             if (!shouldClose) return;
 
         const path = event.composedPath();
-        if (path.includes(this.host) || (this.panel && path.includes(this.panel))) {
+        if ((this.trigger && path.includes(this.trigger)) || (this.panel && path.includes(this.panel))) {
             return;
         }
 

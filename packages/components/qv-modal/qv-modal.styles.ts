@@ -11,7 +11,7 @@ ${host()} {
     pointer-events: none;
 }    
 
-${host()}[open] {
+${hostAttribute('open')} {
     pointer-events: auto;
 }
 
@@ -19,7 +19,7 @@ ${host()}[open] {
     position: fixed;
     inset: 0;
     background-color: rgb(0 0 0 / 0.5);
-    aniamtion: qv-modal-backdrop-in 150ms ease-out;
+    animation: qv-modal-backdrop-in 150ms ease-out;
 }
 
 .panel {
@@ -51,15 +51,17 @@ ${hostAttribute('size="fullscreen"')} .panel {
     align-items: flex-start;
     justify-content: space-between;
     gap: var(--qv-spacing-md, 12px);
-    apdding: var(--qv-spacing-lg, 16px);
-    border-bottom: 1px solid var(--qv-color-border-default, #e5e5e5);
+    padding: var(--qv-spacing-lg, 16px);
+    background-color: var(--qv-color-background-primary, #3157c7);
+    border-radius: var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) 0 0;
 }
 
 .header.empty { display: none}
 
-.title {
+.header ::slotted(*) {
     font-size: var(--qv-font-size-lg, 18px);
     font-weight: var(--qv-font-weight-semibold, 600);
+    color: #fff;
 }
 
 .close {
@@ -67,10 +69,10 @@ ${hostAttribute('size="fullscreen"')} .panel {
     cursor: pointer;
     padding: var(--qv-spacing-xs, 4px);
     border-radius: var(--qv-radius-sm, 4px);
-    color: var(--qv-color-foreground-muted, #737373);
+    color: #fff;
 }
-.close:hover { background-color: var(--qv-color-background-muted, #f5f5f5);}
-.close:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #3157c7); outline-offset: 2px; }
+.close:hover { background-color: rgb(255 255 255 / 0.15);}
+.close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 .body {
     padding: var(--qv-spacing-lg, 16px);
@@ -89,12 +91,12 @@ ${hostAttribute('size="fullscreen"')} .panel {
 .footer.empty { display: none; }
 
 @keyframes qv-modal-backdrop-in { from { opacity: 0;} to { opacity: 1;} }
-@keyframes qv-model-panel-in {
+@keyframes qv-modal-panel-in {
     from { opacity: 0; transform: scale(0.96) translateY(8px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .backdrop .panel { animation: none; }
+    .backdrop, .panel { animation: none; }
 }
 `)
