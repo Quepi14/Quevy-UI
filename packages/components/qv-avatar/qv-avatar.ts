@@ -67,7 +67,7 @@ export class QvAvatar extends QvElement {
         ${this.status 
             ? html `
                 <span class=${`status ${this.status}`} part="status" aria-hidden="true">
-                    ${this.status === 'busy' ? DASH_ICON : nothing}
+                    ${this.status === 'dnd' ? DASH_ICON : nothing}
                 </span>
             `
         : nothing}

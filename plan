@@ -1,7 +1,6 @@
 fix all bugs first
 4. qv-banner sebaiknya untuk testing atau demo diberikan button untuk testing 
 5. qv-banner warn masih terpotong, dan memungkinkan untuk qv-banner mungkin ditambahkan button untuk mengecek hasil inputan (kondisional)
-19. qv-avatar masih bug seperti busy, dnd
 20. qv-spinner dan qv-progress perlu diperbaiki 
 21. qv-topbar perlu dipoles
 22. qv-table perlu dibuat variant beda warna dan button opsi untuk select all atau mungkin tanpa checkbox

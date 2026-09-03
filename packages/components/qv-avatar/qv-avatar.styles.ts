@@ -15,7 +15,7 @@ ${host()} {
 
 .content {
     width: 100%;
-    heigth: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,14 +52,14 @@ ${hostAttribute('size="xl"')} { width: 80px; height: 80px; font-size: 24px; }
     overflow: hidden;
 }
 
-.status svg { width: 70%; height: 70%; }
+.status svg { width: 100%; height: 100%; }
 
 ${hostAttribute('size="xs"')} .status, ${hostAttribute('size="sm"')} .status { width: 8px; height: 8px; }
 ${hostAttribute('size="md"')} .status { width: 10px; height: 10px; }
 ${hostAttribute('size="lg"')} .status, ${hostAttribute('size="xl"')} .status { width: 14px; height: 14px; }
 
 /* Too small at 8px to render a legible icon - stay plain color there */
-${hostAttribute('size="xs"')} .status svg, ${hostAttribute('size="sm"')} .status svg { dispaly: none; }
+${hostAttribute('size="xs"')} .status svg, ${hostAttribute('size="sm"')} .status svg { display: none; }
 
 .status.online { background-color: var(--qv-color-status-success, #16a34a); }
 .status.offline { background-color: var(--qv-color-neutral-400, #a3a3a3); }
@@ -77,8 +77,8 @@ ${hostAttribute('size="xs"')} .status svg, ${hostAttribute('size="sm"')} .status
 .status.busy::after {
     content: '';
     position: absolute;
-    top: -25%;
-    left: -20%;
+    top: -30%;
+    left: -30%;
     width: 100%;
     height: 100%;
     border-radius: 50%;
