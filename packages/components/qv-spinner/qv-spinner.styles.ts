@@ -42,26 +42,29 @@ ${hostAttribute('size="lg"')} .spinner { width: 32px; height: 32px; border-width
     inset: 0;
     background-color: currentColor;
     opacity: 0.85;
-    animation: qv-spinner-fold 1.2s infinite linear both;
+    animation: qv-spinner-fold 2.4s infinite cubic-bezier(0.4, 0, 0.2, 1) both;
     transform-origin: 100% 100%;
+    will-change: transform, opacity;
 }
 
 .fold-piece-2 { transform: scale(1.1) rotateZ(90deg); }
 .fold-piece-3 { transform: scale(1.1) rotateZ(180deg); }
 .fold-piece-4 { transform: scale(1.1) rotateZ(270deg); }
 
-.fold-piece-2:before { animation-delay: 0.3s; }
-.fold-piece-3:before { animation-delay: 0.6s; }
-.fold-piece-4:before { animation-delay: 0.9s; }
+.fold-piece-2:before { animation-delay: 0.6s; }
+.fold-piece-3:before { animation-delay: 1.2s; }
+.fold-piece-4:before { animation-delay: 1.8s; }
 
 ${hostAttribute('size="sm"')} .fold { width: 16px; height: 16px; }
 ${hostAttribute('size="md"')} .fold { width: 24px; height: 24px; }
 ${hostAttribute('size="lg"')} .fold { width: 32px; height: 32px; }
 
 @keyframes qv-spinner-fold {
-    0%, 10% { transform: perspective(140px) rotateX(-180deg); opacity: 0;}
-    25%, 75% { transform: perspective(140px) rotateX(0deg); opacity: 0;}
-    90%, 100% { transform: perspective(140px) rotateX(180deg); opacity: 0;}
+    0% { transform: perspective(140px) rotateX(-180deg); opacity: 0; }
+    20% { transform: perspective(140px) rotateX(0deg); opacity: 1; }
+    67% { transform: perspective(140px) rotateX(0deg); opacity: 1; }
+    85% { transform: perspective(140px) rotateX(180deg); opacity: 0; }
+    100% { transform: perspective(140px) rotateX(180deg); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
     .spinner { animation-duration: 1.6s; }
