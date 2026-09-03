@@ -32,7 +32,7 @@ export class QvAvatar extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvAvatar',
         tagName: createTagName('avatar'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property() public src?: string;
@@ -52,16 +52,25 @@ export class QvAvatar extends QvElement {
         if (this.name) this.setAttribute('aria-label', this.name);
     }
 
+    
     protected override render() {
         const showImage = this.src && !this.imageFailed;
+        const DASH_ICON = html`<svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="10" width="16" height="4" rx="2"/></svg>`;
 
         return html`
-        ${showImage
-            ? html`<img src=${this.src} alt="" @error=${this.handleImageError} />`
-            : html`${initialOf(this.name)}`}
-        ${this.status
-            ? html`<span class=${`status ${this.status}`} part="staus" aria-hidden="true"></span>`
-            : nothing}
+        <span class="content" part="content">
+            ${showImage 
+                ? html `<img src=${this.src} alt="" @error=${this.handleImageError} />`
+                : html`${initialOf(this.name)}`
+            }
+        </span>
+        ${this.status 
+            ? html `
+                <span class=${`status ${this.status}`} part="status" aria-hidden="true">
+                    ${this.status === 'busy' ? DASH_ICON : nothing}
+                </span>
+            `
+        : nothing}
         `;
     }
 }

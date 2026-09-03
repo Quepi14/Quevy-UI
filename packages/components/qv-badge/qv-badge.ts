@@ -29,7 +29,7 @@ export class QvBadge extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBadge',
         tagName: createTagName('badge'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property({ type: Number })
@@ -52,7 +52,7 @@ export class QvBadge extends QvElement {
     }
 
     private readonly handleSlotChange = (): void => {
-        this.hasWrappedContent = this.hasSlot();
+        this.hasWrappedContent = this.getAssignedElements().length > 0;
     }
 
     private get displayValue(): string {
