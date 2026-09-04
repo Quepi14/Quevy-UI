@@ -34,16 +34,16 @@ export class QvToastRegion extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvToastRegion',
         tagName: createTagName('toast-region'),
-        version: '0.1.1',
+        version: '0.1.2',
     })
 
     @state() private toasts: QvToastEntry[] = [];
     private unsubscribe?: () => void;
 
     public override onConnected(): void {
-        this.toasts = toastStore.getState().toasts as QvToastEntry[];
+        this.toasts = toastStore.getState().toast;
         this.unsubscribe = toastStore.subscribe((state) => {
-            this.toasts = state.toasts as QvToastEntry[];
+            this.toasts = state.toast;
         });
     }
 
@@ -82,6 +82,9 @@ export class QvToastRegion extends QvElement {
                                                 @click=${() => dismiss(item.id)}
                                             >&times;</button>
                                         `
+                                        : nothing}
+                                    ${item.duration > 0
+                                        ? html`<span class="progress" style="animation-duration: ${item.duration}ms"></span>`
                                         : nothing}
                                 </div>
                             `,

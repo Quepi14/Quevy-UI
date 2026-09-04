@@ -34,15 +34,15 @@ let QvToastRegion = class QvToastRegion extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvToastRegion',
             tagName: createTagName('toast-region'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.toasts = [];
     }
     static { this.styles = qvToastRegionStyles; }
     onConnected() {
-        this.toasts = toastStore.getState().toasts;
+        this.toasts = toastStore.getState().toast;
         this.unsubscribe = toastStore.subscribe((state) => {
-            this.toasts = state.toasts;
+            this.toasts = state.toast;
         });
     }
     onDisconnected() {
@@ -76,6 +76,9 @@ let QvToastRegion = class QvToastRegion extends QvElement {
                                                 @click=${() => dismiss(item.id)}
                                             >&times;</button>
                                         `
+            : nothing}
+                                    ${item.duration > 0
+            ? html `<span class="progress" style="animation-duration: ${item.duration}ms"></span>`
             : nothing}
                                 </div>
                             `)}

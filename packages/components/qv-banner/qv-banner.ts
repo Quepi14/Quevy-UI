@@ -32,7 +32,7 @@ import type { QvBannerVariant } from "./qv-banner.types.js";
 const DEFAULT_ICONS: Record<QvBannerVariant, ReturnType<typeof html> | null> = {
     info: html`<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 9h2v5H9V9zm0-3h2v2H9V6z"/></svg>`,
     success: html`<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3l-4.2 4.2-1.9-1.9-1.1 1.1 3 3 5.3-5.3-1.1-1.1z"/></svg>`,
-    warning: html`<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2L1 17h18L10 2zm0 5l6 10H4l6-10zm-1 4v3h2V11H9zm0 4v2h2v-2H9z"/></svg>`,
+    warning: html`<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2L1 17h18L10 2zm0 5l5 8H5l5-8zm-1 2v2h2V9H9zm0 3v2h2v-2H9z"/></svg>`,   
     error: html`<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-5h2v2H9v-2zm0-7h2v5H9V6z"/></svg>`,
     neutral: null,
 };

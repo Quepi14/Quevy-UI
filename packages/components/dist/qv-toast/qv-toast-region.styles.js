@@ -23,6 +23,7 @@ ${host()}{
 .viewport[data-position="bottom-right"] { bottom: var(--qv-spacing-lg, 16px); right: var(--qv-spacing-lg, 16px); align-items: flex-end; }
 
 .toast {
+    position: relative;
     pointer-events: auto;
     display: flex;
     align-items: center;
@@ -30,9 +31,27 @@ ${host()}{
     padding: var(--qv-spacing-md, 12px) var(--qv-spacing-lg, 16px);
     border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
-    font-size: var(--qv-color-foreground-inverse, #fff);
-    background-color: var(--qv-color-neutral-800, #262626);
-    animation: qv-toast-in 150mx ease-out;
+    color: var(--qv-color-foreground, #fff);
+    background-color: var(--qv-color-primary, #3157c7);
+    animation: qv-toast-in 150ms ease-out;
+}
+
+.progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transform-origin: left;
+    animation-name: qv-toast-progress;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes qv-toast-progress {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
 }
 
 .toast[data-variant="success"] { background-color: var(--qv-color-status-success, #16a34a); }
@@ -41,7 +60,7 @@ ${host()}{
 
 @keyframes qv-toast-in {
     from { opacity: 0; transform: translateY(4px); }
-    to   { opacity: 1; transform: transalteY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .close {
@@ -52,6 +71,6 @@ ${host()}{
     margin-inline-start: auto;
 }
 
-.close: hover { opacity: 1; }
+.close:hover { opacity: 1; }
 `);
 //# sourceMappingURL=qv-toast-region.styles.js.map

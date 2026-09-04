@@ -114,6 +114,11 @@ if (longCrumbs) {
 
 // ===== qv-banner (controlled) =====
 const promoBanner = document.getElementById('promo-banner');
+(promoBanner as any).open = false;
+
+document.getElementById('show-promo-button')?.addEventListener('click', () => {
+    (promoBanner as any).open = true;
+});
 promoBanner?.addEventListener('close', (e) => {
     const detail = (e as CustomEvent).detail;
     console.log('[banner] ditutup, next state:', detail.open);
@@ -262,6 +267,7 @@ import('../qv-toast/qv-toast.js').then(({ toast }) => {
     document.getElementById('toast-info-btn')?.addEventListener('click', () => toast.info('Update tersedia'));
     document.getElementById('toast-success-btn')?.addEventListener('click', () => toast.success('Data berhasil disimpan'));
     document.getElementById('toast-error-btn')?.addEventListener('click', () => toast.error('Gagal upload file', { duration: 0 }));
+    document.getElementById('toast-topright-btn')?.addEventListener('click', () => toast.info('Pesan baru diterima', { position: 'top-right', duration: 5000 }));
 });
 
 // ===== qv-table =====

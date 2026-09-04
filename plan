@@ -1,7 +1,4 @@
 fix all bugs first
-4. qv-banner sebaiknya untuk testing atau demo diberikan button untuk testing 
-5. qv-banner warn masih terpotong, dan memungkinkan untuk qv-banner mungkin ditambahkan button untuk mengecek hasil inputan (kondisional)
-21. qv-toast tidak mundul
 21. qv-topbar perlu dipoles
 22. qv-table perlu dibuat variant beda warna dan button opsi untuk select all atau mungkin tanpa checkbox
 23. qv-calendar dan qv-datepicker masih terlihat biasa saja, button next masih bug, tidak bisa jump in bulan atau tahun

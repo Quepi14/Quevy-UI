@@ -23,6 +23,7 @@ function push(message, variant, options = {}) {
         variant,
         position: options.position ?? DEFAULT_POSITION,
         dismissible: options.dismissible ?? true,
+        duration,
     };
     toastStore.setState((state) => ({ toast: [...state.toast, entry] }));
     if (duration > 0) {

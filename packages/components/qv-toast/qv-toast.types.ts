@@ -18,4 +18,6 @@ export interface QvToastEntry {
     variant: QvToastVariant;
     position: QvToastPosition;
     dismissible: boolean;
+    /** Resolved auto-dismiss duration in ms (0 = sticky, not progress bar). */
+    duration: number;
 }

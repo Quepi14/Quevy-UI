@@ -31,6 +31,7 @@ function push(message: string, variant: QvToastVariant, options: QvToastOptions 
         variant,
         position: options.position ?? DEFAULT_POSITION,
         dismissible: options.dismissible ?? true,
+        duration,
     };
 
     toastStore.setState((state) => ({ toast: [...state.toast, entry]}));
