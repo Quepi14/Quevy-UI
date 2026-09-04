@@ -23,7 +23,7 @@ let QvProgress = class QvProgress extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvProgress',
             tagName: createTagName('progress'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.max = 100;
         this.variant = 'default';

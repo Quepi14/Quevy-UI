@@ -33,7 +33,7 @@ let QvAvatar = class QvAvatar extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvAvatar',
             tagName: createTagName('avatar'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.name = '';
         this.size = 'md';
@@ -51,12 +51,19 @@ let QvAvatar = class QvAvatar extends QvElement {
     }
     render() {
         const showImage = this.src && !this.imageFailed;
+        const DASH_ICON = html `<svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="10" width="16" height="4" rx="2"/></svg>`;
         return html `
-        ${showImage
+        <span class="content" part="content">
+            ${showImage
             ? html `<img src=${this.src} alt="" @error=${this.handleImageError} />`
             : html `${initialOf(this.name)}`}
+        </span>
         ${this.status
-            ? html `<span class=${`status ${this.status}`} part="staus" aria-hidden="true"></span>`
+            ? html `
+                <span class=${`status ${this.status}`} part="status" aria-hidden="true">
+                    ${this.status === 'dnd' ? DASH_ICON : nothing}
+                </span>
+            `
             : nothing}
         `;
     }

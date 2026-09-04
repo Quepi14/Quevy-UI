@@ -1,4 +1,4 @@
-import { host, hostAttribute, createStyles } from "@quevy/core";
+import { host, createStyles } from "@quevy/core";
 export const qvCollapsibleStyles = createStyles(`
 ${host()} {
     display: block;
@@ -31,7 +31,7 @@ ${host()} {
     flex-shrink: 0;
 }
 
-${hostAttribute('open')} .chevron {
+${host('.is-open')} .chevron {
     transform: rotate(180deg);
 }
 
@@ -41,7 +41,7 @@ ${hostAttribute('open')} .chevron {
     transition: grid-template-rows var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, ease);
 }
 
-${hostAttribute('open')} .panel { 
+${host('.is-open')} .panel { 
     grid-template-rows: 1fr;
 }
 

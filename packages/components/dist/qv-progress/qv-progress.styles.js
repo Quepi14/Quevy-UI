@@ -30,7 +30,7 @@ ${hostAttribute('variant="error"')} .bar { background-color: var(--qv-color-stat
 
 
 ${hostAttribute('indeterminate')} .bar {
-    width: 40% !importand;
+    width: 40% !important;
     animation: qv-progress-indeterminate 1.2s ease-in-out infinite;
 }
 
@@ -40,7 +40,7 @@ ${hostAttribute('indeterminate')} .bar {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    ${hostAttribute('indeterminate')} .bar { aniamtion-duration: 2.4s; }
+    ${hostAttribute('indeterminate')} .bar { animation-duration: 2.4s; }
 }
 `);
 //# sourceMappingURL=qv-progress.styles.js.map

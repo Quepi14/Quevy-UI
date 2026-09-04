@@ -48,7 +48,7 @@ let QvCollapsible = class QvCollapsible extends QvElement {
     }
     updated(changedProperties) {
         super.updated(changedProperties);
-        this.toggleAttribute('open', this.isOpen);
+        this.classList.toggle('is-open', this.isOpen);
     }
     toggle() {
         if (this.disabled)

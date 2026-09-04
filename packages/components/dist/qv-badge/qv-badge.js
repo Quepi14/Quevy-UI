@@ -29,14 +29,14 @@ let QvBadge = class QvBadge extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvBadge',
             tagName: createTagName('badge'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.max = 99;
         this.dot = false;
         this.variant = 'default';
         this.hasWrappedContent = false;
         this.handleSlotChange = () => {
-            this.hasWrappedContent = this.hasSlot();
+            this.hasWrappedContent = this.getAssignedElements().length > 0;
         };
     }
     static { this.styles = qvBadgeStyles; }

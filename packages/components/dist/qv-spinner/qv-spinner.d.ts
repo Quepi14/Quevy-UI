@@ -12,11 +12,12 @@
  */
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
-import type { QvSpinnerSize } from "./qv-spinner.types.js";
+import type { QvSpinnerSize, QvSpinnerVariant } from "./qv-spinner.types.js";
 export declare class QvSpinner extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
     size: QvSpinnerSize;
+    variant: QvSpinnerVariant;
     /** Accessible label. If unset, the spinner is treated
      *  as decorative (aria-hidden).
      */

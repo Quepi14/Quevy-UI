@@ -16,7 +16,7 @@ ${host()} {
     background-color: var(--qv-color-brand-primary, #3157c7);
     color: var(--qv-color-foreground-inverse, #fff);
     font-size: 11px;
-    line-weight: var(--qv-font-weight-semibold, 600);
+    font-weight: var(--qv-font-weight-semibold, 600);
     line-height: 1;
     box-sizing: border-box;
 }
@@ -26,10 +26,12 @@ ${hostAttribute('variant="warning"')} .indicator { background-color: var(--qv-co
 ${hostAttribute('variant="error"')} .indicator { background-color: var(--qv-color-status-error, #dc2626); }
 
 ${hostAttribute('dot')} .indicator {
-    mind-width: 8px;
+    min-width: 8px;
     width: 8px;
     height: 8px;
     padding: 0;
+    top: 2px;
+    right: 2px;
 }
 
 /* Standalone mode: no wrapped content, indicator sits inline normally */

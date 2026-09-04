@@ -25,7 +25,7 @@ export class QvSpinner extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvSpinner',
         tagName: createTagName('spinner'),
-        version: '0.2.0',
+        version: '0.3.0',
     });
 
     @property({ reflect: true })
@@ -64,6 +64,41 @@ export class QvSpinner extends QvElement {
                     <span class="fold-piece fold-piece-2"></span>
                     <span class="fold-piece fold-piece-4"></span>
                     <span class="fold-piece fold-piece-3"></span>
+                </span>
+            `;
+        }
+
+        if (this.variant === 'logo') {
+            return html`
+                <span class="logo" part="spinner">
+                    <slot>
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 7.1-1.01L12 2z" />
+                        </svg>
+                    </slot>
+                </span>
+            `;
+        }
+
+        if (this.variant === 'dots') {
+            return html `
+                <span class="dots" part="spinner">
+                    <span class="dot dot-1"></span>
+                    <span class="dot dot-2"></span>
+                    <span class="dot dot-3"></span>
+                    <span class="dot dot-4"></span>
+                </span>
+            `;
+        }
+
+        if (this.variant === 'pendulum') {
+            return html`
+                <span class="pendulum" part="spinner">
+                    <span class="pendulum-rail"></span>
+                    <span class="pendulum-arm pendulum-arm-1"><span class="pendulum-ball"></span></span>
+                    <span class="pendulum-arm pendulum-arm-2"><span class="pendulum-ball"></span></span>
+                    <span class="pendulum-arm pendulum-arm-3"><span class="pendulum-ball"></span></span>
+                    <span class="pendulum-arm pendulum-arm-4"><span class="pendulum-ball"></span></span>
                 </span>
             `;
         }

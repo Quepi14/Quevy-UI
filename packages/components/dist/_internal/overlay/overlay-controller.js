@@ -65,7 +65,7 @@ export class OverlayController {
             if (!shouldClose)
                 return;
             const path = event.composedPath();
-            if (path.includes(this.host) || (this.panel && path.includes(this.panel))) {
+            if ((this.trigger && path.includes(this.trigger)) || (this.panel && path.includes(this.panel))) {
                 return;
             }
             this.close();
@@ -169,8 +169,13 @@ export class OverlayController {
         this.options.placement = placement;
     }
     applyPosition() {
-        if (!this._open || !this.trigger || !this.panel)
+        if (!this._open || !this.panel)
             return;
+        if (!this.trigger) {
+            // No Anchor for counting position - just show the panel in the middle of the viewport.
+            this.panel.style.visibility = 'visible';
+            return;
+        }
         const triggerRect = this.trigger.getBoundingClientRect();
         const panelRect = this.panel.getBoundingClientRect();
         if (!this.lockedPlacement) {

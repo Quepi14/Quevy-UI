@@ -28,7 +28,7 @@ let QvModal = class QvModal extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvModal',
             tagName: createTagName('modal'),
-            version: '0.1.3',
+            version: '0.1.4',
         });
         this.size = 'md';
         this.dismissible = true;
@@ -90,20 +90,19 @@ let QvModal = class QvModal extends QvElement {
                 class="panel"
                 part="panel"
                 role="dialog"
-                aria-model="true"
+                aria-modal="true"
                 tabindex="-1"
             >
                 <div class=${classMap({ header: true, empty: !this.hasHeaderTitle && !this.closable })} part="header">
                     <slot name="title" @slotchange=${this.handleTitleSlotChange}></slot>
-                </div>
-                ${this.closable
+                    ${this.closable
             ? html `
-                        <button class="close" part="close" aria-label="Close" @click=${() => this.close}>
-                            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
-                                <path d="M4.3 4.3a1 1 0 011.4 0L10 8.6l4.3-4.3a1 1 0 111.4 1.4L11.4 10l4.3 4.3a1 1 0 01-1.4 1.4L10 11.4l-4.3 4.3a1 1 0 01-1.4-1.4L8.6 10 4.3 5.7a1 1 0 010-1.4z"/>
-                            </svg>
-                        </button>
-                    `
+                            <button class="close" part="close" aria-label="Close" @click=${() => this.close()}>
+                                <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M4.3 4.3a1 1 0 011.4 0L10 8.6l4.3-4.3a1 1 0 111.4 1.4L11.4 10l4.3 4.3a1 1 0 01-1.4 1.4L10 11.4l-4.3 4.3a1 1 0 01-1.4-1.4L8.6 10 4.3 5.7a1 1 0 010-1.4z"/>
+                                </svg>
+                            </button>
+                        `
             : nothing}
                 </div>
 
@@ -111,7 +110,7 @@ let QvModal = class QvModal extends QvElement {
                     <slot></slot>
                 </div>
 
-                <div class=${classMap({ footer: true, empty: !this.hasFooter })} part="footer:>
+                <div class=${classMap({ footer: true, empty: !this.hasFooter })} part="footer">
                     <slot name="footer" @slotchange=${this.handleFooterSlotChange}></slot>
                 </div>
             </div>

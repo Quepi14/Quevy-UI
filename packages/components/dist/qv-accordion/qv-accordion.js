@@ -36,12 +36,11 @@ let QvAccordion = class QvAccordion extends QvElement {
         });
         this.exclusive = false;
         this.handleChildToggle = (event) => {
-            if (!this.exclusive)
-                return;
             const detail = event.detail;
-            if (!detail.open)
-                return;
             const source = event.target;
+            source.open = detail.open;
+            if (!this.exclusive || !detail.open)
+                return;
             for (const item of this.items) {
                 if (item !== source)
                     item.open = false;
