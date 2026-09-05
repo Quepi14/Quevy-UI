@@ -25,7 +25,7 @@ export class QvCarousel extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCarousel',
         tagName: createTagName('carousel'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ type: Boolean, reflect: true}) public autoplay = false;

@@ -15,14 +15,14 @@ ${host()}{
     all: unset;
     position: absolute;
     top: 50%;
-    transfrom: translateY(-50%);
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
     border-radius: var(--qv-radius-full, 9999px);
-    backgorund-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
     cursor: pointer;
 }
