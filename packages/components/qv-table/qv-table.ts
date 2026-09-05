@@ -19,7 +19,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 
 import { qvTableStyles } from "./qv-table.styles.js";
-import type { QvTableColumn, QvTableSelectEventDetail } from "./qv-table.types.js";
+import type { QvTableColumns, QvTableSelectEventDetail } from "./qv-table.types.js";
 
 @customElement('qv-table')
 export class QvTable extends QvElement {
@@ -28,11 +28,11 @@ export class QvTable extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvTable',
         tagName: createTagName('table'),
-        version: '0.2.1',
+        version: '0.2.2',
     });
 
     @property({ attribute: false})
-    public colums: QvTableColumn[] = [];
+    public columns: QvTableColumns[] = [];
 
     @property({ attribute: false})
     public rows: Record<string, unknown>[] = [];
@@ -79,7 +79,7 @@ export class QvTable extends QvElement {
         this.hasFooter = this.hasSlot('footer');
     }
 
-    private renderCell(column: QvTableColumn, row: Record<string, unknown>) {
+    private renderCell(column: QvTableColumns, row: Record<string, unknown>) {
         return column.render ? column.render(row) : row[column.key];
     }
 
@@ -107,7 +107,7 @@ export class QvTable extends QvElement {
                                 </th>
                             `
                         : nothing}
-                    ${this.colums.map(
+                    ${this.columns.map(
                         (col) => html`
                             <th style=${col.width ? `width:${col.width}` : ''} align=${col.align ?? 'left'}>
                                 ${col.label}
@@ -123,7 +123,7 @@ export class QvTable extends QvElement {
                             <tr>
                                 <td
                                     class="empty-state"
-                                    colspan=${this.colums.length + (this.selectable ? 1 : 0)}
+                                    colspan=${this.columns.length + (this.selectable ? 1 : 0)}
                                 >${this.emptyMessage}</td>
                             </tr>
                         `
@@ -133,7 +133,7 @@ export class QvTable extends QvElement {
                                 <tr>
                                     ${this.selectable
                                         ? html `
-                                            <td class="checlbox-cell">
+                                            <td class="checkbox-cell">
                                                 <input
                                                     type="checkbox"
                                                     .checked=${this.selectedKeys.has(key)}
@@ -143,7 +143,7 @@ export class QvTable extends QvElement {
                                             </td>
                                         `
                                         : nothing}
-                                    ${this.colums.map(
+                                    ${this.columns.map(
                                         (col) => html`<td align=${col.align ?? 'left'}>${this.renderCell(col, row)}</td>`,
                                     )}
                                 </tr>
@@ -153,7 +153,7 @@ export class QvTable extends QvElement {
 
                 <tfoot class=${this.hasFooter ? '' : 'empty'}>
                     <tr>
-                        <td colspan=${this.colums.length + (this.selectable ? 1: 0)}>
+                        <td colspan=${this.columns.length + (this.selectable ? 1: 0)}>
                             <slot name="footer" @slotchange=${this.handleFooterSlotChange}></slot>
                         </td>
                     </tr>
