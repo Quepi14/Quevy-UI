@@ -17,7 +17,7 @@ ${host()} {
     color: var(--qv-color-foreground-muted, #737373);
 }
 
-.item:hover { background-color: var(--qv-color-backgroud-muted, #f5f5f5); }
+.item:hover { background-color: var(--qv-color-background-muted, #f5f5f5); }
 .item:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #3157c7); outline-offset: -2px; }
 
 ${hostAttribute('disabled')} .item {
@@ -44,17 +44,19 @@ ${hostAttribute('active')} .item {
 /* label reveal without JS measurement - same 0fr/1fr trick as
     qv-collapsible's panel, just horizontal instead of vertical.*/
 .label-outer {
-    display; grid;
-    grid-template-column: 0fr;
+    display: grid;
+    grid-template-columns: 0fr;
     transition: grid-template-columns var(--qv-motion-duration-fast, 150ms) var(--qv-motion-easing-standard, ease);
 }
 
-${hostAttribute('activate')} .label-outer {
-    grid-template-column: 1fr;
+${hostAttribute('active')} .label-outer {
+    grid-template-columns: 1fr;
 }
 
 .label-inner {
-    overflow: hidder;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
     min-width: 0;
     white-space: nowrap;
 }

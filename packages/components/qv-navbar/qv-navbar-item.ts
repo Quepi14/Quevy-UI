@@ -29,7 +29,7 @@ export class QvNavbarItem extends QvNavbarItemBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvNavbarItem',
         tagName: createTagName('navbar-item'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property() public value = '';
@@ -87,7 +87,9 @@ export class QvNavbarItem extends QvNavbarItemBase {
 
         return this.href
             ? html`
-                <a class="item" part="item" href=${this.href} tabIndex=${this.disabled ? -1 : 0} aria-label=${this.label || nothing}></a>
+                <a class="item" part="item" href=${this.href} tabindex=${this.disabled ? -1 : 0} aria-label=${this.label || nothing}>
+                    ${content}
+                </a>
             `
             : html `
                 <button type="button" class="item" part="item" ?disabled=${this.disabled} aria-label=${this.label || nothing}>

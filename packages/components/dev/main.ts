@@ -35,6 +35,7 @@ import '../qv-tooltip/index.js';
 import '../qv-avatar/index.js';
 import '../qv-collapsible/index.js';
 import '../qv-accordion/index.js';
+import '../qv-navbar/index.js';
 
 applyTokens();
 
