@@ -12,11 +12,11 @@
  * @packageDocumentation
  */
 import { QvElement } from "@quevy/core";
-import type { QvTableColumn } from "./qv-table.types.js";
+import type { QvTableColumns } from "./qv-table.types.js";
 export declare class QvTable extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
-    colums: QvTableColumn[];
+    columns: QvTableColumns[];
     rows: Record<string, unknown>[];
     title: string;
     rowKey: string;

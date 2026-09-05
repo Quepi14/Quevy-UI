@@ -21,7 +21,7 @@ import { property, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin } from "@quevy/core";
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 import '../qv-calendar/index.js';
-import { formateDate } from "../qv-calendar/qv-calendar.utils.js";
+import { formatDate } from "../qv-calendar/qv-calendar.utils.js";
 import { qvDatePickerStyles } from "./qv-datepicker.styles.js";
 const QvDatepickerBase = DisabledMixin(QvElement);
 let QvDatepicker = class QvDatepicker extends QvDatepickerBase {
@@ -30,7 +30,7 @@ let QvDatepicker = class QvDatepicker extends QvDatepickerBase {
         this.metadata = createComponentMetadata({
             name: 'QvDatepicker',
             tagName: createTagName('datepicker'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.mode = 'single';
         this.placeholder = 'Pilih tanggal';
@@ -52,9 +52,9 @@ let QvDatepicker = class QvDatepicker extends QvDatepickerBase {
     }
     get displayText() {
         if (this.mode === 'single')
-            return this.value ? formateDate(this.value) : null;
+            return this.value ? formatDate(this.value) : null;
         if (this.valueStart && this.valueEnd)
-            return `${formateDate(this.valueStart)} - ${formateDate(this.valueEnd)}`;
+            return `${formatDate(this.valueStart)} - ${formatDate(this.valueEnd)}`;
         return null;
     }
     render() {
@@ -66,6 +66,9 @@ let QvDatepicker = class QvDatepicker extends QvDatepickerBase {
                 ?disabled=${this.disabled}
                 @click=${() => this.overlay.toggle()}
             >
+                <svg class="icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M6 2a1 1 0 011 1v1h6V3a1 1 0 112 0v1h1a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2h1V3a1 1 0 011-1zM4 8v8h12V8H4z"/>
+                </svg>
                 <span class=${text ? '' : 'placeholder'}>${text ?? this.placeholder}</span>
             </button>
 

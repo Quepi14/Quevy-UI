@@ -24,12 +24,21 @@ export declare class QvCalendar extends QvElement {
     private viewMonth;
     private rangeAnchor;
     private hoverDate;
+    private viewLevel;
+    private goToPrevYear;
+    private goToNextYear;
+    private openMonthPicker;
+    private pickMonth;
+    private renderMonthHeader;
+    private renderMonthGrid;
     willUpdate(changedProperties: PropertyValues): void;
     private goToPrevMonth;
     private goToNextMonth;
     private isDisabled;
     private selectDate;
     private dayClasses;
+    private renderDaysHeader;
+    private renderDaysGrid;
     protected render(): import("lit").TemplateResult<1>;
 }
 //# sourceMappingURL=qv-calendar.d.ts.map

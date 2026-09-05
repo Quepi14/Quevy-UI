@@ -25,7 +25,7 @@ let QvNavbar = class QvNavbar extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvNavbar',
             tagName: createTagName('navbar'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.controllableValue = createControllableValue(undefined);
         this.handleActivate = (event) => {

@@ -19,22 +19,72 @@ import { property, state, customElement } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { qvCalendarStyles } from "./qv-calendar.styles.js";
-import { buildMonthGrip, formatMonthLabel, isSameDay, isWithinRange, isBefore, isAfter, WEEKDAY_LABELS } from "./qv-calendar.utils.js";
+import { buildMonthGrid, formatMonthLabel, isSameDay, isWithinRange, isBefore, isAfter, MONTH_LABEL, WEEKDAY_LABELS } from "./qv-calendar.utils.js";
+const CHEVRON_LEFT = html `
+    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path d="M12.8 4.2a1 1 0 010 1.4L8.4 10l4.4 4.4a1 1 0 01-1.4 1.4l-5.1-5.1a1 1 0 010-1.4l5.1-5.1a1 1 0 011.4 0z" />
+    </svg>
+`;
+const CHEVRON_RIGHT = html `
+    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path d="M7.2 4.2a1 1 0 000 1.4l4.4 4.4-4.4 4.4a1 1 0 001.4 1.4l5.1-5.1a1 1 0 000-1.4L8.6 4.2a1 1 0 00-1.4 0z" />
+    </svg>
+`;
+const CHEVRON_DOWN = html `
+    <svg class="caret" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path d="M4.2 7.2a1 1 0 011.4 0l4.4 4.4 4.4-4.4a1 1 0 011.4 1.4l-5.1 5.1a1 1 0 01-1.4 0L4.2 8.6a1 1 0 010-1.4z" />
+    </svg>
+`;
 let QvCalendar = class QvCalendar extends QvElement {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
             name: 'QvCalendar',
             tagName: createTagName('calendar'),
-            version: '0.1.2',
+            version: '0.1.3',
         });
         this.mode = 'single';
         this.viewYear = new Date().getFullYear();
         this.viewMonth = new Date().getMonth();
         this.rangeAnchor = null;
         this.hoverDate = null;
+        this.viewLevel = 'days';
     }
     static { this.styles = qvCalendarStyles; }
+    goToPrevYear() {
+        this.viewYear -= 1;
+    }
+    goToNextYear() {
+        this.viewYear += 1;
+    }
+    openMonthPicker() {
+        this.viewLevel = 'months';
+    }
+    pickMonth(month) {
+        this.viewMonth = month;
+        this.viewLevel = 'days';
+    }
+    renderMonthHeader() {
+        return html `
+            <div class="header">
+                <button class="nav" aria-label="Previous Year" @click=${() => this.goToPrevYear()}>${CHEVRON_LEFT}</button>
+                <span class="label static">${this.viewYear}</span>
+                <button class="nav" aria-label="Next Year" @click=${() => this.goToNextYear()}>${CHEVRON_RIGHT}</button>
+            </div>
+        `;
+    }
+    renderMonthGrid() {
+        return html `
+            <div class="month-grid">
+                ${MONTH_LABEL.map((label, i) => html `
+                        <button
+                            class=${classMap({ month: true, active: i === this.viewMonth })}
+                            @click=${() => this.pickMonth(i)}
+                        >${label.slice(0, 3)}</button>   
+                    `)}
+            </div>
+        `;
+    }
     willUpdate(changedProperties) {
         super.willUpdate(changedProperties);
         const anchor = this.value ?? this.valueStart ?? new Date();
@@ -73,7 +123,7 @@ let QvCalendar = class QvCalendar extends QvElement {
         const start = isBefore(date, this.rangeAnchor) ? date : this.rangeAnchor;
         const end = isBefore(date, this.rangeAnchor) ? this.rangeAnchor : date;
         this.rangeAnchor = null;
-        this.emit('change', { valueStart: start, ValueEnd: end });
+        this.emit('change', { valueStart: start, valueEnd: end });
     }
     dayClasses(date) {
         const outside = date.getMonth() !== this.viewMonth;
@@ -88,7 +138,7 @@ let QvCalendar = class QvCalendar extends QvElement {
         const end = this.rangeAnchor ? this.hoverDate : this.valueEnd;
         const rangeStart = start && (!end || isBefore(start, end)) ? start : end;
         const rangeEnd = start && (!end || isBefore(start, end)) ? end : start;
-        const inRange = Boolean(rangeStart && rangeEnd && isAfter(date, rangeStart));
+        const inRange = Boolean(rangeStart && rangeEnd && isAfter(date, rangeStart) && isBefore(date, rangeEnd));
         return classMap({
             day: true, outside, today, inRange, 'in-range': inRange,
             selected: Boolean((rangeStart && isSameDay(date, rangeStart)) || (rangeEnd && isSameDay(date, rangeEnd))),
@@ -96,17 +146,22 @@ let QvCalendar = class QvCalendar extends QvElement {
             'range-end': Boolean(rangeEnd && isSameDay(date, rangeEnd)),
         });
     }
-    render() {
-        const grid = buildMonthGrip(this.viewYear, this.viewMonth);
+    renderDaysHeader() {
         return html `
             <div class="header">
-                <button aria-label="Previous month" @click=${() => this.goToPrevMonth()}>&lsaquo;</button>
-                <span class="label">${formatMonthLabel(this.viewYear, this.viewMonth)}</span>
-                <button aria-label="Next month" @click=${() => this.goToNextMonth}>&rsaquo;</button>
+                <button class="nav" aria-label="Previous month" @click=${() => this.goToPrevMonth()}>${CHEVRON_LEFT}</button>
+                <button class="label" aria-label="Choose month" @click=${() => this.openMonthPicker()}>
+                    ${formatMonthLabel(this.viewYear, this.viewMonth)} ${CHEVRON_DOWN}
+                </button>
+                <button class="nav" aria-label="Next month" @click=${() => this.goToNextMonth()}>${CHEVRON_RIGHT}</button>
             </div>
-
+        `;
+    }
+    renderDaysGrid() {
+        const grid = buildMonthGrid(this.viewYear, this.viewMonth);
+        return html `
             <div class="grid" role="grid">
-                ${WEEKDAY_LABELS.map((w) => html `<div class="weekdays">${w}</div>`)}
+                ${WEEKDAY_LABELS.map((w) => html `<div class="weekday">${w}</div>`)}
                 ${grid.map((date) => html `
                         <button
                             class=${this.dayClasses(date)}
@@ -117,6 +172,12 @@ let QvCalendar = class QvCalendar extends QvElement {
                         >${date.getDate()}</button>
                     `)}
             </div>
+        `;
+    }
+    render() {
+        return html `
+            ${this.viewLevel === 'days' ? this.renderDaysHeader() : this.renderMonthHeader()}
+            ${this.viewLevel === 'days' ? this.renderDaysGrid() : this.renderMonthGrid()}
         `;
     }
 };
@@ -150,6 +211,9 @@ __decorate([
 __decorate([
     state()
 ], QvCalendar.prototype, "hoverDate", void 0);
+__decorate([
+    state()
+], QvCalendar.prototype, "viewLevel", void 0);
 QvCalendar = __decorate([
     customElement('qv-calendar')
 ], QvCalendar);

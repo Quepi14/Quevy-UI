@@ -32,7 +32,7 @@ const CHEVRON_RIGHT = html`
 `;
 
 const CHEVRON_DOWN = html`
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <svg class="caret" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
         <path d="M4.2 7.2a1 1 0 011.4 0l4.4 4.4 4.4-4.4a1 1 0 011.4 1.4l-5.1 5.1a1 1 0 01-1.4 0L4.2 8.6a1 1 0 010-1.4z" />
     </svg>
 `;
@@ -181,11 +181,11 @@ export class QvCalendar extends QvElement {
     private renderDaysHeader() {
         return html`
             <div class="header">
-                <button aria-label="Previous month" @click=${() => this.goToPrevMonth()}>${CHEVRON_LEFT}</button>
+                <button class="nav" aria-label="Previous month" @click=${() => this.goToPrevMonth()}>${CHEVRON_LEFT}</button>
                 <button class="label" aria-label="Choose month" @click=${() => this.openMonthPicker()}>
                     ${formatMonthLabel(this.viewYear, this.viewMonth)} ${CHEVRON_DOWN}
                 </button>
-                <button aria-label="Next month" @click=${() => this.goToNextMonth()}>${CHEVRON_RIGHT}</button>
+                <button class="nav" aria-label="Next month" @click=${() => this.goToNextMonth()}>${CHEVRON_RIGHT}</button>
             </div>
         `;
     }
