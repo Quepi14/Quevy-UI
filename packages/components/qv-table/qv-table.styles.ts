@@ -32,6 +32,10 @@ table {
     font-size: var(--qv-font-size-sm, 14px);
 }
 
+${hostAttribute('variant="plain"')} table {
+    border-bottom: 2px solid var(--qv-color-border-default, #e5e5e5);
+}
+
 thead th {
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 12px);
     background-color: var(--qv-color-neutral-200, #E5E7EB);
@@ -56,7 +60,8 @@ tbody td {
 }
 
 ${hostAttribute('variant="plain"')} tbody td {
-    padding-block: var(--qv-spacing-md, 12px);
+    padding-block: var(--qv-spacing-lg, 16px);
+    border-bottom-color: var(--qv-color-background-muted, #f5f5f5);
 }
 
 tbody tr:nth-child(even) {

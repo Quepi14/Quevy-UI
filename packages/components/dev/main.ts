@@ -289,7 +289,61 @@ if (pegawaiTable) {
     });
 }
 
+const pesananTable = document.getElementById('pesanan-table') as any;
+if (pesananTable) {
+    pesananTable.columns = [
+        { key: 'idPesanan', label: 'ID Pesanan' },
+        { key: 'tanggal', label: 'Tanggal' },
+        { key: 'pelanggan', label: 'Pelanggan' },
+        { key: 'produk', label: 'Produk' },
+        { key: 'qty', label: 'Qty', align: 'center' },
+        { key: 'total', label: 'Total', align: 'right' },
+    ];
+    pesananTable.rows = [
+        { id: 1, idPesanan: 'ORD-1001', tanggal: '01 Sep 2026', pelanggan: 'Dewi', produk: 'Sepatu Lari X', qty: 1, total: 'Rp 899.000' },
+        { id: 2, idPesanan: 'ORD-1002', tanggal: '02 Sep 2026', pelanggan: 'Rian', produk: 'Kaos Polos', qty: 3, total: 'Rp 255.000' },
+        { id: 3, idPesanan: 'ORD-1003', tanggal: '03 Sep 2026', pelanggan: 'Nadia', produk: 'Jaket Hoodie', qty: 2, total: 'Rp 598.000' },
+        { id: 4, idPesanan: 'ORD-1004', tanggal: '04 Sep 2026', pelanggan: 'Fajar', produk: 'Topi Baseball', qty: 1, total: 'Rp 120.000' },
+    ];
+}
+
+const produkTable = document.getElementById('produk-table') as any;
+if (produkTable) {
+    produkTable.columns = [
+        { key: 'sku', label: 'SKU' },
+        { key: 'nama', label: 'Nama Produk' },
+        { key: 'kategori', label: 'Kategori' },
+        { key: 'stok', label: 'Stok', align: 'center' },
+        { key: 'harga', label: 'Harga', align: 'right' },
+        { key: 'status', label: 'Status' },
+    ];
+    produkTable.rows = [
+        { id: 1, sku: 'SKU-001', nama: 'Sepatu Lari X', kategori: 'Sepatu', stok: 24, harga: 'Rp 899.000', status: 'Aktif' },
+        { id: 2, sku: 'SKU-002', nama: 'Kaos Polos', kategori: 'Pakaian', stok: 120, harga: 'Rp 85.000', status: 'Aktif' },
+        { id: 3, sku: 'SKU-003', nama: 'Jaket Hoodie', kategori: 'Pakaian', stok: 0, harga: 'Rp 299.000', status: 'Habis' },
+        { id: 4, sku: 'SKU-004', nama: 'Topi Baseball', kategori: 'Aksesoris', stok: 45, harga: 'Rp 120.000', status: 'Aktif' },
+    ];
+}
+
+// ===== qv-calendar (standalone, controlled) =====
+const calSingle = document.getElementById('cal-single') as any;
+calSingle?.addEventListener('change', (e: Event) => {
+    calSingle.value = (e as CustomEvent).detail.value;
+});
+
+const calRange = document.getElementById('cal-range') as any;
+calRange?.addEventListener('change', (e: Event) => {
+    const detail = (e as CustomEvent).detail;
+    calRange.valueStart = detail.valueStart;
+    calRange.valueEnd = detail.valueEnd;
+});
+
 // ===== qv-datepicker =====
 document.querySelectorAll('qv-datepicker').forEach((el) => {
-    el.addEventListener('change', (e) => console.log('[datepicker]', el.id, (e as CustomEvent).detail));
+    el.addEventListener('change', (e: Event) => {
+        const detail = (e as CustomEvent).detail;
+        (el as any).value = detail.value;
+        (el as any).valueStart = detail.valueStart;
+        (el as any).valueEnd = detail.valueEnd;
+    });
 });

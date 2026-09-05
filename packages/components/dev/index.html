@@ -6,7 +6,7 @@
     <style>
       * { box-sizing: border-box; }
       body {
-        font-family: system-ui, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
         margin: 0;
         padding: 0 2rem 6rem;
         color: #171717;
@@ -751,9 +751,20 @@
     <!-- TABLE -->
     <section id="section-table">
       <h2>qv-table</h2> <br>
+      <div class="row-label">bordered, selectable (checkbox pilih baris + pilih semua)</div><br>
       <div class="row">
         <qv-table id="pegawai-table" title="LIST PEGAWAI" selectable style="width:100%;"></qv-table>
       </div>
+
+      <div class="row-label">variant="plain" (tanpa border/kartu, garis bawah header lebih tebal)</div><br>
+      <div class="row">
+        <qv-table id="pesanan-table" title="RIWAYAT PESANAN" variant="plain" style="width:100%;"></qv-table>
+      </div>
+
+       <div class="row-label">tanpa select item (cuma label + isian, tidak ada checkbox sama sekali)</div><br>
+       <div class="row">
+          <qv-table id="produk-table" title="DAFTAR PRODUK" style="width:100%;"></qv-table>
+       </div>
     </section>
 
     <!-- CALENDAR / DATEPICKER -->
@@ -762,8 +773,8 @@
 
       <div class="row-label">calendar berdiri sendiri — single vs range</div>
       <div class="row">
-        <qv-calendar mode="single"></qv-calendar>
-        <qv-calendar mode="range"></qv-calendar>
+        <qv-calendar id="cal-single" mode="single"></qv-calendar>
+        <qv-calendar id="cal-range" mode="range"></qv-calendar>
       </div>
 
       <div class="row-label">datepicker (dalam overlay) — checklist sama seperti dropdown: buka/tutup/posisi/keyboard</div>
