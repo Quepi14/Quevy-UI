@@ -25,9 +25,6 @@ import { createControllableValue } from "@quevy/state";
 import type { QvRadio } from "./qv-radio.js";
 import type { QvRadioGroupChangeEventDetail } from "./qv-radio-group.types.js";
 
-/**
- *  @event {CustomEvent<QvRadioGroupChangeEventDetail>} change - Fired when the selected radio changes.
- */
 const qvRadioGroupStyles = createStyles(`
 ${host()} {
     display: flex;
@@ -38,6 +35,9 @@ ${host()} {
 
 const QvRadioGroupBase = FormAssociatedMixin(QvElement);
 
+/**
+ * @event {CustomEvent<QvRadioGroupChangeEventDetail>} change - Fired when the selected radio changes.
+ */
 @customElement('qv-radio-group')
 export class QvRadioGroup extends QvRadioGroupBase {
     static override styles = qvRadioGroupStyles;

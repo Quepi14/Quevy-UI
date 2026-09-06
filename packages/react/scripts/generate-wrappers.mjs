@@ -208,6 +208,10 @@ function generateForFile(componentFile) {
         return null;
     }
 
+    if (!isPubliclyExported(dirname(componentFile), className)) {
+        return null;
+    }
+
     const tagName = getCustomElementTag(classDecl);
 
     if (!tagName) {
