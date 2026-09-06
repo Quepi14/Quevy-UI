@@ -11,14 +11,11 @@
 import { createComponent } from '@lit/react';
 import * as React from 'react';
 
-import { QvPagination as QvPaginationElement } from '@quevy/components';
+import { QvListItem as QvListItemElement } from '@quevy/components';
 
-export const QvPagination = createComponent({
-    tagName: 'qv-pagination',
-    elementClass: QvPaginationElement,
+export const QvListItem = createComponent({
+    tagName: 'qv-list-item',
+    elementClass: QvListItemElement,
     react: React,
-    events: {
-        onChange: 'change',
-    },
-    displayName: 'QvPagination',
+    displayName: 'QvListItem',
 });

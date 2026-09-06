@@ -26,7 +26,7 @@ import type { QvRadio } from "./qv-radio.js";
 import type { QvRadioGroupChangeEventDetail } from "./qv-radio-group.types.js";
 
 /**
- * @event {CustomEvent<QvRadioGroupChangeEventDetail>} change - Fired when the selected radio changes.
+ *  @event {CustomEvent<QvRadioGroupChangeEventDetail>} change - Fired when the selected radio changes.
  */
 const qvRadioGroupStyles = createStyles(`
 ${host()} {

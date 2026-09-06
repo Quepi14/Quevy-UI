@@ -17,5 +17,8 @@ export const QvFileInput = createComponent({
     tagName: 'qv-file-input',
     elementClass: QvFileInputElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvFileInput',
 });

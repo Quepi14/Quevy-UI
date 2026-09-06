@@ -17,5 +17,8 @@ export const QvSwitch = createComponent({
     tagName: 'qv-switch',
     elementClass: QvSwitchElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvSwitch',
 });

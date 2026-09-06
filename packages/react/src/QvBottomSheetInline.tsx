@@ -11,14 +11,11 @@
 import { createComponent } from '@lit/react';
 import * as React from 'react';
 
-import { QvPagination as QvPaginationElement } from '@quevy/components';
+import { QvBottomSheetInline as QvBottomSheetInlineElement } from '@quevy/components';
 
-export const QvPagination = createComponent({
-    tagName: 'qv-pagination',
-    elementClass: QvPaginationElement,
+export const QvBottomSheetInline = createComponent({
+    tagName: 'qv-bottom-sheet-inline',
+    elementClass: QvBottomSheetInlineElement,
     react: React,
-    events: {
-        onChange: 'change',
-    },
-    displayName: 'QvPagination',
+    displayName: 'QvBottomSheetInline',
 });

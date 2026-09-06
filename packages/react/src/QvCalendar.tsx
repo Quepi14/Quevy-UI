@@ -17,5 +17,8 @@ export const QvCalendar = createComponent({
     tagName: 'qv-calendar',
     elementClass: QvCalendarElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvCalendar',
 });

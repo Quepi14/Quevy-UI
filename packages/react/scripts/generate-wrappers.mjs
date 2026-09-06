@@ -3,6 +3,7 @@ import {
     existsSync,
     mkdirSync,
     readdirSync,
+    readFileSync,
     writeFileSync,
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -159,20 +160,22 @@ function generateEventsMap(events) {
     return `    events: {\n${entries}\n    },\n`;
 }
 
+function isPubliclyExported(dirPath, className) {
+    const indexFile = join(dirPath, 'index.ts');
+    if (!existsSync(indexFile)) {
+        return true;
+    }
+    const content = readFileSync(indexFile, 'utf8');
+    const exportPattern = new RegExp(
+        `export\\s*(?:type\\s*)?\\{[^}]*\\b${className}\\b[^}]*\\}`,
+    );
+    return exportPattern.test(content);
+}
+
 /**
  * Generate one React wrapper from a component directory.
  */
-function generateFor(dirName) {
-    const componentFile = join(
-        componentsRoot,
-        dirName,
-        `${dirName}.ts`,
-    );
-
-    if (!existsSync(componentFile)) {
-        return null;
-    }
-
+function generateForFile(componentFile) {
     const source = project.addSourceFileAtPathIfExists(
         componentFile,
     );
@@ -192,10 +195,6 @@ function generateFor(dirName) {
         );
 
     if (!classDecl) {
-        console.warn(
-            `[skip] No @customElement class found: ${componentFile}`,
-        );
-
         return null;
     }
 
@@ -262,6 +261,15 @@ ${eventsMap}    displayName: '${componentName}',
     return componentName;
 }
 
+function generateForDir(dirName) {
+    const dirPath = join(componentsRoot, dirName);
+    return readdirSync(dirPath, { withFileTypes: true })
+        .filter((e) => e.isFile() && e.name.endsWith('.ts') && !e.name.endsWith('.d.ts'))
+        .map((e) => join(dirPath, e.name))
+        .map(generateForFile)
+        .filter(Boolean);
+}
+
 /**
  * Directories that are not Quevy UI components.
  */
@@ -282,8 +290,7 @@ const generated = readdirSync(componentsRoot, {
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
     .filter((name) => !skip.has(name))
-    .map(generateFor)
-    .filter(Boolean);
+    .flatMap(generateForDir);
 
 /**
  * Generate barrel index.ts.

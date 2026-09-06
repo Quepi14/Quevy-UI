@@ -17,5 +17,8 @@ export const QvBanner = createComponent({
     tagName: 'qv-banner',
     elementClass: QvBannerElement,
     react: React,
+    events: {
+        onClose: 'close',
+    },
     displayName: 'QvBanner',
 });

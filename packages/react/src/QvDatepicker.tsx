@@ -17,5 +17,8 @@ export const QvDatepicker = createComponent({
     tagName: 'qv-datepicker',
     elementClass: QvDatepickerElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvDatepicker',
 });

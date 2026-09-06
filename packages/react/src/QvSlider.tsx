@@ -17,5 +17,8 @@ export const QvSlider = createComponent({
     tagName: 'qv-slider',
     elementClass: QvSliderElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvSlider',
 });

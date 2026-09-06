@@ -70,9 +70,9 @@ export class QvChip extends QvChipBase {
     }
 
     public override onDisconnected(): void {
-        this.addEventListener('click', this.handleClick);
-        this.addEventListener('keydown', this.handleKeyDown);
-        this.addEventListener('keyup', this.handleKeyUp);
+        this.removeEventListener('click', this.handleClick);
+        this.removeEventListener('keydown', this.handleKeyDown);
+        this.removeEventListener('keyup', this.handleKeyUp);
     }
 
     protected override updated(changedProperties: PropertyValues): void {

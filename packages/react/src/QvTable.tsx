@@ -17,5 +17,8 @@ export const QvTable = createComponent({
     tagName: 'qv-table',
     elementClass: QvTableElement,
     react: React,
+    events: {
+        onSelect: 'select',
+    },
     displayName: 'QvTable',
 });

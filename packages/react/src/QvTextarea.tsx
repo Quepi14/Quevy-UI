@@ -17,5 +17,9 @@ export const QvTextarea = createComponent({
     tagName: 'qv-textarea',
     elementClass: QvTextareaElement,
     react: React,
+    events: {
+        onInput: 'input',
+        onChange: 'change',
+    },
     displayName: 'QvTextarea',
 });

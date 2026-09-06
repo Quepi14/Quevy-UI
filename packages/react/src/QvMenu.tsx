@@ -17,5 +17,8 @@ export const QvMenu = createComponent({
     tagName: 'qv-menu',
     elementClass: QvMenuElement,
     react: React,
+    events: {
+        onSelect: 'select',
+    },
     displayName: 'QvMenu',
 });

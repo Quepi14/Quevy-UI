@@ -11,14 +11,11 @@
 import { createComponent } from '@lit/react';
 import * as React from 'react';
 
-import { QvPagination as QvPaginationElement } from '@quevy/components';
+import { QvToastRegion as QvToastRegionElement } from '@quevy/components';
 
-export const QvPagination = createComponent({
-    tagName: 'qv-pagination',
-    elementClass: QvPaginationElement,
+export const QvToastRegion = createComponent({
+    tagName: 'qv-toast-region',
+    elementClass: QvToastRegionElement,
     react: React,
-    events: {
-        onChange: 'change',
-    },
-    displayName: 'QvPagination',
+    displayName: 'QvToastRegion',
 });

@@ -17,5 +17,9 @@ export const QvChip = createComponent({
     tagName: 'qv-chip',
     elementClass: QvChipElement,
     react: React,
+    events: {
+        onToggle: 'toggle',
+        onDismiss: 'dismiss',
+    },
     displayName: 'QvChip',
 });

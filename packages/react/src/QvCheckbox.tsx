@@ -17,5 +17,8 @@ export const QvCheckbox = createComponent({
     tagName: 'qv-checkbox',
     elementClass: QvCheckboxElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvCheckbox',
 });

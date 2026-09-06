@@ -17,5 +17,9 @@ export const QvModal = createComponent({
     tagName: 'qv-modal',
     elementClass: QvModalElement,
     react: React,
+    events: {
+        onOpen: 'open',
+        onClose: 'close',
+    },
     displayName: 'QvModal',
 });

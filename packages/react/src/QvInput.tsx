@@ -17,5 +17,9 @@ export const QvInput = createComponent({
     tagName: 'qv-input',
     elementClass: QvInputElement,
     react: React,
+    events: {
+        onInput: 'input',
+        onChange: 'change',
+    },
     displayName: 'QvInput',
 });

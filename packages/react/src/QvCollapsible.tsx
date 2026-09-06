@@ -17,5 +17,8 @@ export const QvCollapsible = createComponent({
     tagName: 'qv-collapsible',
     elementClass: QvCollapsibleElement,
     react: React,
+    events: {
+        onToggle: 'toggle',
+    },
     displayName: 'QvCollapsible',
 });

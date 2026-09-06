@@ -17,5 +17,8 @@ export const QvStepper = createComponent({
     tagName: 'qv-stepper',
     elementClass: QvStepperElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvStepper',
 });

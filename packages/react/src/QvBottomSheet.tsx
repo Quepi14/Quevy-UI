@@ -17,5 +17,9 @@ export const QvBottomSheet = createComponent({
     tagName: 'qv-bottom-sheet',
     elementClass: QvBottomSheetElement,
     react: React,
+    events: {
+        onOpen: 'open',
+        onClose: 'close',
+    },
     displayName: 'QvBottomSheet',
 });

@@ -93,9 +93,9 @@ let QvChip = class QvChip extends QvChipBase {
         this.addEventListener('keyup', this.handleKeyUp);
     }
     onDisconnected() {
-        this.addEventListener('click', this.handleClick);
-        this.addEventListener('keydown', this.handleKeyDown);
-        this.addEventListener('keyup', this.handleKeyUp);
+        this.removeEventListener('click', this.handleClick);
+        this.removeEventListener('keydown', this.handleKeyDown);
+        this.removeEventListener('keyup', this.handleKeyUp);
     }
     updated(changedProperties) {
         super.updated(changedProperties);

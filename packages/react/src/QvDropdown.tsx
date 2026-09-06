@@ -17,5 +17,8 @@ export const QvDropdown = createComponent({
     tagName: 'qv-dropdown',
     elementClass: QvDropdownElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvDropdown',
 });
