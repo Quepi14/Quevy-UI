@@ -26,7 +26,7 @@ import type { QvStepperChangeEventDetail, QvStepperShape, QvStepperVariant, QvSt
 const QvStepperBase = FormAssociatedMixin(DisabledMixin(QvElement));
 
 /**
- * @event {ChangeEvent<QvStepperChangeEventDetail>} change - FIred when the current step changes.
+ * @event {CustomEvent<QvStepperChangeEventDetail>} change - FIred when the current step changes.
  */
 @customElement('qv-stepper')
 export class QvStepper extends QvStepperBase {

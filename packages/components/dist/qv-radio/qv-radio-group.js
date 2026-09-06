@@ -25,6 +25,9 @@ import { html } from "lit";
 import { property, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName, FormAssociatedMixin, host, createStyles } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
+/**
+ * @event {CustomEvent<QvRadioGroupChangeEventDetail>} change - Fired when the selected radio changes.
+ */
 const qvRadioGroupStyles = createStyles(`
 ${host()} {
     display: flex;
@@ -39,7 +42,7 @@ let QvRadioGroup = class QvRadioGroup extends QvRadioGroupBase {
         this.metadata = createComponentMetadata({
             name: 'QvRadioGroup',
             tagName: createTagName('radio-group'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.controllableValue = createControllableValue(undefined);
         this.handleActivate = (event) => {

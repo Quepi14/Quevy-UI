@@ -24,13 +24,16 @@ import '../qv-calendar/index.js';
 import { formatDate } from "../qv-calendar/qv-calendar.utils.js";
 import { qvDatePickerStyles } from "./qv-datepicker.styles.js";
 const QvDatepickerBase = DisabledMixin(QvElement);
+/**
+ * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
+ */
 let QvDatepicker = class QvDatepicker extends QvDatepickerBase {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
             name: 'QvDatepicker',
             tagName: createTagName('datepicker'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.mode = 'single';
         this.placeholder = 'Pilih tanggal';

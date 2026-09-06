@@ -35,6 +35,9 @@ const CHEVRON_DOWN = html `
         <path d="M4.2 7.2a1 1 0 011.4 0l4.4 4.4 4.4-4.4a1 1 0 011.4 1.4l-5.1 5.1a1 1 0 01-1.4 0L4.2 8.6a1 1 0 010-1.4z" />
     </svg>
 `;
+/**
+ * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
+ */
 let QvCalendar = class QvCalendar extends QvElement {
     constructor() {
         super(...arguments);

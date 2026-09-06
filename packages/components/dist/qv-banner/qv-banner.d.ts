@@ -13,6 +13,9 @@
 import { type PropertyValues } from "lit";
 import { QvElement, type ComponentMetadata } from "@quevy/core";
 import type { QvBannerVariant } from "./qv-banner.types.js";
+/**
+ * @event {CustomEvent<QvBannerCloseEventDetail>} close - Fired when the banner is dismissed.
+ */
 export declare class QvBanner extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: ComponentMetadata;

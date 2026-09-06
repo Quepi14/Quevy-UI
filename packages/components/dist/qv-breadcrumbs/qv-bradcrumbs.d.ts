@@ -19,6 +19,9 @@
 import { type PropertyValues } from "lit";
 import { QvElement, type ComponentMetadata } from "@quevy/core";
 import type { QvBreadcrumbItem } from "./qv-bradcrumbs.types.js";
+/**
+ * @event {CustomEvent<QvBreadcrumbsSelectEventDetail>} select - Fired when a breadcrumb item is chosen.
+ */
 export declare class QvBreadcrumbs extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: ComponentMetadata;

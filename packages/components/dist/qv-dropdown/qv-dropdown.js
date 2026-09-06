@@ -25,6 +25,9 @@ import { createControllableValue } from "@quevy/state";
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 import { qvDropdownStyles } from './qv-dropdown.styles.js';
 const QvDropdownBase = DisabledMixin(QvElement);
+/**
+ * @event {CustomEvent<QvDropdownChangeEventDetail>} change - Fired when the selected value changes.
+ */
 let QvDropdown = class QvDropdown extends QvDropdownBase {
     constructor() {
         super(...arguments);

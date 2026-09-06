@@ -10,6 +10,9 @@
  */
 import { type PropertyValues } from 'lit';
 import { QvElement } from '@quevy/core';
+/**
+ * @event {CustomEvent<QvNavbarChangeEventDetail>} change - Fired when the active item changes.
+ */
 export declare class QvNavbar extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

@@ -29,13 +29,17 @@ import { QvElement, createComponentMetadata, createTagName, FocusableMixin, Disa
 import { createControllableValue } from '@quevy/state';
 import { qvChipStyles } from './qv-chip.styles.js';
 const QvChipBase = DisabledMixin(FocusableMixin(QvElement));
+/**
+ * @event {CustomEvent<QvChipToggleEventDetail>} toggle - Fired when the selected state changes.
+ * @event {CustomEvent<QvChipDismissEventDetail>} dismiss - Fired whent he dismiss (x) button is clicked.
+ */
 let QvChip = class QvChip extends QvChipBase {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
             name: 'QvChip',
             tagName: createTagName('chip'),
-            version: '0.1.2',
+            version: '0.1.3',
         });
         this.selectable = false;
         this.dismissible = false;

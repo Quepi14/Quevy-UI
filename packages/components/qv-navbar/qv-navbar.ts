@@ -28,7 +28,7 @@ export class QvNavbar extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvNavbar',
         tagName: createTagName('navbar'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     /** Controlled prop. Leave unset for uncontrolled usage. */
@@ -75,7 +75,7 @@ export class QvNavbar extends QvElement {
         if (item.value === this.currentValue) return;
 
         const resolved = this.controllableValue.request(this.value, item.value);
-        this.emit('change', { value: resolved });
+        this.emit<QvNavbarChangeEventDetail>('change', { value: resolved });
         this.invalidate();
     };
 

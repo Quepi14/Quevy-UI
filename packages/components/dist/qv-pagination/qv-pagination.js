@@ -21,6 +21,9 @@ import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 import { qvPaginationStyles } from "./qv-pagination.styles.js";
 import { buildPageItems } from "./qv-pagination.utils.js";
+/**
+ * @event {CustomEvent<QvPaginationChangeEventDetail>} change - Fired when the current page changes.
+ */
 let QvPagination = class QvPagination extends QvElement {
     constructor() {
         super(...arguments);

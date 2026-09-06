@@ -22,6 +22,9 @@ import { property, state, customElement } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { qvTableStyles } from "./qv-table.styles.js";
+/**
+ * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes.
+ */
 let QvTable = class QvTable extends QvElement {
     constructor() {
         super(...arguments);

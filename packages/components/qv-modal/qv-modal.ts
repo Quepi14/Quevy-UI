@@ -32,7 +32,7 @@ export class QvModal extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvModal',
         tagName: createTagName('modal'),
-        version: '0.1.4',
+        version: '0.1.5',
     });
 
     @property({ reflect: true })
@@ -57,7 +57,7 @@ export class QvModal extends QvElement {
             this.requestUpdate();
             if (!open) {
                 const resolved = this.controllableOpen.request(this.open, false);
-                this.emit('close', { open: resolved });
+                this.emit<QvModalToggleEventDetail>('close', { open: resolved });
             }
         },
     })
@@ -87,7 +87,7 @@ export class QvModal extends QvElement {
     /** Public method - consumers can call modelEl.show() directly (uncontrolled usage)*/
     public show(): void {
         const resolved = this.controllableOpen.request(this.open, true);
-        this.emit('open', { open: resolved });
+        this.emit<QvModalToggleEventDetail>('open', { open: resolved });
         this.overlay.open();
         this.requestUpdate();
     }

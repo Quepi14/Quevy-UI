@@ -24,13 +24,16 @@ import { property, state, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 import { qvCollapsibleStyles } from "./qv-collapsible.styles.js";
+/**
+ * @event {CustomEvent<QvCollapsibleToggleEventDetail>} toggle - Fired when the expanded state changes.
+ */
 let QvCollapsible = class QvCollapsible extends QvElement {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
             name: 'QvCollapsible',
             tagName: createTagName('collapsible'),
-            version: '0.1.0',
+            version: '0.1.1',
         });
         this.disabled = false;
         this.controllableOpen = createControllableValue(false);

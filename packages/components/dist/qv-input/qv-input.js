@@ -27,6 +27,10 @@ import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin } from "@quevy/core";
 import { qvInputStyles } from "./qv-input.styles.js";
 const QvInputBase = FormAssociatedMixin(DisabledMixin(QvElement));
+/**
+ * @event {CustomEvent<QvInputChangeEventDetail>} input - Fired on every keystroke/value change.
+ * @event {CustomEvent<QvInputChangeEventDetail>} change - Fired when the value commits(blur).
+ */
 let QvInput = class QvInput extends QvInputBase {
     constructor() {
         super(...arguments);

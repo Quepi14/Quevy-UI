@@ -27,6 +27,9 @@ function formatSize(bytes) {
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 const QvFileInputBase = DisabledMixin(QvElement);
+/**
+ * @event {CustomEvent<QvFileInputChangeEventDetail>} change - Fired when the selected files change.
+ */
 let QvFileInput = class QvFileInput extends QvFileInputBase {
     constructor() {
         super(...arguments);

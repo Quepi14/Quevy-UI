@@ -45,7 +45,7 @@ export class QvRadioGroup extends QvRadioGroupBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvRadioGroup',
         tagName: createTagName('radio-group'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     /** Controlled prop. Leave unset for uncontrolled usage. */
@@ -100,7 +100,7 @@ export class QvRadioGroup extends QvRadioGroupBase {
         if (radio.value === this.currentValue) return;
 
         const resolved = this.controllableValue.request(this.value, radio.value);
-        this.emit('change', { value: resolved });
+        this.emit<QvRadioGroupChangeEventDetail>('change', { value: resolved });
         this.invalidate();
     };
 

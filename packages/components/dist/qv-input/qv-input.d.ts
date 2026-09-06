@@ -19,6 +19,10 @@ import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 import type { QvInputVariant, QvInputType } from "./qv-input.types.js";
 declare const QvInputBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface> & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/form-associated.js").FormAssociatedInterface>;
+/**
+ * @event {CustomEvent<QvInputChangeEventDetail>} input - Fired on every keystroke/value change.
+ * @event {CustomEvent<QvInputChangeEventDetail>} change - Fired when the value commits(blur).
+ */
 export declare class QvInput extends QvInputBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

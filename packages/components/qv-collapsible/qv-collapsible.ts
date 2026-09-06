@@ -32,7 +32,7 @@ export class QvCollapsible extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCollapsible',
         tagName: createTagName('collapsible'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property() public label?: string;
@@ -68,7 +68,7 @@ export class QvCollapsible extends QvElement {
         // Bubbles + composed so an enclosing qv-accordian can hear
         // it across shadow boundaries and enforce exclusive mode.
         this.dispatch(new CustomEvent('qv-collapsible-toggle', { bubbles: true, composed: true, detail: {open: next}}));
-        this.emit('toggle', { open: next });
+        this.emit<QvCollapsibleToggleEventDetail>('toggle', { open: next });
         this.invalidate();
     }
 

@@ -19,13 +19,16 @@ import { property, customElement } from 'lit/decorators.js';
 import { QvElement, createComponentMetadata, createTagName } from '@quevy/core';
 import { createControllableValue } from '@quevy/state';
 import { qvNavbarStyles } from './qv-navbar.styles.js';
+/**
+ * @event {CustomEvent<QvNavbarChangeEventDetail>} change - Fired when the active item changes.
+ */
 let QvNavbar = class QvNavbar extends QvElement {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
             name: 'QvNavbar',
             tagName: createTagName('navbar'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.controllableValue = createControllableValue(undefined);
         this.handleActivate = (event) => {

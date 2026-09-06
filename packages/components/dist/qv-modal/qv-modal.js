@@ -22,13 +22,17 @@ import { QvElement, createComponentMetadata, createTagName, queryDecorator as qu
 import { createControllableValue } from "@quevy/state";
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 import { qvModalStyles } from "./qv-modal.styles.js";
+/**
+ * @event {CustomEvent<QvModalToggleEventDetail>} open - Fired whe the modal opens.
+ * @event {CustomEvent<QvModalToggleEventDetail>} close - Fired whe the modal closes.
+ */
 let QvModal = class QvModal extends QvElement {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
             name: 'QvModal',
             tagName: createTagName('modal'),
-            version: '0.1.4',
+            version: '0.1.5',
         });
         this.size = 'md';
         this.dismissible = true;

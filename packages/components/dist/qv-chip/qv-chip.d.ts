@@ -17,11 +17,15 @@
  * @packageDocumentation
  */
 import { type PropertyValues } from 'lit';
-import { QvElement, type ComponentMetadata } from '@quevy/core';
+import { QvElement } from '@quevy/core';
 declare const QvChipBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/focusable.js").FocusableInterface> & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface>;
+/**
+ * @event {CustomEvent<QvChipToggleEventDetail>} toggle - Fired when the selected state changes.
+ * @event {CustomEvent<QvChipDismissEventDetail>} dismiss - Fired whent he dismiss (x) button is clicked.
+ */
 export declare class QvChip extends QvChipBase {
     static styles: CSSStyleSheet;
-    readonly metadata: ComponentMetadata;
+    readonly metadata: import("@quevy/core").ComponentMetadata;
     selectable: boolean;
     dismissible: boolean;
     selected?: boolean;

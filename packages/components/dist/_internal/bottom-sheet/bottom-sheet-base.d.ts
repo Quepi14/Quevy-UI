@@ -21,7 +21,7 @@
 import { nothing, type PropertyValues } from 'lit';
 import { QvElement } from '@quevy/core';
 import { OverlayController, type OverlayControllerOptions } from '../overlay/overlay-controller.js';
-export type QvBottomSheetSize = 'sm' | 'md' | 'lg' | 'fullscreen';
+import type { QvBottomSheetSize } from './bottom-sheet.types.js';
 export declare abstract class QvBottomSheetBase extends QvElement {
     static styles: CSSStyleSheet;
     size: QvBottomSheetSize;

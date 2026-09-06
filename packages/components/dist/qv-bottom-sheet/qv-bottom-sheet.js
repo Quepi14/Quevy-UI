@@ -7,6 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { customElement, property } from "lit/decorators.js";
 import { createComponentMetadata, createTagName } from "@quevy/core";
 import { QvBottomSheetBase } from "../_internal/bottom-sheet/bottom-sheet-base.js";
+/**
+ * @event {CustomEvent<QvBottomSheetToggleEventDetail>} open - Fired when the sheet opens.
+ * @event {CustomEvent<QvBottomSheetToggleEventDetail>} close - Fired when the sheet closes.
+ */
 let QvBottomSheet = class QvBottomSheet extends QvBottomSheetBase {
     constructor() {
         super(...arguments);

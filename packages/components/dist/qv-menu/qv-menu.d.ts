@@ -18,6 +18,9 @@ import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 import type { OverlayPlacement } from "../_internal/overlay/overlay-position.js";
 import type { QvMenuItem } from "./qv-menu.types.js";
+/**
+ * @event {CustomEvent<QvMenuSelectEventDetail>} select - Fired when a menu item is chosen.
+ */
 export declare class QvMenu extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

@@ -12,6 +12,10 @@
 import { nothing, type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 import type { QvModalSize } from "./qv-modal.types.js";
+/**
+ * @event {CustomEvent<QvModalToggleEventDetail>} open - Fired whe the modal opens.
+ * @event {CustomEvent<QvModalToggleEventDetail>} close - Fired whe the modal closes.
+ */
 export declare class QvModal extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

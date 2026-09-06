@@ -15,6 +15,9 @@ import { QvElement } from "@quevy/core";
 import '../qv-calendar/index.js';
 import type { QvCalendarMode } from "../qv-calendar/index.js";
 declare const QvDatepickerBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface>;
+/**
+ * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
+ */
 export declare class QvDatepicker extends QvDatepickerBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

@@ -13,6 +13,10 @@
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 declare const QvTextAreaBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface> & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/form-associated.js").FormAssociatedInterface>;
+/**
+ * @event {CustomEvent<QvTextareaChangeEventDetail>} input - Fired on every keystroke/value change.
+ * @event {CustomEvent<QvTextareaChangeEventDetail>} change - Fired when the value commits(blur).
+ */
 export declare class QvTextarea extends QvTextAreaBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

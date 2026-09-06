@@ -11,6 +11,9 @@
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 import type { QvCalendarMode } from "./qv-calendar.types.js";
+/**
+ * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
+ */
 export declare class QvCalendar extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

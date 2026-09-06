@@ -23,7 +23,7 @@ import { property, state, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName, type ComponentMetadata } from "@quevy/core";
 
 import { qvBreadcrumbsStyles } from "./qv-bradcrumbs.styles.js";
-import type { QvBreadcrumbItem } from "./qv-bradcrumbs.types.js";
+import type { QvBreadcrumbItem, QvBreadcrumbsSelectEventDetail } from "./qv-bradcrumbs.types.js";
 
 type Entry =
     | { kind: 'item'; item: QvBreadcrumbItem; index: number; isLast: boolean }
@@ -44,7 +44,7 @@ export class QvBreadcrumbs extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBreadcrumbs',
         tagName: createTagName('breadcrumbs'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({  attribute: false })
@@ -110,7 +110,7 @@ export class QvBreadcrumbs extends QvElement {
 
     private handleSelect(entry: Extract<Entry, { kind: 'item'}>, event: Event): void {
         event.preventDefault();
-        this.emit('select', {
+        this.emit<QvBreadcrumbsSelectEventDetail>('select', {
             id: entry.item.id,
             label: entry.item.label,
             index: entry.index,

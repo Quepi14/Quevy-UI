@@ -33,6 +33,9 @@ const KEBAB_ICON = html `
         <circle cx="10" cy="16" r="1.6" />
     </svg>
 `;
+/**
+ * @event {CustomEvent<QvMenuSelectEventDetail>} select - Fired when a menu item is chosen.
+ */
 let QvMenu = class QvMenu extends QvElement {
     constructor() {
         super(...arguments);

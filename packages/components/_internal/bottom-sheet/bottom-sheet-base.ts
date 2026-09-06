@@ -85,14 +85,14 @@ export abstract class QvBottomSheetBase extends QvElement {
 
     public show(): void {
         const resolved = this.controllableOpen.request(this.open, true);
-        this.emit('open', { open: resolved });
+        this.emit<QvBottomSheetToggleEventDetail>('open', { open: resolved });
         this.overlay.open();
         this.requestUpdate();
     }
 
     public close(): void {
         const resolved = this.controllableOpen.request(this.open, false);
-        this.emit('close', { open: resolved });
+        this.emit<QvBottomSheetToggleEventDetail>('close', { open: resolved });
         this.overlay.close();
     }
 

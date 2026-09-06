@@ -16,6 +16,9 @@ import { type PropertyValues, type TemplateResult } from "lit";
 import { QvElement } from "@quevy/core";
 import type { QvDropdownVariant, QvDropdownItem } from "./qv-dropdown.types.js";
 declare const QvDropdownBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface>;
+/**
+ * @event {CustomEvent<QvDropdownChangeEventDetail>} change - Fired when the selected value changes.
+ */
 export declare class QvDropdown extends QvDropdownBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

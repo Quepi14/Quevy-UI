@@ -54,7 +54,7 @@ export class QvBanner extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBanner',
         tagName: createTagName('banner'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property({ reflect: true})
@@ -99,7 +99,7 @@ export class QvBanner extends QvElement {
 
     private readonly handleDismiss = (): void => {
         const next = this.visibility.request(this.open, false);
-        this.emit('close', { open: next })
+        this.emit<QvBannerCloseEventDetail>('close', { open: next })
         this.invalidate();
     }
 

@@ -15,6 +15,9 @@
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 declare const QvSwitchBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/focusable.js").FocusableInterface> & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface> & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/form-associated.js").FormAssociatedInterface>;
+/**
+ * @event {CustomEvent<QvCheckboxChangeEventDetail>} change - Fired when the checked state changes.
+ */
 export declare class QvSwitch extends QvSwitchBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

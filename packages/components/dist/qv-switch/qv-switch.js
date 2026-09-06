@@ -24,6 +24,9 @@ import { QvElement, createComponentMetadata, createTagName, FocusableMixin, Disa
 import { qvSwitchStyles } from "./qv-switch.styles.js";
 import { createControllableValue } from "@quevy/state";
 const QvSwitchBase = FormAssociatedMixin(DisabledMixin(FocusableMixin(QvElement)));
+/**
+ * @event {CustomEvent<QvCheckboxChangeEventDetail>} change - Fired when the checked state changes.
+ */
 let QvSwitch = class QvSwitch extends QvSwitchBase {
     constructor() {
         super(...arguments);

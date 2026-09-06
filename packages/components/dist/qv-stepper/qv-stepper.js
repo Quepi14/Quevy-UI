@@ -26,6 +26,9 @@ import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormA
 import { qvStepperStyles } from './qv-stepper.styles.js';
 import { createControllableValue } from '@quevy/state';
 const QvStepperBase = FormAssociatedMixin(DisabledMixin(QvElement));
+/**
+ * @event {CustomEvent<QvStepperChangeEventDetail>} change - FIred when the current step changes.
+ */
 let QvStepper = class QvStepper extends QvStepperBase {
     constructor() {
         super(...arguments);

@@ -40,7 +40,7 @@ export class QvChip extends QvChipBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvChip',
         tagName: createTagName('chip'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property({ type: Boolean, reflect: true })
@@ -99,7 +99,7 @@ export class QvChip extends QvChipBase {
         }
 
         const next = this.controllableSelected.request(this.selected, !this.isSelected);
-        this.emit('toggle', { value: this.value, selected: next});
+        this.emit<QvChipToggleEventDetail>('toggle', { value: this.value, selected: next});
     }
 
     private readonly handleClick = (event: MouseEvent): void => {
@@ -142,7 +142,7 @@ export class QvChip extends QvChipBase {
             return;
         }
 
-        this.emit('dismiss', { value: this.value});
+        this.emit<QvChipDismissEventDetail>('dismiss', { value: this.value});
     };
 
     private readonly handleIconSlotChange = (): void => {

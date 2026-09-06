@@ -13,6 +13,9 @@
  */
 import { QvElement } from "@quevy/core";
 import type { QvTableColumns } from "./qv-table.types.js";
+/**
+ * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes.
+ */
 export declare class QvTable extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

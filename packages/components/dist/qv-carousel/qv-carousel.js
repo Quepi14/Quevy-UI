@@ -27,7 +27,7 @@ let QvCarousel = class QvCarousel extends QvElement {
         this.metadata = createComponentMetadata({
             name: 'QvCarousel',
             tagName: createTagName('carousel'),
-            version: '0.1.1',
+            version: '0.1.2',
         });
         this.autoplay = false;
         this.interval = 4000;

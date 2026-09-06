@@ -11,6 +11,9 @@
  */
 import { QvElement } from "@quevy/core";
 import type { QvPaginationShape, QvPaginationVariant } from "./qv-pagination.types.js";
+/**
+ * @event {CustomEvent<QvPaginationChangeEventDetail>} change - Fired when the current page changes.
+ */
 export declare class QvPagination extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

@@ -35,7 +35,7 @@ export class QvDatepicker extends QvDatepickerBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvDatepicker',
         tagName: createTagName('datepicker'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ reflect: true}) public mode: QvCalendarMode = 'single';
@@ -62,7 +62,7 @@ export class QvDatepicker extends QvDatepickerBase {
 
     private readonly handleCalendarChange = (event: Event): void => {
         const detail = (event as CustomEvent<QvCalendarChangeEventDetail>).detail;
-        this.emit('change', detail);
+        this.emit<QvCalendarChangeEventDetail>('change', detail);
         this.overlay.close();
     };
 

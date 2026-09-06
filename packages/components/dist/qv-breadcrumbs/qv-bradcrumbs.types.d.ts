@@ -5,4 +5,9 @@ export interface QvBreadcrumbItem {
     /**Preset -> renders as a real link (navigate). Absent -> renders as a button (emits `select`) */
     href?: string;
 }
+export interface QvBreadcrumbsSelectEventDetail {
+    id?: string;
+    label: string;
+    index: number;
+}
 //# sourceMappingURL=qv-bradcrumbs.types.d.ts.map

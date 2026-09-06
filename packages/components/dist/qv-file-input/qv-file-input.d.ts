@@ -12,6 +12,9 @@
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 declare const QvFileInputBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface>;
+/**
+ * @event {CustomEvent<QvFileInputChangeEventDetail>} change - Fired when the selected files change.
+ */
 export declare class QvFileInput extends QvFileInputBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

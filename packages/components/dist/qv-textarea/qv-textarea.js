@@ -21,6 +21,10 @@ import { property, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, queryDecorator as query } from "@quevy/core";
 import { qvTextareaStyles } from "./qv-textarea.styles.js";
 const QvTextAreaBase = FormAssociatedMixin(DisabledMixin(QvElement));
+/**
+ * @event {CustomEvent<QvTextareaChangeEventDetail>} input - Fired on every keystroke/value change.
+ * @event {CustomEvent<QvTextareaChangeEventDetail>} change - Fired when the value commits(blur).
+ */
 let QvTextarea = class QvTextarea extends QvTextAreaBase {
     constructor() {
         super(...arguments);

@@ -43,13 +43,16 @@ const DEFAULT_ICONS = {
  * is announced politely (role="stasus")
  */
 const ALERT_VARIANTS = ['warning', 'error'];
+/**
+ * @event {CustomEvent<QvBannerCloseEventDetail>} close - Fired when the banner is dismissed.
+ */
 let QvBanner = class QvBanner extends QvElement {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
             name: 'QvBanner',
             tagName: createTagName('banner'),
-            version: '0.1.2',
+            version: '0.1.3',
         });
         this.variant = 'info';
         this.dismissible = false;

@@ -17,10 +17,10 @@
 import { type PropertyValues } from 'lit';
 import { QvElement } from '@quevy/core';
 import type { QvStepperShape, QvStepperVariant, QvStepperSize } from './qv-stepper.types.js';
-export interface QvStepperChangeEventDetail {
-    value: number;
-}
 declare const QvStepperBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface> & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/form-associated.js").FormAssociatedInterface>;
+/**
+ * @event {CustomEvent<QvStepperChangeEventDetail>} change - FIred when the current step changes.
+ */
 export declare class QvStepper extends QvStepperBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

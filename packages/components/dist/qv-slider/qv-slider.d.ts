@@ -7,13 +7,15 @@
  * mode) and drags that one — consistent with native OS slider
  * behavior of "click near a thumb moves that thumb".
  *
- * @event {CustomEvent<QvSliderChangeEventDetail>} change - Fired when the value (or range) commits.
  *
  * @packageDocumentation
  */
 import { QvElement } from "@quevy/core";
 import type { QvSliderLabelPosition } from "./qv-slider.types.js";
 declare const QvSliderBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/disabled.js").DisabledInterface>;
+/**
+ * @event {CustomEvent<QvSliderChangeEventDetail>} change - Fired when the value (or range) commits.
+ */
 export declare class QvSlider extends QvSliderBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

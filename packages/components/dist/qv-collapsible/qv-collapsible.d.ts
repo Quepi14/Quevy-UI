@@ -15,6 +15,9 @@
  */
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
+/**
+ * @event {CustomEvent<QvCollapsibleToggleEventDetail>} toggle - Fired when the expanded state changes.
+ */
 export declare class QvCollapsible extends QvElement {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

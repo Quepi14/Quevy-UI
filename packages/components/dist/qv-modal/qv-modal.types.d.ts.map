@@ -1,1 +1,1 @@
-{"version":3,"file":"qv-modal.types.d.ts","sourceRoot":"","sources":["../../qv-modal/qv-modal.types.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,WAAW,GAAG,IAAI,GAAG,IAAI,GAAG,IAAI,GAAG,YAAY,CAAC"}
+{"version":3,"file":"qv-modal.types.d.ts","sourceRoot":"","sources":["../../qv-modal/qv-modal.types.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,WAAW,GAAG,IAAI,GAAG,IAAI,GAAG,IAAI,GAAG,YAAY,CAAC;AAE5D,MAAM,WAAW,wBAAwB;IACrC,IAAI,EAAE,OAAO,CAAC;CACjB"}
