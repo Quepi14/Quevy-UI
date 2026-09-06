@@ -35,6 +35,9 @@ const KEBAB_ICON = html`
     </svg>
 `;
 
+/**
+ * @event {CustomEvent<QvMenuSelectEventDetail>} select - Fired when a menu item is chosen.
+ */
 @customElement('qv-menu')
 export class QvMenu extends QvElement {
     static override styles = qvMenuStyles;

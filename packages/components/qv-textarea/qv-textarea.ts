@@ -20,6 +20,10 @@ import type { QvTextareaChangeEventDetail } from "./qv-textarea.types.js";
 
 const QvTextAreaBase = FormAssociatedMixin(DisabledMixin(QvElement));
 
+/**
+ * @event {CustomEvent<QvTextareaChangeEventDetail>} input - Fired on every keystroke/value change.
+ * @event {CustomEvent<QvTextareaChangeEventDetail>} change - Fired when the value commits(blur).
+ */
 @customElement('qv-textarea')
 export class QvTextarea extends QvTextAreaBase {
     static override styles = qvTextareaStyles;

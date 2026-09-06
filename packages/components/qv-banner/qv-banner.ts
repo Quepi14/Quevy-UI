@@ -19,7 +19,7 @@ import { QvElement, createComponentMetadata, createTagName, type ComponentMetada
 import { createControllableValue } from '@quevy/state';
 
 import {  qvBannerStyles } from './qv-banner.styles.js';
-import type { QvBannerVariant } from "./qv-banner.types.js";
+import type { QvBannerVariant, QvBannerCloseEventDetail } from "./qv-banner.types.js";
 
 /**
  * Inline default icons per vairant.
@@ -44,6 +44,9 @@ const DEFAULT_ICONS: Record<QvBannerVariant, ReturnType<typeof html> | null> = {
  */
 const ALERT_VARIANTS: readonly QvBannerVariant[] = ['warning', 'error'];
 
+/**
+ * @event {CustomEvent<QvBannerCloseEventDetail>} close - Fired when the banner is dismissed.
+ */
 @customElement('qv-banner')
 export class QvBanner extends QvElement {
     static override styles = qvBannerStyles;

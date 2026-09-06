@@ -21,14 +21,13 @@ import { property, customElement } from 'lit/decorators.js';
 import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, removeStyles } from '@quevy/core';
 import { qvStepperStyles } from './qv-stepper.styles.js';
 import { createControllableValue } from '@quevy/state';
-import type { QvStepperShape, QvStepperVariant, QvStepperSize } from './qv-stepper.types.js';
-
-export interface QvStepperChangeEventDetail {
-    value: number;
-}
+import type { QvStepperChangeEventDetail, QvStepperShape, QvStepperVariant, QvStepperSize } from './qv-stepper.types.js';
 
 const QvStepperBase = FormAssociatedMixin(DisabledMixin(QvElement));
 
+/**
+ * @event {ChangeEvent<QvStepperChangeEventDetail>} change - FIred when the current step changes.
+ */
 @customElement('qv-stepper')
 export class QvStepper extends QvStepperBase {
     static override styles = qvStepperStyles;

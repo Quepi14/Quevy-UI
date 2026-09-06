@@ -26,6 +26,10 @@ import type { QvInputVariant, QvInputType, QvInputChangeEventDetail } from "./qv
 
 const QvInputBase = FormAssociatedMixin(DisabledMixin(QvElement));
 
+/**
+ * @event {CustomEvent<QvInputChangeEventDetail>} input - Fired on every keystroke/value change.
+ * @event {CustomEvent<QvInputChangeEventDetail>} change - Fired when the value commits(blur).
+ */
 @customElement('qv-input')
 export class QvInput extends QvInputBase {
     static override styles = qvInputStyles;

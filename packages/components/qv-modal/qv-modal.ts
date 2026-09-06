@@ -19,8 +19,12 @@ import { createControllableValue } from "@quevy/state";
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 
 import { qvModalStyles } from "./qv-modal.styles.js";
-import type { QvModalSize } from "./qv-modal.types.js";
+import type { QvModalSize, QvModalToggleEventDetail } from "./qv-modal.types.js";
 
+/**
+ * @event {CustomEvent<QvModalToggleEventDetail>} open - Fired whe the modal opens.
+ * @event {CustomEvent<QvModalToggleEventDetail>} close - Fired whe the modal closes.
+ */
 @customElement('qv-modal')
 export class QvModal extends QvElement {
     static override styles = qvModalStyles;

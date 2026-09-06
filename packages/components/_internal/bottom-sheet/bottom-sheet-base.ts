@@ -29,8 +29,7 @@ import { createControllableValue } from '@quevy/state';
 import { OverlayController, type OverlayControllerOptions } from '../overlay/overlay-controller.js';
 import { DragToDismiss } from './drag-to-dismiss.js';
 import { bottomSheetStyles } from './bottom-sheet.styles.js';
-
-export type QvBottomSheetSize = 'sm' | 'md' | 'lg' | 'fullscreen';
+import type { QvBottomSheetSize, QvBottomSheetToggleEventDetail } from './bottom-sheet.types.js';
 
 export abstract class QvBottomSheetBase extends QvElement {
     static override styles = bottomSheetStyles;

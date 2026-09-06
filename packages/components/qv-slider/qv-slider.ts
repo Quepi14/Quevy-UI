@@ -7,7 +7,6 @@
  * mode) and drags that one — consistent with native OS slider
  * behavior of "click near a thumb moves that thumb".
  *
- * @event {CustomEvent<QvSliderChangeEventDetail>} change - Fired when the value (or range) commits.
  *
  * @packageDocumentation
  */
@@ -23,6 +22,9 @@ import type { QvSliderChangeEventDetail, QvSliderLabelPosition } from "./qv-slid
 
 const QvSliderBase = DisabledMixin(QvElement);
 
+/**
+ * @event {CustomEvent<QvSliderChangeEventDetail>} change - Fired when the value (or range) commits.
+ */
 @customElement('qv-slider')
 export class QvSlider extends QvSliderBase {
     static override styles = qvSliderStyles;

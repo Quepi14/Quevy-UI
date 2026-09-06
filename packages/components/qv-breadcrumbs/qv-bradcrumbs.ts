@@ -34,7 +34,9 @@ const DEFAULT_SEPARATOR = html `
         <path d="M7.3 4.3a1 1 0 011.4 0l5 5a1 1 0 010 1.4l-5 5a1 1 0 01-1.4-1.4L11.6 10 7.3 5.7a1 1 0 010-1.4z" />
     </svg>
 `;
-
+/**
+ * @event {CustomEvent<QvBreadcrumbsSelectEventDetail>} select - Fired when a breadcrumb item is chosen.
+ */
 @customElement('qv-breadcrumbs')
 export class QvBreadcrumbs extends QvElement {
     static override styles = qvBreadcrumbsStyles;

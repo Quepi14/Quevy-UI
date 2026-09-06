@@ -26,6 +26,9 @@ import type { QvDropdownVariant, QvDropdownItem, QvDropdownChangeEventDetail } f
 
 const QvDropdownBase = DisabledMixin(QvElement);
 
+/**
+ * @event {CustomEvent<QvDropdownChangeEventDetail>} change - Fired when the selected value changes.
+ */
 @customElement('qv-dropdown')
 export class QvDropdown extends QvDropdownBase {
     static override styles = qvDropdownStyles;

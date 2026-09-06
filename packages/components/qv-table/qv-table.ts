@@ -21,6 +21,9 @@ import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { qvTableStyles } from "./qv-table.styles.js";
 import type { QvTableColumns, QvTableSelectEventDetail } from "./qv-table.types.js";
 
+/**
+ * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes. 
+ */
 @customElement('qv-table')
 export class QvTable extends QvElement {
     static override styles = qvTableStyles;

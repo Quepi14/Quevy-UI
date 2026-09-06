@@ -27,6 +27,9 @@ import { createControllableValue } from "@quevy/state";
 
 const QvCheckboxBase = FormAssociatedMixin(DisabledMixin(FocusableMixin(QvElement)));
 
+/**
+ * @event {CustomEvent<QvCheckboxChangeEventDetail>} change - Fired whent he checked state changes.
+ */
 @customElement('qv-checkbox')
 export class QvCheckbox extends QvCheckboxBase {
     static override styles = qvCheckboxStyles;

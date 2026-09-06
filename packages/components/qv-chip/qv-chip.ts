@@ -21,13 +21,18 @@ import { html, nothing, type PropertyValues }  from 'lit';
 import { property, state, customElement } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, type ComponentMetadata } from '@quevy/core';
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin } from '@quevy/core';
 import { createControllableValue } from '@quevy/state';
 
 import { qvChipStyles } from './qv-chip.styles.js';
+import type { QvChipDismissEventDetail, QvChipToggleEventDetail } from './qv-chip.types.js';
 
 const QvChipBase = DisabledMixin(FocusableMixin(QvElement));
 
+/**
+ * @event {CustomEvent<QvChipToggleEventDetail>} toggle - Fired when the selected state changes.
+ * @event {CustomEvent<QvChipDismissEventDetail>} dismiss - Fired whent he dismiss (x) button is clicked.
+ */
 @customElement('qv-chip')
 export class QvChip extends QvChipBase {
     static override styles = qvChipStyles;

@@ -16,7 +16,11 @@ import { createControllableValue } from '@quevy/state';
 
 import { qvNavbarStyles } from './qv-navbar.styles.js';
 import type { QvNavbarItem } from './qv-navbar-item.js';
+import type { QvNavbarChangeEventDetail } from './qv-navbar.types.js';
 
+/**
+ * @event {CustomEvent<QvNavbarChangeEventDetail>} change - Fired when the active item changes.
+ */
 @customElement('qv-navbar')
 export class QvNavbar extends QvElement {
     static override styles = qvNavbarStyles;

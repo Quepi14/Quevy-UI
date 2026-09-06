@@ -20,6 +20,9 @@ import { qvPaginationStyles } from "./qv-pagination.styles.js";
 import { buildPageItems } from "./qv-pagination.utils.js";
 import type { QvPaginationChangeEventDetail, QvPaginationShape, QvPaginationVariant } from "./qv-pagination.types.js";
 
+/**
+ * @event {CustomEvent<QvPaginationChangeEventDetail>} change - Fired when the current page changes.
+ */
 @customElement('qv-pagination')
 export class QvPagination extends  QvElement {
     static override styles = qvPaginationStyles;

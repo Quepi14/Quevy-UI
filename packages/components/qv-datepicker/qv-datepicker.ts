@@ -25,6 +25,9 @@ import type { QvCalendarMode, QvCalendarChangeEventDetail } from "../qv-calendar
 
 const QvDatepickerBase = DisabledMixin(QvElement);
 
+/**
+ * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
+ */
 @customElement('qv-datepicker')
 export class QvDatepicker extends QvDatepickerBase {
     static override styles = qvDatePickerStyles;

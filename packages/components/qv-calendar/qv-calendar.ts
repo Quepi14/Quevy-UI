@@ -37,7 +37,9 @@ const CHEVRON_DOWN = html`
     </svg>
 `;
 
-
+/**
+ * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
+ */
 @customElement('qv-calendar')
 export class QvCalendar extends QvElement {
     static override styles = qvCalendarStyles;

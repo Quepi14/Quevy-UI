@@ -26,6 +26,9 @@ function formatSize(bytes: number): string {
 
 const QvFileInputBase = DisabledMixin(QvElement);
 
+/**
+ * @event {CustomEvent<QvFileInputChangeEventDetail>} change - Fired when the selected files change.
+ */
 @customElement('qv-file-input')
 export class QvFileInput extends QvFileInputBase {
     static override styles = qvFileInputStyles;

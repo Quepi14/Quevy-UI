@@ -20,7 +20,11 @@ import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 
 import { qvCollapsibleStyles } from "./qv-collapsible.styles.js";
+import type { QvCollapsibleToggleEventDetail } from "./qv-collapsible.types.js";
 
+/**
+ * @event {CustomEvent<QvCollapsibleToggleEventDetail>} toggle - Fired when the expanded state changes.
+ */
 @customElement('qv-collapsible')
 export class QvCollapsible extends QvElement {
     static override styles = qvCollapsibleStyles;
