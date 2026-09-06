@@ -68,7 +68,7 @@ let QvCollapsible = class QvCollapsible extends QvElement {
             <button class="header" part="header" aria-expanded=${this.isOpen} ?disabled=${this.disabled} @click=${() => this.toggle()}>
                 <slot name="trigger" @slotchange=${this.handleTriggerSlotChange}>
                     ${this.hasCustomTrigger ? nothing : html `<span>${this.label ?? ''}</span>`}
-                </sot>
+                </slot>
                 ${this.hasCustomTrigger
             ? nothing
             : html `

@@ -1,7 +1,4 @@
-/**
- * Pure date helpers - unit-testable in isolation, no DOM/Lit
- * dependency, same rationale as qv-pagination.utils.ts.
- */
+import { INTL_LOCALE } from "./qv-calendar.i18n.js";
 function stripTime(d) {
     return new Date(d.getFullYear(), d.getMonth(), d.getDate());
 }
@@ -27,16 +24,13 @@ export function buildMonthGrid(year, month) {
     const gridStart = new Date(year, month, 1 - firstOfMonth.getDay());
     return Array.from({ length: 42 }, (_, i) => new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + i));
 }
-export function formatMonthLabel(year, month) {
-    return new Intl.DateTimeFormat('id-Id', { month: 'long', year: 'numeric' }).format(new Date(year, month, 1));
+export function formatMonthLabel(year, month, locale) {
+    return new Intl.DateTimeFormat(INTL_LOCALE[locale], { month: 'long', year: 'numeric' }).format(new Date(year, month, 1));
 }
-export const MONTH_LABEL = Array.from({ length: 12 }, (_, month) => new Intl.DateTimeFormat('id-ID', { month: 'long' }).format(new Date(2020, month, 1)));
-export function formatDate(date) {
-    return new Intl.DateTimeFormat('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }).format(date);
+export function monthLabels(locale) {
+    return Array.from({ length: 12 }, (_, month) => new Intl.DateTimeFormat(INTL_LOCALE[locale], { month: 'long' }).format(new Date(2020, month, 1)));
 }
-export const WEEKDAY_LABELS = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
-export const MONTH_LABELS = [
-    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
-];
+export function formatDate(date, locale) {
+    return new Intl.DateTimeFormat(INTL_LOCALE[locale], { day: '2-digit', month: 'short', year: 'numeric' }).format(date);
+}
 //# sourceMappingURL=qv-calendar.utils.js.map

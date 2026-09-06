@@ -27,10 +27,14 @@ export declare class QvDatepicker extends QvDatepickerBase {
     value?: Date;
     valueStart?: Date;
     valueEnd?: Date;
-    placeholder: string;
+    placeholder?: string;
+    private locale;
+    private unsubscribeLocale?;
     private readonly overlay;
     private triggerEl;
     private calendarEl;
+    onConnected(): void;
+    onDisconnected(): void;
     protected updated(changedProperties: PropertyValues): void;
     private readonly handleCalendarChange;
     private get displayText();

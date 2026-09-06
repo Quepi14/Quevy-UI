@@ -28,6 +28,10 @@ export declare class QvCalendar extends QvElement {
     private rangeAnchor;
     private hoverDate;
     private viewLevel;
+    private locale;
+    private unsubscribeLocale?;
+    onConnected(): void;
+    onDisconnected(): void;
     private goToPrevYear;
     private goToNextYear;
     private openMonthPicker;

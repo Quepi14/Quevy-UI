@@ -33,7 +33,6 @@ let QvListItem = class QvListItem extends QvListItemBase {
         this.clickable = false;
         this.hasLeading = false;
         this.hasTrailing = false;
-        this.handleClick = () => { };
         this.handleKeyDown = (event) => {
             if (!this.clickable)
                 return;
@@ -57,12 +56,10 @@ let QvListItem = class QvListItem extends QvListItemBase {
     }
     static { this.styles = qvListItemStyles; }
     onConnected() {
-        this.addEventListener('click', this.handleClick);
         this.addEventListener('keydown', this.handleKeyDown);
         this.addEventListener('keyup', this.handleKeyUp);
     }
     onDisconnected() {
-        this.removeEventListener('click', this.handleClick);
         this.removeEventListener('keydown', this.handleKeyDown);
         this.removeEventListener('keyup', this.handleKeyUp);
     }

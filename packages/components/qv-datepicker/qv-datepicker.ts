@@ -12,13 +12,15 @@
  */
 
 import { html, nothing, type PropertyValues } from "lit";
-import { property, customElement } from "lit/decorators.js";
+import { property, state, customElement } from "lit/decorators.js";
 
 import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin } from "@quevy/core";
 
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 import '../qv-calendar/index.js';
 import { formatDate } from "../qv-calendar/qv-calendar.utils.js";
+import { DATEPICKER_MESSAGES } from "./qv-datepicker.i18n.js";
+import { localeStore, resolveLocale, type QvLocale } from "../_internal/i18n/locale.js";
 
 import { qvDatePickerStyles } from "./qv-datepicker.styles.js";
 import type { QvCalendarMode, QvCalendarChangeEventDetail } from "../qv-calendar/index.js";
@@ -44,7 +46,10 @@ export class QvDatepicker extends QvDatepickerBase {
     @property({ attribute: false}) public value?: Date;
     @property({ attribute: false}) public valueStart?: Date;
     @property({ attribute: false}) public valueEnd?: Date;
-    @property() public placeholder = 'Pilih tanggal';
+    @property() public placeholder?: string;
+
+    @state() private locale: QvLocale = 'id';
+    private unsubscribeLocale?: () => void;
 
     private readonly overlay = new OverlayController(this, {
         placement: 'bottom-start',
@@ -53,6 +58,17 @@ export class QvDatepicker extends QvDatepickerBase {
 
     @query('.trigger', false) private triggerEl!: HTMLButtonElement | null;
     @query('qv-calendar', false) private calendarEl!: HTMLElement| null;
+
+    public override onConnected(): void {
+        this.locale = resolveLocale(this);
+        this.unsubscribeLocale = localeStore.subscribe(() => {
+            this.locale = resolveLocale(this);
+        });
+    }
+
+    public override onDisconnected(): void {
+        this.unsubscribeLocale?.();
+    }
 
     protected override updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
@@ -67,8 +83,8 @@ export class QvDatepicker extends QvDatepickerBase {
     };
 
     private get displayText(): string | null {
-        if (this.mode === 'single') return this.value ? formatDate(this.value) : null;
-        if (this.valueStart && this.valueEnd) return `${formatDate(this.valueStart)} - ${formatDate(this.valueEnd)}`;
+        if (this.mode === 'single') return this.value ? formatDate(this.value, this.locale) : null;
+        if (this.valueStart && this.valueEnd) return `${formatDate(this.valueStart, this.locale)} - ${formatDate(this.valueEnd, this.locale)}`;
         return null;
     }
 
@@ -85,7 +101,7 @@ export class QvDatepicker extends QvDatepickerBase {
                 <svg class="icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path d="M6 2a1 1 0 011 1v1h6V3a1 1 0 112 0v1h1a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2h1V3a1 1 0 011-1zM4 8v8h12V8H4z"/>
                 </svg>
-                <span class=${text ? '' : 'placeholder'}>${text ?? this.placeholder}</span>
+                <span class=${text ? '' : 'placeholder'}>${text ?? this.placeholder ?? DATEPICKER_MESSAGES[this.locale].placeholder}</span>
             </button>
 
             ${this.overlay.isOpen

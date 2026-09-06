@@ -67,7 +67,7 @@ let QvButtonGroup = class QvButtonGroup extends QvElement {
             const parts = this.ratio.split(':').map((v) => Number(v.trim()));
             if (parts.length === children.length && parts.every((n) => !Number.isNaN(n) && n > 0)) {
                 children.forEach((child, i) => {
-                    child.style.flexFlow = String(parts[i]);
+                    child.style.flexGrow = String(parts[i]);
                 });
                 return;
             }
@@ -86,7 +86,7 @@ let QvButtonGroup = class QvButtonGroup extends QvElement {
                 return;
             const [numStr, denStr] = raw.split(':').map((v) => v.trim());
             const numerator = Number(numStr);
-            const denominator = Number(numStr);
+            const denominator = Number(denStr);
             if (Number.isNaN(numerator) || Number.isNaN(denominator) || numerator <= 0 || denominator <= 0) {
                 console.warn(`[qv-button-group] child ratio="${raw}" is invalid, ignoring.`);
                 return;

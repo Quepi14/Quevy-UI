@@ -35,3 +35,4 @@ export * from './qv-carousel/index.js';
 export * from './qv-datepicker/index.js';
 export * from './qv-button-group/index.js';
 export * from './qv-navbar/index.js';
+export * from './i18n/index.js';

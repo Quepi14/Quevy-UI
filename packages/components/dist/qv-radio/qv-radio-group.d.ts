@@ -18,6 +18,9 @@
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 declare const QvRadioGroupBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("@quevy/core/dist/mixins/form-associated.js").FormAssociatedInterface>;
+/**
+ * @event {CustomEvent<QvRadioGroupChangeEventDetail>} change - Fired when the selected radio changes.
+ */
 export declare class QvRadioGroup extends QvRadioGroupBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;

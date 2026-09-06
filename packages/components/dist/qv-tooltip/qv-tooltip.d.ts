@@ -30,6 +30,7 @@ export declare class QvTooltip extends QvElement {
     private readonly scheduleOpen;
     private readonly open;
     private readonly close;
+    private readonly handleSlotChange;
     private reposition;
     protected render(): import("lit").TemplateResult<1>;
 }

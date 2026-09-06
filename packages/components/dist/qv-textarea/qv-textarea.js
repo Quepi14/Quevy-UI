@@ -71,7 +71,7 @@ let QvTextarea = class QvTextarea extends QvTextAreaBase {
             <textarea
                 .value=${this.value}
                 placeholder=${this.placeholder}
-                row=${this.rows}
+                rows=${this.rows}
                 maxlength=${this.maxlength ?? nothing}
                 name=${this.name ?? nothing}
                 ?disabled=${this.disabled}

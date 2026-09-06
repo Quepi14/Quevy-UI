@@ -58,7 +58,7 @@ let QvAccordion = class QvAccordion extends QvElement {
         return Array.from(this.querySelectorAll('qv-collapsible'));
     }
     render() {
-        return html `<slot></slo>`;
+        return html `<slot></slot>`;
     }
 };
 __decorate([

@@ -24,7 +24,6 @@ export declare class QvListItem extends QvListItemBase {
     onConnected(): void;
     onDisconnected(): void;
     protected updated(changedProperties: PropertyValues): void;
-    private readonly handleClick;
     private readonly handleKeyDown;
     private readonly handleKeyUp;
     private readonly handleLeadingSlotChange;

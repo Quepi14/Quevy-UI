@@ -109,7 +109,7 @@ let QvPagination = class QvPagination extends QvElement {
             >&rsaquo;</button>
 
             <span class="jump" part="jump">
-                <label for="jump-input" style="font-size; inherit;">Go to</label>
+                <label for="jump-input" style="font-size: inherit;">Go to</label>
                 <input
                     id="jump-input"
                     type="text"

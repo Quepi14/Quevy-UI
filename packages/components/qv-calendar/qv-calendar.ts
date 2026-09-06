@@ -16,7 +16,9 @@ import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 
 import { qvCalendarStyles } from "./qv-calendar.styles.js";
-import { buildMonthGrid, formatMonthLabel, isSameDay, isWithinRange, isBefore, isAfter, MONTH_LABEL, WEEKDAY_LABELS } from "./qv-calendar.utils.js";
+import { buildMonthGrid, formatMonthLabel, monthLabels, isSameDay, isWithinRange, isBefore, isAfter } from "./qv-calendar.utils.js";
+import { CALENDAR_MESSAGES } from "./qv-calendar.i18n.js";
+import { localeStore, resolveLocale, type QvLocale } from "../_internal/i18n/locale.js";
 import type { QvCalendarMode, QvCalendarChangeEventDetail } from "./qv-calendar.types.js";
 
 const CHEVRON_LEFT = html`
@@ -64,6 +66,20 @@ export class QvCalendar extends QvElement {
 
     @state() private viewLevel: 'days' | 'months' = 'days';
 
+    @state() private locale: QvLocale = 'id';
+    private unsubscribeLocale?: () => void;
+
+    public override onConnected(): void {
+        this.locale = resolveLocale(this);
+        this.unsubscribeLocale = localeStore.subscribe(() => {
+            this.locale = resolveLocale(this);
+        });
+    }
+
+    public override onDisconnected(): void {
+        this.unsubscribeLocale?.();
+    }
+
     private goToPrevYear(): void {
         this.viewYear -=1;
     }
@@ -82,19 +98,23 @@ export class QvCalendar extends QvElement {
     }
 
     private renderMonthHeader() {
+        const messages = CALENDAR_MESSAGES[this.locale];
+
         return html`
             <div class="header">
-                <button class="nav" aria-label="Previous Year" @click=${() => this.goToPrevYear()}>${CHEVRON_LEFT}</button>
+                <button class="nav" aria-label=${messages.prevYear} @click=${() => this.goToPrevYear()}>${CHEVRON_LEFT}</button>
                 <span class="label static">${this.viewYear}</span>
-                <button class="nav" aria-label="Next Year" @click=${() => this.goToNextYear()}>${CHEVRON_RIGHT}</button>
+                <button class="nav" aria-label=${messages.nextYear} @click=${() => this.goToNextYear()}>${CHEVRON_RIGHT}</button>
             </div>
         `;
     }
 
     private renderMonthGrid() {
+        const labels = monthLabels(this.locale);
+
         return html`
             <div class="month-grid">
-                ${MONTH_LABEL.map(
+                ${labels.map(
                     (label, i) => html`
                         <button
                             class=${classMap({ month: true, active: i === this.viewMonth})}
@@ -181,23 +201,26 @@ export class QvCalendar extends QvElement {
     }
 
     private renderDaysHeader() {
+        const messages = CALENDAR_MESSAGES[this.locale];
+
         return html`
             <div class="header">
-                <button class="nav" aria-label="Previous month" @click=${() => this.goToPrevMonth()}>${CHEVRON_LEFT}</button>
-                <button class="label" aria-label="Choose month" @click=${() => this.openMonthPicker()}>
-                    ${formatMonthLabel(this.viewYear, this.viewMonth)} ${CHEVRON_DOWN}
+                <button class="nav" aria-label=${messages.prevMonth} @click=${() => this.goToPrevMonth()}>${CHEVRON_LEFT}</button>
+                <button class="label" aria-label=${messages.chooseMonth} @click=${() => this.openMonthPicker()}>
+                    ${formatMonthLabel(this.viewYear, this.viewMonth, this.locale)} ${CHEVRON_DOWN}
                 </button>
-                <button class="nav" aria-label="Next month" @click=${() => this.goToNextMonth()}>${CHEVRON_RIGHT}</button>
+                <button class="nav" aria-label=${messages.nextMonth} @click=${() => this.goToNextMonth()}>${CHEVRON_RIGHT}</button>
             </div>
         `;
     }
 
     private renderDaysGrid() {
         const grid = buildMonthGrid(this.viewYear, this.viewMonth);
+        const messages = CALENDAR_MESSAGES[this.locale];
 
         return html`
             <div class="grid" role="grid">
-                ${WEEKDAY_LABELS.map((w) => html`<div class="weekday">${w}</div>`)}
+                ${messages.weekdays.map((weekday) => html`<div class="weekday">${weekday}</div>`)}
                 ${grid.map(
                     (date) => html`
                         <button
