@@ -98,7 +98,7 @@ export class QvState extends QvElement {
     protected override render() {
         return html`
             <div>
-                <slot name="icon" part="icon">
+                <slot name="icon" part="icon" @slotchange=${this.handleIconSlotChange}>
                     ${this.hasIcon
                         ? nothing
                         : this.status === 'loading'

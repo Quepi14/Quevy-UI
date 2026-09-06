@@ -68,7 +68,12 @@ export class QvFileInput extends QvFileInputBase {
     };
 
     private readonly handleInputChange = (event: Event): void => {
-        this.setFiles((event.target as HTMLInputElement).files);
+        const input = event.target as HTMLInputElement;
+        this.setFiles(input.files);
+        // Without this, re-selecting the exact same file(s) in a row
+        // wouldn't change the input's value, so no `change` event
+        // would fire the second time.
+        input.value = '';
     };
 
     private readonly handleDragOver = (event: DragEvent): void => {

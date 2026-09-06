@@ -21,11 +21,15 @@ import { computeOverlayPosition, type OverlayPlacement } from "../_internal/over
 import { qvTootltipStyles } from "./qv-tooltip.styles.js";
 import type { QvTooltipPlacement } from "./qv-tooltip.types.js";
 
-const PLACEMENT_MAP: Record<QvTooltipPlacement, OverlayPlacement> = {
+/**
+ * computeOverlayPosition only knows vertical placement (top/bottom 
+ * with start/end alignment) - there's no "beside the trigger" concept
+ * in that shared utility, so left/right are positioned directly
+ * in reposition() below instead of going through it.
+ */
+const PLACEMENT_MAP: Record<'top' | 'bottom', OverlayPlacement> = {
     top: 'top-start',
     bottom: 'bottom-start',
-    left: 'top-start',
-    right: 'bottom-start', 
 };
 
 const OPEN_DELAY = 300;
@@ -82,18 +86,41 @@ export class QvTooltip extends QvElement {
         this.visible = false;
     };
 
+    // aria-describedby has to live on the actual trigger element(s) 
+    // in light DOM, not on <slot> itself - a <slot> has no rendered
+    // presence of its own for assistive tech to read.
+    private readonly handleSlotChange = (event: Event): void => {
+        const slot = event.target as HTMLSlotElement;
+        for (const el of slot.assignedElements()) {
+            el.setAttribute('aria-describedby', this.tooltipid);
+        }
+    }
+
     private reposition(): void {
         if (!this.bubbleEl) return;
 
+        const gap = 6;
         const triggerRect = this.getBoundingClientRect();
         const bubbleRect = this.bubbleEl.getBoundingClientRect();
 
-        const { top, left } = computeOverlayPosition(
+        if (this.placement === 'left' || this.placement === 'right') {
+            const top = triggerRect.top + (triggerRect.height - bubbleRect.height) /2;
+            const left = 
+                this.placement === 'left'
+                ? triggerRect.left - bubbleRect.width - gap
+                : triggerRect.left + triggerRect.width + gap;
+
+            this.bubbleEl.style.top = `${top}px`;
+            this.bubbleEl.style.left = `${left}px`;
+            return;
+        }
+
+        const { top, left } = computeOverlayPosition( 
             triggerRect,
             { width: bubbleRect.width, height: bubbleRect.height},
             { width: window.innerWidth, height: window.innerHeight},
             PLACEMENT_MAP[this.placement],
-            6,
+            gap,
         );
 
         this.bubbleEl.style.top = `${top}px`;
@@ -102,7 +129,7 @@ export class QvTooltip extends QvElement {
 
     protected override render() {
         return html`
-            <slot aria-describedby=${this.id}></slot>
+            <slot @slotchange=${this.handleSlotChange}></slot>
             <div id=${this.tooltipid} class=${this.visible ? 'bubble visible' : 'bubble'} part="bubble" role="tooltip">
                 ${this.text}
             </div>

@@ -39,13 +39,11 @@ export class QvListItem extends QvListItemBase {
     @state() private hasTrailing = false;
 
     public override onConnected(): void {
-        this.addEventListener('click', this.handleClick);
         this.addEventListener('keydown', this.handleKeyDown);
         this.addEventListener('keyup', this.handleKeyUp);
     }
 
     public override onDisconnected(): void {
-        this.removeEventListener('click', this.handleClick);
         this.removeEventListener('keydown', this.handleKeyDown);
         this.removeEventListener('keyup', this.handleKeyUp);
     }
@@ -55,8 +53,6 @@ export class QvListItem extends QvListItemBase {
         this.setAttribute('role', 'listitem');
         this.tabIndex = this.clickable ? 0 : -1;
     }
-
-    private readonly handleClick = (): void => {};
 
     private readonly handleKeyDown = (event: KeyboardEvent): void => {
         if (!this.clickable) return;

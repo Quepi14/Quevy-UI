@@ -103,7 +103,7 @@ export class QvMenu extends QvElement {
     }
 
     private readonly handleItemKeyDown = (event: KeyboardEvent, index: number): void => {
-        const options = Array.from(this.panelEl?.querySelectorAll<HTMLElement>('item') ?? []);
+        const options = Array.from(this.panelEl?.querySelectorAll<HTMLElement>('.item') ?? []);
 
         if (event.key === 'ArrowDown') {
             event.preventDefault();
@@ -144,7 +144,7 @@ export class QvMenu extends QvElement {
                                                 role="menuitem"
                                                 tabindex="-1"
                                                 href=${item.href}
-                                                aria-disabled=${item.disabled ? 'ture' : 'false'}
+                                                aria-disabled=${item.disabled ? 'true' : 'false'}
                                                 @click=${(e: Event) => this.selectItem(item, index, e)}
                                                 @keydown=${(e: KeyboardEvent) => this.handleItemKeyDown(e, index)}
                                             >${item.icon ? html`<span class="item-icon" part="item-icon" aria-hidden="true">${item.icon}</span>` : nothing}
@@ -162,7 +162,7 @@ export class QvMenu extends QvElement {
                                                 @click=${(e: Event) => this.selectItem(item, index, e)}
                                                 @keydown=${(e: KeyboardEvent) => this.handleItemKeyDown(e, index)}
                                             >${item.icon ? html`<span class="item-icon" part="item-icon" aria-hidden="true">${item.icon}</span>` : nothing}
-                                                </span>${item.label}</span>
+                                                <span part="item-label">${item.label}</span>
                                             </button>
                                         `}
                                 </li>    

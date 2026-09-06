@@ -63,6 +63,6 @@ export class QvAccordion extends QvElement {
     };
 
     protected override render() {
-        return html`<slot></slo>`;
+        return html`<slot></slot>`;
     }
 }

@@ -2,6 +2,7 @@ import { applyTokens } from '@quevy/tokens';
 import { html } from 'lit';
 
 import '../qv-button/index.js';
+import '../qv-button-group/index.js';
 import '../qv-card/index.js';
 import '../qv-skeleton/index.js';
 import '../qv-banner/index.js';
