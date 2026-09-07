@@ -16,6 +16,7 @@ import { property, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvPaginationStyles } from "./qv-pagination.styles.js";
 import { buildPageItems } from "./qv-pagination.utils.js";
 import type { QvPaginationChangeEventDetail, QvPaginationShape, QvPaginationVariant } from "./qv-pagination.types.js";
@@ -23,8 +24,10 @@ import type { QvPaginationChangeEventDetail, QvPaginationShape, QvPaginationVari
 /**
  * @event {CustomEvent<QvPaginationChangeEventDetail>} change - Fired when the current page changes.
  */
+const QvPaginationBase = LocalizedMixin(QvElement);
+
 @customElement('qv-pagination')
-export class QvPagination extends  QvElement {
+export class QvPagination extends QvPaginationBase {
     static override styles = qvPaginationStyles;
 
     public override readonly metadata = createComponentMetadata ({

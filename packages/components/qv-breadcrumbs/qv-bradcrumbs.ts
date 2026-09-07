@@ -22,6 +22,7 @@ import { property, state, customElement } from "lit/decorators.js";
 
 import { QvElement, createComponentMetadata, createTagName, type ComponentMetadata } from "@quevy/core";
 
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvBreadcrumbsStyles } from "./qv-bradcrumbs.styles.js";
 import type { QvBreadcrumbItem, QvBreadcrumbsSelectEventDetail } from "./qv-bradcrumbs.types.js";
 
@@ -37,8 +38,10 @@ const DEFAULT_SEPARATOR = html `
 /**
  * @event {CustomEvent<QvBreadcrumbsSelectEventDetail>} select - Fired when a breadcrumb item is chosen.
  */
+const QvBreadcrumbsBase = LocalizedMixin(QvElement);
+
 @customElement('qv-breadcrumbs')
-export class QvBreadcrumbs extends QvElement {
+export class QvBreadcrumbs extends QvBreadcrumbsBase {
     static override styles = qvBreadcrumbsStyles;
 
     public override readonly metadata = createComponentMetadata({

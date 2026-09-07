@@ -16,10 +16,13 @@ import { property, state, customElement } from "lit/decorators.js";
 
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvCarouselStyles } from "./qv-carousel.styles.js";;
 
+const QvCarouselBase = LocalizedMixin(QvElement);
+
 @customElement('qv-carousel')
-export class QvCarousel extends QvElement {
+export class QvCarousel extends QvCarouselBase {
     static override styles = qvCarouselStyles;
 
     public override readonly metadata = createComponentMetadata({

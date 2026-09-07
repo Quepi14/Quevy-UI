@@ -26,12 +26,13 @@ import { classMap } from 'lit/directives/class-map.js';
 import { QvElement, queryDecorator as query } from '@quevy/core';
 import { createControllableValue } from '@quevy/state';
 
+import { LocalizedMixin } from '../i18n/localized-mixin.js';
 import { OverlayController, type OverlayControllerOptions } from '../overlay/overlay-controller.js';
 import { DragToDismiss } from './drag-to-dismiss.js';
 import { bottomSheetStyles } from './bottom-sheet.styles.js';
 import type { QvBottomSheetSize, QvBottomSheetToggleEventDetail } from './bottom-sheet.types.js';
 
-export abstract class QvBottomSheetBase extends QvElement {
+export abstract class QvBottomSheetBase extends LocalizedMixin(QvElement) {
     static override styles = bottomSheetStyles;
 
     @property({ reflect: true})

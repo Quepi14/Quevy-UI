@@ -24,10 +24,11 @@ import { classMap } from 'lit/directives/class-map.js';
 import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin } from '@quevy/core';
 import { createControllableValue } from '@quevy/state';
 
+import { LocalizedMixin } from '../_internal/i18n/localized-mixin.js';
 import { qvChipStyles } from './qv-chip.styles.js';
 import type { QvChipDismissEventDetail, QvChipToggleEventDetail } from './qv-chip.types.js';
 
-const QvChipBase = DisabledMixin(FocusableMixin(QvElement));
+const QvChipBase = DisabledMixin(FocusableMixin(LocalizedMixin(QvElement)));
 
 /**
  * @event {CustomEvent<QvChipToggleEventDetail>} toggle - Fired when the selected state changes.

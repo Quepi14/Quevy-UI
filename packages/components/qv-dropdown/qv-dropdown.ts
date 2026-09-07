@@ -20,11 +20,12 @@ import { QvElement, createComponentMetadata, createTagName, queryDecorator as qu
 import { createControllableValue } from "@quevy/state";
 
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 
 import { qvDropdownStyles } from './qv-dropdown.styles.js'
 import type { QvDropdownVariant, QvDropdownItem, QvDropdownChangeEventDetail } from "./qv-dropdown.types.js";
 
-const QvDropdownBase = DisabledMixin(QvElement);
+const QvDropdownBase = DisabledMixin(LocalizedMixin(QvElement));
 
 /**
  * @event {CustomEvent<QvDropdownChangeEventDetail>} change - Fired when the selected value changes.

@@ -20,12 +20,12 @@ import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 import '../qv-calendar/index.js';
 import { formatDate } from "../qv-calendar/qv-calendar.utils.js";
 import { DATEPICKER_MESSAGES } from "./qv-datepicker.i18n.js";
-import { localeStore, resolveLocale, type QvLocale } from "../_internal/i18n/locale.js";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 
 import { qvDatePickerStyles } from "./qv-datepicker.styles.js";
 import type { QvCalendarMode, QvCalendarChangeEventDetail } from "../qv-calendar/index.js";
 
-const QvDatepickerBase = DisabledMixin(QvElement);
+const QvDatepickerBase = DisabledMixin(LocalizedMixin(QvElement));
 
 /**
  * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
@@ -48,9 +48,6 @@ export class QvDatepicker extends QvDatepickerBase {
     @property({ attribute: false}) public valueEnd?: Date;
     @property() public placeholder?: string;
 
-    @state() private locale: QvLocale = 'id';
-    private unsubscribeLocale?: () => void;
-
     private readonly overlay = new OverlayController(this, {
         placement: 'bottom-start',
         onOpenChange: () => this.requestUpdate(),
@@ -58,17 +55,6 @@ export class QvDatepicker extends QvDatepickerBase {
 
     @query('.trigger', false) private triggerEl!: HTMLButtonElement | null;
     @query('qv-calendar', false) private calendarEl!: HTMLElement| null;
-
-    public override onConnected(): void {
-        this.locale = resolveLocale(this);
-        this.unsubscribeLocale = localeStore.subscribe(() => {
-            this.locale = resolveLocale(this);
-        });
-    }
-
-    public override onDisconnected(): void {
-        this.unsubscribeLocale?.();
-    }
 
     protected override updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);

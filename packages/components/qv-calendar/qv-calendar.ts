@@ -18,32 +18,35 @@ import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { qvCalendarStyles } from "./qv-calendar.styles.js";
 import { buildMonthGrid, formatMonthLabel, monthLabels, isSameDay, isWithinRange, isBefore, isAfter } from "./qv-calendar.utils.js";
 import { CALENDAR_MESSAGES } from "./qv-calendar.i18n.js";
-import { localeStore, resolveLocale, type QvLocale } from "../_internal/i18n/locale.js";
 import type { QvCalendarMode, QvCalendarChangeEventDetail } from "./qv-calendar.types.js";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
+
 
 const CHEVRON_LEFT = html`
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path d="M12.8 4.2a1 1 0 010 1.4L8.4 10l4.4 4.4a1 1 0 01-1.4 1.4l-5.1-5.1a1 1 0 010-1.4l5.1-5.1a1 1 0 011.4 0z" />
-    </svg>
+<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+<path d="M12.8 4.2a1 1 0 010 1.4L8.4 10l4.4 4.4a1 1 0 01-1.4 1.4l-5.1-5.1a1 1 0 010-1.4l5.1-5.1a1 1 0 011.4 0z" />
+</svg>
 `;
 
 const CHEVRON_RIGHT = html`
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path d="M7.2 4.2a1 1 0 000 1.4l4.4 4.4-4.4 4.4a1 1 0 001.4 1.4l5.1-5.1a1 1 0 000-1.4L8.6 4.2a1 1 0 00-1.4 0z" />
-    </svg>
+<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+<path d="M7.2 4.2a1 1 0 000 1.4l4.4 4.4-4.4 4.4a1 1 0 001.4 1.4l5.1-5.1a1 1 0 000-1.4L8.6 4.2a1 1 0 00-1.4 0z" />
+</svg>
 `;
 
 const CHEVRON_DOWN = html`
-    <svg class="caret" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path d="M4.2 7.2a1 1 0 011.4 0l4.4 4.4 4.4-4.4a1 1 0 011.4 1.4l-5.1 5.1a1 1 0 01-1.4 0L4.2 8.6a1 1 0 010-1.4z" />
-    </svg>
+<svg class="caret" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+<path d="M4.2 7.2a1 1 0 011.4 0l4.4 4.4 4.4-4.4a1 1 0 011.4 1.4l-5.1 5.1a1 1 0 01-1.4 0L4.2 8.6a1 1 0 010-1.4z" />
+</svg>
 `;
+
+const QvCalendarBase = LocalizedMixin(QvElement);
 
 /**
  * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
  */
 @customElement('qv-calendar')
-export class QvCalendar extends QvElement {
+export class QvCalendar extends QvCalendarBase {
     static override styles = qvCalendarStyles;
 
     public override readonly metadata = createComponentMetadata({
@@ -65,20 +68,6 @@ export class QvCalendar extends QvElement {
     @state() private hoverDate: Date | null = null;
 
     @state() private viewLevel: 'days' | 'months' = 'days';
-
-    @state() private locale: QvLocale = 'id';
-    private unsubscribeLocale?: () => void;
-
-    public override onConnected(): void {
-        this.locale = resolveLocale(this);
-        this.unsubscribeLocale = localeStore.subscribe(() => {
-            this.locale = resolveLocale(this);
-        });
-    }
-
-    public override onDisconnected(): void {
-        this.unsubscribeLocale?.();
-    }
 
     private goToPrevYear(): void {
         this.viewYear -=1;

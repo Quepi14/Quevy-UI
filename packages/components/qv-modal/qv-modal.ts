@@ -16,6 +16,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName, queryDecorator as query } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 
 import { qvModalStyles } from "./qv-modal.styles.js";
@@ -25,8 +26,10 @@ import type { QvModalSize, QvModalToggleEventDetail } from "./qv-modal.types.js"
  * @event {CustomEvent<QvModalToggleEventDetail>} open - Fired whe the modal opens.
  * @event {CustomEvent<QvModalToggleEventDetail>} close - Fired whe the modal closes.
  */
+const QvModalBase = LocalizedMixin(QvElement);
+
 @customElement('qv-modal')
-export class QvModal extends QvElement {
+export class QvModal extends QvModalBase {
     static override styles = qvModalStyles;
 
     public override readonly metadata = createComponentMetadata({

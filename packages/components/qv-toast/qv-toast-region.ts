@@ -22,13 +22,16 @@ import { state, customElement } from "lit/decorators.js";
 
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { toastStore } from "../_internal/toast/toast-store.js";
 import { dismiss } from "./qv-toast.js";
 import { qvToastRegionStyles } from "./qv-toast-region.styles.js";
 import type { QvToastEntry, QvToastPosition } from "./qv-toast.types.js";
 
+const QvToastRegionBase = LocalizedMixin(QvElement);
+
 @customElement('qv-toast-region')
-export class QvToastRegion extends QvElement {
+export class QvToastRegion extends QvToastRegionBase {
     static override styles = qvToastRegionStyles;
 
     public override readonly metadata = createComponentMetadata({

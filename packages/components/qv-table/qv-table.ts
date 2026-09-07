@@ -18,14 +18,17 @@ import { classMap } from "lit/directives/class-map.js";
 
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvTableStyles } from "./qv-table.styles.js";
 import type { QvTableColumns, QvTableSelectEventDetail } from "./qv-table.types.js";
 
 /**
  * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes. 
  */
+const QvTableBase = LocalizedMixin(QvElement);
+
 @customElement('qv-table')
-export class QvTable extends QvElement {
+export class QvTable extends QvTableBase {
     static override styles = qvTableStyles;
 
     public override readonly metadata = createComponentMetadata({

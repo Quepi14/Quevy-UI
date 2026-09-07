@@ -18,6 +18,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName, type ComponentMetadata } from "@quevy/core";
 import { createControllableValue } from '@quevy/state';
 
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import {  qvBannerStyles } from './qv-banner.styles.js';
 import type { QvBannerVariant, QvBannerCloseEventDetail } from "./qv-banner.types.js";
 
@@ -47,8 +48,10 @@ const ALERT_VARIANTS: readonly QvBannerVariant[] = ['warning', 'error'];
 /**
  * @event {CustomEvent<QvBannerCloseEventDetail>} close - Fired when the banner is dismissed.
  */
+const QvBannerBase = LocalizedMixin(QvElement);
+
 @customElement('qv-banner')
-export class QvBanner extends QvElement {
+export class QvBanner extends QvBannerBase {
     static override styles = qvBannerStyles;
 
     public override readonly metadata = createComponentMetadata({
