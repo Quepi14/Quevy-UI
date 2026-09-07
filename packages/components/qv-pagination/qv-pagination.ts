@@ -20,6 +20,7 @@ import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvPaginationStyles } from "./qv-pagination.styles.js";
 import { buildPageItems } from "./qv-pagination.utils.js";
 import type { QvPaginationChangeEventDetail, QvPaginationShape, QvPaginationVariant } from "./qv-pagination.types.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
 /**
  * @event {CustomEvent<QvPaginationChangeEventDetail>} change - Fired when the current page changes.
@@ -57,6 +58,7 @@ export class QvPagination extends QvPaginationBase {
     private jumpValue = '';
 
     public override onConnected(): void {
+        super.onConnected?.();
         this.setAttribute('role', 'navigation');
         this.setAttribute('aria-label', 'Pagination');
     }
@@ -110,11 +112,12 @@ export class QvPagination extends QvPaginationBase {
     protected override render() {
         const current = this.currentPage;
         const items = buildPageItems(current, this.totalPages, this.siblingCount);
+        const messages = COMMON_MESSAGES[this.locale];
 
         return html`
             <button
                 type="button"
-                aria-label="Previous page"
+                aria-label=${messages.previousPage}
                 ?disabled=${current <= 1}
                 @click=${this.handlePrev}
             >&lsaquo;</button>
@@ -125,7 +128,7 @@ export class QvPagination extends QvPaginationBase {
                         <button
                             type="button"
                             aria-current=${item === current ? 'page' : nothing}
-                            aria-label=${`Page ${item}`}
+                            aria-label=${messages.page(item)}
                             @click=${() => this.handlePageClick(item)}
                         >${item}</button>
                     `
@@ -134,18 +137,18 @@ export class QvPagination extends QvPaginationBase {
 
             <button
                 type="button"
-                aria-label="Next page"
+                aria-label=${messages.nextPage}
                 ?disabled=${current >= this.totalPages}
                 @click=${this.handleNext}
             >&rsaquo;</button>
 
             <span class="jump" part="jump">
-                <label for="jump-input" style="font-size: inherit;">Go to</label>
+                <label for="jump-input" style="font-size: inherit;">${messages.goToPage}</label>
                 <input
                     id="jump-input"
                     type="text"
                     inputmode="numeric"
-                    aria-label="Jump to page"
+                    aria-label=${messages.jumpToPage}
                     @input=${this.handleJumpInput}
                     @keydown=${this.handleJumpKeyDown}
                 />

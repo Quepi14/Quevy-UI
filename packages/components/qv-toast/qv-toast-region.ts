@@ -27,6 +27,7 @@ import { toastStore } from "../_internal/toast/toast-store.js";
 import { dismiss } from "./qv-toast.js";
 import { qvToastRegionStyles } from "./qv-toast-region.styles.js";
 import type { QvToastEntry, QvToastPosition } from "./qv-toast.types.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
 const QvToastRegionBase = LocalizedMixin(QvElement);
 
@@ -44,6 +45,7 @@ export class QvToastRegion extends QvToastRegionBase {
     private unsubscribe?: () => void;
 
     public override onConnected(): void {
+        super.onConnected?.();
         this.toasts = toastStore.getState().toast;
         this.unsubscribe = toastStore.subscribe((state) => {
             this.toasts = state.toast;
@@ -52,6 +54,7 @@ export class QvToastRegion extends QvToastRegionBase {
 
     public override onDisconnected(): void {
         this.unsubscribe?.();
+        super.onDisconnected?.();
     }
 
     private groupByPosition(): Map<QvToastPosition, QvToastEntry[]> {
@@ -65,6 +68,8 @@ export class QvToastRegion extends QvToastRegionBase {
     }
 
     protected override render() {
+        const messages = COMMON_MESSAGES[this.locale];
+
         return html`
             ${[...this.groupByPosition().entries()].map(
                 ([position, items]) => html`
@@ -81,7 +86,7 @@ export class QvToastRegion extends QvToastRegionBase {
                                         ? html`
                                             <button
                                                 class="close"
-                                                aria-label="Dismiss"
+                                                aria-label=${messages.dismiss}
                                                 @click=${() => dismiss(item.id)}
                                             >&times;</button>
                                         `

@@ -18,6 +18,7 @@ import { QvElement, createComponentMetadata, createTagName, queryDecorator as qu
 import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvFileInputStyles } from "./qv-file-input.styles.js";
 import type { QvFileInputChangeEventDetail } from "./qv-file-input.types.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
 function formatSize(bytes: number): string {
     if (bytes < 1024) return `${bytes} B`;
@@ -93,6 +94,8 @@ export class QvFileInput extends QvFileInputBase {
     };
 
     protected override render() {
+        const messages = COMMON_MESSAGES[this.locale];
+
         return html`
             <div
                 class="dropzone"
@@ -108,7 +111,7 @@ export class QvFileInput extends QvFileInputBase {
                 <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0L7 9m5-5l5 5M5 20h14"/>
                 </svg>
-                <span>Seret file ke sini, atau <span class="browse">pilih file</span></span>
+                <span>${messages.dragFileHere} <span class="browse">${messages.chooseFile}</span></span>
             </div>
 
             <input
@@ -127,7 +130,7 @@ export class QvFileInput extends QvFileInputBase {
                                 <div class="file-row">
                                     <span class="file-name">${file.name}</span>
                                     <span class="file-size">${formatSize(file.size)}</span>
-                                    <button class="file-remove" aria-label="Remove" @click=${() => this.removeFile(index)}>&times;</button>
+                                    <button class="file-remove" aria-label=${messages.remove} @click=${() => this.removeFile(index)}>&times;</button>
                                 </div>
                             `,
                         )}

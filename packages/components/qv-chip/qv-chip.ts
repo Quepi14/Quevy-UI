@@ -27,6 +27,7 @@ import { createControllableValue } from '@quevy/state';
 import { LocalizedMixin } from '../_internal/i18n/localized-mixin.js';
 import { qvChipStyles } from './qv-chip.styles.js';
 import type { QvChipDismissEventDetail, QvChipToggleEventDetail } from './qv-chip.types.js';
+import { COMMON_MESSAGES } from '../i18n/common-messages.js';
 
 const QvChipBase = DisabledMixin(FocusableMixin(LocalizedMixin(QvElement)));
 
@@ -65,6 +66,7 @@ export class QvChip extends QvChipBase {
     }
 
     public override onConnected(): void {
+        super.onConnected?.();
         this.addEventListener('click', this.handleClick);
         this.addEventListener('keydown', this.handleKeyDown);
         this.addEventListener('keyup', this.handleKeyUp);
@@ -74,6 +76,7 @@ export class QvChip extends QvChipBase {
         this.removeEventListener('click', this.handleClick);
         this.removeEventListener('keydown', this.handleKeyDown);
         this.removeEventListener('keyup', this.handleKeyUp);
+        super.onDisconnected?.();
     }
 
     protected override updated(changedProperties: PropertyValues): void {
@@ -151,6 +154,8 @@ export class QvChip extends QvChipBase {
     };
 
     protected override render() {
+        const messages = COMMON_MESSAGES[this.locale];
+
         return html`
             <span class=${classMap({ icon: true, empty: !this.hasIcon})} part="icon>
                 <slot name="icon" @slotchange=${this.handleIconSlotChange}></slot>
@@ -164,7 +169,7 @@ export class QvChip extends QvChipBase {
                         class="dismiss"
                         part="dismiss"
                         type="button"
-                        aria-label="Remove"
+                        aria-label=${messages.remove}
                         ?disbaled=${this.disabled}
                         @click=${this.handleDismiss}
                     >

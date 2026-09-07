@@ -21,6 +21,7 @@ import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 
 import { qvModalStyles } from "./qv-modal.styles.js";
 import type { QvModalSize, QvModalToggleEventDetail } from "./qv-modal.types.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
 /**
  * @event {CustomEvent<QvModalToggleEventDetail>} open - Fired whe the modal opens.
@@ -112,6 +113,8 @@ export class QvModal extends QvModalBase {
             return nothing;
         }
 
+        const messages = COMMON_MESSAGES[this.locale];
+
         return html `
             <div class="backdrop" part="backdrop"></div>
 
@@ -126,7 +129,7 @@ export class QvModal extends QvModalBase {
                     <slot name="title" @slotchange=${this.handleTitleSlotChange}></slot>
                     ${this.closable
                         ? html`
-                            <button class="close" part="close" aria-label="Close" @click=${() => this.close()}>
+                            <button class="close" part="close" aria-label=${messages.close} @click=${() => this.close()}>
                                 <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
                                     <path d="M4.3 4.3a1 1 0 011.4 0L10 8.6l4.3-4.3a1 1 0 111.4 1.4L11.4 10l4.3 4.3a1 1 0 01-1.4 1.4L10 11.4l-4.3 4.3a1 1 0 01-1.4-1.4L8.6 10 4.3 5.7a1 1 0 010-1.4z"/>
                                 </svg>

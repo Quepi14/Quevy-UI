@@ -21,6 +21,7 @@ import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvTableStyles } from "./qv-table.styles.js";
 import type { QvTableColumns, QvTableSelectEventDetail } from "./qv-table.types.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
 /**
  * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes. 
@@ -56,7 +57,7 @@ export class QvTable extends QvTableBase {
     public selectable = false;
 
     @property({ attribute: 'empty-message'})
-    public emptyMessage = 'No data available';
+    public emptyMessage?: string;
 
     @state() private hasFooter = false;
     @state() private selectedKeys = new Set<string>();
@@ -92,6 +93,8 @@ export class QvTable extends QvTableBase {
     protected override render() {
         const allKeys = this.rows.map((row, i) => this.keyOf(row, i));
         const allSelected = allKeys.length > 0 && allKeys.every((k) => this.selectedKeys.has(k))
+        const messages = COMMON_MESSAGES[this.locale];
+        const emptyMessage = this.emptyMessage ?? messages.noDataAvailable;
 
         return html`
             <div class=${classMap({ 'title-bar': true, empty: !this.title})} part="title-bar">
@@ -107,7 +110,7 @@ export class QvTable extends QvTableBase {
                                     <input
                                         type="checkbox"
                                         .checked=${allSelected}
-                                        aria-label="select all rows"
+                                        aria-label=${messages.selectAllRows}
                                         @change=${() => this.toggleAll()}
                                     />
                                 </th>
@@ -130,7 +133,7 @@ export class QvTable extends QvTableBase {
                                 <td
                                     class="empty-state"
                                     colspan=${this.columns.length + (this.selectable ? 1 : 0)}
-                                >${this.emptyMessage}</td>
+                                >${emptyMessage}</td>
                             </tr>
                         `
                         : this.rows.map((row, index) => {
@@ -143,7 +146,7 @@ export class QvTable extends QvTableBase {
                                                 <input
                                                     type="checkbox"
                                                     .checked=${this.selectedKeys.has(key)}
-                                                    aria-label=${`Select row ${key}`}
+                                                    aria-label=${messages.selectRow(key)}
                                                     @change=${() => this.toggleRow(key)}
                                                 />
                                             </td>

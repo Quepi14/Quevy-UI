@@ -24,6 +24,7 @@ import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 
 import { qvDropdownStyles } from './qv-dropdown.styles.js'
 import type { QvDropdownVariant, QvDropdownItem, QvDropdownChangeEventDetail } from "./qv-dropdown.types.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
 const QvDropdownBase = DisabledMixin(LocalizedMixin(QvElement));
 
@@ -47,14 +48,16 @@ export class QvDropdown extends QvDropdownBase {
     @property()
     public value?: string;
 
+    /** Override the locale-aware default placeholder when set. */
     @property()
-    public placeholder = 'Select an option';
+    public placeholder?: string;
 
     @property({reflect: true})
     public variant: QvDropdownVariant = 'normal';
     
+    /**Override the locale-aware default search placeholder when set. */
     @property()
-    public searchPlaceholder = 'Search.....';
+    public searchPlaceholder?: string;
 
     @state() private searchTerm = '';
 
@@ -215,6 +218,9 @@ export class QvDropdown extends QvDropdownBase {
     protected override render(): TemplateResult {
         const selected = this.selectedItem;
         const visible = this.visibleItems;
+        const messages = COMMON_MESSAGES[this.locale];
+        const placeholder = this.placeholder ?? messages.selectOption;
+        const searchPlaceholder = this.searchPlaceholder ?? messages.search;
 
         return html`
             ${this.variant === 'combobox'
@@ -226,7 +232,7 @@ export class QvDropdown extends QvDropdownBase {
                         aria-haspopup="listbox"
                         aria-expanded=${this.overlay.isOpen}
                         ?disabled=${this.disabled}
-                        placeholder=${this.placeholder}
+                        placeholder=${placeholder}
                         .value=${this.overlay.isOpen ? this.searchTerm : this.displayLabel}
                         @focus=${this.handleTriggerFocus}
                         @input=${this.handleTriggerInput}
@@ -248,7 +254,7 @@ export class QvDropdown extends QvDropdownBase {
                         @keydown=${this.handleTriggerKeyDown}
                     >
                         <span class=${selected ? '' : 'placeholder'}>
-                            ${selected ? selected.label : this.placeholder}
+                            ${selected ? selected.label : placeholder}
                         </span>
                         <svg class="chevron" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M5.2 7.2a1 1 0 011.4 0L10 10.6l3.4-3.4a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4z"/>
@@ -268,7 +274,7 @@ export class QvDropdown extends QvDropdownBase {
                                     <input
                                         type="text"
                                         class="search-input"
-                                        placeholder=${this.searchPlaceholder}
+                                        placeholder=${searchPlaceholder}
                                         .value=${this.searchTerm}
                                         @input=${this.handleSearchInput}
                                         @keydown=${this.handleSearchKeyDown}
@@ -279,7 +285,7 @@ export class QvDropdown extends QvDropdownBase {
 
                         <ul class="options" part="options" role="listbox">
                             ${visible.length === 0
-                                ? html`<li class="empty">Tidak ada hasil</li>`
+                                ? html`<li class="empty">${messages.noResult}</li>`
                                 : visible.map(
                                     (item, index) => html`
                                         <li>

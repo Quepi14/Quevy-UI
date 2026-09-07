@@ -25,6 +25,7 @@ import { QvElement, createComponentMetadata, createTagName, type ComponentMetada
 import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvBreadcrumbsStyles } from "./qv-bradcrumbs.styles.js";
 import type { QvBreadcrumbItem, QvBreadcrumbsSelectEventDetail } from "./qv-bradcrumbs.types.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
 type Entry =
     | { kind: 'item'; item: QvBreadcrumbItem; index: number; isLast: boolean }
@@ -60,8 +61,8 @@ export class QvBreadcrumbs extends QvBreadcrumbsBase {
     @state() private customSeparator: Element | null = null;
 
     public override onConnected(): void {
+        this.onConnected?.();
         this.setAttribute('role', 'navigation');
-        this.setAttribute('aria-label', 'Breadcrumb')
     }
 
     public override willUpdate(changedProperties: PropertyValues): void {
@@ -72,6 +73,11 @@ export class QvBreadcrumbs extends QvBreadcrumbsBase {
             // expand choice meaningless; reset it.
             this.expanded = false;
         }
+    }
+
+    protected override updated(changedProperties: PropertyValues): void {
+        super.updated(changedProperties);
+        this.setAttribute('aria-label', COMMON_MESSAGES[this.locale].breadcrumbNav);
     }
 
     private get visibleEntries(): Entry[] {
@@ -144,6 +150,7 @@ export class QvBreadcrumbs extends QvBreadcrumbsBase {
 
     protected override render() {
         const entries = this.visibleEntries;
+        const messages = COMMON_MESSAGES[this.locale];
 
         return html`
             <slot name="separator" hidden @slotchange=${this.handleSeparatorSlotChange}></slot>
@@ -158,7 +165,7 @@ export class QvBreadcrumbs extends QvBreadcrumbsBase {
                                         type="button"
                                         class="ellipsis"
                                         part="ellipsis"
-                                        aria-label="Show hidden breadcrumb items"
+                                        aria-label=${messages.showHiddenBreadcrumbItems}
                                         @click=${this.handleExpand}
                                     >&hellip;</button>
                                 `}

@@ -21,6 +21,8 @@ import { createControllableValue } from '@quevy/state';
 import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import {  qvBannerStyles } from './qv-banner.styles.js';
 import type { QvBannerVariant, QvBannerCloseEventDetail } from "./qv-banner.types.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
+import { dismiss } from "../qv-toast/qv-toast.js";
 
 /**
  * Inline default icons per vairant.
@@ -83,6 +85,7 @@ export class QvBanner extends QvBannerBase {
     }
 
     public override onConnected(): void {
+        super.onConnected?.();
         this.setAttribute('role', ALERT_VARIANTS.includes(this.variant) ? 'alert' : 'status');
     }
 
@@ -108,6 +111,7 @@ export class QvBanner extends QvBannerBase {
 
     protected override render() {
         const defaultIcon = DEFAULT_ICONS[this.variant];
+        const messages = COMMON_MESSAGES[this.locale];
 
         return html`
             <span class=${classMap({ icon: true, empty: !this.hasIcon && !defaultIcon})} part="icon">
@@ -126,7 +130,7 @@ export class QvBanner extends QvBannerBase {
                         class="close"
                         part="close"
                         type="button"
-                        aria-label="Dismiss"
+                        aria-label=${messages.dismiss}
                         @click=${this.handleDismiss}
                     >
                         <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14">

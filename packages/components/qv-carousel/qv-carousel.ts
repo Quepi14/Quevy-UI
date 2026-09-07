@@ -18,6 +18,7 @@ import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 
 import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvCarouselStyles } from "./qv-carousel.styles.js";;
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
 const QvCarouselBase = LocalizedMixin(QvElement);
 
@@ -40,6 +41,7 @@ export class QvCarousel extends QvCarouselBase {
     private timer: ReturnType<typeof setInterval> | null = null;
 
     public override onConnected(): void {
+        super.onConnected?.();
         this.addEventListener('pointerenter', this.pauseAutoplay);
         this.addEventListener('pointerleave', this.resumeAutoplay);
         this.startAutoPlay();
@@ -49,6 +51,7 @@ export class QvCarousel extends QvCarouselBase {
         this.removeEventListener('pointerenter', this.pauseAutoplay);
         this.removeEventListener('pointerleave', this.resumeAutoplay);
         this.stopAutoplay();
+        this.onDisconnected?.();
     }
 
     private readonly pauseAutoplay = (): void => this.stopAutoplay();
@@ -84,6 +87,8 @@ export class QvCarousel extends QvCarouselBase {
     }
 
     protected override render() {
+        const messages = COMMON_MESSAGES[this.locale];
+
         return html`
             <div class="track" style="transform: translateX(-${this.index * 100}%)">
                 <slot @slotchange=${this.handleSlotChange}></slot>
@@ -91,8 +96,8 @@ export class QvCarousel extends QvCarouselBase {
 
             ${this.slideCount > 1
                 ? html`
-                <button class="arrow prev" aria-label="Previous slide" @click=${() => this.prev()}>&lsaquo;</button>
-                <button class="arrow next" aria-label="Next slide" @click=${() => this.next()}>&rsaquo;</button>
+                <button class="arrow prev" aria-label=${messages.previousSlide} @click=${() => this.prev()}>&lsaquo;</button>
+                <button class="arrow next" aria-label=${messages.nextSlide} @click=${() => this.next()}>&rsaquo;</button>
                 <div class="dots" role="tablist">
                     ${Array.from({ length: this.slideCount }, (_, i) => html`
                         <button
