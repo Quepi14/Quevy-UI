@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build @quevy/core
+        run: pnpm --filter @quevy/core exec tsc -p tsconfig.json
+
+      - name: Build @quevy/tokens
+        run: pnpm --filter @quevy/tokens exec tsc -p tsconfig.json
+
+      - name: Build @quevy/state
+        run: pnpm --filter @quevy/state exec tsc -p tsconfig.json
+
+      - name: Build @quevy/components
+        run: pnpm --filter @quevy/components exec tsc -p tsconfig.json
+
+      - name: Build @quevy/react
+        run: pnpm --filter @quevy/react exec tsc -p tsconfig.json
