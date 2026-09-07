@@ -23,11 +23,11 @@ import { qvTableStyles } from "./qv-table.styles.js";
 import type { QvTableColumns, QvTableSelectEventDetail } from "./qv-table.types.js";
 import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
-/**
- * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes. 
- */
 const QvTableBase = LocalizedMixin(QvElement);
 
+/**
+ * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes.
+ */
 @customElement('qv-table')
 export class QvTable extends QvTableBase {
     static override styles = qvTableStyles;

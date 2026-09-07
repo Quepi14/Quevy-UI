@@ -36,5 +36,4 @@ export { QvStepper } from './QvStepper.js';
 export { QvSwitch } from './QvSwitch.js';
 export { QvTable } from './QvTable.js';
 export { QvTextarea } from './QvTextarea.js';
-export { QvToastRegion } from './QvToastRegion.js';
 export { QvTooltip } from './QvTooltip.js';

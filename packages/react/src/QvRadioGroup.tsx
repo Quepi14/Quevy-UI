@@ -17,5 +17,8 @@ export const QvRadioGroup = createComponent({
     tagName: 'qv-radio-group',
     elementClass: QvRadioGroupElement,
     react: React,
+    events: {
+        onChange: 'change',
+    },
     displayName: 'QvRadioGroup',
 });

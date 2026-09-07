@@ -23,12 +23,12 @@ import { qvModalStyles } from "./qv-modal.styles.js";
 import type { QvModalSize, QvModalToggleEventDetail } from "./qv-modal.types.js";
 import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
+const QvModalBase = LocalizedMixin(QvElement);
+
 /**
  * @event {CustomEvent<QvModalToggleEventDetail>} open - Fired whe the modal opens.
  * @event {CustomEvent<QvModalToggleEventDetail>} close - Fired whe the modal closes.
  */
-const QvModalBase = LocalizedMixin(QvElement);
-
 @customElement('qv-modal')
 export class QvModal extends QvModalBase {
     static override styles = qvModalStyles;

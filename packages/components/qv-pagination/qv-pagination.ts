@@ -22,11 +22,11 @@ import { buildPageItems } from "./qv-pagination.utils.js";
 import type { QvPaginationChangeEventDetail, QvPaginationShape, QvPaginationVariant } from "./qv-pagination.types.js";
 import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
+const QvPaginationBase = LocalizedMixin(QvElement);
+
 /**
  * @event {CustomEvent<QvPaginationChangeEventDetail>} change - Fired when the current page changes.
  */
-const QvPaginationBase = LocalizedMixin(QvElement);
-
 @customElement('qv-pagination')
 export class QvPagination extends QvPaginationBase {
     static override styles = qvPaginationStyles;
