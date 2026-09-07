@@ -1,6 +1,6 @@
 {
   "name": "@quevy/components",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -8,7 +8,14 @@
   "sideEffects": [
     "./dist/*/qv-*.js"
   ],
+  "license": "MIT",
   "files": ["dist"],
+  "description": "Quevy UI — a Lit-based web component library with built-in ID/EN localization.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quepi14/Quevy-UI",
+    "directory": "packages/components"
+  },
   "dependencies": {
     "@quevy/core": "workspace:*",
     "@quevy/state": "workspace:*",

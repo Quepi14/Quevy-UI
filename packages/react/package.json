@@ -1,12 +1,25 @@
 {
   "name": "@quevy/react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "sideEffects": false,
+  "license": "MIT",
   "files": ["dist"],
+  "description": "React wrapper components for Quevy UI, generated via @lit/react.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quepi14/Quevy-UI",
+    "directory": "packages/react"
+  },
   "scripts": {
     "generate": "node scripts/generate-wrappers.mjs",
     "build": "pnpm generate && tsc -p tsconfig.json"

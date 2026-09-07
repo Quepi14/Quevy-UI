@@ -1,12 +1,19 @@
 {
   "name": "@quevy/state",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
+  "license": "MIT",
   "files": ["dist"],
+  "description": "Reactive state primitives (signals, stores) and Lit bindings for the Quevy UI web component library.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quepi14/Quevy-UI",
+    "directory": "packages/state"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

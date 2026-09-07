@@ -1,12 +1,19 @@
 {
   "name": "@quevy/tokens",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
+  "license":"MIT",
   "files": ["dist"],
+  "description": "Design tokens (colors, spacing, typography) for the Quevy UI web component library.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Quepi14/Quevy-UI",
+    "directory": "packages/tokens"
+  },
   "publishConfig": {
     "access": "public"
   },
