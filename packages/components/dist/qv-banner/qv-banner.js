@@ -21,7 +21,10 @@ import { property, state, customElement } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
 import { createControllableValue } from '@quevy/state';
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvBannerStyles } from './qv-banner.styles.js';
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
+import { dismiss } from "../qv-toast/qv-toast.js";
 /**
  * Inline default icons per vairant.
  *
@@ -46,7 +49,8 @@ const ALERT_VARIANTS = ['warning', 'error'];
 /**
  * @event {CustomEvent<QvBannerCloseEventDetail>} close - Fired when the banner is dismissed.
  */
-let QvBanner = class QvBanner extends QvElement {
+const QvBannerBase = LocalizedMixin(QvElement);
+let QvBanner = class QvBanner extends QvBannerBase {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
@@ -72,6 +76,7 @@ let QvBanner = class QvBanner extends QvElement {
         return this.visibility.value(this.open);
     }
     onConnected() {
+        super.onConnected?.();
         this.setAttribute('role', ALERT_VARIANTS.includes(this.variant) ? 'alert' : 'status');
     }
     updated(changedProperties) {
@@ -83,6 +88,7 @@ let QvBanner = class QvBanner extends QvElement {
     }
     render() {
         const defaultIcon = DEFAULT_ICONS[this.variant];
+        const messages = COMMON_MESSAGES[this.locale];
         return html `
             <span class=${classMap({ icon: true, empty: !this.hasIcon && !defaultIcon })} part="icon">
                 <slot name="icon" @slotchange=${this.handleIconSlotChange}>
@@ -100,7 +106,7 @@ let QvBanner = class QvBanner extends QvElement {
                         class="close"
                         part="close"
                         type="button"
-                        aria-label="Dismiss"
+                        aria-label=${messages.dismiss}
                         @click=${this.handleDismiss}
                     >
                         <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14">

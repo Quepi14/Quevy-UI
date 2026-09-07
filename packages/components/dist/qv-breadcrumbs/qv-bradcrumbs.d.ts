@@ -22,7 +22,8 @@ import type { QvBreadcrumbItem } from "./qv-bradcrumbs.types.js";
 /**
  * @event {CustomEvent<QvBreadcrumbsSelectEventDetail>} select - Fired when a breadcrumb item is chosen.
  */
-export declare class QvBreadcrumbs extends QvElement {
+declare const QvBreadcrumbsBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("../_internal/i18n/localized-mixin.js").LocalizedElement>;
+export declare class QvBreadcrumbs extends QvBreadcrumbsBase {
     static styles: CSSStyleSheet;
     readonly metadata: ComponentMetadata;
     items: QvBreadcrumbItem[];
@@ -31,6 +32,7 @@ export declare class QvBreadcrumbs extends QvElement {
     private customSeparator;
     onConnected(): void;
     willUpdate(changedProperties: PropertyValues): void;
+    protected updated(changedProperties: PropertyValues): void;
     private get visibleEntries();
     private readonly handleSeparatorSlotChange;
     private readonly handleExpand;
@@ -39,4 +41,5 @@ export declare class QvBreadcrumbs extends QvElement {
     private renderItem;
     protected render(): import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=qv-bradcrumbs.d.ts.map

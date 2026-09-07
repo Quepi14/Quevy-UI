@@ -61,7 +61,7 @@ export class QvBreadcrumbs extends QvBreadcrumbsBase {
     @state() private customSeparator: Element | null = null;
 
     public override onConnected(): void {
-        this.onConnected?.();
+        super.onConnected?.();
         this.setAttribute('role', 'navigation');
     }
 

@@ -22,7 +22,8 @@ import { nothing, type PropertyValues } from 'lit';
 import { QvElement } from '@quevy/core';
 import { OverlayController, type OverlayControllerOptions } from '../overlay/overlay-controller.js';
 import type { QvBottomSheetSize } from './bottom-sheet.types.js';
-export declare abstract class QvBottomSheetBase extends QvElement {
+declare const QvBottomSheetBase_base: typeof QvElement & import("@quevy/core").MixinConstructor<import("../i18n/localized-mixin.js").LocalizedElement>;
+export declare abstract class QvBottomSheetBase extends QvBottomSheetBase_base {
     static styles: CSSStyleSheet;
     size: QvBottomSheetSize;
     open?: boolean;
@@ -46,4 +47,5 @@ export declare abstract class QvBottomSheetBase extends QvElement {
     private readonly handleFooterSlotChange;
     protected render(): typeof nothing | import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=bottom-sheet-base.d.ts.map

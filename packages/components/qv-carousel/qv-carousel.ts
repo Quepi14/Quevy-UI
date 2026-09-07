@@ -51,7 +51,7 @@ export class QvCarousel extends QvCarouselBase {
         this.removeEventListener('pointerenter', this.pauseAutoplay);
         this.removeEventListener('pointerleave', this.resumeAutoplay);
         this.stopAutoplay();
-        this.onDisconnected?.();
+        super.onDisconnected?.();
     }
 
     private readonly pauseAutoplay = (): void => this.stopAutoplay();
@@ -102,7 +102,7 @@ export class QvCarousel extends QvCarouselBase {
                     ${Array.from({ length: this.slideCount }, (_, i) => html`
                         <button
                             class=${i === this.index ? 'dot active' : 'dot'}
-                            aria-label=${ `Go to slide ${i + 1}`}
+                            aria-label=${messages.goToSlide(i + 1)}
                             @click=${() => this.goTo(i)}
                         ></button>
                     `)}

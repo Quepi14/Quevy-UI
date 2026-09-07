@@ -16,11 +16,11 @@
 import { html, nothing, type PropertyValues } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
 
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin } from '@quevy/core';
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, type MixinConstructor, type FocusableInterface, type DisabledInterface } from '@quevy/core';
 
 import { qvNavbarItemStyles } from './qv-navbar-item.styles.js';
 
-const QvNavbarItemBase = DisabledMixin(FocusableMixin(QvElement));
+abstract class QvNavbarItemBase extends DisabledMixin(FocusableMixin(QvElement)) {}
 
 @customElement('qv-navbar-item')
 export class QvNavbarItem extends QvNavbarItemBase {

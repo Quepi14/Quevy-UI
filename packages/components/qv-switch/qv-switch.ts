@@ -15,13 +15,13 @@
 import { html, type PropertyValues } from "lit";
 import { property, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, FormAssociatedMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, FormAssociatedMixin, type MixinConstructor, type FocusableInterface, type DisabledInterface, type FormAssociatedInterface } from "@quevy/core";
 
 import { qvSwitchStyles } from "./qv-switch.styles.js";
 import type { QvCheckboxChangeEventDetail } from "../qv-checkbox/qv-checkbox.types.js";
 import { createControllableValue } from "@quevy/state";
 
-const QvSwitchBase = FormAssociatedMixin(DisabledMixin(FocusableMixin(QvElement)));
+abstract class QvSwitchBase extends FormAssociatedMixin(DisabledMixin(FocusableMixin(QvElement))) {}
 
 /**
  * @event {CustomEvent<QvCheckboxChangeEventDetail>} change - Fired when the checked state changes.

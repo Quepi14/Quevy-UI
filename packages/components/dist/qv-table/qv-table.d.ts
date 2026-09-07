@@ -16,7 +16,8 @@ import type { QvTableColumns } from "./qv-table.types.js";
 /**
  * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes.
  */
-export declare class QvTable extends QvElement {
+declare const QvTableBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("../_internal/i18n/localized-mixin.js").LocalizedElement>;
+export declare class QvTable extends QvTableBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
     columns: QvTableColumns[];
@@ -25,7 +26,7 @@ export declare class QvTable extends QvElement {
     rowKey: string;
     variant: 'bordered' | 'plain';
     selectable: boolean;
-    emptyMessage: string;
+    emptyMessage?: string;
     private hasFooter;
     private selectedKeys;
     private keyOf;
@@ -35,4 +36,5 @@ export declare class QvTable extends QvElement {
     private renderCell;
     protected render(): import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=qv-table.d.ts.map

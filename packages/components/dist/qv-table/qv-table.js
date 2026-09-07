@@ -21,11 +21,14 @@ import { html, nothing } from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvTableStyles } from "./qv-table.styles.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 /**
  * @event {CustomEvent<QvTableSelectEventDetail>} select - Fired when the row selection changes.
  */
-let QvTable = class QvTable extends QvElement {
+const QvTableBase = LocalizedMixin(QvElement);
+let QvTable = class QvTable extends QvTableBase {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
@@ -39,7 +42,6 @@ let QvTable = class QvTable extends QvElement {
         this.rowKey = 'id';
         this.variant = 'bordered';
         this.selectable = false;
-        this.emptyMessage = 'No data available';
         this.hasFooter = false;
         this.selectedKeys = new Set();
         this.handleFooterSlotChange = () => {
@@ -69,6 +71,8 @@ let QvTable = class QvTable extends QvElement {
     render() {
         const allKeys = this.rows.map((row, i) => this.keyOf(row, i));
         const allSelected = allKeys.length > 0 && allKeys.every((k) => this.selectedKeys.has(k));
+        const messages = COMMON_MESSAGES[this.locale];
+        const emptyMessage = this.emptyMessage ?? messages.noDataAvailable;
         return html `
             <div class=${classMap({ 'title-bar': true, empty: !this.title })} part="title-bar">
                 ${this.title ?? ''}
@@ -83,7 +87,7 @@ let QvTable = class QvTable extends QvElement {
                                     <input
                                         type="checkbox"
                                         .checked=${allSelected}
-                                        aria-label="select all rows"
+                                        aria-label=${messages.selectAllRows}
                                         @change=${() => this.toggleAll()}
                                     />
                                 </th>
@@ -104,7 +108,7 @@ let QvTable = class QvTable extends QvElement {
                                 <td
                                     class="empty-state"
                                     colspan=${this.columns.length + (this.selectable ? 1 : 0)}
-                                >${this.emptyMessage}</td>
+                                >${emptyMessage}</td>
                             </tr>
                         `
             : this.rows.map((row, index) => {
@@ -117,7 +121,7 @@ let QvTable = class QvTable extends QvElement {
                                                 <input
                                                     type="checkbox"
                                                     .checked=${this.selectedKeys.has(key)}
-                                                    aria-label=${`Select row ${key}`}
+                                                    aria-label=${messages.selectRow(key)}
                                                     @change=${() => this.toggleRow(key)}
                                                 />
                                             </td>

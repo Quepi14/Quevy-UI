@@ -18,7 +18,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { html } from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin } from "@quevy/core";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvFileInputStyles } from "./qv-file-input.styles.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 function formatSize(bytes) {
     if (bytes < 1024)
         return `${bytes} B`;
@@ -26,7 +28,7 @@ function formatSize(bytes) {
         return `${(bytes / 1024).toFixed(1)} Kb`;
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
-const QvFileInputBase = DisabledMixin(QvElement);
+const QvFileInputBase = DisabledMixin(LocalizedMixin(QvElement));
 /**
  * @event {CustomEvent<QvFileInputChangeEventDetail>} change - Fired when the selected files change.
  */
@@ -84,6 +86,7 @@ let QvFileInput = class QvFileInput extends QvFileInputBase {
         this.emit('change', { files: this.files });
     }
     render() {
+        const messages = COMMON_MESSAGES[this.locale];
         return html `
             <div
                 class="dropzone"
@@ -99,7 +102,7 @@ let QvFileInput = class QvFileInput extends QvFileInputBase {
                 <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0L7 9m5-5l5 5M5 20h14"/>
                 </svg>
-                <span>Seret file ke sini, atau <span class="browse">pilih file</span></span>
+                <span>${messages.dragFileHere} <span class="browse">${messages.chooseFile}</span></span>
             </div>
 
             <input
@@ -117,7 +120,7 @@ let QvFileInput = class QvFileInput extends QvFileInputBase {
                                 <div class="file-row">
                                     <span class="file-name">${file.name}</span>
                                     <span class="file-size">${formatSize(file.size)}</span>
-                                    <button class="file-remove" aria-label="Remove" @click=${() => this.removeFile(index)}>&times;</button>
+                                    <button class="file-remove" aria-label=${messages.remove} @click=${() => this.removeFile(index)}>&times;</button>
                                 </div>
                             `)}
                     </div>

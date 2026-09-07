@@ -16,7 +16,8 @@ import type { QvBannerVariant } from "./qv-banner.types.js";
 /**
  * @event {CustomEvent<QvBannerCloseEventDetail>} close - Fired when the banner is dismissed.
  */
-export declare class QvBanner extends QvElement {
+declare const QvBannerBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("../_internal/i18n/localized-mixin.js").LocalizedElement>;
+export declare class QvBanner extends QvBannerBase {
     static styles: CSSStyleSheet;
     readonly metadata: ComponentMetadata;
     variant: QvBannerVariant;
@@ -36,4 +37,5 @@ export declare class QvBanner extends QvElement {
     private readonly handleDismiss;
     protected render(): import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=qv-banner.d.ts.map

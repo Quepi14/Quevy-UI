@@ -25,7 +25,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { html, nothing } from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvBreadcrumbsStyles } from "./qv-bradcrumbs.styles.js";
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 const DEFAULT_SEPARATOR = html `
     <svg viewBox="0 0 20 20" fill="currentColor">
         <path d="M7.3 4.3a1 1 0 011.4 0l5 5a1 1 0 010 1.4l-5 5a1 1 0 01-1.4-1.4L11.6 10 7.3 5.7a1 1 0 010-1.4z" />
@@ -34,7 +36,8 @@ const DEFAULT_SEPARATOR = html `
 /**
  * @event {CustomEvent<QvBreadcrumbsSelectEventDetail>} select - Fired when a breadcrumb item is chosen.
  */
-let QvBreadcrumbs = class QvBreadcrumbs extends QvElement {
+const QvBreadcrumbsBase = LocalizedMixin(QvElement);
+let QvBreadcrumbs = class QvBreadcrumbs extends QvBreadcrumbsBase {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
@@ -56,8 +59,8 @@ let QvBreadcrumbs = class QvBreadcrumbs extends QvElement {
     }
     static { this.styles = qvBreadcrumbsStyles; }
     onConnected() {
+        super.onConnected?.();
         this.setAttribute('role', 'navigation');
-        this.setAttribute('aria-label', 'Breadcrumb');
     }
     willUpdate(changedProperties) {
         super.willUpdate(changedProperties);
@@ -66,6 +69,10 @@ let QvBreadcrumbs = class QvBreadcrumbs extends QvElement {
             // expand choice meaningless; reset it.
             this.expanded = false;
         }
+    }
+    updated(changedProperties) {
+        super.updated(changedProperties);
+        this.setAttribute('aria-label', COMMON_MESSAGES[this.locale].breadcrumbNav);
     }
     get visibleEntries() {
         const { items, maxVisible } = this;
@@ -117,6 +124,7 @@ let QvBreadcrumbs = class QvBreadcrumbs extends QvElement {
     }
     render() {
         const entries = this.visibleEntries;
+        const messages = COMMON_MESSAGES[this.locale];
         return html `
             <slot name="separator" hidden @slotchange=${this.handleSeparatorSlotChange}></slot>
             <ol>
@@ -129,7 +137,7 @@ let QvBreadcrumbs = class QvBreadcrumbs extends QvElement {
                                         type="button"
                                         class="ellipsis"
                                         part="ellipsis"
-                                        aria-label="Show hidden breadcrumb items"
+                                        aria-label=${messages.showHiddenBreadcrumbItems}
                                         @click=${this.handleExpand}
                                     >&hellip;</button>
                                 `}

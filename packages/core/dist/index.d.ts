@@ -13,6 +13,6 @@ export { query as queryDecorator, queryAll as queryAllDecorator, watch, } from '
 export { createEvent, dispatch, listen as eventListen, } from './events/index.js';
 export type { CreateEventOptions, EventListenerOptions, EventListener, } from './events/index.js';
 export { FocusableMixin, DisabledMixin, FormAssociatedMixin, } from './mixins/index.js';
-export type { Constructor as MixinConstructor, FocusableElement, DisableableElement, FormAssociatedElement, } from './mixins/index.js';
+export type { Constructor as MixinConstructor, FocusableElement, FocusableInterface, DisableableElement, DisabledInterface, FormAssociatedElement, FormAssociatedInterface, } from './mixins/index.js';
 export * from './utils/index.js';
 //# sourceMappingURL=index.d.ts.map

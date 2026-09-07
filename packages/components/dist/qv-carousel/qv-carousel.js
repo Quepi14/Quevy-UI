@@ -19,9 +19,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { html } from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { qvCarouselStyles } from "./qv-carousel.styles.js";
 ;
-let QvCarousel = class QvCarousel extends QvElement {
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
+const QvCarouselBase = LocalizedMixin(QvElement);
+let QvCarousel = class QvCarousel extends QvCarouselBase {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
@@ -43,6 +46,7 @@ let QvCarousel = class QvCarousel extends QvElement {
     }
     static { this.styles = qvCarouselStyles; }
     onConnected() {
+        super.onConnected?.();
         this.addEventListener('pointerenter', this.pauseAutoplay);
         this.addEventListener('pointerleave', this.resumeAutoplay);
         this.startAutoPlay();
@@ -51,6 +55,7 @@ let QvCarousel = class QvCarousel extends QvElement {
         this.removeEventListener('pointerenter', this.pauseAutoplay);
         this.removeEventListener('pointerleave', this.resumeAutoplay);
         this.stopAutoplay();
+        super.onDisconnected?.();
     }
     startAutoPlay() {
         if (!this.autoplay || this.timer || this.slideCount <= 1)
@@ -76,6 +81,7 @@ let QvCarousel = class QvCarousel extends QvElement {
         this.index = Math.min(Math.max(i, 0), this.slideCount - 1);
     }
     render() {
+        const messages = COMMON_MESSAGES[this.locale];
         return html `
             <div class="track" style="transform: translateX(-${this.index * 100}%)">
                 <slot @slotchange=${this.handleSlotChange}></slot>
@@ -83,13 +89,13 @@ let QvCarousel = class QvCarousel extends QvElement {
 
             ${this.slideCount > 1
             ? html `
-                <button class="arrow prev" aria-label="Previous slide" @click=${() => this.prev()}>&lsaquo;</button>
-                <button class="arrow next" aria-label="Next slide" @click=${() => this.next()}>&rsaquo;</button>
+                <button class="arrow prev" aria-label=${messages.previousSlide} @click=${() => this.prev()}>&lsaquo;</button>
+                <button class="arrow next" aria-label=${messages.nextSlide} @click=${() => this.next()}>&rsaquo;</button>
                 <div class="dots" role="tablist">
                     ${Array.from({ length: this.slideCount }, (_, i) => html `
                         <button
                             class=${i === this.index ? 'dot active' : 'dot'}
-                            aria-label=${`Go to slide ${i + 1}`}
+                            aria-label=${messages.goToSlide(i + 1)}
                             @click=${() => this.goTo(i)}
                         ></button>
                     `)}

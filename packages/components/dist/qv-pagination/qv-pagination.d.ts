@@ -9,12 +9,14 @@
  *
  * @packageDocumentation
  */
+import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 import type { QvPaginationShape, QvPaginationVariant } from "./qv-pagination.types.js";
 /**
  * @event {CustomEvent<QvPaginationChangeEventDetail>} change - Fired when the current page changes.
  */
-export declare class QvPagination extends QvElement {
+declare const QvPaginationBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("../_internal/i18n/localized-mixin.js").LocalizedElement>;
+export declare class QvPagination extends QvPaginationBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
     totalPages: number;
@@ -26,6 +28,7 @@ export declare class QvPagination extends QvElement {
     private readonly controllablePage;
     private jumpValue;
     onConnected(): void;
+    protected updated(changedProperties: PropertyValues): void;
     private get currentPage();
     private goTo;
     private readonly handlePageClick;
@@ -35,4 +38,5 @@ export declare class QvPagination extends QvElement {
     private readonly handleJumpKeyDown;
     protected render(): import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=qv-pagination.d.ts.map

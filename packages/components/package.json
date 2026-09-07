@@ -6,13 +6,22 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": [
-    "./*/qv-*.ts",
-    "./*/*.js"
+    "./dist/*/qv-*.js"
   ],
+  "files": ["dist"],
   "dependencies": {
     "@quevy/core": "workspace:*",
     "@quevy/state": "workspace:*",
     "@quevy/tokens": "workspace:*",
     "lit": "^3.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+    }
   }
 }

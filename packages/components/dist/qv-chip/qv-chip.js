@@ -27,8 +27,10 @@ import { property, state, customElement } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin } from '@quevy/core';
 import { createControllableValue } from '@quevy/state';
+import { LocalizedMixin } from '../_internal/i18n/localized-mixin.js';
 import { qvChipStyles } from './qv-chip.styles.js';
-const QvChipBase = DisabledMixin(FocusableMixin(QvElement));
+import { COMMON_MESSAGES } from '../i18n/common-messages.js';
+const QvChipBase = DisabledMixin(FocusableMixin(LocalizedMixin(QvElement)));
 /**
  * @event {CustomEvent<QvChipToggleEventDetail>} toggle - Fired when the selected state changes.
  * @event {CustomEvent<QvChipDismissEventDetail>} dismiss - Fired whent he dismiss (x) button is clicked.
@@ -88,6 +90,7 @@ let QvChip = class QvChip extends QvChipBase {
         return this.selectable && this.controllableSelected.value(this.selected);
     }
     onConnected() {
+        super.onConnected?.();
         this.addEventListener('click', this.handleClick);
         this.addEventListener('keydown', this.handleKeyDown);
         this.addEventListener('keyup', this.handleKeyUp);
@@ -96,6 +99,7 @@ let QvChip = class QvChip extends QvChipBase {
         this.removeEventListener('click', this.handleClick);
         this.removeEventListener('keydown', this.handleKeyDown);
         this.removeEventListener('keyup', this.handleKeyUp);
+        super.onDisconnected?.();
     }
     updated(changedProperties) {
         super.updated(changedProperties);
@@ -120,6 +124,7 @@ let QvChip = class QvChip extends QvChipBase {
         this.emit('toggle', { value: this.value, selected: next });
     }
     render() {
+        const messages = COMMON_MESSAGES[this.locale];
         return html `
             <span class=${classMap({ icon: true, empty: !this.hasIcon })} part="icon>
                 <slot name="icon" @slotchange=${this.handleIconSlotChange}></slot>
@@ -133,7 +138,7 @@ let QvChip = class QvChip extends QvChipBase {
                         class="dismiss"
                         part="dismiss"
                         type="button"
-                        aria-label="Remove"
+                        aria-label=${messages.remove}
                         ?disbaled=${this.disabled}
                         @click=${this.handleDismiss}
                     >

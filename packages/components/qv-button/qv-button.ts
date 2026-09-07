@@ -22,6 +22,10 @@ import {
     DisabledMixin,
     FormAssociatedMixin,
     type ComponentMetadata,
+    type MixinConstructor,
+    type FocusableInterface,
+    type DisabledInterface,
+    type FormAssociatedInterface,
 } from '@quevy/core';
 
 import { qvButtonStyles } from './qv-button.styles.js';
@@ -32,11 +36,11 @@ import type {
     QvButtonType,
 } from './qv-button.types.js';
 
-const QvButtonBase = FormAssociatedMixin(
+abstract class QvButtonBase extends FormAssociatedMixin(
     DisabledMixin(
         FocusableMixin(QvElement),
     ),
-);
+) {}
 
 @customElement('qv-button')
 export class QvButton extends QvButtonBase {

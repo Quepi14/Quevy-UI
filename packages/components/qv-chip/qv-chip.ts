@@ -21,15 +21,15 @@ import { html, nothing, type PropertyValues }  from 'lit';
 import { property, state, customElement } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin } from '@quevy/core';
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, type MixinConstructor, type FocusableInterface, type DisabledInterface } from '@quevy/core';
 import { createControllableValue } from '@quevy/state';
 
-import { LocalizedMixin } from '../_internal/i18n/localized-mixin.js';
+import { LocalizedMixin, type LocalizedElement } from '../_internal/i18n/localized-mixin.js';
 import { qvChipStyles } from './qv-chip.styles.js';
 import type { QvChipDismissEventDetail, QvChipToggleEventDetail } from './qv-chip.types.js';
 import { COMMON_MESSAGES } from '../i18n/common-messages.js';
 
-const QvChipBase = DisabledMixin(FocusableMixin(LocalizedMixin(QvElement)));
+abstract class QvChipBase extends DisabledMixin(FocusableMixin(LocalizedMixin(QvElement))) {}
 
 /**
  * @event {CustomEvent<QvChipToggleEventDetail>} toggle - Fired when the selected state changes.

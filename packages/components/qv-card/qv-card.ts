@@ -20,12 +20,14 @@ import {
     createComponentMetadata,
     createTagName,
     FocusableMixin,
+    type MixinConstructor,
+    type FocusableInterface,
 } from '@quevy/core';
 
 import { qvCardStyles } from './qv-card.styles.js';
 import type { QvCardVariant, QvCardTarget } from './qv-card.types.js';
 
-const QvCardBase = FocusableMixin(QvElement);
+abstract class QvCardBase extends FocusableMixin(QvElement) {}
 
 const INTERACTIVE_SELECTOR =
     'a,button,input,select,textarea,summary,[tabindex],[role="button"],[role="link"]';

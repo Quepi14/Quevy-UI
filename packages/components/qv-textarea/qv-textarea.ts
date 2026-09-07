@@ -13,12 +13,12 @@
 import { html, nothing, type PropertyValues } from "lit";
 import { property, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, queryDecorator as query } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, queryDecorator as query, type MixinConstructor, type DisabledInterface, type FormAssociatedInterface } from "@quevy/core";
 
 import { qvTextareaStyles } from "./qv-textarea.styles.js";
 import type { QvTextareaChangeEventDetail } from "./qv-textarea.types.js";
 
-const QvTextAreaBase = FormAssociatedMixin(DisabledMixin(QvElement));
+abstract class QvTextAreaBase extends FormAssociatedMixin(DisabledMixin(QvElement)) {}
 
 /**
  * @event {CustomEvent<QvTextareaChangeEventDetail>} input - Fired on every keystroke/value change.

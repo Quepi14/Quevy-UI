@@ -15,11 +15,11 @@ import { html, type PropertyValues } from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, type MixinConstructor, type FocusableInterface } from "@quevy/core";
 
 import { qvListItemStyles } from "./qv-list-item.styles.js";
 
-const QvListItemBase = FocusableMixin(QvElement);
+abstract class QvListItemBase extends FocusableMixin(QvElement) {}
 
 @customElement('qv-list-item')
 export class QvListItem extends QvListItemBase {

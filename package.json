@@ -5,7 +5,8 @@
     "lit": "^3.3.3"
   },
   "scripts": {
-    "dev:button": "vite --config packages/components/dev/vite.config.ts"
+    "dev:button": "vite --config packages/components/dev/vite.config.ts",
+    "build": "tsc -p tsconfig.json" 
   },
   "devDependencies": {
     "typescript": "^7.0.2",

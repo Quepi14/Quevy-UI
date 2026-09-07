@@ -19,13 +19,13 @@
 import { html, type PropertyValues } from "lit";
 import { property, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, FormAssociatedMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, FormAssociatedMixin, type MixinConstructor, type DisabledInterface, type FocusableInterface, type FormAssociatedInterface } from "@quevy/core";
 
 import { qvCheckboxStyles } from "./qv-checkbox.styles.js";
 import type { QvCheckboxChangeEventDetail } from "./qv-checkbox.types.js";
 import { createControllableValue } from "@quevy/state";
 
-const QvCheckboxBase = FormAssociatedMixin(DisabledMixin(FocusableMixin(QvElement)));
+abstract class QvCheckboxBase extends FormAssociatedMixin(DisabledMixin(FocusableMixin(QvElement))) {}
 
 /**
  * @event {CustomEvent<QvCheckboxChangeEventDetail>} change - Fired whent he checked state changes.

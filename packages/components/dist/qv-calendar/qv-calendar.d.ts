@@ -11,10 +11,11 @@
 import { type PropertyValues } from "lit";
 import { QvElement } from "@quevy/core";
 import type { QvCalendarMode } from "./qv-calendar.types.js";
+declare const QvCalendarBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("../_internal/i18n/localized-mixin.js").LocalizedElement>;
 /**
  * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.
  */
-export declare class QvCalendar extends QvElement {
+export declare class QvCalendar extends QvCalendarBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
     mode: QvCalendarMode;
@@ -28,10 +29,6 @@ export declare class QvCalendar extends QvElement {
     private rangeAnchor;
     private hoverDate;
     private viewLevel;
-    private locale;
-    private unsubscribeLocale?;
-    onConnected(): void;
-    onDisconnected(): void;
     private goToPrevYear;
     private goToNextYear;
     private openMonthPicker;
@@ -48,4 +45,5 @@ export declare class QvCalendar extends QvElement {
     private renderDaysGrid;
     protected render(): import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=qv-calendar.d.ts.map

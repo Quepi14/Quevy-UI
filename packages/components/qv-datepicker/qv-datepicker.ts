@@ -14,18 +14,18 @@
 import { html, nothing, type PropertyValues } from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, type MixinConstructor, type DisabledInterface } from "@quevy/core";
 
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 import '../qv-calendar/index.js';
 import { formatDate } from "../qv-calendar/qv-calendar.utils.js";
 import { DATEPICKER_MESSAGES } from "./qv-datepicker.i18n.js";
-import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
+import { LocalizedMixin, type LocalizedElement } from "../_internal/i18n/localized-mixin.js";
 
 import { qvDatePickerStyles } from "./qv-datepicker.styles.js";
 import type { QvCalendarMode, QvCalendarChangeEventDetail } from "../qv-calendar/index.js";
 
-const QvDatepickerBase = DisabledMixin(LocalizedMixin(QvElement));
+abstract class QvDatepickerBase extends DisabledMixin(LocalizedMixin(QvElement)) {}
 
 /**
  * @event {CustomEvent<QvCalendarChangeEventDetail>} change - Fired when a date (or range) is picked.

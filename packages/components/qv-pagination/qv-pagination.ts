@@ -60,7 +60,11 @@ export class QvPagination extends QvPaginationBase {
     public override onConnected(): void {
         super.onConnected?.();
         this.setAttribute('role', 'navigation');
-        this.setAttribute('aria-label', 'Pagination');
+    }
+
+    protected override updated(changedProperties: PropertyValues): void {
+        super.updated(changedProperties);
+        this.setAttribute('aria-label', COMMON_MESSAGES[this.locale].pagination);
     }
 
     private get currentPage(): number {

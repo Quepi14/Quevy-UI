@@ -25,10 +25,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { html, nothing } from "lit";
 import { state, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName } from "@quevy/core";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 import { toastStore } from "../_internal/toast/toast-store.js";
 import { dismiss } from "./qv-toast.js";
 import { qvToastRegionStyles } from "./qv-toast-region.styles.js";
-let QvToastRegion = class QvToastRegion extends QvElement {
+import { COMMON_MESSAGES } from "../i18n/common-messages.js";
+const QvToastRegionBase = LocalizedMixin(QvElement);
+let QvToastRegion = class QvToastRegion extends QvToastRegionBase {
     constructor() {
         super(...arguments);
         this.metadata = createComponentMetadata({
@@ -40,6 +43,7 @@ let QvToastRegion = class QvToastRegion extends QvElement {
     }
     static { this.styles = qvToastRegionStyles; }
     onConnected() {
+        super.onConnected?.();
         this.toasts = toastStore.getState().toast;
         this.unsubscribe = toastStore.subscribe((state) => {
             this.toasts = state.toast;
@@ -47,6 +51,7 @@ let QvToastRegion = class QvToastRegion extends QvElement {
     }
     onDisconnected() {
         this.unsubscribe?.();
+        super.onDisconnected?.();
     }
     groupByPosition() {
         const groups = new Map();
@@ -58,6 +63,7 @@ let QvToastRegion = class QvToastRegion extends QvElement {
         return groups;
     }
     render() {
+        const messages = COMMON_MESSAGES[this.locale];
         return html `
             ${[...this.groupByPosition().entries()].map(([position, items]) => html `
                     <div class="viewport" data-position=${position}>
@@ -72,7 +78,7 @@ let QvToastRegion = class QvToastRegion extends QvElement {
             ? html `
                                             <button
                                                 class="close"
-                                                aria-label="Dismiss"
+                                                aria-label=${messages.dismiss}
                                                 @click=${() => dismiss(item.id)}
                                             >&times;</button>
                                         `

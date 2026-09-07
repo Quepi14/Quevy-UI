@@ -25,7 +25,9 @@ import { property, customElement } from 'lit/decorators.js';
 import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, removeStyles } from '@quevy/core';
 import { qvStepperStyles } from './qv-stepper.styles.js';
 import { createControllableValue } from '@quevy/state';
-const QvStepperBase = FormAssociatedMixin(DisabledMixin(QvElement));
+import { LocalizedMixin } from '../_internal/i18n/localized-mixin.js';
+import { COMMON_MESSAGES } from '../i18n/common-messages.js';
+const QvStepperBase = FormAssociatedMixin(DisabledMixin(LocalizedMixin(QvElement)));
 /**
  * @event {CustomEvent<QvStepperChangeEventDetail>} change - FIred when the current step changes.
  */
@@ -96,10 +98,11 @@ let QvStepper = class QvStepper extends QvStepperBase {
     }
     render() {
         const value = this.currentValue;
+        const messages = COMMON_MESSAGES[this.locale];
         return html `
             <button
                 type="button"
-                aria-label="Decrease"
+                aria-label=${messages.decrease}
                 ?disabled=${!this.canDecrement}
                 @click=${this.handleDecrement}
             >&minus;</button>
@@ -118,7 +121,7 @@ let QvStepper = class QvStepper extends QvStepperBase {
 
             <button
                 type="button"
-                aria-label="Increase"
+                aria-label=${messages.increase}
                 ?disabled=${!this.canIncrement}
                 @click=${this.handleIncrement}
             > &plus;</button>

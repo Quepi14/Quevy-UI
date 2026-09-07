@@ -29,10 +29,12 @@ import { property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { QvElement, queryDecorator as query } from '@quevy/core';
 import { createControllableValue } from '@quevy/state';
+import { LocalizedMixin } from '../i18n/localized-mixin.js';
 import { OverlayController } from '../overlay/overlay-controller.js';
 import { DragToDismiss } from './drag-to-dismiss.js';
 import { bottomSheetStyles } from './bottom-sheet.styles.js';
-export class QvBottomSheetBase extends QvElement {
+import { COMMON_MESSAGES } from '../../i18n/common-messages.js';
+export class QvBottomSheetBase extends LocalizedMixin(QvElement) {
     static { this.styles = bottomSheetStyles; }
     constructor() {
         super();
@@ -84,6 +86,7 @@ export class QvBottomSheetBase extends QvElement {
         if (!this.overlay.isOpen) {
             return nothing;
         }
+        const messages = COMMON_MESSAGES[this.locale];
         return html `
             ${this.hasBackdrop ? html `<div class="backdrop" part="backdrop"></div>` : nothing}
 
@@ -96,7 +99,7 @@ export class QvBottomSheetBase extends QvElement {
                 </div>
                 ${this.closable
             ? html `
-                        <button class="close" part="close" aria-label="Close" @click=${() => this.close()}>
+                        <button class="close" part="close" aria-label=${messages.close} @click=${() => this.close()}>
                             <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
                                 <path d="M4.3 4.3a1 1 0 011.4 0L10 8.6l4.3-4.3a1 1 0 111.4 1.4L11.4 10l4.3 4.3a1 1 0 01-1.4 1.4L10 11.4l-4.3 4.3a1 1 0 01-1.4-1.4L8.6 10 4.3 5.7a1 1 0 010-1.4z"/>
                             </svg>

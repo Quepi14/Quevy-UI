@@ -17,7 +17,8 @@
  * @packageDocumentation
  */
 import { QvElement } from "@quevy/core";
-export declare class QvToastRegion extends QvElement {
+declare const QvToastRegionBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("../_internal/i18n/localized-mixin.js").LocalizedElement>;
+export declare class QvToastRegion extends QvToastRegionBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
     private toasts;
@@ -27,4 +28,5 @@ export declare class QvToastRegion extends QvElement {
     private groupByPosition;
     protected render(): import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=qv-toast-region.d.ts.map

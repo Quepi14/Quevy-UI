@@ -11,7 +11,8 @@
  * @packageDocumentation
  */
 import { QvElement } from "@quevy/core";
-export declare class QvCarousel extends QvElement {
+declare const QvCarouselBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("../_internal/i18n/localized-mixin.js").LocalizedElement>;
+export declare class QvCarousel extends QvCarouselBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
     autoplay: boolean;
@@ -31,4 +32,5 @@ export declare class QvCarousel extends QvElement {
     goTo(i: number): void;
     protected render(): import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=qv-carousel.d.ts.map

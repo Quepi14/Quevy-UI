@@ -16,17 +16,17 @@
 import { html, nothing, type PropertyValues, type TemplateResult } from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, type MixinConstructor, type DisabledInterface } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 
 import { OverlayController } from "../_internal/overlay/overlay-controller.js";
-import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
+import { LocalizedMixin, type LocalizedElement } from "../_internal/i18n/localized-mixin.js";
 
 import { qvDropdownStyles } from './qv-dropdown.styles.js'
 import type { QvDropdownVariant, QvDropdownItem, QvDropdownChangeEventDetail } from "./qv-dropdown.types.js";
 import { COMMON_MESSAGES } from "../i18n/common-messages.js";
 
-const QvDropdownBase = DisabledMixin(LocalizedMixin(QvElement));
+abstract class QvDropdownBase extends DisabledMixin(LocalizedMixin(QvElement)) {}
 
 /**
  * @event {CustomEvent<QvDropdownChangeEventDetail>} change - Fired when the selected value changes.

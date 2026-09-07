@@ -12,11 +12,11 @@
 import { html, type PropertyValues } from "lit";
 import { property, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, type MixinConstructor, type FocusableInterface, type DisabledInterface } from "@quevy/core";
 
 import { qvRadioStyles } from "./qv-radio.styles.js";
 
-const QvRadioBase = DisabledMixin(FocusableMixin(QvElement));
+abstract class QvRadioBase extends DisabledMixin(FocusableMixin(QvElement)) {}
 
 @customElement('qv-radio')
 export class QvRadio extends QvRadioBase {

@@ -18,14 +18,14 @@
 import { html, type PropertyValues } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
 
-import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, removeStyles } from '@quevy/core';
+import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, removeStyles, type MixinConstructor, type DisabledInterface, type FormAssociatedInterface } from '@quevy/core';
 import { qvStepperStyles } from './qv-stepper.styles.js';
 import { createControllableValue } from '@quevy/state';
-import { LocalizedMixin } from '../_internal/i18n/localized-mixin.js';
+import { LocalizedMixin, type LocalizedElement } from '../_internal/i18n/localized-mixin.js';
 import type { QvStepperChangeEventDetail, QvStepperShape, QvStepperVariant, QvStepperSize } from './qv-stepper.types.js';
 import { COMMON_MESSAGES } from '../i18n/common-messages.js';
 
-const QvStepperBase = FormAssociatedMixin(DisabledMixin(LocalizedMixin(QvElement)));
+abstract class QvStepperBase extends FormAssociatedMixin(DisabledMixin(LocalizedMixin(QvElement))) {}
 
 /**
  * @event {CustomEvent<QvStepperChangeEventDetail>} change - FIred when the current step changes.

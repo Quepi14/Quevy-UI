@@ -14,13 +14,13 @@
 import { html, nothing } from "lit";
 import { property, customElement, state } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, prevent } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, prevent, type MixinConstructor, type DisabledInterface } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 
 import { qvSliderStyles } from "./qv-slider.styles.js";
 import type { QvSliderChangeEventDetail, QvSliderLabelPosition } from "./qv-slider.types.js";
 
-const QvSliderBase = DisabledMixin(QvElement);
+abstract class QvSliderBase extends DisabledMixin(QvElement) {}
 
 /**
  * @event {CustomEvent<QvSliderChangeEventDetail>} change - Fired when the value (or range) commits.

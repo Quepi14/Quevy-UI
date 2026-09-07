@@ -10,7 +10,6 @@
  */
 export declare const radius: {
     readonly none: '0px';
-    readonly signature: '2px';
     readonly sm: '4px';
     readonly md: '8px';
     readonly lg: '12px';

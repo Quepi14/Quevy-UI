@@ -38,8 +38,11 @@ export {
 export type {
     Constructor as MixinConstructor,
     FocusableElement,
+    FocusableInterface,
     DisableableElement,
+    DisabledInterface,
     FormAssociatedElement,
+    FormAssociatedInterface,
 } from './mixins/index.js';
 
 export * from './utils/index.js';

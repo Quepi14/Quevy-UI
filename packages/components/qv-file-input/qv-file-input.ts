@@ -13,9 +13,9 @@
 import { html, type PropertyValues } from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, type MixinConstructor, type DisabledInterface } from "@quevy/core";
 
-import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
+import { LocalizedMixin, type LocalizedElement } from "../_internal/i18n/localized-mixin.js";
 import { qvFileInputStyles } from "./qv-file-input.styles.js";
 import type { QvFileInputChangeEventDetail } from "./qv-file-input.types.js";
 import { COMMON_MESSAGES } from "../i18n/common-messages.js";
@@ -26,7 +26,7 @@ function formatSize(bytes: number): string {
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-const QvFileInputBase = DisabledMixin(LocalizedMixin(QvElement));
+abstract class QvFileInputBase extends DisabledMixin(LocalizedMixin(QvElement)) {}
 
 /**
  * @event {CustomEvent<QvFileInputChangeEventDetail>} change - Fired when the selected files change.

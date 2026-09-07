@@ -19,7 +19,7 @@
 import { html, type PropertyValues } from "lit";
 import { property, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, FormAssociatedMixin, host, createStyles } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, FormAssociatedMixin, host, createStyles, type MixinConstructor, type FormAssociatedInterface } from "@quevy/core";
 import { createControllableValue } from "@quevy/state";
 
 import type { QvRadio } from "./qv-radio.js";
@@ -33,7 +33,7 @@ ${host()} {
 }    
 `);
 
-const QvRadioGroupBase = FormAssociatedMixin(QvElement);
+abstract class QvRadioGroupBase extends FormAssociatedMixin(QvElement) {}
 
 /**
  * @event {CustomEvent<QvRadioGroupChangeEventDetail>} change - Fired when the selected radio changes.

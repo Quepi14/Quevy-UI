@@ -19,12 +19,12 @@ import { html, nothing, type PropertyValues} from "lit";
 import { property, state, customElement } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 
-import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, DisabledMixin, FormAssociatedMixin, type MixinConstructor, type DisabledInterface, type FormAssociatedInterface } from "@quevy/core";
 
 import { qvInputStyles } from "./qv-input.styles.js";
 import type { QvInputVariant, QvInputType, QvInputChangeEventDetail } from "./qv-input.types.js";
 
-const QvInputBase = FormAssociatedMixin(DisabledMixin(QvElement));
+abstract class QvInputBase extends FormAssociatedMixin(DisabledMixin(QvElement)) {}
 
 /**
  * @event {CustomEvent<QvInputChangeEventDetail>} input - Fired on every keystroke/value change.

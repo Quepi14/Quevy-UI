@@ -6,6 +6,7 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
+  "files": ["dist"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,5 +20,8 @@
   "dependencies": {
     "@quevy/core": "workspace:*",
     "lit": "^3.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

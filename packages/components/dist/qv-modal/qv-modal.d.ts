@@ -16,7 +16,8 @@ import type { QvModalSize } from "./qv-modal.types.js";
  * @event {CustomEvent<QvModalToggleEventDetail>} open - Fired whe the modal opens.
  * @event {CustomEvent<QvModalToggleEventDetail>} close - Fired whe the modal closes.
  */
-export declare class QvModal extends QvElement {
+declare const QvModalBase: typeof QvElement & import("@quevy/core").MixinConstructor<import("../_internal/i18n/localized-mixin.js").LocalizedElement>;
+export declare class QvModal extends QvModalBase {
     static styles: CSSStyleSheet;
     readonly metadata: import("@quevy/core").ComponentMetadata;
     size: QvModalSize;
@@ -39,4 +40,5 @@ export declare class QvModal extends QvElement {
     private readonly handleFooterSlotChange;
     protected render(): typeof nothing | import("lit").TemplateResult<1>;
 }
+export {};
 //# sourceMappingURL=qv-modal.d.ts.map
