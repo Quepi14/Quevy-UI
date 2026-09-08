@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev:button": "vite --config packages/components/dev/vite.config.ts",
-    "build": "tsc -p tsconfig.json" 
+    "build": "pnpm --filter @quevy/core exec tsc -p tsconfig.json && pnpm --filter @quevy/tokens exec tsc -p tsconfig.json && pnpm --filter @quevy/state exec tsc -p tsconfig.json && pnpm --filter @quevy/components exec tsc -p tsconfig.json && pnpm --filter @quevy/react exec tsc -p tsconfig.json"
   },
   "devDependencies": {
     "typescript": "^7.0.2",
