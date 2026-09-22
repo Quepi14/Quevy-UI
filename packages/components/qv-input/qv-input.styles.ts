@@ -23,7 +23,8 @@ ${host()} {
 input {
     box-sizing: border-box;
     width: 100%;
-    height: var(--qv-sizing-md, 40px);
+    line-height: 1.4;
+    padding-block: 0.75em;
     padding-inline: var(--qv-spacing-md, 12px);
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
     border-radius: var(--qv-radius-md, 8px);

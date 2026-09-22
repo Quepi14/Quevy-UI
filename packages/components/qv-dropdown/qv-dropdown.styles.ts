@@ -14,7 +14,8 @@ ${host()} {
     justify-content: space-between;
     gap: var(--qv-spacing-xs, 4px);
     min-width: 180px;
-    height: var(--qv-sizing-sm, 32px);
+    line-height: 1.4;
+    padding-block: 0.7em;
     padding-inline: var(--qv-spacing-md, 12px);
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
     border-radius: var(--qv-radius-md, 8px);
@@ -97,7 +98,8 @@ ${hostAttribute('open')}  .chevron {
 .search-input {
     box-sizing: border-box;
     width: 100%;
-    height: var(--qv-sizing-sm, 32px);
+    line-height: 1.4;
+    padding-block: 0.7em;
     padding-inline-start: cal(var(--qv-spacing-sm, 8px) * 2 + 14px);
     padding-inline-end: var(--qv-spacing-sm, 8px);
     border: 1px solid transparent;

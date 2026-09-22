@@ -60,36 +60,39 @@ ${host()}{
 
 const sizes = css(`
 ${hostAttribute('size="sm"')}{
-    height: var(--qv-sizing-sm, 32px);
+    padding-block: 0.55em;
     padding-inline: var(--qv-spacing-md, 16px);
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }
     
 ${hostAttribute('size="sm"')}${hostAttribute('icon-only')}{
-    width: var(--qv-sizing-sm, 32px);
-    padding-inline: 0;
+    width: 2.3em;
+    height: 2.3em;
+    padding: 0;
 }
 
 ${hostAttribute('size="md"')}{
-    height: var(--qv-sizing-md, 40px);
+    padding-block: 0.6em;
     padding-inline: var(--qv-spacing-lg, 20px);
     font-size: var(--qv-font-size-md, 16px);
 }
 
 ${hostAttribute('size="md"')}${hostAttribute('icon-only')}{
-    width: var(--qv-sizing-md, 40px);
-    padding-inline: 0;
+    width: 2.3em;
+    height: 2.3em;
+    padding: 0;
 }
 
 ${hostAttribute('size="lg"')}{
-    height: var(--qv-sizing-lg, 48px);
+    padding-block: 0.5em;
     padding-inline: var(--qv-spacing-xl, 24px);
-    font-size: var(--qv-font-size-lg, 18px);
+    font-size: var(--qv-font-size-lg, 26px);
 }
 
 ${hostAttribute('size="lg"')}${hostAttribute('icon-only')}{
-    width: var(--qv-sizing-lg, 48px);
-    padding-inline: 0;
+    width: 2.3em;
+    height: 2.3em;
+    padding: 0;
 }
 `)
 

@@ -13,8 +13,8 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: var(--qv-sizing-sm, 32px);
-    height: var(--qv-sizing-sm, 32px);
+    width: 2.3em;
+    height: 2.3em;
     cursor: pointer;
     color: var(--qv-color-foreground-default, #171717);
 }
@@ -50,8 +50,8 @@ button[aria-current="page"]  {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: var(--qv-sizing-sm, 32px);
-    height: var(--qv-sizing-sm, 32px);
+    width: 2.3em;
+    height: 2.3em;
     color: var(--qv-color-foreground-muted, #737373);
 }
 
@@ -70,7 +70,8 @@ button[aria-current="page"]  {
     text-align: center;
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
     border-radius: var(--qv-radius-sm, 4px);
-    height: var(--qv-sizing-sm, 32px);
+    line-height: 1.4;
+    padding-block: 0.7em;
 }
 
 .jump input:focus-visible {

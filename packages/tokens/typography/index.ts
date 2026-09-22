@@ -17,14 +17,14 @@ export const typography = {
     },
 
     fontSize: {
-        xs: '12px',
-        sm: '14px',
+        xs: '10px',
+        sm: '11px',
         md: '16px',
-        lg: '18px',
-        xl: '20px',
-        '2xl': '24px',
-        '3xl': '30px',
-        '4xl': '36px',
+        lg: '26px',
+        xl: '42px',
+        '2xl': '68px',
+        '3xl': '96px',
+        '4xl': '128px',
     },
 
     fontWeight: {

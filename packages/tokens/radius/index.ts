@@ -11,9 +11,9 @@
 
 export const radius = {
     none: '0px',
-    sm: '4px',
+    sm: '5px',
     md: '8px',
-    lg: '12px',
-    xl: '16px',
+    lg: '13px',
+    xl: '21px',
     full: '9999px',
 } as const;

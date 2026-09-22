@@ -13,7 +13,8 @@ ${host()} {
     align-items: center;
     gap: var(--qv-spacing-sm, 8px);
     min-width: 200px;
-    height: var(--qv-sizing-sm, 32px);
+    line-height: 1.4;
+    padding-block: 0.7em;
     padding-inline: var(--qv-spacing-md, 12px);
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
     border-radius: var(--qv-radius-md, 8px);

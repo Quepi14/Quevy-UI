@@ -12,8 +12,8 @@ ${host()} {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--qv-sizing-sm, 32px);
-    height: var(--qv-sizing-sm, 32px);
+    width: 2.3em;
+    height: 2.3em;
     border-radius: var(--qv-radius-sm, 4px);
     cursor: pointer;
     color: var(--qv-color-foreground-muted, #737373);

@@ -3,9 +3,8 @@ import { css,  host, hostAttribute, createStyles } from '@quevy/core';
 export const qvStepperStyles = createStyles(css(`
 ${host()} {
     display: inline-flex;
-    align-items: streect;
+    align-items: stretch;
     overflow: hidden;
-    height: var(--qv-sizing-sm, 32px);
 }    
 
 ${hostAttribute('variant="default"')} {
@@ -25,7 +24,9 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--qv-sizing-sm,  32px);
+    width: 2.3em;
+    height: 2.3em;
+    font-size: var(--qv-font-size-sm, 11px);
     cursor: pointer;
     color: var(--qv-color-foreground-default,  #171717);
     background-color: var(--qv-color-background-surface,  #fff);
@@ -54,26 +55,25 @@ button:disabled {
 }
 
 button:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: -2px;
 }
 
-${hostAttribute('size="lg"')} {
-    height: var(--qv-sizing-xl, 56px);
-}
 ${hostAttribute('size="lg"')} button {
     width: var(--qv-sizing-xl, 56px);
 }
 ${hostAttribute('size="lg"')} input {
     width: 64px;
-    font-size: var(--qv-font-size-xl, 20px);
+    font-size: var(--qv-font-size-xl, 42px);
 }
 
 input {
     all: unset;
     width: 48px;
     text-align: center;
-    font-size: var(--qv-font-size-sm, 14px);
+    line-height: 1.4;
+    padding-block: 0.4em;
+    font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #171717);
 }
 
