@@ -5,7 +5,7 @@ ${host()} {
     display: flex;
     align-items: center;
     gap: var(--qv-spacing-sm, 8px);
-    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 12px);
+    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 16px);
     border-bottom: 1px solid var(--qv-color-border-default, #E5E7EB);
     transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
 }    

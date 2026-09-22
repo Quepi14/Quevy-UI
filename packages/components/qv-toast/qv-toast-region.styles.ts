@@ -16,12 +16,12 @@ ${host()}{
     max-width: 360px;
 }
 
-.viewport[data-position="top-left"]     { top: var(--qv-spacing-lg, 16px); left: var(--qv-spacing-lg, 16px); align-items: flex-start; }
-.viewport[data-position="top-center"]   { top: var(--qv-spacing-lg, 16px); left: 50%; transform: translateX(-50%); align-items: center; }
-.viewport[data-position="top-right"]    { top: var(--qv-spacing-lg, 16px); right: var(--qv-spacing-lg, 16px); align-items: flex-end; }
-.viewport[data-position="bottom-left"]  { bottom: var(--qv-spacing-lg, 16px); left: var(--qv-spacing-lg, 16px); align-items: flex-start; }
-.viewport[data-position="bottom-center"]{ bottom: var(--qv-spacing-lg, 16px); left: 50%; transform: translateX(-50%); align-items: center; }
-.viewport[data-position="bottom-right"] { bottom: var(--qv-spacing-lg, 16px); right: var(--qv-spacing-lg, 16px); align-items: flex-end; }
+.viewport[data-position="top-left"]     { top: var(--qv-spacing-lg, 24px); left: var(--qv-spacing-lg, 24px); align-items: flex-start; }
+.viewport[data-position="top-center"]   { top: var(--qv-spacing-lg, 24px); left: 50%; transform: translateX(-50%); align-items: center; }
+.viewport[data-position="top-right"]    { top: var(--qv-spacing-lg, 24px); right: var(--qv-spacing-lg, 24px); align-items: flex-end; }
+.viewport[data-position="bottom-left"]  { bottom: var(--qv-spacing-lg, 24px); left: var(--qv-spacing-lg, 24px); align-items: flex-start; }
+.viewport[data-position="bottom-center"]{ bottom: var(--qv-spacing-lg, 24px); left: 50%; transform: translateX(-50%); align-items: center; }
+.viewport[data-position="bottom-right"] { bottom: var(--qv-spacing-lg, 24px); right: var(--qv-spacing-lg, 24px); align-items: flex-end; }
 
 .toast {
     position: relative;
@@ -29,7 +29,7 @@ ${host()}{
     display: flex;
     align-items: center;
     gap: var(--qv-spacing-sm, 8px);
-    padding: var(--qv-spacing-md, 12px) var(--qv-spacing-lg, 16px);
+    padding: var(--qv-spacing-md, 16px) var(--qv-spacing-lg, 24px);
     border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     color: var(--qv-color-foreground-inverse, #FFFFFF);

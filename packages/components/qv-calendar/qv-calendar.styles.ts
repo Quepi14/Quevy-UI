@@ -5,7 +5,7 @@ ${host()} {
     display: inline-block;
     box-sizing: border-box;
     width: 296px;
-    padding: var(--qv-spacing-lg, 16px);
+    padding: var(--qv-spacing-lg, 24px);
     background-color: var(--qv-color-background-surface, #F9FAFB);
     box-shadow: var(--qv-shadow-md, 0 4px 16px -4px rgba(0 0 0 /0.1));
     border-radius: var(--qv-radius-lg, 13px);
@@ -35,14 +35,14 @@ ${host()} {
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
-    margin: calc(-1 * var(--qv-spacing-lg, 16px)) calc(-1 * var(--qv-spacing-lg, 16px)) var(--qv-spacing-md, 12px);
-    padding: var(--qv-spacing-md, 12px) var(--qv-spacing-lg, 16px);
+    margin: calc(-1 * var(--qv-spacing-lg, 24px)) calc(-1 * var(--qv-spacing-lg, 24px)) var(--qv-spacing-md, 12px);
+    padding: var(--qv-spacing-md, 16px) var(--qv-spacing-lg, 24px);
     background-color: var(--qv-color-brand-primary, #0027C4);
     border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
     color: var(--qv-color-foreground-inverse, #FFFFFF);
 }
 
-.header button { all: unset; cursor: pointer; padding: var(--qv-spacing-xs, 5px); border-radius: var(--qv-radius-sm, 4px); }
+.header button { all: unset; cursor: pointer; padding: var(--qv-spacing-sm, 8px); border-radius: var(--qv-radius-sm, 5px); }
 
 .header .nav {
     display: inline-flex; 

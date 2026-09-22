@@ -11,7 +11,7 @@ ${host()} {
     flex-direction: column;
     align-items: center;
     gap: var(--qv-spacing-xs, 4px);
-    padding: var(--qv-spacing-2xl, 24px);
+    padding: var(--qv-spacing-2xl, 40px);
     border: 2px dashed var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-lg, 13px);
     color: var(--qv-color-foreground-muted, #6B7280);

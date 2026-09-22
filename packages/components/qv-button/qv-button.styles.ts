@@ -73,7 +73,7 @@ ${hostAttribute('size="sm"')}${hostAttribute('icon-only')}{
 
 ${hostAttribute('size="md"')}{
     padding-block: 0.6em;
-    padding-inline: var(--qv-spacing-lg, 20px);
+    padding-inline: var(--qv-spacing-lg, 24px);
     font-size: var(--qv-font-size-md, 16px);
 }
 
@@ -85,7 +85,7 @@ ${hostAttribute('size="md"')}${hostAttribute('icon-only')}{
 
 ${hostAttribute('size="lg"')}{
     padding-block: 0.5em;
-    padding-inline: var(--qv-spacing-xl, 24px);
+    padding-inline: var(--qv-spacing-xl, 32px);
     font-size: var(--qv-font-size-lg, 26px);
 }
 

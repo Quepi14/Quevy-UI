@@ -60,7 +60,7 @@ button:focus-visible {
 }
 
 ${hostAttribute('size="lg"')} button {
-   font-size: var(--qv-sizing-xl, 42px);
+   font-size: var(--qv-font-size-xl, 42px);
 }
 ${hostAttribute('size="lg"')} input {
     width: 64px;

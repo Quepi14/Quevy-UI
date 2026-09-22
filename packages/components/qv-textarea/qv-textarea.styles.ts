@@ -23,7 +23,7 @@ ${host()} {
 textarea {
     box-sizing: border-box;
     width: 100%;
-    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 12px);
+    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 16px);
     border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-md, 8px);
     font-family: inherit;

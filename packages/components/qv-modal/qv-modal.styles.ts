@@ -26,7 +26,7 @@ ${hostAttribute('open')} {
     position: relative;
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - var(--qv-spacing-2xl, 24px) * 2);
+    max-height: calc(100vh - var(--qv-spacing-2xl, 40px) * 2);
     width: 100%;
     background-color: var(--qv-color-background-surface, #F9FAFB);
     border-radius: var(--qv-radius-lg, 13px);
@@ -50,8 +50,9 @@ ${hostAttribute('size="fullscreen"')} .panel {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: var(--qv-spacing-md, 12px);
-    padding: var(--qv-spacing-lg, 16px);
+    gap: var(--qv-spacing-md, 16px);
+    padding-top: var(--qv-spacing-lg, 24px);
+    padding-bottom: var(--qv-spacing-md, 16px);
     background-color: var(--qv-color-brand-primary, #0027C4);
     border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
 }
@@ -75,7 +76,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
 .close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 .body {
-    padding: var(--qv-spacing-lg, 16px);
+    padding: var(--qv-spacing-lg, 24px);
     overflow-y: auto;
     flex: 1;
 }
@@ -84,7 +85,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     display: flex;
     justify-content: flex-end;
     gap: var(--qv-spacing-sm, 8px);
-    padding: var(--qv-spacing-lg, 16px);
+    padding: var(--qv-spacing-lg, 24px);
     border-top: 1px solid var(--qv-color-border-default, #E5E7EB);
 }
 

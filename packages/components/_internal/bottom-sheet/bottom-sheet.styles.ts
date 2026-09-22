@@ -63,8 +63,8 @@ ${hostAttribute('size="fullscreen"')} .panel {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: var(--qv-spacing-md, 12px);
-    padding: 0 var(--qv-spacing-lg, 16px) var(--qv-spacing-md, 12px);
+    gap: var(--qv-spacing-md, 16px);
+    padding: 0 var(--qv-spacing-lg, 16px) var(--qv-spacing-md, 16px);
 }
 
 .header.empty { display: none; }
@@ -86,7 +86,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
 .close:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #0027C4); outline-offset: 2px;}
 
 .body {
-    padding: 0 var(--qv-spacing-lg, 16px) var(--qv-spacing-lg, 16px);
+    padding: 0 var(--qv-spacing-lg, 24px) var(--qv-spacing-lg, 24px);
     overflow-y: auto;
     flex: 1;
 }
@@ -94,7 +94,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
 .footer {
     display: flex;
     gap: var(--qv-spacing-sm, 8px);
-    padding: var(--qv-spacing-lg, 16px);
+    padding: var(--qv-spacing-lg, 24px);
     border-top: 1px solid var(--qv-color-border-default, #E5E7EB);
 }
 

@@ -14,13 +14,13 @@ export const spacing = {
 
     xs: '4px',
     sm: '8px',
-    md: '12px',
-    lg: '16px',
-    xl: '20px',
+    md: '16px',
+    lg: '24px',
+    xl: '32px',
 
-    '2xl': '24px',
-    '3xl': '32px',
-    '4xl': '40px',
-    '5xl': '48px',
-    '6xl': '64px',
+    '2xl': '40px',
+    '3xl': '48px',
+    '4xl': '56px',
+    '5xl': '64px',
+    '6xl': '72px',
 }as const;

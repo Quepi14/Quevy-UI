@@ -5,7 +5,7 @@ ${host()} {
     display: inline-flex;
     align-items: center;
     gap: var(--qv-spacing-xs, 4px);
-    padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-md, 12px);
+    padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-md, 16px);
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-background-muted, #F3F4F6);
     color: var(--qv-color-foreground-default, #111827);

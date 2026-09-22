@@ -15,9 +15,9 @@ ${host()} {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 16px);
+    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 24px);
     cursor: pointer;
-    font-size: var(---qv-font-size-sm, 11px);
+    font-size: var(--qv-font-size-sm, 11px);
     font-weight: var(--qv-font-weight-medium, 500);
     color: var(--qv-color-foreground-default, #111827);
 }
@@ -52,7 +52,7 @@ ${host('.is-open')} .panel {
 }
 
 .content {
-    padding: 0 var(--qv-spacing-lg, 16px) var(--spacing-lg, 16px);
+    padding: 0 var(--qv-spacing-lg, 24px) var(--qv-spacing-lg, 24px);
 }
 
 @media (prefers-reduced-motion: reduce) {

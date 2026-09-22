@@ -25,7 +25,7 @@ input {
     width: 100%;
     line-height: 1.4;
     padding-block: 0.75em;
-    padding-inline: var(--qv-spacing-md, 12px);
+    padding-inline: var(--qv-spacing-md, 16px);
     border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-md, 8px);
     font-family: inherit;
@@ -55,7 +55,7 @@ ${hostAttribute('variant="floating"')} .label {
 ${hostAttribute('variant="floating"')} .floating-label {
     display: block;
     position: absolute;
-    left: var(--qv-spacing-md, 12px);
+    left: var(--qv-spacing-md, 16px);
     top: 50%;
     transform: translateY(-50%) scale(1);
     transform-origin: left center;

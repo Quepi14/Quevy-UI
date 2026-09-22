@@ -15,7 +15,7 @@ ${host()} {
     min-width: 200px;
     line-height: 1.4;
     padding-block: 0.7em;
-    padding-inline: var(--qv-spacing-md, 12px);
+    padding-inline: var(--qv-spacing-md, 16px);
     border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-md, 8px);
     cursor: pointer;

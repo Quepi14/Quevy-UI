@@ -11,7 +11,7 @@ ${host()} {
     display: inline-flex;
     align-items: center;
     gap: var(--qv-spacing-xs, 4px);
-    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 12px);
+    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 16px);
     border-radius: var(--qv-radius-md, 8px);
     cursor: pointer;
     color: var(--qv-color-foreground-muted, #6B7280);

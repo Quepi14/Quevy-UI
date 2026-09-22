@@ -4,8 +4,8 @@ export const qvBarStyles = createStyles(`
 ${host()} {
     display: flex;
     align-items: center;
-    gap: var(--qv-spacing-md, 12px);
-    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 16px);
+    gap: var(--qv-spacing-md, 16px);
+    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 24px);
     background-color: var(--qv-color-background-surface, #F9FAFB);
     box-sizing: border-box;
     z-index: var(--qv-z-index-sticky, 1100);
