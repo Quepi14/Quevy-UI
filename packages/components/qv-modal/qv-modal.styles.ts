@@ -29,7 +29,7 @@ ${hostAttribute('open')} {
     max-height: calc(100vh - var(--qv-spacing-2xl, 24px) * 2);
     width: 100%;
     background-color: var(--qv-color-background-surface, #fff);
-    border-radius: var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-lg, 13px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     animation: qv-modal-panel-in 150ms ease-out;
     outline: none;
@@ -52,14 +52,14 @@ ${hostAttribute('size="fullscreen"')} .panel {
     justify-content: space-between;
     gap: var(--qv-spacing-md, 12px);
     padding: var(--qv-spacing-lg, 16px);
-    background-color: var(--qv-color-background-primary, #0027C4);
-    border-radius: var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) 0 0;
+    background-color: var(--qv-color-brand-primary, #0027C4);
+    border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
 }
 
 .header.empty { display: none}
 
 .header ::slotted(*) {
-    font-size: var(--qv-font-size-lg, 18px);
+    font-size: var(--qv-font-size-lg, 26px);
     font-weight: var(--qv-font-weight-semibold, 600);
     color: #fff;
 }
@@ -68,7 +68,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     all: unset;
     cursor: pointer;
     padding: var(--qv-spacing-xs, 4px);
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     color: #fff;
 }
 .close:hover { background-color: rgb(255 255 255 / 0.15);}

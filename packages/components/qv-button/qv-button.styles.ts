@@ -22,7 +22,7 @@ ${host()}{
     justify-content: center;
     box-sizing: border-box;
     gap: var(--qv-spacing-xs, 4px);
-    border-radius: var(--qv-radius-md, 4px);
+    border-radius: var(--qv-radius-md, 5px);
     border: 1px solid transparent;
     font-family: var(--qv-font-family-sans, system-ui, sans-serif);
     font-weight: var(--qv-font-weight-medium, 500);
@@ -104,7 +104,7 @@ ${hostAttribute('variant="primary"')}{
 
 
 ${hostAttribute('variant="secondary"')}{
-    background-color: var(--qv-color-brand-muted, #f3f4f6);
+    background-color: var(--qv-color-background-muted, #f3f4f6);
     color: var(--qv-color-foreground-default, #171717);
 }
 

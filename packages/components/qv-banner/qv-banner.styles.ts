@@ -7,7 +7,7 @@ ${host()} {
     gap: var(--qv-spacing-sm, 8px);
     padding: var(--qv-spacing-md, 12px) var(--qv-spacing-lg, 16px);
     border: 1px solid transparent;
-    font-size: var(--qv-font-size-md, 14px);
+    font-size: var(--qv-font-size-md, 16px);
     line-height: var(--qv-line-height-normal, 1.5);
 }    
 
@@ -45,7 +45,7 @@ ${hostAttribute('hidden')} {
     justify-content: center;
     width: 20px;
     height: 20px;
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     cursor: pointer;
     color: inherit;
     opacity: 0.6;

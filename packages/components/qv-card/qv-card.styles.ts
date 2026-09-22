@@ -5,7 +5,7 @@ ${host()} {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-lg, 13px);
     background-color: var(--qv-color-background-surface, #ffffff);
     color: var(--qv-color-foreground-default, #171717);
     box-sizing: border-box;
@@ -43,14 +43,14 @@ ${host()} {
 }
 
 .title {
-    font-size: var(--qv-font-size-lg, 18px);
+    font-size: var(--qv-font-size-lg, 26px);
     font-weight: var(--qv-font-weight-semibold, 600);
     line-height: var(--qv-line-height-tight, 1.25);
 }
 .title.empty { display: none; }
 
 .description {
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-muted, #737373);
     line-height: var(--qv-line-height-normal, 1.5);
     display: -webkit-box;

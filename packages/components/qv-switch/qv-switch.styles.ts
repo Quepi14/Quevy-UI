@@ -6,7 +6,7 @@ ${host()} {
     align-items: center;
     gap: var(--qv-spacing-sm, 8px);
     cursor: pointer;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #171717);
     outline: none;
 }    

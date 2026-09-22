@@ -48,7 +48,7 @@ export class QvBreadcrumbs extends QvBreadcrumbsBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBreadcrumbs',
         tagName: createTagName('breadcrumbs'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property({  attribute: false })

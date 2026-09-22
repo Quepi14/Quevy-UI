@@ -40,4 +40,10 @@ export const semanticColors = {
         error: primitiveColors.red[600],
         info: primitiveColors.blue[600],
     },
+    subtle: {
+        success: primitiveColors.green[50],
+        warning: primitiveColors.yellow[50],
+        error: primitiveColors.red[50],
+        info: primitiveColors.blue[50],
+    }
 } as const;

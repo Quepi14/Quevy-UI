@@ -4,7 +4,7 @@ export const qvCollapsibleStyles = createStyles(`
 ${host()} {
     display: block;
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
-    border-radius: var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-lg, 13px);
     overflow: hidden;
 }    
 
@@ -17,7 +17,7 @@ ${host()} {
     width: 100%;
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 16px);
     cursor: pointer;
-    font-size: var(---qv-font-size-sm, 14px);
+    font-size: var(---qv-font-size-sm, 11px);
     font-weight: var(--qv-font-weight-medium, 500);
     color: var(--qv-color-foreground-default, #171717);
 }

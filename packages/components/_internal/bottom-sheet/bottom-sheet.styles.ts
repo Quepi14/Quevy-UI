@@ -28,7 +28,7 @@ ${host()} {
     max-width: 560px;
     max-height: 65vh;
     background-color: var(--qv-color-background-surface, #fff);
-    border-radius: var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) 0 0;
+    border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     animation: qv-sheet-panel-in 200ms ease-out;
     outline: none;
@@ -70,7 +70,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
 .header.empty { display: none; }
 
 .title {
-    font-size: var(--qv-font-size-lg, 18px);
+    font-size: var(--qv-font-size-lg, 26px);
     font-weight: var(--qv-font-weight-semibold, 600);
 }
 
@@ -78,7 +78,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     all: unset;
     cursor: pointer;
     padding: var(--qv-spacing-xs, 4px);
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     color: var(--qv-color-foreground-muted. #737373);
 }
 

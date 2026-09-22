@@ -28,7 +28,7 @@ export class QvButtonGroup extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvButtonGroup',
         tagName: createTagName('button-group'),
-        version: '0.2.0',
+        version: '0.2.1',
     });
 
     @property()

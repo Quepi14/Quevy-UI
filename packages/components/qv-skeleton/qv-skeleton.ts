@@ -24,7 +24,7 @@ export class QvSkeleton extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name:  'QvSkeleton',
         tagName: createTagName('skeleton'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ reflect: true })

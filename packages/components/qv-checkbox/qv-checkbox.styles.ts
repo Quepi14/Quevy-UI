@@ -6,7 +6,7 @@ ${host()} {
     align-items: center;
     gap: var(--qv-spacing-sm, 8px);
     cursor: pointer;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #171717);
     outline: none;
 }
@@ -22,7 +22,7 @@ ${host()} {
     position: relative;
     overflow: hidden;
     border: 1.5px solid var(--qv-color-border-strong, #3a3a3a);
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     background-color: var(--qv-color-background-surface, #fff);
     transition: border-color var(--qv-motion-duration-fast, 100ms) ease, border-color var(--qv-motion-duration-fast, 100ms) ease, transform var(--qv-motion-duration-fast, 100ms) cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--qv-motion-duration-slow, 200ms) ease-out;
 }

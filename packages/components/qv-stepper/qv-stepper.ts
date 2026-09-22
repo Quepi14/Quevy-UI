@@ -37,7 +37,7 @@ export class QvStepper extends QvStepperBase {
     public override readonly metadata = createComponentMetadata ({
         name: 'QvStepper',
         tagName: createTagName('stepper'),
-        version: '0.2.1',
+        version: '0.2.2',
     });
 
     @property({ type: Number })

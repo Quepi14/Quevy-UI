@@ -4,7 +4,7 @@ export const qvDatePickerStyles = createStyles(`
 ${host()} {
     display: inline-block;
     position: relative;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }    
 
 .trigger {

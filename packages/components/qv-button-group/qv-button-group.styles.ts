@@ -26,14 +26,14 @@ ${host()} {
 }
 
 ::slotted(qv-button:first-child) {
-    border-start-start-radius: var(--qv-radius-sm, 4px) !important;
+    border-start-start-radius: var(--qv-radius-sm, 5px) !important;
 
-    border-end-start-radius: var(--qv-radius-sm, 4px) !important;
+    border-end-start-radius: var(--qv-radius-sm, 5px) !important;
 }
 
 ::slotted(qv-button:last-child) {
-    border-start-end-radius: var(--qv-radius-sm, 4px) !important;
+    border-start-end-radius: var(--qv-radius-sm, 5px) !important;
 
-    border-end-end-radius: var(--qv-radius-sm, 4px) !important;
+    border-end-end-radius: var(--qv-radius-sm, 5px) !important;
 }
 `);

@@ -8,8 +8,8 @@ ${host()} {
     padding: var(--qv-spacing-lg, 16px);
     background-color: var(--qv-color-background-surface, #fff);
     box-shadow: var(--qv-shadow-md, 0 4px 16px -4px rgba(0 0 0 /0.1));
-    border-radius: var(--qv-radius-lg, 12px);
-    font-size: var(--qv-font-size-sm, 14px);
+    border-radius: var(--qv-radius-lg, 13px);
+    font-size: var(--qv-font-size-sm, 11px);
 }    
 
 .header .label {
@@ -38,7 +38,7 @@ ${host()} {
     margin: calc(-1 * var(--qv-spacing-lg, 16px)) calc(-1 * var(--qv-spacing-lg, 16px)) var(--qv-spacing-md, 12px);
     padding: var(--qv-spacing-md, 12px) var(--qv-spacing-lg, 16px);
     background-color: var(--qv-color-brand-primary, #0027C4);
-    border-radius: var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) 0 0;
+    border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
     color: var(--qv-color-foreground-inverse, #fff);
 }
 
@@ -73,7 +73,7 @@ ${host()} {
 }
 
 .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
-.weekday { text-align: center; font-size: var(--qv-font-size-xs, 12px); color: var(--qv-color-foreground-muted, #737373); padding: var(--qv-spacing-xs, 4px) 0; }
+.weekday { text-align: center; font-size: var(--qv-font-size-xs, 11px); color: var(--qv-color-foreground-muted, #737373); padding: var(--qv-spacing-xs, 4px) 0; }
 
 .day {
     all: unset;
@@ -108,8 +108,8 @@ ${host()} {
 .day.selected.today::after { background-color: var(--qv-color-foreground-inverse, #fff); }
 .day.selected { background-color: var(--qv-color-brand-primary, #0027C4); color: var(--qv-color-foreground-inverse, #ffffff); }
 .day.in-range { background-color: var(--qv-color-blue-50, #eff6ff); border-radius: 0; }
-.day.range-start { border-radius: var(--qv-radius-sm, 4px) 0 0 var(--qv-radius-sm, 4px); }
-.day.range-end { border-radius: 0 var(--qv-radius-sm, 4px) var(--qv-radius-sm, 4px) 0; }
+.day.range-start { border-radius: var(--qv-radius-sm, 5px) 0 0 var(--qv-radius-sm, 5px); }
+.day.range-end { border-radius: 0 var(--qv-radius-sm, 5px) var(--qv-radius-sm, 5px) 0; }
 
 .month-grid {
     display: grid;

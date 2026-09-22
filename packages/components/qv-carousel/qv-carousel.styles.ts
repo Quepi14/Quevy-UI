@@ -5,7 +5,7 @@ ${host()}{
     display: block;
     position: relative;
     overflow: hidden;
-    border-radius: var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-lg, 13px);
 } 
    
 .track { display: flex; transition: transform var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, ease); }

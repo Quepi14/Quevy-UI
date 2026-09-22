@@ -19,12 +19,12 @@ ${host()} {
     position: relative;
     overflow: hidden;
     background-color: var(--qv-color-background-muted,  #e5e5e5);
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
 }
 
 ${hostAttribute('shape="text"')} {
     height: 1em;
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
 }
 
 ${hostAttribute('shape="circle"')} {

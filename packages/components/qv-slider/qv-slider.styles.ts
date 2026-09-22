@@ -49,7 +49,7 @@ ${hostAttribute('disabled')} .thumb { cursor: not-allowed; }
     align-items: center;
     justify-content: center;
     min-width: 32px;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #171717);
 }
 
@@ -69,10 +69,10 @@ ${hostAttribute('disabled')} .thumb { cursor: not-allowed; }
     left: 50%;
     transform: translate(-50%, -8px);
     padding: 2px 8px;
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     background-color: var(--qv-color-neutral-800, #262626);
     color: var(--qv-color-foreground-inverse, #fff);
-    font-size: var(--qv-font-size-xs, 12px);
+    font-size: var(--qv-font-size-xs, 10px);
     white-space: nowrap;
     opacity: 0;
     transition: opacity var(--qv-motion-duration-fast, 100ms) ease;

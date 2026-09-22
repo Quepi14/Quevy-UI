@@ -5,7 +5,7 @@ ${host()} {
     display: flex;
     flex-direction: column;
     gap: var(--qv-spacing-xs, 4px);
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }    
 
 .label {
@@ -27,7 +27,7 @@ textarea {
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
     border-radius: var(--qv-radius-md, 8px);
     font-family: inherit;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #171717);
     resize: vertical;
     min-height: 80px;
@@ -69,7 +69,7 @@ ${hostAttribute('invalid')} textarea:focus-visible {
     display: flex;
     justify-content: space-between;
     gap: var(--qv-spacing-sm, 8px);
-    font-size: var(--qv-font-size-xs, 12px);
+    font-size: var(--qv-font-size-xs, 10px);
     color: var(--qv-color-foreground-muted, #737373);
 }
 

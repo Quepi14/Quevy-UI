@@ -62,7 +62,7 @@ ${hostAttribute('active')} .label-outer {
 }
 
 .label {
-    font-size: var(--qv-font-size-xs, 12px);
+    font-size: var(--qv-font-size-xs, 10px);
     font-weight: var(--qv-font-weight-medium, 500);
 }
 

@@ -38,7 +38,7 @@ export class QvFileInput extends QvFileInputBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvFileInput',
         tagName: createTagName('file-input'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ type: Boolean, reflect: true}) public multiple = false;

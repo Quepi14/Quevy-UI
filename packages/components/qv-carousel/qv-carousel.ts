@@ -29,7 +29,7 @@ export class QvCarousel extends QvCarouselBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCarousel',
         tagName: createTagName('carousel'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property({ type: Boolean, reflect: true}) public autoplay = false;

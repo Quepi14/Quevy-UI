@@ -15,7 +15,7 @@ ${host()} {
     display: flex;
     flex-direction: column;
     gap: var(--qv-spacing-xs, 4px);
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }
 
 .field { position: relative; }
@@ -29,14 +29,14 @@ input {
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
     border-radius: var(--qv-radius-md, 8px);
     font-family: inherit;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #171717);
     background-color: var(--qv-color-background-surface, #fff);
 }
 
 input:focus-visible {
     outline: none;
-    border-color: var(--qvcolor-brand-primary, #0027C4);
+    border-color: var(--qv-color-brand-primary, #0027C4);
     box-shadow: 0 0 0 3px rgba(49, 87, 199, 0.15);
 }
 
@@ -60,9 +60,9 @@ ${hostAttribute('variant="floating"')} .floating-label {
     transform: translateY(-50%) scale(1);
     transform-origin: left center;
     padding-inline: var(--qv-spacing-xs, 4px);
-    background-color: var(--qv-color-bakcground-surface, #fff);
+    background-color: var(--qv-color-background-surface, #fff);
     color: var(--qv-color-foreground-muted, #737373);
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     line-height: 1;
     pointer-events: none;
     transition: transform var(--qv-motion-duration-normal, 200ms) cubic-bezier(0.2, 0, 0, 1), color var(--qv-motion-duration-fast, 100ms) ease
@@ -91,7 +91,7 @@ ${hostAttribute('invalid')} input { border-color: var(--qv-color-status-error, #
 ${hostAttribute('invalid')} input:focus-visible { box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15); }
 ${hostAttribute('invalid')} .floating-label { color: var(--qv-color-status-error, #dc2626); }
 
-.footer { display: flex; justify-content: space-between; gap: var(--qv-spacing-sm, 8px); font-size: var(--qv-font-size-xs, 12px); color: var(--qv-color-foreground-muted, #737373); }
+.footer { display: flex; justify-content: space-between; gap: var(--qv-spacing-sm, 8px); font-size: var(--qv-font-size-xs, 10px); color: var(--qv-color-foreground-muted, #737373); }
 .helper.error { color: var(--qv-color-status-error, #dc2626); }
 .counter.exceeded { color: var(--qv-color-status-error, #dc2626); }
 

@@ -13,7 +13,7 @@ ol {
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: var(--qv-font-size-sm,  14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }
 
 li {
@@ -25,7 +25,7 @@ a, button.ellipsis, button[part="item"] {
     all: unset;
     cursor: pointer;
     color: var(--qv-color-foreground-muted,  #737373);
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
 } 
 
 a:hover, button[part="item"]:hover {

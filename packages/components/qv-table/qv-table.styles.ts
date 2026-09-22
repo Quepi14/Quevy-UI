@@ -4,7 +4,7 @@ export const qvTableStyles = createStyles(`
 ${host()} {
     display: block;
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
-    border-radius: var(--qv-radius-lg, 12px);
+    border-radius: var(--qv-radius-lg, 13px);
     overflow: hidden;
     background-color: var(--qv-color-background-surface, #fff);
 }    
@@ -18,7 +18,7 @@ ${hostAttribute('variant="plain"')} {
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 16px);
     background-color: var(--qv-color-brand-primary, #0027C4);
     color: var(--qv-color-foreground-inverse, #fff);
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     font-weight: var(--qv-font-weight-semibold, 600);
 }
 
@@ -29,7 +29,7 @@ ${hostAttribute('variant="plain"')} .title-bar { display: none; }
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }
 
 ${hostAttribute('variant="plain"')} table {
@@ -49,7 +49,7 @@ ${hostAttribute('variant="plain"')} thead th {
     background-color: transparent;
     border-bottom: 2px solid var(--qv-color-border-default, #e5e5e5);
     text-transform: uppercase;
-    font-size: var(--qv-font-size-xs, 12px);
+    font-size: var(--qv-font-size-xs, 10px);
     letter-spacing: 0.02em;
 }
 

@@ -27,7 +27,7 @@ ${host()} {
     justify-content: center;
     width: var(--qv-sizing-lg, 48px);
     height: var(--qv-sizing-lg, 48px);
-    border-radius: var(--qv-raidus-full, 9999px);
+    border-radius: var(--qv-radius-full, 9999px);
     margin-bottom: var(--qv-spacing-sm, 8px);
 }
 
@@ -43,7 +43,7 @@ ${host()} {
 }
 
 .description {
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     line-height: var(--qv-line-height-normal, 1.5);
     color: var(--qv-color-foreground-muted, #737373);
     max-width: 320px;

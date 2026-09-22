@@ -37,7 +37,7 @@ export class QvCheckbox extends QvCheckboxBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCheckbox',
         tagName: createTagName('checkbox'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     /** Controlled prop. Leave unset for uncontrolled usage. */

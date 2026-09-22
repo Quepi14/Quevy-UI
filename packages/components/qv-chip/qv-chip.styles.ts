@@ -9,7 +9,7 @@ ${host()} {
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-background-muted, #e5e5e5);
     color: var(--qv-color-foreground-default, #171717);
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     line-height: var(--qv-line-height-tight,  1.25);
     user-select: none;
     outline: none;

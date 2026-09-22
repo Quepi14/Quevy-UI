@@ -4,7 +4,7 @@ export const qvDropdownStyles = createStyles(css(`
 ${host()} {
     display: inline-block;
     position: relative;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }    
 
 .trigger {
@@ -27,7 +27,7 @@ ${host()} {
 }
 
 .trigger:hover:not(:disabled) {
-    border-color: vr(--qv-color-foreground-muted, #3a3a3a);
+    border-color: var(--qv-color-foreground-muted, #3a3a3a);
 }
 
 .trigger:disabled {
@@ -87,7 +87,7 @@ ${hostAttribute('open')}  .chevron {
 .search-icon {
     position: absolute;
     top: 50%;
-    left: cal(var(--qv-spacing-xs, 4px) + var(--qv-spacing-sm, 8px));
+    left: calc(var(--qv-spacing-xs, 4px) + var(--qv-spacing-sm, 8px));
     transform: translateY(-50%);
     width: 14px;
     height: 14px;
@@ -100,13 +100,13 @@ ${hostAttribute('open')}  .chevron {
     width: 100%;
     line-height: 1.4;
     padding-block: 0.7em;
-    padding-inline-start: cal(var(--qv-spacing-sm, 8px) * 2 + 14px);
+    padding-inline-start: calc(var(--qv-spacing-sm, 8px) * 2 + 14px);
     padding-inline-end: var(--qv-spacing-sm, 8px);
     border: 1px solid transparent;
-    border-radius: var(--qv-radius-sm, 4px);
-    background-color: var(--qv-color-backgroudn-muted, #f5f5f5);
+    border-radius: var(--qv-radius-sm, 5px);
+    background-color: var(--qv-color-background-muted, #f5f5f5);
     font-family: inherit;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #171717);
 }
 
@@ -133,7 +133,7 @@ ${hostAttribute('open')}  .chevron {
     gap: var(--qv-spacing-sm, 8px);
     width: 100%;
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     cursor: pointer;
     color: var(--qv-color-foreground-default, #171717);
     transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
@@ -185,6 +185,6 @@ input.trigger::placeholder {
     padding: var(--qv-spacing-md, 12px) var(--qv-spacing-sm, 8px);
     color: var(--qv-color-foreground-muted, #737373);
     text-align: center;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }
 `));

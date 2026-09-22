@@ -5,7 +5,7 @@ ${host()} {
     display: flex;
     align-items: center;
     gap: var(--qv-spacing-xs, 4px);
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }    
 
 button {
@@ -69,7 +69,7 @@ button[aria-current="page"]  {
     width: 40px;
     text-align: center;
     border: 1px solid var(--qv-color-border-default, #e5e5e5);
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     line-height: 1.4;
     padding-block: 0.7em;
 }

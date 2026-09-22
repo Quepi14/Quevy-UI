@@ -33,7 +33,7 @@ export class QvSwitch extends QvSwitchBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvSwitch',
         tagName: createTagName('switch'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ type: Boolean, reflect: true})

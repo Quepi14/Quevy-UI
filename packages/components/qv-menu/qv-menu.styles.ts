@@ -4,7 +4,7 @@ export const qvMenuStyles = createStyles(css(`
 ${host()} {
     display: inline-block;
     position: relative;
-    font-size: var(--qv-font-size-sm, 14px);
+    font-size: var(--qv-font-size-sm, 11px);
 }    
 
 .trigger {
@@ -14,7 +14,7 @@ ${host()} {
     justify-content: center;
     width: 2.3em;
     height: 2.3em;
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     cursor: pointer;
     color: var(--qv-color-foreground-muted, #737373);
 }
@@ -64,7 +64,7 @@ ${host()} {
     box-sizing: border-box;
     width: 100%;
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
-    border-radius: var(--qv-radius-sm, 4px);
+    border-radius: var(--qv-radius-sm, 5px);
     cursor: pointer;
     color: var(--qv-color-foreground-default, #171717);
 }
