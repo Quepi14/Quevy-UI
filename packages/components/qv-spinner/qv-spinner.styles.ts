@@ -3,7 +3,7 @@ import { host, hostAttribute, createStyles } from "@quevy/core";
 export const qvSpinnerStyles = createStyles(`
 ${host()} {
     display: inline-flex;
-    color: var(--qv-color-brand-primary, #3157c7);
+    color: var(--qv-color-brand-primary, #0027C4);
 }    
 
 .spinner {

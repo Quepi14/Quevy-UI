@@ -24,7 +24,7 @@ ${host()} {
 .trigger:hover { border-color: var(--qv-color-neutral-400, #3a3a3a); }
 
 .trigger:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: 2px;
 }
 

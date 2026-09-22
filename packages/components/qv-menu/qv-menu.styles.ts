@@ -34,7 +34,7 @@ ${host()} {
 }
 
 .trigger:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: 2px;
 }
 
@@ -82,7 +82,7 @@ ${host()} {
 }
 
 .item:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: -2px;
 }
 

@@ -37,12 +37,12 @@ ${host()} {
 
 .trigger:focus-visible {
     outline: none;
-    border-color: var(--qv-color-brand-primary, #3157c7);
+    border-color: var(--qv-color-brand-primary, #0027C4);
     box-shadow: 0 0 0 3px rgba(49, 87, 199, 0.15);
 }
 
 ${hostAttribute('open')} .trigger {
-    border-color: var(--qv-color-brand-primary, #3157c7);
+    border-color: var(--qv-color-brand-primary, #0027C4);
 }
 
 .trigger .placeholder {
@@ -59,7 +59,7 @@ ${hostAttribute('open')} .trigger {
 
 ${hostAttribute('open')}  .chevron {
     transform: rotate(180deg);
-    color: var(--qv-color-brand-primary, #3157c7);
+    color: var(--qv-color-brand-primary, #0027C4);
 }
 
 .panel {
@@ -110,7 +110,7 @@ ${hostAttribute('open')}  .chevron {
 
 .search-input:focus-visible {
     outline: none;
-    border-color: var(--qv-color-brand-primary, #3157c7);
+    border-color: var(--qv-color-brand-primary, #0027C4);
     background-color: var(--qv-color-background-surface, #fff);
 }
 
@@ -142,13 +142,13 @@ ${hostAttribute('open')}  .chevron {
 }
 
 .option:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: -2px;
 }
 
 .option[aria-selected="true"] {
     background-color: var(--qv-color-blue-50, #eff6ff);
-    color: var(--qv-color-brand-primary, #3157c7);
+    color: var(--qv-color-brand-primary, #0027C4);
     font-weight: var(--qv-font-weight-medium, 500);
 }
 
@@ -176,7 +176,7 @@ input.trigger::placeholder {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
-    color: var(--qv-color-brand-primary, #3157c7);
+    color: var(--qv-color-brand-primary, #0027C4);
 }
 
 .empty {

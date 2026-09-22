@@ -35,7 +35,7 @@ input {
 
 input:focus-visible {
     outline: none;
-    border-color: var(--qvcolor-brand-primary, #3157c7);
+    border-color: var(--qvcolor-brand-primary, #0027C4);
     box-shadow: 0 0 0 3px rgba(49, 87, 199, 0.15);
 }
 
@@ -81,7 +81,7 @@ input:not(:placeholder-shown) ~ .floating-label {
 
 ${hostAttribute('variant="floating"')}
 input:focus ~ .floating-label { 
-    color: var(--qv-color-brand-primary, #3157c7); 
+    color: var(--qv-color-brand-primary, #0027C4); 
 }
 
 /* Shared states */

@@ -23,7 +23,7 @@ ${host()} {
 }
 
 .header:hover { background-color: var(--qv-color-background-muted, #f5f5f5); }
-.header:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #3157C7); outline-offset: -2px; }
+.header:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #0027C4); outline-offset: -2px; }
 
 .chevron {
     width: 16px;

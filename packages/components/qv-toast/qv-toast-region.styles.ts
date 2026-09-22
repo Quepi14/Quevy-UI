@@ -33,7 +33,7 @@ ${host()}{
     border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     color: var(--qv-color-foreground, #fff);
-    background-color: var(--qv-color-primary, #3157c7);
+    background-color: var(--qv-color-primary, #0027C4);
     animation: qv-toast-in 150ms ease-out;
 }
 

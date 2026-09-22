@@ -18,7 +18,7 @@ ${host()} {
 }
 
 .item:hover { background-color: var(--qv-color-background-muted, #f5f5f5); }
-.item:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #3157c7); outline-offset: -2px; }
+.item:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #0027C4); outline-offset: -2px; }
 
 ${hostAttribute('disabled')} .item {
     cursor: not-allowed;
@@ -26,7 +26,7 @@ ${hostAttribute('disabled')} .item {
 }
 
 ${hostAttribute('active')} .item {
-    color: var(--qv-color-brand-primary, #3157c7);
+    color: var(--qv-color-brand-primary, #0027C4);
 }
 
 .icon {

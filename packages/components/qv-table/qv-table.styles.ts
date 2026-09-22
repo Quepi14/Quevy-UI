@@ -16,7 +16,7 @@ ${hostAttribute('variant="plain"')} {
 
 .title-bar {
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 16px);
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
     color: var(--qv-color-foreground-inverse, #fff);
     font-size: var(--qv-font-size-sm, 14px);
     font-weight: var(--qv-font-weight-semibold, 600);

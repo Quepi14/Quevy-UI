@@ -37,7 +37,7 @@ ${host()} {
     justify-content: space-between; 
     margin: calc(-1 * var(--qv-spacing-lg, 16px)) calc(-1 * var(--qv-spacing-lg, 16px)) var(--qv-spacing-md, 12px);
     padding: var(--qv-spacing-md, 12px) var(--qv-spacing-lg, 16px);
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
     border-radius: var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) 0 0;
     color: var(--qv-color-foreground-inverse, #fff);
 }
@@ -102,11 +102,11 @@ ${host()} {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
 }
 
 .day.selected.today::after { background-color: var(--qv-color-foreground-inverse, #fff); }
-.day.selected { background-color: var(--qv-color-brand-primary, #3157C7); color: var(--qv-color-foreground-inverse, #ffffff); }
+.day.selected { background-color: var(--qv-color-brand-primary, #0027C4); color: var(--qv-color-foreground-inverse, #ffffff); }
 .day.in-range { background-color: var(--qv-color-blue-50, #eff6ff); border-radius: 0; }
 .day.range-start { border-radius: var(--qv-radius-sm, 4px) 0 0 var(--qv-radius-sm, 4px); }
 .day.range-end { border-radius: 0 var(--qv-radius-sm, 4px) var(--qv-radius-sm, 4px) 0; }
@@ -131,7 +131,7 @@ ${host()} {
 
 .month-grid .month-hover { background-color: var(--qv-color-background-muted, #f5f5f5); }
 .month-grid .month.active {
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
     color: var(--qv-color-foreground-inverse, #fff);
     font-weight: var(--qv-font-weight-semibold, 600);
 }

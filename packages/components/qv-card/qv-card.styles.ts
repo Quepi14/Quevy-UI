@@ -117,18 +117,18 @@ ${hostAttribute('href')} {
 
 ${hostAttribute('interactive')}:hover,
 ${hostAttribute('href')}:hover {
-    border-color: var(--qv-color-brand-primary, #3157C7);
+    border-color: var(--qv-color-brand-primary, #0027C4);
 }
 
 ${hostAttribute('interactive')}:active,
 ${hostAttribute('href')}:active {
-    box-shadow: inset 0 0 0 1px var(--qv-color-brand-primary, #3157C7);
+    box-shadow: inset 0 0 0 1px var(--qv-color-brand-primary, #0027C4);
 }
 
 ${host()}:focus-visible {
     box-shadow:
         0 0 0 2px var(--qv-color-background-default, #ffffff),
-        0 0 0 4px var(--qv-color-brand-primary, #3157C7);
+        0 0 0 4px var(--qv-color-brand-primary, #0027C4);
 }
 `);
 

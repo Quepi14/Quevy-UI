@@ -13,7 +13,7 @@ import { primitiveColors } from './primitive.js';
 
 export const semanticColors = {
     brand: {
-        primary: '#3157c7',
+        primary: '#0027C4',
         secondary: primitiveColors.neutral[700],
     },
 

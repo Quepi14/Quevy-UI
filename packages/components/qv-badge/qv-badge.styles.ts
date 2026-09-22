@@ -14,7 +14,7 @@ ${host()} {
     height: 18px;
     padding: 0 var(--qv-spacing-xs, 4px);
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
     color: var(--qv-color-foreground-inverse, #fff);
     font-size: 11px;
     font-weight: var(--qv-font-weight-semibold, 600);

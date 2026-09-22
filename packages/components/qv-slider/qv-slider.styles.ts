@@ -20,7 +20,7 @@ ${host()} {
     top: 0;
     height: 100%;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
 }
 
 .thumb {
@@ -30,14 +30,14 @@ ${host()} {
     height: 16px;
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-background-surface, #fff);
-    border: 2px solid var(--qv-color-brand-primary, #3157c7);
+    border: 2px solid var(--qv-color-brand-primary, #0027C4);
     transform: translate(-50%, -50%);
     cursor: grab;
     touch-action: none;
 }
 
 .thumb:focus-visible {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: 2px;
 }
 

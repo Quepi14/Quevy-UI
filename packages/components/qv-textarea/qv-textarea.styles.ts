@@ -15,7 +15,7 @@ ${host()} {
 }
 
 :host(:focus-within) .label {
-    color: var(--qv-color-brand-primary, #3157c7);
+    color: var(--qv-color-brand-primary, #0027C4);
 }
 
 .label.empty { display: none; }
@@ -45,7 +45,7 @@ textarea:hover:not(:disabled) {
 
 textarea:focus-visible {
     outline: none;
-    border-color: var(--qv-color-brand-primary, #3157c7);
+    border-color: var(--qv-color-brand-primary, #0027C4);
     box-shadow: 0 0 0 3px rgba(49, 87, 199, 0.15);
 }
 

@@ -21,7 +21,7 @@ ${host()} {
     bottom: 0;
     left: 0;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
     transition: width var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, ease);
 }
 

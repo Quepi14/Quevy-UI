@@ -43,7 +43,7 @@ ${host()} {
 }
 
 ${host()}:focus-visible .box {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: 2px;
 }
 
@@ -56,7 +56,7 @@ ${host()}:focus-visible .box {
     content: '';
     position: absolute;
     inset: 0;
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
     border-radius: 50%;
     transform: scale(0);
     transform-origin: center;
@@ -70,7 +70,7 @@ ${host()}:focus-visible .box {
 
 :host([aria-checked="true"]) .box,
 :host([aria-checked="mixed"]) .box {
-    border-color: var(--qv-color-brand-primary, #3157c7);
+    border-color: var(--qv-color-brand-primary, #0027C4);
     box-shdow: 0 0 0 4px rgba(49, 87, 199, 0.15);
     transform: scale(1.08);
 }

@@ -26,16 +26,16 @@ ${host()} {
 }
 
 ${hostAttribute('dragging')} .upload-icon {
-    color: var(--qv-color-brand-primary, #3157c7);
+    color: var(--qv-color-brand-primary, #0027C4);
 }
 
 ${hostAttribute('dragging')} .dropzone {
-    border-color: var(--qv-color-brand-primary, #3157c7);
+    border-color: var(--qv-color-brand-primary, #0027C4);
     background-color: var(--qv-color-blue-50, #eff6ff);
 }
 
 .browse {
-    color: var(--qv-color-brand-primary, #3157c7);
+    color: var(--qv-color-brand-primary, #0027C4);
     font-weight: var(--qv-font-weight-medium, 500);
 }
 

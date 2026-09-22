@@ -34,11 +34,11 @@ ${host()} {
 }
 
 ${host()}:focus-visible .track {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: 2px;
 }
 
-${hostAttribute('checked')} .track { background-color: var(--qv-color-brand-primary, #3157C7); }
+${hostAttribute('checked')} .track { background-color: var(--qv-color-brand-primary, #0027C4); }
 ${hostAttribute('checked')} .thumb { transform: translateX(16px); }
 
 ${hostAttribute('disabled')} { opacity: 0.5; cursor: not-allowed; }

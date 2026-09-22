@@ -52,7 +52,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     justify-content: space-between;
     gap: var(--qv-spacing-md, 12px);
     padding: var(--qv-spacing-lg, 16px);
-    background-color: var(--qv-color-background-primary, #3157c7);
+    background-color: var(--qv-color-background-primary, #0027C4);
     border-radius: var(--qv-radius-lg, 12px) var(--qv-radius-lg, 12px) 0 0;
 }
 

@@ -28,17 +28,17 @@ ${host()} {
     width: 8px;
     height: 8px;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-brand-primary, #3157c7);
+    background-color: var(--qv-color-brand-primary, #0027C4);
     opacity: 0;
 }
 
 ${host()}:focus-visible .dot-outer {
-    outline: 2px solid var(--qv-color-brand-primary, #3157c7);
+    outline: 2px solid var(--qv-color-brand-primary, #0027C4);
     outline-offset: 2px;
 }
 
 
-${hostAttribute('checked')} .dot-outer { border-color: var(--qv-color-brand-primary, #3157C7); }
+${hostAttribute('checked')} .dot-outer { border-color: var(--qv-color-brand-primary, #0027C4); }
 ${hostAttribute('checked')} .dot-inner { opacity: 1; }
 
 ${hostAttribute('disabled')} { opacity: 0.5; cursor: not-allowed; }
