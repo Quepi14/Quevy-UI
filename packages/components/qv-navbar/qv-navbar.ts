@@ -28,7 +28,7 @@ export class QvNavbar extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvNavbar',
         tagName: createTagName('navbar'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     /** Controlled prop. Leave unset for uncontrolled usage. */

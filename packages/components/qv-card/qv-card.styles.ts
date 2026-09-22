@@ -7,7 +7,7 @@ ${host()} {
     overflow: hidden;
     border-radius: var(--qv-radius-lg, 13px);
     background-color: var(--qv-color-background-surface, #ffffff);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
     box-sizing: border-box;
     outline: none;
     position: relative;
@@ -51,7 +51,7 @@ ${host()} {
 
 .description {
     font-size: var(--qv-font-size-sm, 11px);
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     line-height: var(--qv-line-height-normal, 1.5);
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -82,10 +82,10 @@ ${hostAttribute('variant="elevated"')} {
     box-shadow: var(--qv-shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
 }
 ${hostAttribute('variant="outlined"')} {
-    border-color: var(--qv-color-border-default, #e5e5e5);
+    border-color: var(--qv-color-border-default, #E5E7EB);
 }
 ${hostAttribute('variant="flat"')} {
-    background-color: var(--qv-color-background-muted, #f5f5f5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
 }
 ${hostAttribute('variant="glass"')} {
     border-color: rgba(255, 255, 255, 0.35);

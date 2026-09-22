@@ -14,7 +14,7 @@ export class QvBottomSheetInline extends QvBottomSheetBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBottomSheetInline',
         tagName: createTagName('bottom-sheet-inline'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     protected override overlayOptions(): OverlayControllerOptions {

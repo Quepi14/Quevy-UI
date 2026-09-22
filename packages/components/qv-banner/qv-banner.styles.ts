@@ -86,9 +86,9 @@ ${hostAttribute('variant="error"')} {
     color: var(--qv-color-red-900, #7f1d1d)
 }    
 ${hostAttribute('variant="neutral"')} {
-    background-color: var(--qv-color-background-muted, #f5f5f5);
-    border-color: var(--qv-color-border-default, #e5e5e5);
-    color: var(--qv-color-foreground-default, #171717);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
+    border-color: var(--qv-color-border-default, #E5E7EB);
+    color: var(--qv-color-foreground-default, #111827);
 }    
 `);
 

@@ -8,7 +8,7 @@ ${host()} {
 }    
 
 ${hostAttribute('variant="default"')} {
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border: 1px solid var(--qv-color-border-default, #E5E7EB);
 }
     
 ${hostAttribute('shape="rectangle"')} {
@@ -28,13 +28,13 @@ button {
     height: 2.3em;
     font-size: var(--qv-font-size-sm, 11px);
     cursor: pointer;
-    color: var(--qv-color-foreground-default,  #171717);
+    color: var(--qv-color-foreground-default, #111827);
     background-color: var(--qv-color-background-surface,  #fff);
 }
 
 ${hostAttribute('variant="outline"')} button {
     background-color: transparent;
-    border: 1.5px solid var(--qv-color-border-strong, #e3e3e3);
+    border: 1.5px solid var(--qv-color-border-strong, #D1D5DB);
 }
 
 ${hostAttribute('variant="outline"')} ${hostAttribute('shape="circle"')} button {
@@ -46,7 +46,7 @@ ${hostAttribute('variant="outline"')} ${hostAttribute('shape="rectangle"')} butt
 }
 
 button:hover:not(:disabled) {
-    background-color: var(--qv-color-background-muted, #f5f5f5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
 }
 
 button:disabled {
@@ -60,7 +60,7 @@ button:focus-visible {
 }
 
 ${hostAttribute('size="lg"')} button {
-    width: var(--qv-sizing-xl, 42px);
+   font-size: var(--qv-sizing-xl, 42px);
 }
 ${hostAttribute('size="lg"')} input {
     width: 64px;
@@ -74,11 +74,11 @@ input {
     line-height: 1.4;
     padding-block: 0.4em;
     font-size: var(--qv-font-size-sm, 11px);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 ${hostAttribute('variant="default"')} {
-    border-inline: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border-inline: 1px solid var(--qv-color-border-default, #E5E7EB);
 }
 
 ${hostAttribute('disabled')} {

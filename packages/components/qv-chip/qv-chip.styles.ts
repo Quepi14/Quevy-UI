@@ -7,8 +7,8 @@ ${host()} {
     gap: var(--qv-spacing-xs, 4px);
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-md, 12px);
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-background-muted, #e5e5e5);
-    color: var(--qv-color-foreground-default, #171717);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
+    color: var(--qv-color-foreground-default, #111827);
     font-size: var(--qv-font-size-sm, 11px);
     line-height: var(--qv-line-height-tight,  1.25);
     user-select: none;
@@ -63,16 +63,16 @@ ${hostAttribute('selectable')}:not(${hostAttribute('disabled')}) {
     
 ${hostAttribute('selectable')}{aria-pressed="true"} {
     background-color: var(--qv-color-brand-primary, #0027C4);
-    color: var(--qv-color-foreground-inverse, #fff);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
 }
 
 ${hostAttribute('selectable')}:not([aria-pressed="true"]):not(${hostAttribute('disabled')}):hover {
-    background-color: var(--qv-color-background-default, #d4d4d4);
+    background-color: var(--qv-color-background-default, #FFFFFF);
 }
 
 ${host()}:focus-visible {
     box-shadow:
-        0 0 0 2px var(--qv-color-background-default, #fff),
+        0 0 0 2px var(--qv-color-background-default, #FFFFFF),
         0 0 0 4px var(--qv-color-brand-primary, #0027C4); 
 }
 `);

@@ -6,7 +6,7 @@ ${host()} {
     align-items: center;
     gap: var(--qv-spacing-xs, 4px);
     padding: var(--qv-spacing-xs, 4px);
-    background-color: var(--qv-color-background-surface, #fff);
-    border-top: 1px solid var(--qv-color-border-default, #e5e5e5);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
+    border-top: 1px solid var(--qv-color-border-default, #E5E7EB);
 }    
 `);

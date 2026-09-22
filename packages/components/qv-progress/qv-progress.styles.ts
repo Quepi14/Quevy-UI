@@ -11,7 +11,7 @@ ${host()} {
     width: 100%;
     height: 6px;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-background-muted, #e5e5e5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
     overflow: hidden;
 }
 

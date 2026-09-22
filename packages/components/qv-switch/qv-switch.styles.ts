@@ -7,7 +7,7 @@ ${host()} {
     gap: var(--qv-spacing-sm, 8px);
     cursor: pointer;
     font-size: var(--qv-font-size-sm, 11px);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
     outline: none;
 }    
 
@@ -18,7 +18,7 @@ ${host()} {
     height: 20px;
     flex-shrink: 0;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-background-muted, #d4d4d4);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
     transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
 }
 
@@ -29,7 +29,7 @@ ${host()} {
     width: 16px;
     height: 16px;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-background-surface, #fff);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
     transition: transform var(--qv-motion-duration-fast, 100ms) ease;
 }
 

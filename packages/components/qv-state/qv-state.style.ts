@@ -25,27 +25,27 @@ ${host()} {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: var(--qv-sizing-lg, 48px);
-    height: var(--qv-sizing-lg, 48px);
+    width: 3em;
+    height: 3em;
     border-radius: var(--qv-radius-full, 9999px);
     margin-bottom: var(--qv-spacing-sm, 8px);
 }
 
 .icon ::slotted(*) {
-    width: var(--qv-sizing-sm, 32px);
-    height: var(--qv-sizing-sm, 32px);
+    width: 2em;
+    height: 2em;
 }
 
 .title {
     font-size: var(--qv-font-size-md, 16px);
     font-weight: var(--qv-font-weight-semibold, 600);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 .description {
     font-size: var(--qv-font-size-sm, 11px);
     line-height: var(--qv-line-height-normal, 1.5);
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     max-width: 320px;
 }
 
@@ -63,17 +63,17 @@ ${host()} {
 const statusColors = css(`
 ${hostAttribute('status="loading"')} .icon,
 ${hostAttribute('status="empty"')} .icon {
-    background-color: var(--qv-color-background-muted, #f5f5f5);
-    color: var(--qv-color-foreground-muted, #737373);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }    
 
 ${hostAttribute('status="error"')} .icon {
-    background-color: var(--qv-color-error-subtle, #fef2f2);
+    background-color: var(--qv-color-status-subtle-error, #fef2f2);
     color: var(--qv-color-status-error, #dc2626);
 }
 
 ${hostAttribute('status="success"')} .icon {
-    background-color: var(--qv-color-status-subtle, #f0fdf4);
+    background-color: var(--qv-color-status-subtle-success, #f0fdf4);
     color: var(--qv-color-status-success, #16a34a);
 }
 `);

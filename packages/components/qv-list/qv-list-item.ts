@@ -28,7 +28,7 @@ export class QvListItem extends QvListItemBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvListItem',
         tagName: createTagName('list-item'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property() public label?: string;

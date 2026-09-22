@@ -31,7 +31,7 @@ export class QvTextarea extends QvTextAreaBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvTextarea',
         tagName: createTagName('textarea'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property() public label?: string;

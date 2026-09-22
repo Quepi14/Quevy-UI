@@ -12,8 +12,8 @@ ${host()} {
     max-width: 240px;
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
     border-radius: var(--qv-radius-sm, 5px);
-    background-color: var(--qv-color-neutral-800, #262626);
-    color: var(--qv-color-foreground-inverse, #fff);
+    background-color: var(--qv-color-neutral-800, #1F2937);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
     font-size: var(--qv-font-size-xs, 10px);
     line-height: var(--qv-line-height-normal, 1.5);
     pointer-events: none;

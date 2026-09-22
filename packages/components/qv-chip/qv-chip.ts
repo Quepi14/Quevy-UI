@@ -42,7 +42,7 @@ export class QvChip extends QvChipBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvChip',
         tagName: createTagName('chip'),
-        version: '0.1.4',
+        version: '0.1.5',
     });
 
     @property({ type: Boolean, reflect: true })

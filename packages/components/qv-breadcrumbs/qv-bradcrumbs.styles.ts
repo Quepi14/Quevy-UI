@@ -29,7 +29,7 @@ a, button.ellipsis, button[part="item"] {
 } 
 
 a:hover, button[part="item"]:hover {
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
     text-decoration: underline;
 }
 
@@ -39,7 +39,7 @@ a:focus-visible, button.ellipsis:focus-visible, butotn[part="item"]:focus-visibl
 }
 
 [aria-current="page"] {
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
     font-weight: var(--qv-font-weight-medium, 500);
     cursor: default;
 }
@@ -47,7 +47,7 @@ a:focus-visible, button.ellipsis:focus-visible, butotn[part="item"]:focus-visibl
 .separator {
     display: flex;
     align-items: center;
-    color: var(--qv-color-border-strong, #a3a3a3);
+    color: var(--qv-color-border-strong, #D1D5DB);
 }
 
 .separator svg {

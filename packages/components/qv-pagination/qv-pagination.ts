@@ -34,7 +34,7 @@ export class QvPagination extends QvPaginationBase {
     public override readonly metadata = createComponentMetadata ({
         name: 'QvPagination',
         tagName: createTagName('pagination'),
-        version: '0.2.2',
+        version: '0.2.3',
     });
 
     @property({ type: Number, attribute: 'total-pages' })

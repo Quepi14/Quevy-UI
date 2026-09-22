@@ -15,7 +15,7 @@ ${host()} {
     padding: 0 var(--qv-spacing-xs, 4px);
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-brand-primary, #0027C4);
-    color: var(--qv-color-foreground-inverse, #fff);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
     font-size: 11px;
     font-weight: var(--qv-font-weight-semibold, 600);
     line-height: 1;
@@ -45,7 +45,7 @@ ${hostAttribute('standalone')} .indicator {
     position: absolute;
     top: -4px;
     right: -4px;
-    border: 2px solid var(--qv-color-background-surface, #fff);
+    border: 2px solid var(--qv-color-background-surface, #F9FAFB);
     transform: translate(0, 0);
 }
 `);

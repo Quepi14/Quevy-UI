@@ -37,7 +37,7 @@ export class QvInput extends QvInputBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvInput',
         tagName: createTagName('input'),
-        version: '0.1.3',
+        version: '0.1.4',
     });
 
     @property({ reflect: true }) public variant: QvInputVariant = 'default';

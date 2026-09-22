@@ -27,7 +27,7 @@ ${host()} {
     width: 100%;
     max-width: 560px;
     max-height: 65vh;
-    background-color: var(--qv-color-background-surface, #fff);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
     border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     animation: qv-sheet-panel-in 200ms ease-out;
@@ -56,7 +56,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     width: 36px;
     height: 4px;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-border-strong, #d4d4d4)
+    background-color: var(--qv-color-border-strong, #D1D5DB)
 }
 
 .header {
@@ -95,7 +95,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     display: flex;
     gap: var(--qv-spacing-sm, 8px);
     padding: var(--qv-spacing-lg, 16px);
-    border-top: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border-top: 1px solid var(--qv-color-border-default, #E5E7EB);
 }
 
 .footer.empty { display: none; }

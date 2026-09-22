@@ -6,7 +6,7 @@ ${host()} {
     align-items: center;
     gap: var(--qv-spacing-sm, 8px);
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 12px);
-    border-bottom: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border-bottom: 1px solid var(--qv-color-border-default, #E5E7EB);
     transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
 }    
 
@@ -36,10 +36,10 @@ ${host()}:last-child{
 }
 
 .label {
-    font-size: var(--qv-font-size-sm, 141px);
+    font-size: var(--qv-font-size-sm, 11px);
     font-weight: var(--qv-font-weight-medium, 500);
     line-height: 1.4;
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -48,7 +48,7 @@ ${host()}:last-child{
 .description {
     font-size: var(--qv-font-size-xs, 10px);
     line-height: 1.4;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -67,11 +67,11 @@ ${hostAttribute('clickable')} {
 }
 
 ${host('[clickable]:hover')} {
-    background-color: var(--qv-color-background-muted, #f5f5f5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
 }
 
 ${host('[clickable]:active')} {
-    background-color: var(--qv-color-background-muted, #ebebeb);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
 }
 
 ${host()}:focus-visible {

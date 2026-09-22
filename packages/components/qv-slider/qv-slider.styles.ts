@@ -10,7 +10,7 @@ ${host()} {
     position: relative;
     height: 4px;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-background-muted, #e5e5e5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
     cursor: pointer;
     touch-action: none;
 }
@@ -29,7 +29,7 @@ ${host()} {
     width: 16px;
     height: 16px;
     border-radius: var(--qv-radius-full, 9999px);
-    background-color: var(--qv-color-background-surface, #fff);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
     border: 2px solid var(--qv-color-brand-primary, #0027C4);
     transform: translate(-50%, -50%);
     cursor: grab;
@@ -50,7 +50,7 @@ ${hostAttribute('disabled')} .thumb { cursor: not-allowed; }
     justify-content: center;
     min-width: 32px;
     font-size: var(--qv-font-size-sm, 11px);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 :host([label-position="side"]) {
@@ -70,8 +70,8 @@ ${hostAttribute('disabled')} .thumb { cursor: not-allowed; }
     transform: translate(-50%, -8px);
     padding: 2px 8px;
     border-radius: var(--qv-radius-sm, 5px);
-    background-color: var(--qv-color-neutral-800, #262626);
-    color: var(--qv-color-foreground-inverse, #fff);
+    background-color: var(--qv-color-neutral-800, #1F2937);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
     font-size: var(--qv-font-size-xs, 10px);
     white-space: nowrap;
     opacity: 0;

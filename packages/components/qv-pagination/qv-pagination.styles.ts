@@ -16,7 +16,7 @@ button {
     width: 2.3em;
     height: 2.3em;
     cursor: pointer;
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 ${hostAttribute('shape="circle"')} button {
@@ -28,7 +28,7 @@ ${hostAttribute('shape="rectangle"')} button {
 }
 
 button:hover:not(:disabled) {
-    background-color: var(--qv-color-background-muted, #f5f5f5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
 }
 
 button:disabled {
@@ -43,7 +43,7 @@ button:focus-visible {
 
 button[aria-current="page"]  {
     background-color: var(--qv-color-brand-primary, #0027C4);
-    color: var(--qv-color-foreground-inverse, #fff);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
 }
 
 .ellipsis {
@@ -52,7 +52,7 @@ button[aria-current="page"]  {
     justify-content: center;
     width: 2.3em;
     height: 2.3em;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 .jump {
@@ -61,14 +61,14 @@ button[aria-current="page"]  {
     gap: var(--qv-spacing-xs, 4px);
     margin-inline-start: var(--qv-spacing-sm, 8px);
     padding-inline-start: var(--qv-spacing-sm, 8px);
-    border-inline-start: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border-inline-start: 1px solid var(--qv-color-border-default, #E5E7EB);
 }
 
 .jump input {
     all: unset;
     width: 40px;
     text-align: center;
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-sm, 5px);
     line-height: 1.4;
     padding-block: 0.7em;

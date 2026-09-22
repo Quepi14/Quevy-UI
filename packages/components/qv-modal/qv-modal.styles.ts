@@ -28,7 +28,7 @@ ${hostAttribute('open')} {
     flex-direction: column;
     max-height: calc(100vh - var(--qv-spacing-2xl, 24px) * 2);
     width: 100%;
-    background-color: var(--qv-color-background-surface, #fff);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
     border-radius: var(--qv-radius-lg, 13px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     animation: qv-modal-panel-in 150ms ease-out;
@@ -85,7 +85,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     justify-content: flex-end;
     gap: var(--qv-spacing-sm, 8px);
     padding: var(--qv-spacing-lg, 16px);
-    border-top: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border-top: 1px solid var(--qv-color-border-default, #E5E7EB);
 }
 
 .footer.empty { display: none; }

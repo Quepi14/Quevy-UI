@@ -17,17 +17,17 @@ ${host()} {
     line-height: 1.4;
     padding-block: 0.7em;
     padding-inline: var(--qv-spacing-md, 12px);
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-md, 8px);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
     cursor: pointer;
-    background-color: var(--qv-color-background-surface, #fff);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
     transition: border-color var(--qv-motion-duration-fast, 100ms) ease,
                 box-shadow var(--qv-motion-duration-fast, 100ms) ease;
 }
 
 .trigger:hover:not(:disabled) {
-    border-color: var(--qv-color-foreground-muted, #3a3a3a);
+    border-color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 .trigger:disabled {
@@ -47,14 +47,14 @@ ${hostAttribute('open')} .trigger {
 }
 
 .trigger .placeholder {
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 .chevron {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     transition: transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, ease); 
 }
 
@@ -70,8 +70,8 @@ ${hostAttribute('open')}  .chevron {
     min-width: 220px;
     margin-top: var(--qv-spacing-xs, 4px);
     overflow: hidden;
-    background-color: var(--qv-color-background-surface, #fff);
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
+    border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     z-index: var(--qv-z-index-dropdown, 1000);
@@ -81,7 +81,7 @@ ${hostAttribute('open')}  .chevron {
     position: relative;
     flex-shrink: 0;
     padding: var(--qv-spacing-xs, 4px);
-    border-bottom: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border-bottom: 1px solid var(--qv-color-border-default, #E5E7EB);
 }
 
 .search-icon {
@@ -91,7 +91,7 @@ ${hostAttribute('open')}  .chevron {
     transform: translateY(-50%);
     width: 14px;
     height: 14px;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     pointer-events: none;
 }
 
@@ -107,13 +107,13 @@ ${hostAttribute('open')}  .chevron {
     background-color: var(--qv-color-background-muted, #f5f5f5);
     font-family: inherit;
     font-size: var(--qv-font-size-sm, 11px);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 .search-input:focus-visible {
     outline: none;
     border-color: var(--qv-color-brand-primary, #0027C4);
-    background-color: var(--qv-color-background-surface, #fff);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
 }
 
 .options {
@@ -135,12 +135,12 @@ ${hostAttribute('open')}  .chevron {
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
     border-radius: var(--qv-radius-sm, 5px);
     cursor: pointer;
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
     transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
 }
 
 .option:hover:not([aria-disabled="true"]) {
-    background-color: var(--qv-color-background-muted, #f5f5f5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
 }
 
 .option:focus-visible {
@@ -160,12 +160,12 @@ ${hostAttribute('open')}  .chevron {
 }
 
 input.trigger {
-    curosr: text;
+    cursor: text;
     font-family: inherit;
 }
 
 input.trigger::placeholder {
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 .option-label {
@@ -183,7 +183,7 @@ input.trigger::placeholder {
 
 .empty {
     padding: var(--qv-spacing-md, 12px) var(--qv-spacing-sm, 8px);
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     text-align: center;
     font-size: var(--qv-font-size-sm, 11px);
 }

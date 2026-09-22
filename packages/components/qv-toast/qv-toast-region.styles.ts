@@ -32,7 +32,7 @@ ${host()}{
     padding: var(--qv-spacing-md, 12px) var(--qv-spacing-lg, 16px);
     border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
-    color: var(--qv-color-foreground-inverse, #fff);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
     background-color: var(--qv-color-brand-primary, #0027C4);
     animation: qv-toast-in 150ms ease-out;
 }

@@ -48,7 +48,7 @@ export class QvState extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvState',
         tagName: createTagName('state'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property({ reflect: true})

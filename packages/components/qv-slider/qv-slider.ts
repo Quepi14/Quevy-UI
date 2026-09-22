@@ -32,7 +32,7 @@ export class QvSlider extends QvSliderBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvSlider',
         tagName: createTagName('slider'),
-        version: '0.2.3',
+        version: '0.2.4',
     });
 
     @property({ type: Number }) public min = 0;

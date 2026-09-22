@@ -3,7 +3,7 @@ import { host, createStyles } from "@quevy/core";
 export const qvCollapsibleStyles = createStyles(`
 ${host()} {
     display: block;
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-lg, 13px);
     overflow: hidden;
 }    
@@ -19,10 +19,10 @@ ${host()} {
     cursor: pointer;
     font-size: var(---qv-font-size-sm, 11px);
     font-weight: var(--qv-font-weight-medium, 500);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
-.header:hover { background-color: var(--qv-color-background-muted, #f5f5f5); }
+.header:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }
 .header:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #0027C4); outline-offset: -2px; }
 
 .chevron {

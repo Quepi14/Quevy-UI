@@ -18,7 +18,7 @@ ${host()} {
     display: block;
     position: relative;
     overflow: hidden;
-    background-color: var(--qv-color-background-muted,  #e5e5e5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
     border-radius: var(--qv-radius-sm, 5px);
 }
 
@@ -52,9 +52,9 @@ const shimmer = css (`
 ${hostAttribute('animation="shimmer"')} {
     background-image: linear-gradient(
         90deg,
-        var(--qv-color-background-muted, #e5e5e5) 25%,
-        var(--qv-color-background-default, #fafafa) 50%,
-        var(--qv-color-background-muted, #e5e5e5) 75%
+        var(--qv-color-background-muted, #F3F4F6) 25%,
+        var(--qv-color-background-default, #FFFFFF) 50%,
+        var(--qv-color-background-muted, #F3F4F6) 75%
     );
     background-size: 200% 100%;
     animation: qv-skeleton-shimmer 1.5s ease-in-out infinite;

@@ -26,7 +26,7 @@ export class QvBar extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBar',
         tagName: createTagName('bar'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property({ reflect: true})

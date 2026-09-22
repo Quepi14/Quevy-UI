@@ -22,7 +22,7 @@ ${host()}{
     justify-content: center;
     box-sizing: border-box;
     gap: var(--qv-spacing-xs, 4px);
-    border-radius: var(--qv-radius-md, 5px);
+    border-radius: var(--qv-radius-md, 8px);
     border: 1px solid transparent;
     font-family: var(--qv-font-family-sans, system-ui, sans-serif);
     font-weight: var(--qv-font-weight-medium, 500);
@@ -105,13 +105,13 @@ ${hostAttribute('variant="primary"')}{
 
 ${hostAttribute('variant="secondary"')}{
     background-color: var(--qv-color-background-muted, #f3f4f6);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 ${hostAttribute('variant="outline"')}{
     background-color: transparent;
-    border-color: var(--qv-color-border-strong, #d4d4d4);
-    color: var(--qv-color-foreground-default, #171717);
+    border-color: var(--qv-color-border-strong, #D1D5DB);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 ${hostAttribute('variant="text"')}{

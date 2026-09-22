@@ -16,13 +16,13 @@ ${host()} {
     line-height: 1.4;
     padding-block: 0.7em;
     padding-inline: var(--qv-spacing-md, 12px);
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
+    border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-md, 8px);
     cursor: pointer;
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
-.trigger:hover { border-color: var(--qv-color-neutral-400, #3a3a3a); }
+.trigger:hover { border-color: var(--qv-color-neutral-400, #9CA3AF); }
 
 .trigger:focus-visible {
     outline: 2px solid var(--qv-color-brand-primary, #0027C4);
@@ -34,11 +34,11 @@ ${host()} {
     flex-shrink: 0;
     width: 16px;
     height: 16px;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 .trigger .placeholder{
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 qv-calendar {

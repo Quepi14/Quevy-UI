@@ -25,7 +25,7 @@ export class QvRadio extends QvRadioBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvRadio',
         tagName: createTagName('radio'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property() public value = '';

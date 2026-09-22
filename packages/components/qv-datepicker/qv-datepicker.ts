@@ -37,7 +37,7 @@ export class QvDatepicker extends QvDatepickerBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvDatepicker',
         tagName: createTagName('datepicker'),
-        version: '0.1.3',
+        version: '0.1.4',
     });
 
     @property({ reflect: true}) public mode: QvCalendarMode = 'single';

@@ -29,7 +29,7 @@ export class QvNavbarItem extends QvNavbarItemBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvNavbarItem',
         tagName: createTagName('navbar-item'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property() public value = '';

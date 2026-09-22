@@ -29,7 +29,7 @@ export class QvBadge extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvBadge',
         tagName: createTagName('badge'),
-        version: '0.1.1',
+        version: '0.1.2',
     });
 
     @property({ type: Number })

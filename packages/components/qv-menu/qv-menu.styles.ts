@@ -16,7 +16,7 @@ ${host()} {
     height: 2.3em;
     border-radius: var(--qv-radius-sm, 5px);
     cursor: pointer;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 /* When a custom (non-default) trigger is slotted, e.g. navbar
@@ -26,11 +26,11 @@ ${host()} {
     width: auto;
     height: auto;
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 .trigger:hover {
-    background-color: var(--qv-color-background-muted, #f5f5f5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
 }
 
 .trigger:focus-visible {
@@ -48,8 +48,8 @@ ${host()} {
     padding: var(--qv-spacing-xs, 4px);
     list-style: none;
     min-width: 180px;
-    background-color: var(--qv-color-background-surface, #fff);
-    border: 1px solid var(--qv-color-border-default, #e5e5e5);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
+    border: 1px solid var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     z-index: var(--qv-z-index-dropdown, 1000);
@@ -66,7 +66,7 @@ ${host()} {
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
     border-radius: var(--qv-radius-sm, 5px);
     cursor: pointer;
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
 }
 
 .item-icon {
@@ -74,7 +74,7 @@ ${host()} {
     flex-shrink: 0;
     width: 16px;
     height: 16px;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 .item:hover:not([aria-disabled="true"]) {

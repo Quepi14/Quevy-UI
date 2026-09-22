@@ -32,7 +32,7 @@ export class QvCollapsible extends QvElement {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCollapsible',
         tagName: createTagName('collapsible'),
-        version: '0.1.2',
+        version: '0.1.3',
     });
 
     @property() public label?: string;

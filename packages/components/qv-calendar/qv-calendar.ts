@@ -52,7 +52,7 @@ export class QvCalendar extends QvCalendarBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCalendar',
         tagName: createTagName('calendar'),
-        version: '0.1.4',
+        version: '0.1.5',
     });
 
     @property({ reflect: true}) public mode: QvCalendarMode = 'single';

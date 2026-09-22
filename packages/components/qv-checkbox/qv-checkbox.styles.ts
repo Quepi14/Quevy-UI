@@ -7,7 +7,7 @@ ${host()} {
     gap: var(--qv-spacing-sm, 8px);
     cursor: pointer;
     font-size: var(--qv-font-size-sm, 11px);
-    color: var(--qv-color-foreground-default, #171717);
+    color: var(--qv-color-foreground-default, #111827);
     outline: none;
 }
 
@@ -21,16 +21,16 @@ ${host()} {
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
-    border: 1.5px solid var(--qv-color-border-strong, #3a3a3a);
+    border: 1.5px solid var(--qv-color-border-strong, #D1D5DB);
     border-radius: var(--qv-radius-sm, 5px);
-    background-color: var(--qv-color-background-surface, #fff);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
     transition: border-color var(--qv-motion-duration-fast, 100ms) ease, border-color var(--qv-motion-duration-fast, 100ms) ease, transform var(--qv-motion-duration-fast, 100ms) cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--qv-motion-duration-slow, 200ms) ease-out;
 }
 
 .box svg {
     width: 12px;
     height: 12px;
-    color: var(--qv-color-foreground-inverse, #fff);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
     opacity: 0;
 }
 
@@ -80,7 +80,7 @@ ${host()}:focus-visible .box {
     z-index: 1;
     width: 12px;
     height: 12px;
-    color: var(--qv-color-foreground-inverse, #fff);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
     opacity: 0;
 }
 

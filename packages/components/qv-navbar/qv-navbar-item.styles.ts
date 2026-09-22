@@ -14,10 +14,10 @@ ${host()} {
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 12px);
     border-radius: var(--qv-radius-md, 8px);
     cursor: pointer;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
-.item:hover { background-color: var(--qv-color-background-muted, #f5f5f5); }
+.item:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }
 .item:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #0027C4); outline-offset: -2px; }
 
 ${hostAttribute('disabled')} .item {

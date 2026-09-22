@@ -35,7 +35,7 @@ export class QvTable extends QvTableBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvTable',
         tagName: createTagName('table'),
-        version: '0.2.3',
+        version: '0.2.4',
     });
 
     @property({ attribute: false})

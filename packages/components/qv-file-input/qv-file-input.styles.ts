@@ -12,9 +12,9 @@ ${host()} {
     align-items: center;
     gap: var(--qv-spacing-xs, 4px);
     padding: var(--qv-spacing-2xl, 24px);
-    border: 2px dashed var(--qv-color-border-default, #e5e5e5);
+    border: 2px dashed var(--qv-color-border-default, #E5E7EB);
     border-radius: var(--qv-radius-lg, 13px);
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     cursor: pointer;
     text-align: center;
 }
@@ -22,7 +22,7 @@ ${host()} {
 .upload-icon {
     width: 32px;
     height: 32px;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
 }
 
 ${hostAttribute('dragging')} .upload-icon {
@@ -52,7 +52,7 @@ ${hostAttribute('dragging')} .dropzone {
     gap: var(--qv-spacing-sm, 8px);
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
     border-radius: var(--qv-radius-sm, 5px);
-    background-color: var(--qv-color-background-muted, #f5f5f5);
+    background-color: var(--qv-color-background-muted, #F3F4F6);
 }
 
 .file-name {
@@ -63,14 +63,14 @@ ${hostAttribute('dragging')} .dropzone {
 }
 
 .file-size {
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     font-size: var(--qv-font-size-xs, 10px);
 }
 
 .file-remove {
     all: unset;
     cursor: pointer;
-    color: var(--qv-color-foreground-muted, #737373);
+    color: var(--qv-color-foreground-muted, #6B7280);
     padding: 2px;
 }
 
