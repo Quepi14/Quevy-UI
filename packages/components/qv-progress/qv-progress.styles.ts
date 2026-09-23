@@ -22,7 +22,7 @@ ${host()} {
     left: 0;
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-brand-primary, #0027C4);
-    transition: width var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));    
+    transition: width var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));    
 }
 
 ${hostAttribute('variant="success"')} .bar { background-color: var(--qv-color-status-success, #16a34a); }

@@ -44,5 +44,25 @@ ${host()} {
 qv-calendar {
     position: fixed;
     z-index: var(--qv-z-index-dropdown, 1000);
+    transform-origin: top center;
+    animation: qv-datepicker-panel-in var(--qv-motion-duraiton-normal, 180ms) var(--qv-motion-easing-enterm cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+qv-calendar[closing] {
+    animation: qv-datepicker-panel-out var(--qv-motion-duraiton-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
+}
+
+@keyframes qv-datepicker-panel-in {
+    from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+    to { opacity: 0; transform: scale(1) translateY(0); }
+}
+
+@keyframes qv-datepicker-panel-out {
+    from { opacity: 0; transform: scale(1) translateY(0); }
+    to { opacity: 0; transform: scale(0.96) translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    qv-calendar { aniamtion: none; }
 }
 `)

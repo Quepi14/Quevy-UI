@@ -22,8 +22,8 @@ ${host()} {
     color: var(--qv-color-foreground-default, #111827);
     cursor: pointer;
     background-color: var(--qv-color-background-surface, #F9FAFB);
-    transition: border-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)),
-                box-shadow var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)),
+                box-shadow var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .trigger:hover:not(:disabled) {
@@ -55,7 +55,7 @@ ${hostAttribute('open')} .trigger {
     height: calc(1em * 1.4);
     flex-shrink: 0;
     color: var(--qv-color-foreground-muted, #6B7280);
-        transition: transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)); 
+        transition: transform var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)); 
 }
 
 ${hostAttribute('open')}  .chevron {
@@ -79,7 +79,7 @@ ${hostAttribute('open')}  .chevron {
     aniamtion: qv-dropdown-panel-in var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.panel[closign] {
+.panel[closing] {
     animation: qv-dropdown-panel-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
 }
 
@@ -143,7 +143,7 @@ ${hostAttribute('open')}  .chevron {
     border-radius: calc(var(--qv-radius-md, 8px) - var(--qv-spacing-xs, 4px));
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
-       transition: background-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+       transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .option:hover:not([aria-disabled="true"]) {

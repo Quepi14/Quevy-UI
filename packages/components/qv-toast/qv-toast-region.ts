@@ -7,13 +7,12 @@
  * writes (push/dismiss) go through toast.ts, never directly
  * through this component.
  *
- * KNOWN LIMITATION: dismissal is instant removal, no exit
- * animation (only qv-toast-in exists, no matching out-animation
- * with a delay before actual DOM removal). Acceptable for v1;
- * revisit if this becomes a real complaint, since it needs
- * either a fixed delay before store removal or a Web Animations
- * API-driven remove — not something to build speculatively now.
- *
+ * Exit animation: dismiss()/dismissAll() (in qv-toast.ts) mark an
+ * entry `closing: true` before actually removing it from the store,
+ * so this component keeps rendering it with [closing] fro one more
+ * cycle - long enough for its CSS exit animation to play
+ * before the entry is truly dropped.
+ * 
  * @packageDocumentation
  */
 
@@ -80,6 +79,7 @@ export class QvToastRegion extends QvToastRegionBase {
                                     class="toast"
                                     data-variant=${item.variant}
                                     role=${item.variant === 'error'? 'alert' : 'status'}
+                                    ?closing=${item.closing}
                                 >
                                     <span class="message">${item.message}</span>
                                     ${item.dismissible

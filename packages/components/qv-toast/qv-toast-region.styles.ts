@@ -34,7 +34,11 @@ ${host()}{
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     color: var(--qv-color-foreground-inverse, #FFFFFF);
     background-color: var(--qv-color-brand-primary, #0027C4);
-    animation: qv-toast-in 150ms ease-out;
+    animation: qv-toast-in var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.toast[closing] {
+    aniamtion: qv-toast-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
 }
 
 .progress {
@@ -62,6 +66,15 @@ ${host()}{
 @keyframes qv-toast-in {
     from { opacity: 0; transform: translateY(4px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes qv-toast-out {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toast { animation: none; }
 }
 
 .close {

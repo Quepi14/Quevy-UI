@@ -8,7 +8,7 @@ ${host()}{
     border-radius: var(--qv-radius-lg, 13px);
 } 
    
-.track { display: flex; transition: transform var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, ease); }
+.track { display: flex; transition: transform var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, ease); }
 .track ::slotted(*) { flex: 0 0 100%; width: 100%; }
 
 .arrow {

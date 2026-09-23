@@ -65,7 +65,7 @@ ${hostAttribute('variant="floating"')} .floating-label {
     font-size: var(--qv-font-size-sm, 11px);
     line-height: 1;
     pointer-events: none;
-    transition: opacity var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+    transition: opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 ${hostAttribute('variant="floating"')} .floating label { display: block; }

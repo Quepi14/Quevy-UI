@@ -90,7 +90,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     color: var(--qv-color-foreground-muted. #737373);
 }
 
-.close:hover { backgorund-color: var(--qv-color-background-muted, #F3F4F6); }
+.close:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }
 .close:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #0027C4); outline-offset: 2px;}
 
 .body {

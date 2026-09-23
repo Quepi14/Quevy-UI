@@ -20,4 +20,6 @@ export interface QvToastEntry {
     dismissible: boolean;
     /** Resolved auto-dismiss duration in ms (0 = sticky, not progress bar). */
     duration: number;
+    /** True while the exit animation plays, before the entry is actually removed from the store */
+    closing?: boolean;
 }

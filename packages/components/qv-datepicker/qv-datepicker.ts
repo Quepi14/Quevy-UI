@@ -90,7 +90,7 @@ export class QvDatepicker extends QvDatepickerBase {
                 <span class=${text ? '' : 'placeholder'}>${text ?? this.placeholder ?? DATEPICKER_MESSAGES[this.locale].placeholder}</span>
             </button>
 
-            ${this.overlay.isOpen
+            ${this.overlay.isOpen && this.overlay.isClosing
                 ? html `
                     <qv-calendar
                         .mode=${this.mode}
@@ -99,6 +99,7 @@ export class QvDatepicker extends QvDatepickerBase {
                         .value=${this.value}
                         .valueStart=${this.valueStart}
                         .valueEnd=${this.valueEnd}
+                        ?closing=${this.overlay.isClosing}
                         @change=${this.handleCalendarChange}
                     ></qv-calendar>
                 `

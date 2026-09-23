@@ -75,7 +75,7 @@ ${hostAttribute('disabled')} .thumb { cursor: not-allowed; }
     font-size: var(--qv-font-size-xs, 10px);
     white-space: nowrap;
     opacity: 0;
-    transition: opacity var(--qv-motion-duration-fast, 100ms) ease;
+    transition: opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
     pointer-events: none;
 }
 

@@ -24,15 +24,15 @@ ${host()} {
     border: 1.5px solid var(--qv-color-border-strong, #D1D5DB);
     border-radius: var(--qv-radius-sm, 5px);
     background-color: var(--qv-color-background-surface, #F9FAFB);
-    transition: border-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), box-shadow var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), box-shadow var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .box svg path {
     stroke-dasharray: 20;
     stroke-dashoffset: 20;
     transition:
-        stroke-dashoffset var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)),
-        opacity var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+        stroke-dashoffset var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)),
+        opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 ${host()}:focus-visible .box {
@@ -43,8 +43,8 @@ ${host()}:focus-visible .box {
 /* "Ink fill" - a small brand-color dot grows from center and
     fills the box, clipped by its own border-radius via 
     overflow: hidden. This is the signature moment for qv-checkbox
-    specifically - geometry stays plain (raidus-sm, per decision),
-    so the distinctive detail lives in the motion instead.*/
+    specifically - geometry stays plain,so the distinctive detail 
+    lives in the motion instead.*/
 .box::before {
     content: '';
     position: absolute;
@@ -53,7 +53,7 @@ ${host()}:focus-visible .box {
     border-radius: 50%;
     transform: scale(0);
     transform-origin: center;
-    transition: transform var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+    transition: transform var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 :host([aria-checked="true"]) .box::before,

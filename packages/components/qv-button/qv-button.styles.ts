@@ -32,7 +32,7 @@ ${host()}{
     -webkit-tap-highlight-color: transparent;
     outline: none;
     transition-property: background-color, border-color, color, box-shadow, opacity;
-    transition-duration: var(--qv-motion-duration-fast, 100ms);
+    transition-duration: var(--qv-motion-duration-fast, 120ms);
     transition-timing-function: var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
     
@@ -165,7 +165,7 @@ const spinner = css(`
     border: 2px solid currentColor;
     border-top-color: transparent;
     opacity: 0.85;
-    animation: qv-button-spin var(--qv-motion-duration-slow, 300ms) linear infinite; 
+    animation: qv-button-spin var(--qv-motion-duration-slow, 320ms) linear infinite; 
 } 
 
 @keyframes qv-button-spin {
