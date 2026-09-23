@@ -41,6 +41,7 @@ ${host()}{
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    padding-block: var(--qv-spacing-xs, 4px);
 }
 
 .icon:empty {
@@ -53,15 +54,15 @@ ${host()}{
  }
 
 ::slotted(*) {
-    width: 1em;
-    height: 1em;
+    width: calc(1em * var(--qv-line-height-tight, 1.25));
+    height: calc(1em * var(--qv-line-height-tight, 1.25));
 }
 `);
 
 const sizes = css(`
 ${hostAttribute('size="sm"')}{
     padding-block: 0.55em;
-    padding-inline: var(--qv-spacing-md, 16px);
+    padding-inline: calc(2 * 0.55em);
     font-size: var(--qv-font-size-sm, 11px);
 }
     
@@ -73,7 +74,7 @@ ${hostAttribute('size="sm"')}${hostAttribute('icon-only')}{
 
 ${hostAttribute('size="md"')}{
     padding-block: 0.6em;
-    padding-inline: var(--qv-spacing-lg, 24px);
+    padding-inline: calc(2 * 0.6em);
     font-size: var(--qv-font-size-md, 16px);
 }
 
@@ -85,7 +86,7 @@ ${hostAttribute('size="md"')}${hostAttribute('icon-only')}{
 
 ${hostAttribute('size="lg"')}{
     padding-block: 0.5em;
-    padding-inline: var(--qv-spacing-xl, 32px);
+    padding-inline: calc(2 * 0.5em);
     font-size: var(--qv-font-size-lg, 26px);
 }
 
@@ -158,8 +159,8 @@ ${hostAttribute('loading')} .icon[part="prefix"] ::slotted(*) {
 
 const spinner = css(`
 .spinner {
-    width: 1em;
-    height: 1em;
+    width: calc(1em * var(--qv-line-height-tight, 1.25));
+    height: calc(1em * var(--qv-line-height-tight, 1.25));
     border-radius: var(--qv-radius-full, 9999px);
     border: 2px solid currentColor;
     border-top-color: transparent;

@@ -18,6 +18,7 @@ ${host()} {
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 24px);
     cursor: pointer;
     font-size: var(--qv-font-size-sm, 11px);
+    line-height: var(--qv-line-height-tigth, 1.25);
     font-weight: var(--qv-font-weight-medium, 500);
     color: var(--qv-color-foreground-default, #111827);
 }
@@ -26,8 +27,8 @@ ${host()} {
 .header:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #0027C4); outline-offset: -2px; }
 
 .chevron {
-    width: 16px;
-    height: 16px;
+    width: calc(1em * var(--qv-line-height-tight, 1.25));
+    height: calc(1em * var(--qv-line-height-tight, 1.25));
     transition: transform var(--qv-motion-duration-fast, 100ms) ease;
     flex-shrink: 0;
 }

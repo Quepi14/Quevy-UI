@@ -32,8 +32,8 @@ ${host()} {
 .trigger .icon {
     display: inline-flex;
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
+    width: calc(1em * 1.4);
+    height: calc(1em * 1.4);
     color: var(--qv-color-foreground-muted, #6B7280);
 }
 

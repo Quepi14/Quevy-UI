@@ -35,7 +35,7 @@ ${host()} {
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
-    margin: calc(-1 * var(--qv-spacing-lg, 24px)) calc(-1 * var(--qv-spacing-lg, 24px)) var(--qv-spacing-md, 12px);
+    margin: calc(-1 * var(--qv-spacing-lg, 24px)) calc(-1 * var(--qv-spacing-lg, 24px)) var(--qv-spacing-md, 16px);
     padding: var(--qv-spacing-md, 16px) var(--qv-spacing-lg, 24px);
     background-color: var(--qv-color-brand-primary, #0027C4);
     border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;

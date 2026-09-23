@@ -15,6 +15,8 @@ ${host()} {
     border-radius: var(--qv-radius-md, 8px);
     cursor: pointer;
     color: var(--qv-color-foreground-muted, #6B7280);
+    font-size: var(--qv-font-size-xs, 10px);
+    line-height: var(--qv-line-height-tight, 1.25);
 }
 
 .item:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }
@@ -31,8 +33,10 @@ ${hostAttribute('active')} .item {
 
 .icon {
     display: inline-flex;
-    width: 16px;
-    height: 16px;
+    box-sizing: content-box;
+    width: calc(1em * var(--qv-line-height-tight, 1.25));
+    height: calc(1em * var(--qv-line-height-tight, 1.25));
+    padding-block: var(--qv-spacing-xs, 4px);
     flex-shrink: 0;
 }
 

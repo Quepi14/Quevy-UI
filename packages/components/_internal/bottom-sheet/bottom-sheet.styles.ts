@@ -64,7 +64,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     align-items: flex-start;
     justify-content: space-between;
     gap: var(--qv-spacing-md, 16px);
-    padding: 0 var(--qv-spacing-lg, 16px) var(--qv-spacing-md, 16px);
+    padding: 0 var(--qv-spacing-lg, 24px) var(--qv-spacing-md, 16px);
 }
 
 .header.empty { display: none; }

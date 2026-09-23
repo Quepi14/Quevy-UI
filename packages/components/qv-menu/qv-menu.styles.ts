@@ -64,7 +64,8 @@ ${host()} {
     box-sizing: border-box;
     width: 100%;
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
-    border-radius: var(--qv-radius-sm, 5px);
+    line-height: var(--qv-line-height, 1.25);
+    border-radius: calc(var(--qv-radius-md, 8px) - var(--qv-spacing-xs, 4px));
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
 }
@@ -72,8 +73,10 @@ ${host()} {
 .item-icon {
     display: inline-flex;
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
+    box-sizing: content-box;
+    width: calc(1em * var(--qv-line-height-tight, 1.25));
+    height: calc(1em * var(--qv-line-height-tight, 1.25));
+    padding-block: var(--qv-spacing-xs, 4px);
     color: var(--qv-color-foreground-muted, #6B7280);
 }
 

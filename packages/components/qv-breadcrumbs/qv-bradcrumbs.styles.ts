@@ -14,6 +14,9 @@ ol {
     padding: 0;
     list-style: none;
     font-size: var(--qv-font-size-sm, 11px);
+    list-style: none;
+    font-size: var(--qv-font-size-sm, 11px);
+    line-height: var(--qv-line-height-tight, 1.25);
 }
 
 li {
@@ -51,8 +54,8 @@ a:focus-visible, button.ellipsis:focus-visible, butotn[part="item"]:focus-visibl
 }
 
 .separator svg {
-    width: 14px;
-    height: 14px;
+    width: calc(1em * var(--qv-line-height-tight, 1.25));
+    height: calc(1em * var(--qv-line-height-tight, 1.25));
 }
 
 .ellipsis {

@@ -51,8 +51,8 @@ ${hostAttribute('open')} .trigger {
 }
 
 .chevron {
-    width: 14px;
-    height: 14px;
+    width: calc(1em * 1.4);
+    height: calc(1em * 1.4);
     flex-shrink: 0;
     color: var(--qv-color-foreground-muted, #6B7280);
     transition: transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, ease); 
@@ -89,8 +89,8 @@ ${hostAttribute('open')}  .chevron {
     top: 50%;
     left: calc(var(--qv-spacing-xs, 4px) + var(--qv-spacing-sm, 8px));
     transform: translateY(-50%);
-    width: 14px;
-    height: 14px;
+    width: calc(1em * 1.4);
+    height: calc(1em * 1.4);
     color: var(--qv-color-foreground-muted, #6B7280);
     pointer-events: none;
 }
@@ -103,7 +103,7 @@ ${hostAttribute('open')}  .chevron {
     padding-inline-start: calc(var(--qv-spacing-sm, 8px) * 2 + 14px);
     padding-inline-end: var(--qv-spacing-sm, 8px);
     border: 1px solid transparent;
-    border-radius: var(--qv-radius-sm, 5px);
+    border-radius: calc(var(--qv-radius-md, 8px) - var(--qv-spacing-xs, 4px));
     background-color: var(--qv-color-background-muted, #f5f5f5);
     font-family: inherit;
     font-size: var(--qv-font-size-sm, 11px);
@@ -133,7 +133,8 @@ ${hostAttribute('open')}  .chevron {
     gap: var(--qv-spacing-sm, 8px);
     width: 100%;
     padding: var(--qv-spacing-xs, 4px) var(--qv-spacing-sm, 8px);
-    border-radius: var(--qv-radius-sm, 5px);
+    line-height: var(--qv-line-height-tight, 1.25);
+    border-radius: calc(var(--qv-radius-md, 8px) - var(--qv-spacing-xs, 4px));
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
     transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
@@ -175,14 +176,14 @@ input.trigger::placeholder {
 }
 
 .check {
-    width: 14px;
-    height: 14px;
+    width: calc(1em * var(--qv-line-height-tightm 1.25));
+    height: calc(1em * var(--qv-line-height-tightm 1.25));
     flex-shrink: 0;
     color: var(--qv-color-brand-primary, #0027C4);
 }
 
 .empty {
-    padding: var(--qv-spacing-md, 12px) var(--qv-spacing-sm, 8px);
+    padding: var(--qv-spacing-md, 16px) var(--qv-spacing-sm, 8px);
     color: var(--qv-color-foreground-muted, #6B7280);
     text-align: center;
     font-size: var(--qv-font-size-sm, 11px);
