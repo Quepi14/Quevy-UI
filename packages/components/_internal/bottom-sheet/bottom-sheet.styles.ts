@@ -15,8 +15,12 @@ ${host()} {
     position: fixed;
     inset: 0;
     background-color:rgb(0 0 0 / 0.5);
-    animation: qv-sheet-backdrop-in 150ms ease-out;
+    animation: qv-sheet-backdrop-in var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
     pointer-events: auto;
+}
+
+.backdrop[closing] {
+    animation: qv-sheet-backdrop-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
 }
 
 .panel {
@@ -30,8 +34,12 @@ ${host()} {
     background-color: var(--qv-color-background-surface, #F9FAFB);
     border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
-    animation: qv-sheet-panel-in 200ms ease-out;
+    animation: qv-sheet-panel-in var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
     outline: none;
+}
+
+.panel[closing] {
+    animation: qv-sheet-panel-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
 }
 
 ${hostAttribute('size="sm"')} .panel { max-height: 40vh; }
@@ -52,7 +60,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     touch-action: none;
 }
 
-.hanlde {
+.handle {
     width: 36px;
     height: 4px;
     border-radius: var(--qv-radius-full, 9999px);
@@ -82,7 +90,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     color: var(--qv-color-foreground-muted. #737373);
 }
 
-.close:hover { backgorund-color: var (--qv-color-muted, #f5f5f5); }
+.close:hover { backgorund-color: var(--qv-color-background-muted, #F3F4F6); }
 .close:focus-visible { outline: 2px solid var(--qv-color-brand-primary, #0027C4); outline-offset: 2px;}
 
 .body {
@@ -101,9 +109,17 @@ ${hostAttribute('size="fullscreen"')} .panel {
 .footer.empty { display: none; }
 
 @keyframes qv-sheet-backdrop-in { from { opacity: 0; } to { opacity: 1;} }
+
+@keyframes qv-sheet-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+
 @keyframes qv-sheet-panel-in {
     from { transform: translateY(100%); }
     to { transform: translateY(0); }
+}
+
+@keyframes qv-sheet-panel-out {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -15,7 +15,7 @@ ${host()} {
     outline: none;
     transition-property: background-color, color;
     transition-duration: var(--qv-motion-duration-fast, 100ms);
-    transition-timing-function: var(--qv-motion-easing-standard, cubic-bezier(0.2. 0, 0, 1));
+        transition-timing-function: var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }    
 
 .icon {

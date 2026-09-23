@@ -22,8 +22,8 @@ ${host()} {
     color: var(--qv-color-foreground-default, #111827);
     cursor: pointer;
     background-color: var(--qv-color-background-surface, #F9FAFB);
-    transition: border-color var(--qv-motion-duration-fast, 100ms) ease,
-                box-shadow var(--qv-motion-duration-fast, 100ms) ease;
+    transition: border-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)),
+                box-shadow var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .trigger:hover:not(:disabled) {
@@ -55,7 +55,7 @@ ${hostAttribute('open')} .trigger {
     height: calc(1em * 1.4);
     flex-shrink: 0;
     color: var(--qv-color-foreground-muted, #6B7280);
-    transition: transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, ease); 
+        transition: transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)); 
 }
 
 ${hostAttribute('open')}  .chevron {
@@ -75,6 +75,12 @@ ${hostAttribute('open')}  .chevron {
     border-radius: var(--qv-radius-md, 8px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     z-index: var(--qv-z-index-dropdown, 1000);
+    transform-origin: top center;
+    aniamtion: qv-dropdown-panel-in var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.panel[closign] {
+    animation: qv-dropdown-panel-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
 }
 
 .search-wrap {
@@ -137,7 +143,7 @@ ${hostAttribute('open')}  .chevron {
     border-radius: calc(var(--qv-radius-md, 8px) - var(--qv-spacing-xs, 4px));
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
-    transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
+       transition: background-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .option:hover:not([aria-disabled="true"]) {
@@ -187,5 +193,19 @@ input.trigger::placeholder {
     color: var(--qv-color-foreground-muted, #6B7280);
     text-align: center;
     font-size: var(--qv-font-size-sm, 11px);
+}
+
+@keyframes qv-dropdown-panel-in {
+    from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes qv-dropdown-panel-out {
+    from { opacity: 1; transform: scale(1) translateY(0); }
+    to { opacity: 0; transform: scale(0.96) translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .panel { animation: none; }
 }
 `));

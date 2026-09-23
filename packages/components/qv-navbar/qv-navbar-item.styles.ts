@@ -50,7 +50,7 @@ ${hostAttribute('active')} .item {
 .label-outer {
     display: grid;
     grid-template-columns: 0fr;
-    transition: grid-template-columns var(--qv-motion-duration-fast, 150ms) var(--qv-motion-easing-standard, ease);
+    transition: grid-template-columns var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 ${hostAttribute('active')} .label-outer {

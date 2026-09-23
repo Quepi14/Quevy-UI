@@ -19,7 +19,7 @@ ${host()} {
     pointer-events: none;
     opacity: 0;
     transform: translateY(2px);
-    transition: opacity var(--qv-motion-duration-fast, 100ms) ease, transform var(--qv-motion-duration-fast, 100ms) ease;
+        transition: opacity var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .bubble.visible {

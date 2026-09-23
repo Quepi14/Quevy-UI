@@ -106,17 +106,17 @@ export abstract class QvBottomSheetBase extends LocalizedMixin(QvElement) {
         this.hasFooter = this.hasSlot('footer');
     }
 
-    protected override render() {
-        if (!this.overlay.isOpen) {
+    protected override render(): any {
+        if (!this.overlay.isOpen && !this.overlay.isClosing) {
             return nothing
         }
 
         const messages = COMMON_MESSAGES[this.locale];
 
         return html`
-            ${this.hasBackdrop ? html`<div class="backdrop" part="backdrop"></div>` : nothing}
+            ${this.hasBackdrop ? html`<div class="backdrop" part="backdrop" ?closing=${this.overlay.isClosing}></div>` : nothing}
 
-            <div class="panel" part="panel" role="dialog" aria-model=${String(this.hasBackdrop)} tabindex="-1">
+            <div class="panel" part="panel" role="dialog" aria-model=${String(this.hasBackdrop)} tabindex="-1" ?closing=${this.overlay.isClosing}>
                 <div class="handle-row"><div class="handle" part="handle"></div></div>
 
                 <div class=${classMap({ header: true, empty: !this.hasHeaderTitle && !this.closable})} part="header">
@@ -134,7 +134,7 @@ export abstract class QvBottomSheetBase extends LocalizedMixin(QvElement) {
                     : nothing}
             </div>
 
-            <div class="body" part="body"<slot></slot></div>
+            <div class="body" part="body"><slot></slot></div>
 
                 <div class=${classMap({ footer: true, empty: !this.hasFooter})} part="footer">
                     <slot name="footer" @slotchange=${this.handleFooterSlotChange}></slot>

@@ -19,7 +19,7 @@ ${host()} {
     flex-shrink: 0;
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-background-muted, #F3F4F6);
-    transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
+    transition: background-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .thumb {
@@ -30,7 +30,7 @@ ${host()} {
     height: 16px;
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-background-surface, #F9FAFB);
-    transition: transform var(--qv-motion-duration-fast, 100ms) ease;
+    transition: transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 ${host()}:focus-visible .track {

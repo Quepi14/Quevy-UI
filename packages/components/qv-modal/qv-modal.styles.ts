@@ -19,7 +19,11 @@ ${hostAttribute('open')} {
     position: fixed;
     inset: 0;
     background-color: rgb(0 0 0 / 0.5);
-    animation: qv-modal-backdrop-in 150ms ease-out;
+    animation: qv-modal-backdrop-in var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.backdrop[closing] {
+    animation: qv-modal-backdrop-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
 }
 
 .panel {
@@ -31,8 +35,12 @@ ${hostAttribute('open')} {
     background-color: var(--qv-color-background-surface, #F9FAFB);
     border-radius: var(--qv-radius-lg, 13px);
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
-    animation: qv-modal-panel-in 150ms ease-out;
+    animation: qv-modal-panel-in var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
     outline: none;
+}
+
+.panel[closing] {
+    animation: qv-modal-panel-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
 }
 
 ${hostAttribute('size="sm"')} .panel { max-width: 400px;}
@@ -92,9 +100,17 @@ ${hostAttribute('size="fullscreen"')} .panel {
 .footer.empty { display: none; }
 
 @keyframes qv-modal-backdrop-in { from { opacity: 0;} to { opacity: 1;} }
+
+@keyframes qv-modal-backdrop-out { from { opacity: 1;} to { opacity: 0;} }
+
 @keyframes qv-modal-panel-in {
     from { opacity: 0; transform: scale(0.96) translateY(8px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes qv-modal-panel-out {
+    from { opacity: 1; transform: scale(1) translateY(0); }
+    to { opacity: 0; transform: scale(0.96) translateY(8px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

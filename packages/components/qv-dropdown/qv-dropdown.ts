@@ -262,9 +262,9 @@ export class QvDropdown extends QvDropdownBase {
                     </button>
                 `}
 
-            ${this.overlay.isOpen
+            ${this.overlay.isOpen || this.overlay.isClosing
                 ? html`
-                    <div class="panel" part="panel">
+                    <div class="panel" part="panel" ?closing=${this.overlay.isClosing}>
                         ${this.variant === 'search'
                             ? html`
                                 <div class="search-wrap">

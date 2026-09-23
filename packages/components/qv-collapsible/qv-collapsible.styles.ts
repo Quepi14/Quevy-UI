@@ -29,7 +29,7 @@ ${host()} {
 .chevron {
     width: calc(1em * var(--qv-line-height-tight, 1.25));
     height: calc(1em * var(--qv-line-height-tight, 1.25));
-    transition: transform var(--qv-motion-duration-fast, 100ms) ease;
+    transition: transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
     flex-shrink: 0;
 }
 
@@ -40,7 +40,7 @@ ${host('.is-open')} .chevron {
 .panel {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, ease);
+    transition: grid-template-rows var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 ${host('.is-open')} .panel { 

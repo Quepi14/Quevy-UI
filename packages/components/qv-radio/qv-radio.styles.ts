@@ -22,6 +22,7 @@ ${host()} {
     border: 1.5px solid var(--qv-color-border-strong, #D1D5DB);
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-background-surface, #F9FAFB);
+    transition: border-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .dot-inner {
@@ -30,6 +31,8 @@ ${host()} {
     border-radius: var(--qv-radius-full, 9999px);
     background-color: var(--qv-color-brand-primary, #0027C4);
     opacity: 0;
+    transform: scale(0);
+    transition: opacity var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 ${host()}:focus-visible .dot-outer {
@@ -39,7 +42,7 @@ ${host()}:focus-visible .dot-outer {
 
 
 ${hostAttribute('checked')} .dot-outer { border-color: var(--qv-color-brand-primary, #0027C4); }
-${hostAttribute('checked')} .dot-inner { opacity: 1; }
+${hostAttribute('checked')} .dot-inner { opacity: 1; transform: scale(1); }
 
 ${hostAttribute('disabled')} { opacity: 0.5; cursor: not-allowed; }
 `)

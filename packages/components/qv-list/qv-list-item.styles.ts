@@ -7,7 +7,7 @@ ${host()} {
     gap: var(--qv-spacing-sm, 8px);
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 16px);
     border-bottom: 1px solid var(--qv-color-border-default, #E5E7EB);
-    transition: background-color var(--qv-motion-duration-fast, 100ms) ease;
+    transition: background-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }    
 
 ${host()}:last-child{

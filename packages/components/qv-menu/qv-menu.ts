@@ -130,9 +130,9 @@ export class QvMenu extends QvElement {
                 </slot>
             </button>
 
-            ${this.overlay.isOpen
+            ${this.overlay.isOpen || this.overlay.isClosing
                 ? html`
-                    <ul class="panel" part="panel" role="menu">
+                    <ul class="panel" part="panel" role="menu" ?closing=${this.overlay.isClosing}>
                         ${this.items.map(
                             (item, index) => html`
                                 <li role="none">

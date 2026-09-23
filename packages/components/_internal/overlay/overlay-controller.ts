@@ -83,6 +83,8 @@ export class OverlayController implements  ReactiveController {
         Pick<OverlayControllerOptions, 'onOpenChange'>;
         
     private _open = false;
+    private _closing = false;
+    private closeFinalizeTimer: ReturnType<typeof setTimeout> | null = null;
     private previouslyFocused: HTMLElement | null = null;
         
 public constructor(
@@ -106,10 +108,22 @@ public constructor(
         return this._open;
     }
 
+    public get isClosing(): boolean {
+        return this._closing;
+    }
+
     private focusableCache: HTMLElement[] | null = null;
 
     public open(): void {
         if (this._open) return;
+
+        // Rapid re-open while a previous close() is still mid exit-
+        // animation - skip straight to the finished-closing state
+        // instead of leaving a stable animationed listener/timer 
+        // racing against this new open.
+        if (this._closing) {
+            this.finalizeClose();
+        }
 
         this._open = true;
         this.previouslyFocused = document.activeElement as HTMLElement | null;
@@ -166,13 +180,13 @@ public constructor(
         if  (!this._open) return;
 
         this._open  = false;
+        this._closing = true;
 
-        // Reset for next open - otherwise a panel that stays
-        // mounted (future overlay types that don't fully unmount
-        // on close) would remain permanently hidden.
-        if(this.panel) {
-            this.panel.style.visibility = '';
-        }
+        // panel.style.visibility is intentionally left alone here -
+        // finalizeClose() resets it once the exit animation (or its
+        // safety-timeout fallback) completes, so the panel stays
+        // visible for the whole closing transition instead of
+        // vanishing the instant close() is called.
         this.lockedPlacement = null;
 
         if (this.options.lockScroll) {
@@ -192,6 +206,45 @@ public constructor(
             this.previouslyFocused?.focus();
         }
         this.previouslyFocused = null;
+
+        // Give the host one render cycle to re-render with
+        // isOpen=false, isClosing=true (keeping the panel in the
+        // DOM with a [closing] attribute its CSS keys the exit
+        // animation off), then wait for that animation to actually
+        // finish before unmounting - with a safety-timeout fallback
+        // for prefers-reduced-motion or any case where no animation
+        // fires at all.
+        void this.host.updateComplete.then(() => {
+            if (!this.panel) {
+                this.finalizeClose();
+                return;
+            }
+            this.panel.addEventListener('animationend', this.handleCloseAnimationEnd);
+            this.closeFinalizeTimer = setTimeout(() => this.finalizeClose(), 400);
+        });
+    }
+
+    private readonly handleCloseAnimationEnd = (event: AnimationEvent): void => {
+        if (event.target !== this.panel) return;
+        this.finalizeClose();
+    }
+
+    private finalizeClose(): void {
+        if (!this._closing) return;
+
+        this._closing = false;
+
+        if (this.closeFinalizeTimer) {
+            clearTimeout(this.closeFinalizeTimer);
+            this.closeFinalizeTimer = null;
+        }
+        this.panel?.removeEventListener('animationend', this.handleCloseAnimationEnd);
+
+        if (this.panel) {
+            this.panel.style.visibility = '';
+        }
+
+        this.host.requestUpdate();
     }
 
     public toggle(): void{

@@ -11,7 +11,7 @@ ${host()} {
 .label {
     font-weight: var(--qv-font-weight-medium, 500);
     color: var(--qv-color-foreground-default, #111827);
-    transition: color var(--qv-motion-duration-fast, 100ms) ease;
+    transition: color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 :host(:focus-within) .label {
@@ -31,9 +31,8 @@ textarea {
     color: var(--qv-color-foreground-default, #111827);
     resize: vertical;
     min-height: 80px;
-    transition: border-color var(--qv-motion-duration-fast, 100ms) ease,
-                box-shadow var(--qv-motion-duration-fast, 100ms) ease;
-}
+    transition: border-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)),
+                box-shadow var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));}
 
 textarea:placeholder {
     color: var(--qv-color-foreground-muted, #6B7280);

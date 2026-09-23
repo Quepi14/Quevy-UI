@@ -108,15 +108,15 @@ export class QvModal extends QvModalBase {
         this.hasFooter = this.hasSlot('footer');
     }
 
-    protected override render() {
-        if (!this.overlay.isOpen) {
+    protected override render(): any {
+        if (!this.overlay.isOpen && !this.overlay.isClosing) {
             return nothing;
         }
 
         const messages = COMMON_MESSAGES[this.locale];
 
         return html `
-            <div class="backdrop" part="backdrop"></div>
+            <div class="backdrop" part="backdrop" ?closing=${this.overlay.isClosing}></div>
 
             <div
                 class="panel"
@@ -124,6 +124,7 @@ export class QvModal extends QvModalBase {
                 role="dialog"
                 aria-modal="true"
                 tabindex="-1"
+                ?closing=${this.overlay.isClosing}
             >
                 <div class=${classMap({ header: true, empty: !this.hasHeaderTitle && !this.closable })} part="header">
                     <slot name="title" @slotchange=${this.handleTitleSlotChange}></slot>

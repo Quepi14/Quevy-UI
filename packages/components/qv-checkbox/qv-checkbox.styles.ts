@@ -24,22 +24,15 @@ ${host()} {
     border: 1.5px solid var(--qv-color-border-strong, #D1D5DB);
     border-radius: var(--qv-radius-sm, 5px);
     background-color: var(--qv-color-background-surface, #F9FAFB);
-    transition: border-color var(--qv-motion-duration-fast, 100ms) ease, border-color var(--qv-motion-duration-fast, 100ms) ease, transform var(--qv-motion-duration-fast, 100ms) cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--qv-motion-duration-slow, 200ms) ease-out;
-}
-
-.box svg {
-    width: 12px;
-    height: 12px;
-    color: var(--qv-color-foreground-inverse, #FFFFFF);
-    opacity: 0;
+    transition: border-color var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), box-shadow var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .box svg path {
     stroke-dasharray: 20;
     stroke-dashoffset: 20;
-    transition: 
-        stroke-dashoffset var(--qv-motion-duration-slow, 200ms) ease-out,
-        opacity var(--qv-motion-duration-fast, 100ms) ease-out;
+    transition:
+        stroke-dashoffset var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)),
+        opacity var(--qv-motion-duration-fast, 100ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 ${host()}:focus-visible .box {
@@ -60,7 +53,7 @@ ${host()}:focus-visible .box {
     border-radius: 50%;
     transform: scale(0);
     transform-origin: center;
-    transition: tranform var(--qv-motion-duration-slow, 220ms) cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform var(--qv-motion-duration-slow, 300ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 :host([aria-checked="true"]) .box::before,
@@ -71,12 +64,12 @@ ${host()}:focus-visible .box {
 :host([aria-checked="true"]) .box,
 :host([aria-checked="mixed"]) .box {
     border-color: var(--qv-color-brand-primary, #0027C4);
-    box-shdow: 0 0 0 4px rgba(49, 87, 199, 0.15);
+    box-shadow: 0 0 0 4px rgba(49, 87, 199, 0.15);
     transform: scale(1.08);
 }
 
 .box svg {
-    position: relateive;
+    position: relative;
     z-index: 1;
     width: 12px;
     height: 12px;
