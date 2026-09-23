@@ -18,7 +18,7 @@ ${host()} {
     padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-lg, 24px);
     cursor: pointer;
     font-size: var(--qv-font-size-sm, 11px);
-    line-height: var(--qv-line-height-tigth, 1.25);
+    line-height: var(--qv-line-height-tight, 1.25);
     font-weight: var(--qv-font-weight-medium, 500);
     color: var(--qv-color-foreground-default, #111827);
 }

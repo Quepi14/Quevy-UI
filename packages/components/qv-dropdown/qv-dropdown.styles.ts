@@ -176,8 +176,8 @@ input.trigger::placeholder {
 }
 
 .check {
-    width: calc(1em * var(--qv-line-height-tightm 1.25));
-    height: calc(1em * var(--qv-line-height-tightm 1.25));
+    width: calc(1em * var(--qv-line-height-tight, 1.25));
+    height: calc(1em * var(--qv-line-height-tight, 1.25));
     flex-shrink: 0;
     color: var(--qv-color-brand-primary, #0027C4);
 }

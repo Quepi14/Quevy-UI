@@ -100,7 +100,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
 
 .footer.empty { display: none; }
 
-@keyframes qv-sheet-backdrop-in { from { opacity: 0; } tp { opacity: 1;} }
+@keyframes qv-sheet-backdrop-in { from { opacity: 0; } to { opacity: 1;} }
 @keyframes qv-sheet-panel-in {
     from { transform: translateY(100%); }
     to { transform: translateY(0); }

@@ -14,8 +14,6 @@ ol {
     padding: 0;
     list-style: none;
     font-size: var(--qv-font-size-sm, 11px);
-    list-style: none;
-    font-size: var(--qv-font-size-sm, 11px);
     line-height: var(--qv-line-height-tight, 1.25);
 }
 
