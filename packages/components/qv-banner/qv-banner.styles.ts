@@ -51,6 +51,7 @@ ${hostAttribute('hidden')} {
     cursor: pointer;
     color: inherit;
     opacity: 0.6;
+    transition: opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .close:hover {

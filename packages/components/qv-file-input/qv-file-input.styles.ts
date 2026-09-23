@@ -17,12 +17,14 @@ ${host()} {
     color: var(--qv-color-foreground-muted, #6B7280);
     cursor: pointer;
     text-align: center;
+    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .upload-icon {
     width: 32px;
     height: 32px;
     color: var(--qv-color-foreground-muted, #6B7280);
+    transition: color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 ${hostAttribute('dragging')} .upload-icon {
@@ -72,6 +74,7 @@ ${hostAttribute('dragging')} .dropzone {
     cursor: pointer;
     color: var(--qv-color-foreground-muted, #6B7280);
     padding: 2px;
+    transition: color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .file-remove:hover {

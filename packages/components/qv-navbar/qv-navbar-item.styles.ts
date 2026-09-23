@@ -17,6 +17,7 @@ ${host()} {
     color: var(--qv-color-foreground-muted, #6B7280);
     font-size: var(--qv-font-size-xs, 10px);
     line-height: var(--qv-line-height-tight, 1.25);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .item:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }

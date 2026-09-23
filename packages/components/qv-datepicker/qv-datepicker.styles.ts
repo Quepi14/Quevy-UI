@@ -20,6 +20,7 @@ ${host()} {
     border-radius: var(--qv-radius-md, 8px);
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
+    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .trigger:hover { border-color: var(--qv-color-neutral-400, #9CA3AF); }

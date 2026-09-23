@@ -114,6 +114,7 @@ ${hostAttribute('open')}  .chevron {
     font-family: inherit;
     font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #111827);
+    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .search-input:focus-visible {

@@ -32,6 +32,7 @@ input {
     font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #111827);
     background-color: var(--qv-color-background-surface, #F9FAFB);
+    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), box-shadow var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 input:focus-visible {
@@ -65,7 +66,7 @@ ${hostAttribute('variant="floating"')} .floating-label {
     font-size: var(--qv-font-size-sm, 11px);
     line-height: 1;
     pointer-events: none;
-    transition: opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+    transition: opacity var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 ${hostAttribute('variant="floating"')} .floating label { display: block; }
@@ -86,16 +87,35 @@ input:focus ~ .floating-label {
 }
 
 /* Shared states */
-${hostAttribute('disabled')} input { background-color: var(--qv-color-background-muted, #F3F4F6); cursor: not-allowed; opacity: 0.6; }
+${hostAttribute('disabled')} input { 
+    background-color: var(--qv-color-background-muted, #F3F4F6); 
+    cursor: not-allowed; 
+    opacity: 0.6; 
+}
+
 ${hostAttribute('invalid')} input { border-color: var(--qv-color-status-error, #dc2626); }
 ${hostAttribute('invalid')} input:focus-visible { box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15); }
 ${hostAttribute('invalid')} .floating-label { color: var(--qv-color-status-error, #dc2626); }
 
-.footer { display: flex; justify-content: space-between; gap: var(--qv-spacing-sm, 8px); font-size: var(--qv-font-size-xs, 10px); color: var(--qv-color-foreground-muted, #737373); }
+.footer { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: var(--qv-spacing-sm, 8px); 
+    font-size: var(--qv-font-size-xs, 10px); 
+    color: var(--qv-color-foreground-muted, #737373); 
+}
+
 .helper.error { color: var(--qv-color-status-error, #dc2626); }
 .counter.exceeded { color: var(--qv-color-status-error, #dc2626); }
 
-.icon { position: absolute; top: 50%; transform: translateY(-50%); display: flex; color: var(--qv-color-foreground-muted, #6B7280); }
+.icon { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    display: flex; 
+    color: var(--qv-color-foreground-muted, #6B7280); 
+
+    }
 .icon.leading { left: var(--qv-spacing-sm, 8px); }
 .icon.trailing { right: var(--qv-spacing-sm, 8px); }
 .icon.empty { display: none; }

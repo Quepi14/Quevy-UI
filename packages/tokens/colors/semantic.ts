@@ -32,6 +32,7 @@ export const semanticColors = {
     border: {
         default: primitiveColors.neutral[200],
         strong: primitiveColors.neutral[300],
+        brand: '#0027C4',
     },
 
     status: {

@@ -8,7 +8,7 @@ ${host()}{
     border-radius: var(--qv-radius-lg, 13px);
 } 
    
-.track { display: flex; transition: transform var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, ease); }
+.track { display: flex; transition: transform var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)); }
 .track ::slotted(*) { flex: 0 0 100%; width: 100%; }
 
 .arrow {
@@ -25,6 +25,7 @@ ${host()}{
     background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
     cursor: pointer;
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .arrow.prev { left: var(--qv-spacing-sm, 8px); }
@@ -32,6 +33,14 @@ ${host()}{
 .arrow:hover { background-color: rgba(0,0,0,0.6); }
 
 .dots { position: absolute; bottom: var(--qv-spacing-sm, 8px); left: 50%; transform: translateX(-50%); display: flex; gap: var(--qv-spacing-xs, 4px); }
-.dot { all: unset; width: 8px; height: 8px; border-radius: var(--qv-radius-full, 9999px); background-color: rgba(255,255,255,0.5); cursor: pointer; }
+.dot { 
+    all: unset;
+    width: 8px; 
+    height: 8px; 
+    border-radius: var(--qv-radius-full, 9999px); 
+    background-color: rgba(255,255,255,0.5); 
+    cursor: pointer; 
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)); 
+}
 .dot.active { background-color: #fff; }
 `);

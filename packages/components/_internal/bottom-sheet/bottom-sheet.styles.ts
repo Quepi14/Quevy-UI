@@ -87,7 +87,8 @@ ${hostAttribute('size="fullscreen"')} .panel {
     cursor: pointer;
     padding: var(--qv-spacing-xs, 4px);
     border-radius: var(--qv-radius-sm, 5px);
-    color: var(--qv-color-foreground-muted. #737373);
+    color: var(--qv-color-foreground-muted, #737373);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .close:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }

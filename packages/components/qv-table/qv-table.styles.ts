@@ -64,6 +64,10 @@ ${hostAttribute('variant="plain"')} tbody td {
     border-bottom-color: var(--qv-color-background-muted, #F3F4F6);
 }
 
+tbody tr {
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+}
+
 tbody tr:nth-child(even) {
     background-color: var(--qv-color-neutral-200, #E5E7EB);
 }

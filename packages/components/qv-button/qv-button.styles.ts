@@ -111,7 +111,8 @@ ${hostAttribute('variant="secondary"')}{
 
 ${hostAttribute('variant="outline"')}{
     background-color: transparent;
-    border-color: var(--qv-color-border-strong, #D1D5DB);
+    border: 2px solid;
+    border-color: var(--qv-color-border-brand, #0027C4);
     color: var(--qv-color-foreground-default, #111827);
 }
 

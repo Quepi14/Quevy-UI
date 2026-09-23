@@ -17,6 +17,7 @@ ${host()} {
     border-radius: var(--qv-radius-sm, 5px);
     cursor: pointer;
     color: var(--qv-color-foreground-muted, #6B7280);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 /* When a custom (non-default) trigger is slotted, e.g. navbar
@@ -73,6 +74,7 @@ ${host()} {
     border-radius: calc(var(--qv-radius-md, 8px) - var(--qv-spacing-xs, 4px));
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .item-icon {

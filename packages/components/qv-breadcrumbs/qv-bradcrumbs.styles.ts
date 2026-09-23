@@ -27,6 +27,7 @@ a, button.ellipsis, button[part="item"] {
     cursor: pointer;
     color: var(--qv-color-foreground-muted,  #737373);
     border-radius: var(--qv-radius-sm, 5px);
+    transition: color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 } 
 
 a:hover, button[part="item"]:hover {

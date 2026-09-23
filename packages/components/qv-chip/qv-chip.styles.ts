@@ -13,7 +13,7 @@ ${host()} {
     line-height: var(--qv-line-height-tight,  1.25);
     user-select: none;
     outline: none;
-    transition-property: background-color, color;
+    transition-property: background-color, color, box-shadow;
     transition-duration: var(--qv-motion-duration-fast, 120ms);
         transition-timing-function: var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }    
@@ -44,6 +44,7 @@ ${host()} {
     border-radius: var(--qv-radius-full, 9999px);
     cursor: pointer;
     opacity: 0.6;
+    transition: opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .dismiss:hover {

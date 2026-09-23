@@ -21,6 +21,7 @@ ${host()} {
     line-height: var(--qv-line-height-tight, 1.25);
     font-weight: var(--qv-font-weight-medium, 500);
     color: var(--qv-color-foreground-default, #111827);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .header:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }

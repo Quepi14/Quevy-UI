@@ -24,6 +24,7 @@ ${host()} {
     padding: 4px 8px;
     border-radius: var(--qv-radius-md, 8px);
     color: var(--qv-color-foreground-inverse, #FFFFFF);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .header .label:hover { background-color: rgba(255, 255, 255, 0.15); }
@@ -42,7 +43,13 @@ ${host()} {
     color: var(--qv-color-foreground-inverse, #FFFFFF);
 }
 
-.header button { all: unset; cursor: pointer; padding: var(--qv-spacing-sm, 8px); border-radius: var(--qv-radius-sm, 5px); }
+.header button { 
+    all: unset; 
+    cursor: pointer; 
+    padding: var(--qv-spacing-sm, 8px); 
+    border-radius: var(--qv-radius-sm, 5px); 
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+}
 
 .header .nav {
     display: inline-flex; 
@@ -87,6 +94,7 @@ ${host()} {
     border-radius: var(--qv-radius-full, 9999px);
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .day:hover:not([aria-disabled="true"]) { background-color: var(--qv-color-background-muted, #F3F4F6); }
@@ -127,6 +135,7 @@ ${host()} {
     border-radius: var(--qv-radius-md, 8px);
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .month-grid .month-hover { background-color: var(--qv-color-background-muted, #F3F4F6); }
