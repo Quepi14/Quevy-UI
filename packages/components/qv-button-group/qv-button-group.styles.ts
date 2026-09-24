@@ -1,4 +1,4 @@
-import { css, host, createStyles } from '@quevy/core';
+import { host, hostAttribute, createStyles } from '@quevy/core';
 
 export const qvButtonGroupStyles = createStyles(`
 ${host()} {
@@ -18,22 +18,29 @@ ${host()} {
     flex-basis: 0;
     min-width: 0;
     align-self: stretch;
-    border-radius: 0 !important;
 }
 
-::slotted(qv-button:not(:last-child)) {
+${hostAttribute('variant="joined"')} ::slotted(qv-button) {
+    border-radius: 0 !important;
+}
+    
+${hostAttribute('variant="joined"')} ::slotted(qv-button:not(:last-child)) {    
     border-inline-end: none;
 }
 
-::slotted(qv-button:first-child) {
+${hostAttribute('variant="joined"')} ::slotted(qv-button:first-child) {
     border-start-start-radius: var(--qv-radius-sm, 5px) !important;
 
     border-end-start-radius: var(--qv-radius-sm, 5px) !important;
 }
 
-::slotted(qv-button:last-child) {
+{hostAttribute('variant="joined"')} ::slotted(qv-button:last-child)  {
     border-start-end-radius: var(--qv-radius-sm, 5px) !important;
 
     border-end-end-radius: var(--qv-radius-sm, 5px) !important;
+}
+
+${hostAttribute('variant="separated"')} .group {
+    gap: var(--qv-spacing-sm, 8px);
 }
 `);

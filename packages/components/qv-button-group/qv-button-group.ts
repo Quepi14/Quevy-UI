@@ -34,6 +34,9 @@ export class QvButtonGroup extends QvElement {
     @property()
     public ratio?: string;
 
+    @property({ reflect: true })
+    public variant: 'joined' | 'separated' = 'joined';
+
     public override onConnected(): void {
         this.setAttribute('role', 'group');
     }

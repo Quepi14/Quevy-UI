@@ -20,9 +20,6 @@ ${hostAttribute('hidden')} {
     flex-shrink: 0;
     width: calc(1em * var(--qv-line-height-normal, 1.5));
     height: calc(1em * var(--qv-line-height-normal, 1.5));
-    padding-block: var(--qv-spacing-sm, 8px);
-    margin-top: 1px;
-    box-sizing: content-box;
 }
 
 .icon.empty {
