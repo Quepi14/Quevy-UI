@@ -775,6 +775,30 @@
        </div>
     </section>
 
+    <section id="section-popover">
+      <h2>qv-popover</h2>
+
+      <div class="row-label">popover trigger and hover</div>
+      <div class="row">
+        <!-- klik (default) -->
+        <qv-popover>
+          <button slot="trigger">Solutions</button>
+          <div>
+            <strong>Insights</strong>
+            <p>Measure actions your users take</p>
+          </div>
+        </qv-popover>
+
+        <!-- hover, seperti referensi gambar kamu -->
+        <qv-popover trigger="hover">
+          <span slot="trigger">Solutions</span>
+          <div style="background:#171717; color:white; border-radius:13px; margin:-16px; padding:16px;">
+            <!-- susun sendiri grup judul+deskripsi+divider di sini -->
+          </div>
+        </qv-popover>
+      </div>
+    </section>
+
     <!-- CALENDAR / DATEPICKER -->
     <section id="section-calendar">
       <h2>qv-calendar / qv-datepicker</h2> <br>

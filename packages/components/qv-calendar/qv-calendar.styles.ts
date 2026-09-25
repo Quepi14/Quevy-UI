@@ -137,7 +137,7 @@ ${hostAttribute('variant="detached"')} .time-fields {
     transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), box-shadow var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
-.time-fields input[type="time"]::-webkit-calendar-picker-indicartor {
+.time-fields input[type="time"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 
@@ -327,58 +327,6 @@ ${hostAttribute('mode="range"')} .day.range-end:not(.range-start) {
     font-weight: var(--qv-font-weight-semibold, 600);
 }
 
-${hostAttribute('months="2"')} {
-    width: auto;
-    flex-shrink: 0;
-    min-width: fit-content;
-    padding: 0;
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.dual-pane {
-    display: flex;
-}
-
-.pane {
-    flex: 1;
-    min-width: 0;
-    background-color: var(--qv-color-background-surface, #F9FAFB);
-    box-shadow: var(--qv-shadow-md, 0 4px 16px -4px rgba(0 0 0 /0.1));
-    overflow: hidden;
-    padding-bottom: var(--qv-spacing-lg, 24px);
-}
-
-.pane:first-child {
-    border-radius: var(--qv-radius-lg, 13px) 0 0 var(--qv-radius-lg, 13px);
-}
-
-.pane:last-child {
-    border-radius: 0 var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0;
-}
-
-.pane .header {
-    margin: 0 0 var(--qv-spacing-md, 16px);
-}
-
-.pane:first-child .header {
-    border-radius: var(--qv-radius-lg, 13px) 0 0 0;
-}
-
-.pane:last-child .header {
-    border-radius: 0 var(--qv-radius-lg, 13px) 0 0;
-}
-
-.pane .body {
-    padding: 0 var(--qv-spacing-lg, 24px);
-}
-
-/* variant="detached" + months="2": each pane goes back to being 
-    two floatin blocks (header separate from body, own shadow and
-    full rounding on each) instead of one merged card - same idea 
-    as single-pane detached, just repeated per pane. The panes 
-    themselves keep a gap between them here, since "detached" is about 
-    things floating apart, not merging */
 ${hostAttribute('months="2"')} {
     width: auto;
     flex-shrink: 0;
