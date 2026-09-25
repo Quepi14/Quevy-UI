@@ -783,17 +783,22 @@
         <!-- klik (default) -->
         <qv-popover>
           <button slot="trigger">Solutions</button>
-          <div>
-            <strong>Insights</strong>
-            <p>Measure actions your users take</p>
-          </div>
+          <strong>Insights</strong>
+          <p style="margin:2px 0 0; color:#6B7280;">Measure actions your users take</p>
         </qv-popover>
 
         <!-- hover, seperti referensi gambar kamu -->
         <qv-popover trigger="hover">
           <span slot="trigger">Solutions</span>
-          <div style="background:#171717; color:white; border-radius:13px; margin:-16px; padding:16px;">
-            <!-- susun sendiri grup judul+deskripsi+divider di sini -->
+          <div style="border-radius:13px; margin:-16px; padding:16px; display:flex; flex-direction:column; gap:10px;">
+            <div>
+              <strong>Insights</strong>
+              <p style="margin:2px 0 0; color:#6B7280;">Measure actions your users take</p>
+            </div>
+            <div style="border-top:1px solid var(--qv-color-border-default, #E5E7EB); padding-top:10px;">
+              <strong>Automations</strong>
+              <p style="margin:2px 0 0; color:#6B7280;">Create your own targeted content</p>
+            </div>
           </div>
         </qv-popover>
       </div>

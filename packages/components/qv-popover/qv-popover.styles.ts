@@ -20,6 +20,16 @@ ${host()} {
     border-radius: var(--qv-radius-sm, 5px);
 }
 
+.trigger ::slotted(*) {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--qv-spacing-xs, 4px);
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
 ${hostAttribute('disabled')} .trigger {
     cursor: not-allowed;
     opacity: 0.5;
@@ -36,11 +46,11 @@ ${hostAttribute('disabled')} .trigger {
     box-shadow: var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
     color: var(--qv-color-foreground-default, #111827);
     z-index: var(--qv-z-index-dropdown, 1000);
-    animation: qv-popover-panel-in var(--qv-motion-duration-normal, 180mx) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
+    animation: qv-popover-panel-in var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-enter, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .panel[closing] {
-    animation: qv-popover-panel-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0/84, 0)) forwards;
+    animation: qv-popover-panel-out var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-exit, cubic-bezier(0.7, 0, 0.84, 0)) forwards;
 }
 
 @keyframes qv-popover-panel-in {

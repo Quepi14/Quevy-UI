@@ -23,7 +23,7 @@
 import {html, nothing, type PropertyValues} from 'lit';
 import { property, state, customElement } from 'lit/decorators.js';
 
-import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, type ComponentMetadata } from '@quevy/core';
+import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin } from '@quevy/core';
 
 import { OverlayController } from '../_internal/overlay/overlay-controller.js';
 import type { OverlayPlacement } from '../_internal/overlay/overlay-position.js';
@@ -46,7 +46,7 @@ export class QvPopover extends QvPopoverBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvPopover',
         tagName: createTagName('popover'),
-        version: '0.1.0',
+        version: '0.1.1',
     });
 
     @property({ reflect: true }) public trigger: QvPopoverTrigger = 'click';
@@ -64,7 +64,7 @@ export class QvPopover extends QvPopoverBase {
         },
     });
 
-    @query('.trigger', false) private triggerEl!: HTMLButtonElement | null;
+    @query('.trigger', false) private triggerEl!: HTMLElement | null;
     @query('.panel', false) private panelEl!: HTMLDivElement | null;
 
     private hoverCloseTimer: ReturnType<typeof setTimeout> | null = null;
@@ -98,6 +98,7 @@ export class QvPopover extends QvPopoverBase {
 
     private readonly handleHoverOpen = (): void => {
         if (this.disabled || this.trigger !== 'hover') return;
+        this.clearHoverCloseTimer();
         this.overlay.open();
     };
 
@@ -111,23 +112,36 @@ export class QvPopover extends QvPopoverBase {
         this.hoverCloseTimer = setTimeout(() => this.overlay.close(), HOVER_CLOSE_DELAY);
     }
 
-    protected override render() {
+        protected override render() {
+        const triggerSlot = html`<slot name="trigger" @slotchange=${this.handleTriggerSlotChange}></slot>`;
+
         return html`
-            <button
-                type="button"
-                class="trigger"
-                aria-haspopup="dialog"
-                aria-expanded=${this.overlay.isOpen}
-                aria-label=${this.hasCustomTrigger ? nothing : this.label}
-                ?disabled=${this.disabled}
-                @click=${this.handleTriggerClick}
-                @pointerenter=${this.handleHoverOpen}
-                @pointerleave=${this.handleHoverClose}
-                @focus=${this.handleHoverOpen}
-                @focusout=${this.handleHoverClose}
-            >
-                <slot name="trigger" @slotchange=${this.handleTriggerSlotChange}></slot>
-            </button>
+            ${this.trigger === 'hover'
+                ? html`
+                    <div
+                        class="trigger"
+                        ?inert=${this.disabled}
+                        @pointerenter=${this.handleHoverOpen}
+                        @pointerleave=${this.handleHoverClose}
+                        @focusin=${this.handleHoverOpen}
+                        @focusout=${this.handleHoverClose}
+                    >
+                        ${triggerSlot}
+                    </div>
+                `
+                : html`
+                    <button
+                        type="button"
+                        class="trigger"
+                        aria-haspopup="dialog"
+                        aria-expanded=${this.overlay.isOpen}
+                        aria-label=${this.hasCustomTrigger ? nothing : this.label}
+                        ?disabled=${this.disabled}
+                        @click=${this.handleTriggerClick}
+                    >
+                        ${triggerSlot}
+                    </button>
+                `}
 
             ${this.overlay.isOpen || this.overlay.isClosing
                 ? html`
