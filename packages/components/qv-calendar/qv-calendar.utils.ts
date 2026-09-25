@@ -50,3 +50,9 @@ export function monthLabels(locale: QvLocale): string[] {
 export function formatDate(date: Date, locale: QvLocale): string {
     return new Intl.DateTimeFormat(INTL_LOCALE[locale], { day: '2-digit', month: 'short', year: 'numeric'}).format(date);
 }
+
+export function addDays(date: Date, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}

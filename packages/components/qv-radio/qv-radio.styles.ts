@@ -32,7 +32,7 @@ ${host()} {
     background-color: var(--qv-color-brand-primary, #0027C4);
     opacity: 0;
     transform: scale(0);
-    transition: opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+    transition: opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-moderate, 240ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 ${host()}:focus-visible .dot-outer {

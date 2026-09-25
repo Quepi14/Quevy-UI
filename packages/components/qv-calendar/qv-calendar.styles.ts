@@ -12,6 +12,72 @@ ${host()} {
     font-size: var(--qv-font-size-sm, 11px);
 }    
 
+${hostAttribute('variant="detached"')} {
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--qv-spacing-sm, 8px);
+}
+
+${hostAttribute('variant="detached"')} .header {
+    margin: 0;
+    border-radius: var(--qv-radius-lg, 13px);
+    box-shadow: var(--qv-shadow-md, 0 4px 16px -4px rgba(0 0 0 /0.1));
+}
+
+${hostAttribute('variant="detached"')} .body{
+    padding: var(--qv-spacing-lg, 24px);
+    background-color: var(--qv-color-background-surface, #F9FAFB);
+    border-radius: var(--qv-radius-lg, 13px);
+    box-shadow: var(--qv-shadow-md, 0 4px 16px -4px rgba(0 0 0 /0.1));
+}
+
+${hostAttribute('variant="detached"')} .shortcuts {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+${hostAttribute('variant="detached"')} .shortcut {
+    color: var(--qv-color-foreground-inverse, #FFF);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+${hostAttribute('variant="detached"')} .shortcut:hover {
+    background-color: rgba(255, 255, 255, 0.12)l
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.shortcuts {
+    diplay: flex;
+    flex-wrap: wrap;
+    gap: var(--qv-spacing-sm, 8px);
+    margin-top: var(--qv-spacing-md, 16px);
+    padding-top: var(--qv-spacing-md, 16px);
+    border-top: 1px solid var(--qv-color-border-default, #E5E7EB);
+}
+
+.shortcut {
+    all: unset;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    text-align: center;
+    padding: var(--qv-spacing-sm, 8px) var(--qv-spacing-md, 16px);
+    border: 1px solid var(--qv-color-border-default, #E5E7EB);
+    border-radius: var(--qv-radius-md, 8px);
+    cursor: pointer;
+    font-size: var(--qv-font-size-xs, 10px);
+    color: var(--qv-color-foreground-default, #111827);
+    transition: background-color var(--qv-motion-duraiton-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), border-color var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+}
+
+.shortcut:hover {
+    background-color: var(--qv-color-background-muted, #F3F4F6);
+    border-color: var(--qv-color-foreground-muted, #6B7280);
+}
+
 .header .label {
     all: unset;
     box-sizing: border-box;
@@ -60,6 +126,7 @@ ${host()} {
 } 
 
 .header .nav svg { width: 16px; height: 16px; flex-shrink: 0; }
+.header .nav-spacer {display: inline-block; width: 28px; height: 28px; }
 
 .header button:hover { 
     background-color: rgba(255, 255, 255, 0.15);
@@ -119,29 +186,106 @@ ${host()} {
 .day.range-start { border-radius: var(--qv-radius-sm, 5px) 0 0 var(--qv-radius-sm, 5px); }
 .day.range-end { border-radius: 0 var(--qv-radius-sm, 5px) var(--qv-radius-sm, 5px) 0; }
 
+${hostAttribute('mode="range"')} .grid {
+    gap: 2px 0;
+}
+
+${hostAttribute('mode="range"')} .day.in-range,
+${hostAttribute('mode="range"')} .day.selected {
+    width: 100%;
+    margin: 0;
+}
+
+${hostAttribute('mode="range"')} .day.range-start:not(.range-end) {
+    border-radius: var(--qv-radius-full, 9999px) 0 0 var(--qv-radius-full, 9999px);
+}
+
+${hostAttribute('mode="range"')} .day.range-end:not(.range-start) {
+    border-radius: 0 var(--qv-radius-full, 9999px) var(--qv-radius-full, 9999px) 0;
+}
+
 .month-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: var(--qv-spacing-sm, 8px);
-    min-height: 250px;
-    align-content: center;
+    height: 250px;
 }
 
 .month-grid .month {
     all: unset;
     box-sizing: border-box;
-    text-align: center;
-    padding: var(--qv-spacing-sm, 8px) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: var(--qv-radius-md, 8px);
     cursor: pointer;
     color: var(--qv-color-foreground-default, #111827);
     transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
-.month-grid .month-hover { background-color: var(--qv-color-background-muted, #F3F4F6); }
+.month-grid .month:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }
 .month-grid .month.active {
     background-color: var(--qv-color-brand-primary, #0027C4);
     color: var(--qv-color-foreground-inverse, #FFFFFF);
     font-weight: var(--qv-font-weight-semibold, 600);
+}
+
+.year-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: var(--qv-spacing-sm, 8px);
+    height: 250px;
+}
+
+.year-grid .year {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--qv-radius-md, 8px);
+    cursor: pointer;
+    color: var(--qv-color-foreground-default, #111827);
+    transition: background-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+}
+
+.year-grid .year:hover { background-color: var(--qv-color-background-muted, #F3F4F6); }
+.year-grid .year.active {
+    background-color: var(--qv-color-brand-primary, #0027C4);
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
+    font-weight: var(--qv-font-weight-semibold, 600);
+}
+
+${hostAttribute('month="2"')} {
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.dual-pane {
+    display: flex;
+    gap: var(--qv-spacing-lg, 24px);
+}
+
+.pane {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--qv-color-background-surface, #F9FAFB);
+    border-radius: var(--qv-radius-lg, 13px);
+    box-shadow: var(--qv-shadow-md, 0 4px 16px -4px rgba(0 0 0 /0.1));
+    overflow: hidden;
+    padding-bottom: var(--qv-spacing-lg, 24px);
+}
+
+.pane .header {
+    margin: 0 0 var(--qv-spacing-md, 16px);
+    border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
+}
+
+.pane .body {
+    padding: 0 var(--qv-spacing-lg, 24px);
 }
 `);

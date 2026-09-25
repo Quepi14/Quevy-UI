@@ -32,7 +32,7 @@ input {
     font-size: var(--qv-font-size-sm, 11px);
     color: var(--qv-color-foreground-default, #111827);
     background-color: var(--qv-color-background-surface, #F9FAFB);
-    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), box-shadow var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), box-shadow var(--qv-motion-duration-moderate, 240ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 input:focus-visible {
@@ -66,7 +66,7 @@ ${hostAttribute('variant="floating"')} .floating-label {
     font-size: var(--qv-font-size-sm, 11px);
     line-height: 1;
     pointer-events: none;
-    transition: opacity var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+    transition: opacity var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 ${hostAttribute('variant="floating"')} .floating label { display: block; }

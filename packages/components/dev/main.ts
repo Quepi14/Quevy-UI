@@ -339,6 +339,7 @@ calRange?.addEventListener('change', (e: Event) => {
     calRange.valueEnd = detail.valueEnd;
 });
 
+
 // ===== qv-datepicker =====
 document.querySelectorAll('qv-datepicker').forEach((el) => {
     el.addEventListener('change', (e: Event) => {
@@ -347,4 +348,11 @@ document.querySelectorAll('qv-datepicker').forEach((el) => {
         (el as any).valueStart = detail.valueStart;
         (el as any).valueEnd = detail.valueEnd;
     });
+});
+
+const calDual = document.getElementById('cal-dual') as any;
+calDual?.addEventListener('change', (e: Event) => {
+    const detail = (e as CustomEvent).detail;
+    calDual.valueStart = detail.valueStart;
+    calDual.valueEnd = detail.valueEnd;
 });

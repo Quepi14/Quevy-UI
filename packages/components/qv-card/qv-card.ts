@@ -39,7 +39,7 @@ export class QvCard extends QvCardBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCard',
         tagName: createTagName('card'),
-        version: '0.1.3',
+        version: '0.2.0',
     });
 
     @property({ reflect: true })
@@ -57,6 +57,7 @@ export class QvCard extends QvCardBase {
     @state() private hasMedia = false;
     @state() private hasTitle = false;
     @state() private hasDescription = false;
+    @state() private hasBody = false;
     @state() private hasFooter = false;
     @state() private hasActions = false;
 
@@ -131,6 +132,13 @@ export class QvCard extends QvCardBase {
     private readonly handleMediaSlotChange = (): void => { this.hasMedia = this.hasSlot('media'); };
     private readonly handleTitleSlotChange = (): void => { this.hasTitle = this.hasSlot('title'); };
     private readonly handleDescriptionSlotChange = (): void => { this.hasDescription = this.hasSlot('description'); };
+
+    private readonly handleBodySlotChange = (): void => {
+        this.hasBody = this.getAssignedNodes().some(
+            (node) => node.nodeType !== Node.TEXT_NODE || (node.textContent ?? '').trim().length > 0,
+        );
+    };
+
     private readonly handleFooterSlotChange = (): void => { this.hasFooter = this.hasSlot('footer'); };
     private readonly handleActionsSlotChange = (): void => { this.hasActions = this.hasSlot('actions'); };
 
@@ -156,8 +164,8 @@ export class QvCard extends QvCardBase {
                 </div>
             </div>
 
-            <div class="body" part="body">
-                <slot></slot>
+            <div class=${classMap({ body: true, empty: !this.hasBody })} part="body">
+                <slot @slotchange=${this.handleBodySlotChange}></slot>
             </div>
 
             <div class=${classMap({ footer: true, empty: !this.hasFooter })} part="footer">

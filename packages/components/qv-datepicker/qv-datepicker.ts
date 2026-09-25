@@ -12,7 +12,7 @@
  */
 
 import { html, nothing, type PropertyValues } from "lit";
-import { property, state, customElement } from "lit/decorators.js";
+import { property, customElement } from "lit/decorators.js";
 
 import { QvElement, createComponentMetadata, createTagName, queryDecorator as query, DisabledMixin, type MixinConstructor, type DisabledInterface } from "@quevy/core";
 
@@ -20,10 +20,10 @@ import { OverlayController } from "../_internal/overlay/overlay-controller.js";
 import '../qv-calendar/index.js';
 import { formatDate } from "../qv-calendar/qv-calendar.utils.js";
 import { DATEPICKER_MESSAGES } from "./qv-datepicker.i18n.js";
-import { LocalizedMixin, type LocalizedElement } from "../_internal/i18n/localized-mixin.js";
+import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 
 import { qvDatePickerStyles } from "./qv-datepicker.styles.js";
-import type { QvCalendarMode, QvCalendarChangeEventDetail } from "../qv-calendar/index.js";
+import type { QvCalendarMode, QvCalendarVariant, QvCalendarChangeEventDetail } from "../qv-calendar/index.js";
 
 abstract class QvDatepickerBase extends DisabledMixin(LocalizedMixin(QvElement)) {}
 
@@ -41,11 +41,15 @@ export class QvDatepicker extends QvDatepickerBase {
     });
 
     @property({ reflect: true}) public mode: QvCalendarMode = 'single';
+    @property({ reflect: true}) public variant: QvCalendarVariant = 'default';
+
     @property({ attribute: false}) public min?: Date;
     @property({ attribute: false}) public max?: Date;
     @property({ attribute: false}) public value?: Date;
     @property({ attribute: false}) public valueStart?: Date;
     @property({ attribute: false}) public valueEnd?: Date;
+    @property({ type: Boolean, reflect: true}) public shortcuts = false;
+    @property({ type: Number, reflect: true}) public months: 1 | 2 = 1;
     @property() public placeholder?: string;
 
     private readonly overlay = new OverlayController(this, {
@@ -90,15 +94,18 @@ export class QvDatepicker extends QvDatepickerBase {
                 <span class=${text ? '' : 'placeholder'}>${text ?? this.placeholder ?? DATEPICKER_MESSAGES[this.locale].placeholder}</span>
             </button>
 
-            ${this.overlay.isOpen && this.overlay.isClosing
+            ${this.overlay.isOpen || this.overlay.isClosing
                 ? html `
                     <qv-calendar
                         .mode=${this.mode}
+                        .variant=${this.variant}
                         .min=${this.min}
                         .max=${this.max}
                         .value=${this.value}
                         .valueStart=${this.valueStart}
                         .valueEnd=${this.valueEnd}
+                        ?shortcuts=${this.shortcuts}
+                        .month=${this.months}
                         ?closing=${this.overlay.isClosing}
                         @change=${this.handleCalendarChange}
                     ></qv-calendar>

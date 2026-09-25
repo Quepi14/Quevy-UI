@@ -259,7 +259,6 @@ public constructor(
 
     private readonly reposition = (): void => {
         if  (!this._open || !this.trigger || !this.panel)return;
-        if (this.host.tagName.toUpperCase() !== 'QV-MENU') return;
 
         if (this.repositionScheduled) return;
         this.repositionScheduled = true;

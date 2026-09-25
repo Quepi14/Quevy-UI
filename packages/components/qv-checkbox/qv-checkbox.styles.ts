@@ -24,7 +24,7 @@ ${host()} {
     border: 1.5px solid var(--qv-color-border-strong, #D1D5DB);
     border-radius: var(--qv-radius-sm, 5px);
     background-color: var(--qv-color-background-surface, #F9FAFB);
-    transition: border-color var(--qv-motion-duration-moderate, 240ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), box-shadow var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+    transition: border-color var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-moderate, 240ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), box-shadow var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
 .box svg path {
@@ -32,7 +32,7 @@ ${host()} {
     stroke-dashoffset: 20;
     transition:
         stroke-dashoffset var(--qv-motion-duration-slow, 320ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)),
-        opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
+        opacity var(--qv-motion-duration-fast, 120ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1))
 }
 
 ${host()}:focus-visible .box {

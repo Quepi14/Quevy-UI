@@ -7,6 +7,14 @@ export interface QvCalendarMessages {
     prevMonth: string;
     nextMonth: string;
     chooseMonth: string;
+    chooseYear: string;
+    prevYearRange: string;
+    nextYearRange:string;
+    shortcutToday: string;
+    shortcutTomorrow: string;
+    shortcutIn2Days: string;
+    shortcutInAWeek: string;
+    shortcutInTwoWeeks: string;
 }
 
 export const CALENDAR_MESSAGES: Record<QvLocale, QvCalendarMessages> = {
@@ -17,6 +25,14 @@ export const CALENDAR_MESSAGES: Record<QvLocale, QvCalendarMessages> = {
         prevMonth: 'Bulan sebelumnya',
         nextMonth: 'Bulan berikutnya',
         chooseMonth: 'Pilih bulan',
+        chooseYear: 'Pilih tahun',
+        prevYearRange: '12 tahun sebelumnya',
+        nextYearRange: '12 tahuns setelahnya',
+        shortcutToday: 'Hari ini',
+        shortcutTomorrow: 'Besok',
+        shortcutIn2Days: 'Lusa',
+        shortcutInAWeek: 'Seminggu lagi',
+        shortcutInTwoWeeks: '2 minggu lagi',
     },
     en: {
         weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -24,7 +40,15 @@ export const CALENDAR_MESSAGES: Record<QvLocale, QvCalendarMessages> = {
         nextYear: 'Next year',
         prevMonth: 'Previous month',
         nextMonth: 'Next month',
-        chooseMonth: 'Choose month'
+        chooseMonth: 'Choose month',
+        chooseYear: 'Choose year',
+        prevYearRange: 'Previous 12 years',
+        nextYearRange: 'Next 12 years',
+        shortcutToday: 'Today',
+        shortcutTomorrow: 'Tomorrow',
+        shortcutIn2Days: 'The day after tomorrow',
+        shortcutInAWeek: 'In a week',
+        shortcutInTwoWeeks: 'In 2 weeks'
     },
 };
 

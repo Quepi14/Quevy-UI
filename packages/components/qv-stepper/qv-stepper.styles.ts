@@ -60,12 +60,21 @@ button:focus-visible {
     outline-offset: -2px;
 }
 
+${hostAttribute('size="md"')} button {
+    font-size: var(--qv-font-size-md, 16px);
+}
+
+${hostAttribute('size="md"')} input {
+    widht: 56px;
+    font-size: var(--qv-font-size-md, 16px);
+}
+
 ${hostAttribute('size="lg"')} button {
-   font-size: var(--qv-font-size-xl, 42px);
+   font-size: var(--qv-font-size-lg, 26px);
 }
 ${hostAttribute('size="lg"')} input {
     width: 64px;
-    font-size: var(--qv-font-size-xl, 42px);
+    font-size: var(--qv-font-size-lg, 26px);
 }
 
 input {

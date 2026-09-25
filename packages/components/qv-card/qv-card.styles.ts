@@ -32,7 +32,7 @@ ${host()} {
 .media ::slotted(*) {
     display: block;
     width: 100%; 
-    max-height: 100%; 
+    height: 100%; 
     object-fit: cover;
 }
 
@@ -69,6 +69,10 @@ ${host()} {
     line-height: var(--qv-line-height-normal, 1.5);
 }
 
+.body.empty {
+    display: none;
+}
+
 .footer {
     display: flex;
     align-items: center;
@@ -88,18 +92,61 @@ ${hostAttribute('variant="outlined"')} {
 ${hostAttribute('variant="flat"')} {
     background-color: var(--qv-color-background-muted, #F3F4F6);
 }
+
 ${hostAttribute('variant="glass"')} {
     border-color: rgba(255, 255, 255, 0.35);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.4),
         var(--qv-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.18),
-        rgba(255, 255, 255, 0.06)
-    );
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.16),
+            rgba(255, 255, 255, 0) 45%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.15)
+        );
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+${hostAttribute('variant="glass"')} .title {
+    color: var(--qv-color-foreground-inverse, #FFFFFF);
+}
+${hostAttribute('variant="glass"')} .description {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+${hostAttribute('variant="overlay"')} {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+${hostAttribute('variant="overlay"')} .media,
+${hostAttribute('variant="overlay"')} .header {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+${hostAttribute('variant="overlay"')} .media {
+    z-index: 0;
+}
+
+${hostAttribute('variant="overlay"')} .header {
+    z-index: 1;
+    justify-content: flex-end;
+    padding: var(--qv-spacing-md, 16px);
+    background: linear-gradient(to top, rgba(30, 58, 138, 0.95) 0%, rgba(30, 58, 138, 0.7) 45%, rgba(30, 58, 138, 0.5) 85%);
+}
+
+${hostAttribute('variant="overlay"')} .title {
+    color: var(--qv-color-foreground-inverse, #FFF);
+}
+
+${hostAttribute('variant="overlay"')} .description {
+    color: rgba(255, 255, 255, 0.9);
 }
 `);
 

@@ -224,7 +224,7 @@
 
       <div class="row-label">6. glass variant (needs contrasting background)</div><br>
       <div class="row">
-        <div style="background: linear-gradient(135deg, #6366f1, #ec4899); padding: 2rem; border-radius: 12px;">
+        <div style="background: linear-gradient(135deg, #000); padding: 2rem; border-radius: 12px;">
           <qv-card variant="glass" style="width: 320px;">
             <span slot="title">Glass Card</span>
             <span slot="description">Efek frosted glass</span>
@@ -267,6 +267,14 @@
           <div slot="footer">
             <qv-button variant="primary" size="sm">Beli</qv-button>
           </div>
+        </qv-card>
+      </div>
+
+      <div class="row">
+        <qv-card variant="overlay" style="width: 320px;">
+          <img slot="media" src="https://picsum.photos/320/180?5" alt="" />
+          <span slot="title">Judul</span>
+          <span slot="description">Deskripsi</span>
         </qv-card>
       </div>
     </section>
@@ -777,10 +785,49 @@
         <qv-calendar id="cal-range" mode="range"></qv-calendar>
       </div>
 
+      <div class="row-label">variant="detached" — header terpisah dari body (replikasi referensi gambar)</div>
+      <div class="row">
+        <div style="padding:16px; border-radius:8px;">
+          <qv-calendar id="cal-detached" mode="single" variant="detached"></qv-calendar>
+        </div>
+      </div>
+
       <div class="row-label">datepicker (dalam overlay) — checklist sama seperti dropdown: buka/tutup/posisi/keyboard</div>
       <div class="row">
         <qv-datepicker id="checkin" mode="single" placeholder="Tanggal check-in"></qv-datepicker>
         <qv-datepicker id="stay" mode="range" placeholder="Rentang menginap"></qv-datepicker>
+      </div>
+
+      <div class="row-label">datepicker — variant="detached" (kalender di dalamnya pakai header terpisah)</div>
+      <div class="row">
+        <qv-datepicker id="checkin-detached" mode="single" variant="detached" placeholder="Tanggal check-in"></qv-datepicker>
+      </div>
+
+      <div class="row-label">shortcuts — quick-select (Today/Tomorrow/dst), default variant</div>
+      <div class="row">
+        <qv-calendar id="cal-shortcuts" mode="single" shortcuts></qv-calendar>
+      </div>
+
+      <div class="row-label">shortcuts — quick-select, variant="detached"</div>
+      <div class="row">
+        <div style="padding:16px; border-radius:8px;">
+          <qv-calendar id="cal-shortcuts-detached" mode="single" variant="detached" shortcuts></qv-calendar>
+        </div>
+      </div>
+
+      <div class="row-label">datepicker dengan shortcuts</div>
+      <div class="row">
+        <qv-datepicker id="checkin-shortcuts" mode="single" shortcuts placeholder="Tanggal check-in"></qv-datepicker>
+      </div>
+
+      <div class="row-label">range dual-month (months="2")</div>
+      <div class="row">
+        <qv-calendar id="cal-dual" mode="range" months="2"></qv-calendar>
+      </div>
+
+      <div class="row-label">datepicker dengan range dual-month</div>
+      <div class="row">
+        <qv-datepicker id="stay-dual" mode="range" months="2" placeholder="Rentang menginap"></qv-datepicker>
       </div>
     </section>
 

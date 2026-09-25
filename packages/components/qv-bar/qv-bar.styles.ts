@@ -22,8 +22,8 @@ ${hostAttribute('position="top"')} { border-bottom: 1px solid var(--qv-color-bor
 ${hostAttribute('position="bottom"')} { border-top: 1px solid var(--qv-color-border-default, #E5E7EB); }
 
 /* Vertical bars: sidebar */
-${hostAttribute('positoin:"left"')},
-${hostAttribute('positoin:"right"')} {
+${hostAttribute('position:"left"')},
+${hostAttribute('position:"right"')} {
     flex-direction: column;
     align-items: stretch;
     height: 100%;
