@@ -50,6 +50,9 @@ export class QvDatepicker extends QvDatepickerBase {
     @property({ attribute: false}) public valueEnd?: Date;
     @property({ type: Boolean, reflect: true}) public shortcuts = false;
     @property({ type: Number, reflect: true}) public months: 1 | 2 = 1;
+    @property({ type: Boolean, reflect: true, attribute: 'show-time'}) public showTime = false;
+    @property() public startTime?: string;
+    @property() public endTime?: string;
     @property() public placeholder?: string;
 
     private readonly overlay = new OverlayController(this, {
@@ -69,6 +72,8 @@ export class QvDatepicker extends QvDatepickerBase {
     private readonly handleCalendarChange = (event: Event): void => {
         const detail = (event as CustomEvent<QvCalendarChangeEventDetail>).detail;
         this.emit<QvCalendarChangeEventDetail>('change', detail);
+        
+        if (detail.source === 'time' || this.showTime) return;
         this.overlay.close();
     };
 
@@ -106,6 +111,9 @@ export class QvDatepicker extends QvDatepickerBase {
                         .valueEnd=${this.valueEnd}
                         ?shortcuts=${this.shortcuts}
                         .month=${this.months}
+                        .showTime=${this.showTime}
+                        .startTime=${this.startTime}
+                        .endTime=${this.endTime}
                         ?closing=${this.overlay.isClosing}
                         @change=${this.handleCalendarChange}
                     ></qv-calendar>

@@ -24,19 +24,26 @@ import { LocalizedMixin } from "../_internal/i18n/localized-mixin.js";
 
 const CHEVRON_LEFT = html`
 <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-<path d="M12.8 4.2a1 1 0 010 1.4L8.4 10l4.4 4.4a1 1 0 01-1.4 1.4l-5.1-5.1a1 1 0 010-1.4l5.1-5.1a1 1 0 011.4 0z" />
+    <path d="M12.8 4.2a1 1 0 010 1.4L8.4 10l4.4 4.4a1 1 0 01-1.4 1.4l-5.1-5.1a1 1 0 010-1.4l5.1-5.1a1 1 0 011.4 0z" />
 </svg>
 `;
 
 const CHEVRON_RIGHT = html`
 <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-<path d="M7.2 4.2a1 1 0 000 1.4l4.4 4.4-4.4 4.4a1 1 0 001.4 1.4l5.1-5.1a1 1 0 000-1.4L8.6 4.2a1 1 0 00-1.4 0z" />
+    <path d="M7.2 4.2a1 1 0 000 1.4l4.4 4.4-4.4 4.4a1 1 0 001.4 1.4l5.1-5.1a1 1 0 000-1.4L8.6 4.2a1 1 0 00-1.4 0z" />
 </svg>
 `;
 
 const CHEVRON_DOWN = html`
 <svg class="caret" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-<path d="M4.2 7.2a1 1 0 011.4 0l4.4 4.4 4.4-4.4a1 1 0 011.4 1.4l-5.1 5.1a1 1 0 01-1.4 0L4.2 8.6a1 1 0 010-1.4z" />
+    <path d="M4.2 7.2a1 1 0 011.4 0l4.4 4.4 4.4-4.4a1 1 0 011.4 1.4l-5.1 5.1a1 1 0 01-1.4 0L4.2 8.6a1 1 0 010-1.4z" />
+</svg>
+`;
+
+const CLOCK_ICON = html`
+<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <circle cx="10" cy="10" r="7.5" />
+    <path d="M10 6v4l2.5 2.5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
 `;
 
@@ -66,6 +73,11 @@ export class QvCalendar extends QvCalendarBase {
     @property({ type: Boolean, reflect: true}) public shortcuts = false;
     @property({ type: Number, reflect: true}) public months: 1 | 2 = 1;
 
+    /** Start/End Time fields below the grid, Only applies when `mode="range"`. */
+    @property({ type: Boolean, reflect: true, attribute: 'show-time'}) public showTime = false;
+    @property() public startTime?: string;
+    @property() public endTime?: string;
+
     @state() private viewYear = new Date().getFullYear();
     @state() private viewMonth = new Date().getMonth();
     @state() private rangeAnchor: Date | null = null;
@@ -73,6 +85,13 @@ export class QvCalendar extends QvCalendarBase {
 
     @state() private viewLevel: 'days' | 'months' | 'years' = 'days';
     @state() private yearRangeStart = new Date().getFullYear() - 5;
+
+    private readonly defaultTime = (() => {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        return `${hh}:${mm}:00`;
+    })();
 
     private goToPrevYear(): void {
         this.viewYear -=1;
@@ -206,7 +225,7 @@ export class QvCalendar extends QvCalendarBase {
         if (this.isDisabled(date)) return;
         
         if (this.mode === 'single') {
-            this.emit<QvCalendarChangeEventDetail>('change', { value: date });
+            this.emit<QvCalendarChangeEventDetail>('change', { value: date, source: 'date' });
             return;
         }
 
@@ -219,7 +238,49 @@ export class QvCalendar extends QvCalendarBase {
         const start = isBefore(date, this.rangeAnchor) ? date : this.rangeAnchor;
         const end = isBefore(date, this.rangeAnchor) ? this.rangeAnchor : date;
         this.rangeAnchor = null;
-        this.emit<QvCalendarChangeEventDetail>('change', { valueStart: start, valueEnd: end});
+        this.emit<QvCalendarChangeEventDetail>('change', { valueStart: start, valueEnd: end, source: 'date'});
+    }
+
+    private readonly handleStartTimeChange = (event: Event): void => {
+        this.startTime = (event.target as HTMLInputElement).value;
+        this.emit<QvCalendarChangeEventDetail>('change', { 
+            valueStart: this.valueStart, valueEnd: this.valueEnd,
+            startTime: this.startTime, endTime: this.endTime,
+            source: 'time',
+        });
+    };
+
+    private readonly handleEndTimeChange = (event: Event): void => {
+        this.endTime = (event.target as HTMLInputElement).value;
+        this.emit<QvCalendarChangeEventDetail>('change', {
+            valueStart: this.valueStart, valueEnd: this.valueEnd,
+            startTime: this.startTime, endTime: this.endTime,
+            source: 'time',
+        });
+    };
+
+    private renderTimeField() {
+        if (!this.showTime || this.mode !== 'range') return nothing;
+        const messages = CALENDAR_MESSAGES[this.locale];
+
+        return html`
+            <div class="time-fields" part="time-fields">
+                <label class="time-field">
+                    <span class="time-label">${messages.startTime}</span>
+                    <span class="time-input-wrap">
+                        <span class="time-icon">${CLOCK_ICON}</span>
+                        <input type="time" step="1" .value=${this.startTime ?? this.defaultTime} @change=${this.handleStartTimeChange} />
+                    </span>
+                </label>
+                <label class="time-field">
+                    <span class="time-label">${messages.endTime}</span>
+                    <span class="time-input-wrap">
+                        <span class="time-icon">${CLOCK_ICON}</span>
+                        <input type="time" step="1" .value=${this.endTime ?? this.defaultTime} @change=${this.handleEndTimeChange} />
+                    </span>
+                </label>
+            </div>
+        `;
     }
     
     private renderShortcuts() {
@@ -243,9 +304,13 @@ export class QvCalendar extends QvCalendarBase {
         const today = isSameDay(date, new Date());
 
         if (this.mode === 'single') {
+            // No value chosen yet: default the visual focus to today,
+            // without touching `value` itself (so no `change` fires
+            // and consumers relying on `value` being unset still work).
+            const selected = this.value ? isSameDay(date, this.value) : today;
             return classMap({
                 day: true, outside, today,
-                selected: Boolean(this.value && isSameDay(date, this.value)),
+                selected,
             });
         }
 
@@ -281,7 +346,6 @@ export class QvCalendar extends QvCalendarBase {
                 ${showNext
                     ? html`<button class="nav" aria-label=${messages.nextMonth} @click=${() => this.goToNextMonth()}>${CHEVRON_RIGHT}</button>`
                     : html`<span class="nav-spacer"></span>`}
-                }
             </div>
         `;
     }
@@ -318,12 +382,12 @@ export class QvCalendar extends QvCalendarBase {
 
         return html`
             <div class="dual-pane">
-                <div class="pane">
+                <div class="dual-headers">
                     ${this.renderDaysHeader(this.viewYear, this.viewMonth, true, false)}
-                    <div class="body" part="body">${this.renderDaysGrid(this.viewYear, this.viewMonth)}</div>
+                    ${this.renderDaysHeader(second.year, second.month, false, true)}
                 </div>
-                <div class="pane">
-                    ${this.renderDaysHeader(this.secondPane.year, second.month, false, true)}
+                <div class="dual-bodies">
+                    <div class="body" part="body">${this.renderDaysGrid(this.viewYear, this.viewMonth)}</div>
                     <div class="body" part="body">${this.renderDaysGrid(second.year, second.month)}</div>
                 </div>
             </div>
@@ -348,13 +412,17 @@ export class QvCalendar extends QvCalendarBase {
 
     protected override render() {
         if (this.isDualPane) {
-            return html`${this.renderDualDaysView()}`
+            return html`
+                ${this.renderDualDaysView()}
+                ${this.renderTimeField()}
+            `;
         }
         
         return html`
             ${this.renderHeader()}
             <div class="body" part="body">${this.renderGridContent()}</div>
-            ${this.renderShortcuts}
+            ${this.renderShortcuts()}
+            ${this.renderTimeField()}
         `;
     }
 }

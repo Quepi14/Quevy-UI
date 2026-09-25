@@ -15,6 +15,8 @@ export interface QvCalendarMessages {
     shortcutIn2Days: string;
     shortcutInAWeek: string;
     shortcutInTwoWeeks: string;
+    startTime: string;
+    endTime: string;
 }
 
 export const CALENDAR_MESSAGES: Record<QvLocale, QvCalendarMessages> = {
@@ -33,6 +35,8 @@ export const CALENDAR_MESSAGES: Record<QvLocale, QvCalendarMessages> = {
         shortcutIn2Days: 'Lusa',
         shortcutInAWeek: 'Seminggu lagi',
         shortcutInTwoWeeks: '2 minggu lagi',
+        startTime: 'Waktu mulai',
+        endTime: 'Waktu selesai',
     },
     en: {
         weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -48,7 +52,9 @@ export const CALENDAR_MESSAGES: Record<QvLocale, QvCalendarMessages> = {
         shortcutTomorrow: 'Tomorrow',
         shortcutIn2Days: 'The day after tomorrow',
         shortcutInAWeek: 'In a week',
-        shortcutInTwoWeeks: 'In 2 weeks'
+        shortcutInTwoWeeks: 'In 2 weeks',
+        startTime: 'Start time',
+        endTime: 'Ent Time',
     },
 };
 
