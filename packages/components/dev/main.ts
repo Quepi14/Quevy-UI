@@ -38,6 +38,8 @@ import '../qv-collapsible/index.js';
 import '../qv-accordion/index.js';
 import '../qv-navbar/index.js';
 import '../qv-popover/index.js';
+import '../qv-side-sheet/index.js';
+import '../qv-side-sheet-inline/index.js';
 
 applyTokens();
 
@@ -225,6 +227,11 @@ document.getElementById('payment-method')?.addEventListener('change', (e) => {
     console.log('[radio-group] metode terpilih:', (e as CustomEvent).detail);
 });
 
+const planPicker = document.getElementById('plan-picker') as any;
+planPicker?.addEventListener('change', (e: Event) => {
+    planPicker.value = (e as CustomEvent).detail.value;
+});
+
 // ===== qv-slider =====
 document.getElementById('single-slider')?.addEventListener('change', (e) => {
     console.log('[slider:single]', (e as CustomEvent).detail);
@@ -264,6 +271,16 @@ document.getElementById('open-sheet-btn')?.addEventListener('click', () => filte
 
 const playerSheet = document.getElementById('player-sheet') as any;
 document.getElementById('open-sheet-inline-btn')?.addEventListener('click', () => playerSheet?.show());
+
+// ===== qv-side-sheet =====
+const filterSideSheet = document.getElementById('filter-side-sheet') as any;
+document.getElementById('open-side-sheet-right-btn')?.addEventListener('click', () => filterSideSheet?.show());
+
+const navSideSheet = document.getElementById('nav-side-sheet') as any;
+document.getElementById('open-side-sheet-left-btn')?.addEventListener('click', () => navSideSheet?.show());
+
+const detailSideSheet = document.getElementById('detail-side-sheet') as any;
+document.getElementById('open-side-sheet-inline-btn')?.addEventListener('click', () => detailSideSheet?.show());
 
 // ===== qv-toast =====
 import('../qv-toast/qv-toast.js').then(({ toast }) => {
@@ -340,6 +357,12 @@ calRange?.addEventListener('change', (e: Event) => {
     calRange.valueEnd = detail.valueEnd;
 });
 
+const calDual = document.getElementById('cal-dual') as any;
+calDual?.addEventListener('change', (e: Event) => {
+    const detail = (e as CustomEvent).detail;
+    calDual.valueStart = detail.valueStart;
+    calDual.valueEnd = detail.valueEnd;
+});
 
 // ===== qv-datepicker =====
 document.querySelectorAll('qv-datepicker').forEach((el) => {
@@ -351,9 +374,32 @@ document.querySelectorAll('qv-datepicker').forEach((el) => {
     });
 });
 
-const calDual = document.getElementById('cal-dual') as any;
-calDual?.addEventListener('change', (e: Event) => {
-    const detail = (e as CustomEvent).detail;
-    calDual.valueStart = detail.valueStart;
-    calDual.valueEnd = detail.valueEnd;
+// ===== dev page chrome: sidebar scroll-spy =====
+const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('nav.toc a'));
+const tocLinkById = new Map(tocLinks.map((a) => [a.getAttribute('href')?.slice(1), a]));
+
+const sectionObserver = new IntersectionObserver(
+    (entries) => {
+        for (const entry of entries) {
+            const link = tocLinkById.get(entry.target.id);
+            if (!link) continue;
+            link.classList.toggle('active', entry.isIntersecting);
+        }
+    },
+    { rootMargin: '-96px 0px -70% 0px', threshold: 0 },
+);
+
+document.querySelectorAll('main.content section[id]').forEach((section) => {
+    sectionObserver.observe(section);
 });
+
+// ===== dev page chrome: live component count in topbar =====
+const componentCountEl = document.getElementById('component-count');
+if (componentCountEl) {
+    const tagNames = new Set(
+        Array.from(document.querySelectorAll('main.content *'))
+            .map((el) => el.tagName.toLowerCase())
+            .filter((tag) => tag.startsWith('qv-')),
+    );
+    componentCountEl.textContent = `${tagNames.size} components`;
+}

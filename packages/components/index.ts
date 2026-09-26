@@ -36,4 +36,7 @@ export * from './qv-datepicker/index.js';
 export * from './qv-button-group/index.js';
 export * from './qv-navbar/index.js';
 export * from './qv-popover/index.js';
+export * from './qv-side-sheet/index.js';
+export * from './qv-side-sheet-inline/index.js';
+export * from './qv-bottom-sheet-inline/index.js';
 export * from './i18n/index.js';

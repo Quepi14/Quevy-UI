@@ -59,8 +59,7 @@ ${hostAttribute('size="fullscreen"')} .panel {
     align-items: flex-start;
     justify-content: space-between;
     gap: var(--qv-spacing-md, 16px);
-    padding-top: var(--qv-spacing-lg, 24px);
-    padding-bottom: var(--qv-spacing-md, 16px);
+    padding: var(--qv-spacing-lg, 24px) var(--qv-spacing-lg, 24px) var(--qv-spacing-md, 16px);
     background-color: var(--qv-color-brand-primary, #0027C4);
     border-radius: var(--qv-radius-lg, 13px) var(--qv-radius-lg, 13px) 0 0;
 }

@@ -12,7 +12,7 @@
  */
 
 import { html, type PropertyValues } from 'lit';
-import { property, customElement } from 'lit/decorators.js';
+import { property, state, customElement } from 'lit/decorators.js';
 
 import {
     QvElement,
@@ -21,11 +21,6 @@ import {
     FocusableMixin,
     DisabledMixin,
     FormAssociatedMixin,
-    type ComponentMetadata,
-    type MixinConstructor,
-    type FocusableInterface,
-    type DisabledInterface,
-    type FormAssociatedInterface,
 } from '@quevy/core';
 
 import { qvButtonStyles } from './qv-button.styles.js';
@@ -75,6 +70,9 @@ export class QvButton extends QvButtonBase {
 
     @property({ type: Boolean, reflect: true, attribute: 'icon-only' })
     public iconOnly = false;
+
+    @state() private hasPrefix = false;
+    @state() private hasSuffix = false;
 
     /**
      * Whether the button currently rejects all interaction.
@@ -135,6 +133,14 @@ export class QvButton extends QvButtonBase {
         }
     }
 
+    private readonly handlePrefixSlotChange = (event: Event): void => {
+        this.hasPrefix = (event.target as HTMLSlotElement).assignedElements({ flatten: true }).length > 0;
+    };
+
+    private readonly handleSuffixSlotChange = (event: Event): void => {
+        this.hasSuffix = (event.target as HTMLSlotElement).assignedElements({ flatten: true }).length > 0;
+    };
+
     private readonly handleClick = (event: MouseEvent): void => {
         if (this.isInert) {
             event.preventDefault();
@@ -192,16 +198,16 @@ export class QvButton extends QvButtonBase {
 
     protected render() {
         return html `
-            <span class="icon" part="prefix" aria-hidden="true">
+            <span class="icon" part="prefix" aria-hidden="true" ?hidden=${!this.loading && !this.hasPrefix}>
                 ${this.loading
                     ? html`<span class="spinner" part="spinner"></span>`
-                    : html`<slot name="prefix"></slot>`}
+                    : html`<slot name="prefix" @slotchange=${this.handlePrefixSlotChange}></slot>`}
             </span>
             <span class="label" part="label">
                 <slot></slot>
             </span>
-            <span class="icon" part="suffix" aria-hidden="true">
-                <slot name="suffix"></slot>
+            <span class="icon" part="suffix" aria-hidden="true" ?hidden=${!this.hasSuffix}>
+                <slot name="suffix" @slotchange=${this.handleSuffixSlotChange}></slot>
             </span>
         `;
     }

@@ -4,93 +4,188 @@
     <meta charset="utf-8" />
     <title>Quevy UI — Component Dev</title>
     <style>
+      :root {
+        --qv-dev-bg: #e4e4e4;
+        --qv-dev-surface: #ffffff;
+        --qv-dev-border: #e5e7eb;
+        --qv-dev-text: #111827;
+        --qv-dev-text-muted: #6b7280;
+        --qv-dev-text-faint: #9ca3af;
+        --qv-dev-brand: #0027c4;
+        --qv-dev-brand-soft: #eef1ff;
+        --qv-dev-radius: 12px;
+        --qv-dev-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+        --qv-dev-sidebar-w: 232px;
+        --qv-dev-topbar-h: 60px;
+      }
+
       * { box-sizing: border-box; }
+
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
         margin: 0;
-        padding: 0 2rem 6rem;
-        color: #171717;
-        background-color: #f0f0f3;
+        color: var(--qv-dev-text);
+        background-color: var(--qv-dev-bg);
+        display: grid;
+        grid-template-columns: var(--qv-dev-sidebar-w) 1fr;
+        grid-template-rows: var(--qv-dev-topbar-h) 1fr;
+        grid-template-areas:
+          "topbar topbar"
+          "sidebar content";
+        min-height: 100vh;
       }
-      nav.toc {
+
+      /* dev page's own <script> tag carries no layout, but keep it out of grid flow */
+      body > script { display: none; }
+
+      .topbar {
+        grid-area: topbar;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0 1.5rem;
+        background: var(--qv-dev-surface);
+        border-bottom: 1px solid var(--qv-dev-border);
         position: sticky;
         top: 0;
-        background: #fff;
-        border-bottom: 1px solid #e5e5e5;
-        padding: 1rem 0;
-        margin-bottom: 2rem;
+        z-index: 20;
+      }
+      .topbar img { width: 28px; height: 28px; }
+      .topbar .titles { display: flex; flex-direction: column; line-height: 1.2; }
+      .topbar .titles strong { font-size: 15px; }
+      .topbar .titles span { font-size: 12px; color: var(--qv-dev-text-muted); }
+      .topbar .spacer { flex: 1; }
+      .topbar .count {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--qv-dev-brand);
+        background: var(--qv-dev-brand-soft);
+        padding: 4px 10px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      .sidebar {
+        grid-area: sidebar;
+        position: sticky;
+        top: var(--qv-dev-topbar-h);
+        align-self: start;
+        height: calc(100vh - var(--qv-dev-topbar-h));
+        overflow-y: auto;
+        background: var(--qv-dev-surface);
+        border-right: 1px solid var(--qv-dev-border);
+        padding: 1rem 0.75rem 2rem;
+      }
+      nav.toc {
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        z-index: 10;
+        flex-direction: column;
+        gap: 2px;
       }
       nav.toc a {
         font-size: 13px;
-        color: #2563eb;
+        color: var(--qv-dev-text-muted);
         text-decoration: none;
-        padding: 4px 10px;
-        border: 1px solid #e5e5e5;
-        border-radius: 999px;
+        padding: 7px 10px;
+        border-radius: 8px;
+        border: 1px solid transparent;
       }
-      nav.toc a:hover { background: #f5f5f5; }
+      nav.toc a:hover { background: var(--qv-dev-bg); color: var(--qv-dev-text); }
+      nav.toc a.active {
+        background: var(--qv-dev-brand-soft);
+        color: var(--qv-dev-brand);
+        font-weight: 600;
+      }
+
+      .content {
+        grid-area: content;
+        padding: 1.5rem 1.75rem 6rem;
+        max-width: 1180px;
+      }
 
       section {
-        padding: 2rem 0;
-        border-bottom: 1px dashed #e5e5e5;
+        background: var(--qv-dev-surface);
+        border: 1px solid var(--qv-dev-border);
+        border-radius: var(--qv-dev-radius);
+        box-shadow: var(--qv-dev-shadow);
+        padding: 1.5rem 1.75rem;
+        margin-bottom: 1.25rem;
       }
       section h2 {
-        font-size: 15px;
+        font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 0.04em;
-        color: #737373;
-        margin: 0 0 1rem;
+        color: var(--qv-dev-text-muted);
+        margin: 0 0 1.1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--qv-dev-border);
       }
-      nav.toc {
-        background-color: #fff;
-      }
+
       .row {
         display: flex;
         gap: 0.75rem;
         flex-wrap: wrap;
         align-items: center;
-        margin-bottom: 1rem;
-        background-color: #e0d8ff;
-        border: 1px solid #e5e5e5;
+        margin-bottom: 0.85rem;
+        background-color: var(--qv-dev-bg);
+        border: 1px solid var(--qv-dev-border);
         border-radius: 8px;
-        padding: 1.25rem;
+        padding: 1.1rem;
       }
       .row:last-child { margin-bottom: 0; }
       .row-label {
-        font-size: 12px;
-        color: #a3a3a3;
+        font-size: 11.5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        color: var(--qv-dev-text-faint);
         width: 100%;
-        margin-bottom: -0.25rem;
+        margin: 0 0 0.6rem;
       }
+      /* neutralize stray <br> some demo rows leave after .row-label */
+      .row-label + br { display: none; }
+      section > br { display: none; }
     </style>
   </head>
   <body>
     <script type="module" src="./main.ts"></script>
 
-    <nav class="toc">
-      <a href="#section-button">Button</a>
-      <a href="#section-card">Card</a>
-      <a href="#section-skeleton">Skeleton</a>
-      <a href="#section-chip">Chip</a>
-      <a href="#section-breadcrumbs">Breadcrumbs</a>
-      <a href="#section-banner">Banner</a>
-      <a href="#section-state">State</a>
-      <a href="#section-stepper">Stepper</a>
-      <a href="#section-pagination">Pagination</a>
-      <a href="#section-dropdown">Dropdown</a>
-      <a href="#section-menu">Menu</a>
-      <a href="#section-form-fields">Form Fields</a>
-      <a href="#section-collapsible">Collapsible</a>
-      <a href="#section-overlay-extra">Modal/Sheet/Toast</a>
-      <a href="#section-misc">Misc</a>
-      <a href="#section-table">Table</a>
-      <a href="#section-calendar">Calendar/Datepicker</a>
-      <a href="#section-carousel">Carousel</a>
-    </nav>
+    <header class="topbar">
+      <img src="logo.svg" alt="" />
+      <div class="titles">
+        <strong>Quevy UI</strong>
+        <span>Component Dev Playground</span>
+      </div>
+      <div class="spacer"></div>
+      <span class="count" id="component-count"></span>
+    </header>
+
+    <aside class="sidebar">
+      <nav class="toc">
+        <a href="#section-button">Button</a>
+        <a href="#section-button-group">Button Group</a>
+        <a href="#section-card">Card</a>
+        <a href="#section-skeleton">Skeleton</a>
+        <a href="#section-chip">Chip</a>
+        <a href="#section-breadcrumbs">Breadcrumbs</a>
+        <a href="#section-banner">Banner</a>
+        <a href="#section-state">State</a>
+        <a href="#section-stepper">Stepper</a>
+        <a href="#section-pagination">Pagination</a>
+        <a href="#section-dropdown">Dropdown</a>
+        <a href="#section-menu">Menu</a>
+        <a href="#section-form-fields">Form Fields</a>
+        <a href="#section-collapsible">Collapsible</a>
+        <a href="#section-overlay-extra">Modal/Sheet/Toast</a>
+        <a href="#section-misc">Misc</a>
+        <a href="#section-navbar">Navbar</a>
+        <a href="#section-table">Table</a>
+        <a href="#section-popover">Popover</a>
+        <a href="#section-calendar">Calendar/Datepicker</a>
+        <a href="#section-carousel">Carousel</a>
+      </nav>
+    </aside>
+
+    <main class="content">
 
     <!-- QV-BUTTON -->
     <section id="section-button">
@@ -103,6 +198,33 @@
         <qv-button variant="outline">Outline</qv-button>
         <qv-button variant="text">Text</qv-button>
         <qv-button variant="danger">Danger</qv-button>
+      </div>
+
+      <div class="row-label">with icon (slot prefix/suffix)</div><br>
+      <div class="row">
+        <qv-button variant="primary">
+          <svg slot="prefix" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4v12M4 10h12"/></svg>
+          Tambah
+        </qv-button>
+        <qv-button variant="outline">
+          Lanjut
+          <svg slot="suffix" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4l6 6-6 6"/></svg>
+        </qv-button>
+        <qv-button variant="danger" icon-only aria-label="Hapus">
+          <svg slot="prefix" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h12M8 6V4h4v2M6 6l1 10h6l1-10"/></svg>
+        </qv-button>
+        <qv-button variant="text" icon-only aria-label="Opsi lainnya">
+          <svg slot="prefix" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="4" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="10" cy="16" r="1.6"/></svg>
+        </qv-button>
+      </div>
+
+      <div class="row-label">without border (variant="text")</div><br>
+      <div class="row">
+        <qv-button variant="text">Text Button</qv-button>
+        <qv-button variant="text" size="sm">Pelajari lebih lanjut</qv-button>
+        <qv-button variant="text" icon-only aria-label="Tutup">
+          <svg slot="prefix" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg>
+        </qv-button>
       </div>
 
       <div class="row-label">size</div><br>
@@ -126,7 +248,9 @@
     </section>
 
     <!-- QV-BUTTON-GROUP -->
-    <section>
+    <section id="section-button-group">
+      <h2>qv-button-group</h2>
+
       <div class="row-label">Equal</div><br>
       <div class="row">
         <!-- Equal (default, tidak perlu ratio) -->
@@ -166,8 +290,7 @@
         </qv-button-group>
       </div>
     </section>
-
-    <!-- QV-CARD -->
+        <!-- QV-CARD -->
 
     <section id="section-card">
       <h2>qv-card</h2>
@@ -415,7 +538,7 @@
 
       <div class="row-label">basic (min/max/value)</div><br>
       <div class="row">
-        <qv-stepper min="0" max="10"></qv-stepper>   
+        <qv-stepper min="0" max="10"></qv-stepper>
         <qv-stepper min="0" max="10" variant="outline"></qv-stepper>
         <qv-stepper min="0" max="10" variant="outline" shape="circle"></qv-stepper>
         <qv-stepper min="0" max="99" variant="outline" shape="circle" size="md" style="gap:16px;"></qv-stepper>
@@ -459,8 +582,7 @@
           </div>
       </div>
     </section>
-
-    <!-- QV-DROPDOWN -->
+        <!-- QV-DROPDOWN -->
 
     <section id="section-dropdown">
       <h2>qv-dropdown</h2>
@@ -473,8 +595,8 @@
       <div class="row">
         <!-- normal, default -->
         <qv-dropdown id="fruit-dropdown" placeholder="Pilih buah"></qv-dropdown>
-        <!-- cuma filter dari list -->                          
-        <qv-dropdown id="fruit-search" variant="search" placeholder="Pilih buah"></qv-dropdown>       
+        <!-- cuma filter dari list -->
+        <qv-dropdown id="fruit-search" variant="search" placeholder="Pilih buah"></qv-dropdown>
         <!-- boleh teks bebas -->
         <qv-dropdown id="fruit-combobox" variant="combobox" placeholder="Ketik/pilih buah"></qv-dropdown>
       </div>
@@ -520,6 +642,24 @@
           <qv-radio value="transfer">Transfer Bank</qv-radio>
           <qv-radio value="ewallet">E-Wallet</qv-radio>
           <qv-radio value="cod">Bayar di Tempat</qv-radio>
+        </qv-radio-group>
+      </div>
+
+      <div class="row-label">qv-radio variant="card" — pricing plan selector</div> <br>
+      <div class="row">
+        <qv-radio-group id="plan-picker" name="plan" value="startup" style="width:320px;">
+          <qv-radio variant="card" value="startup">
+            <strong>Startup</strong>
+            <div style="font-size:12px; opacity:0.85;">12GB/6 CPUs · 160 GB SSD disk</div>
+          </qv-radio>
+          <qv-radio variant="card" value="business">
+            <strong>Business</strong>
+            <div style="font-size:12px; color:#6B7280;">16GB/8 CPUs · 512 GB SSD disk</div>
+          </qv-radio>
+          <qv-radio variant="card" value="enterprise">
+            <strong>Enterprise</strong>
+            <div style="font-size:12px; color:#6B7280;">32GB/12 CPUs · 1024 GB SSD disk</div>
+          </qv-radio>
         </qv-radio-group>
       </div>
 
@@ -606,7 +746,7 @@
       <h2>qv-modal / qv-bottom-sheet / qv-toast</h2> <br>
 
       <div class="row-label">
-        checklist modal: buka \u2192 scroll body TERKUNCI \u2192 Escape/backdrop/X nutup \u2192
+        checklist modal: buka → scroll body TERKUNCI → Escape/backdrop/X nutup →
         scroll body balik normal
       </div>
       <div class="row">
@@ -650,14 +790,40 @@
       </qv-bottom-sheet-inline>
 
       <div class="row-label">
-        checklist toast: klik tombol \u2192 muncul di pojok kanan-bawah \u2192
+        checklist side sheet: modal version = scroll lock  backdrop.
+        inline version = TANPA backdrop, halaman tetap bisa discroll/diklik.
+        coba juga side="left" vs side="right".
+      </div>
+      <div class="row">
+        <qv-button id="open-side-sheet-right-btn">Buka Side Sheet (kanan, modal)</qv-button>
+        <qv-button id="open-side-sheet-left-btn" variant="outline">Buka Side Sheet (kiri, modal)</qv-button>
+        <qv-button id="open-side-sheet-inline-btn" variant="outline">Buka Side Sheet (inline)</qv-button>
+      </div>
+
+      <qv-side-sheet id="filter-side-sheet" side="right" size="md">
+        <span slot="title">Filter</span>
+        <p>Konten filter di sini — panel muncul dari kanan.</p>
+      </qv-side-sheet>
+
+      <qv-side-sheet id="nav-side-sheet" side="left" size="sm">
+        <span slot="title">Menu</span>
+        <p>Panel muncul dari kiri — cocok untuk navigasi.</p>
+      </qv-side-sheet>
+
+      <qv-side-sheet-inline id="detail-side-sheet" side="right" size="sm">
+        <span slot="title">Detail</span>
+        <p>Halaman tetap bisa di-scroll selagi ini terbuka.</p>
+      </qv-side-sheet-inline>
+
+      <div class="row-label">
+        checklist toast: klik tombol → muncul di pojok kanan-bawah →
         hilang otomatis beberapa detik (kecuali error, duration 0)
       </div>
       <div class="row">
         <qv-button id="toast-info-btn" size="sm">Info</qv-button>
         <qv-button id="toast-success-btn" variant="primary" size="sm">Success</qv-button>
         <qv-button id="toast-error-btn" variant="danger" size="sm">Error (sticky)</qv-button>
-        
+
         <qv-button id="toast-topright-btn" variant="outline" size="sm">Top-right (progress bar)</qv-button>
       </div>
     </section>
@@ -698,7 +864,7 @@
 
       <div class="row-label">qv-spinner / qv-progress</div> <br>
       <div class="row">
-        <qv-spinner variant="circle" size="md" label="Memuat"></qv-spinner>  
+        <qv-spinner variant="circle" size="md" label="Memuat"></qv-spinner>
         <qv-spinner variant="fold" size="md" label="Memuat"></qv-spinner>
         <qv-spinner variant="logo" size="lg" label="Memuat">
           <img src="logo.svg" alt="" />
@@ -723,7 +889,10 @@
     </section>
 
     <!-- qv-navbar -->
-    <div class="row-label">qv-navbar (standalone)</div> <br>
+    <section id="section-navbar">
+      <h2>qv-navbar</h2>
+
+      <div class="row-label">qv-navbar (standalone)</div> <br>
       <div class="row" style="padding:0; overflow:hidden;">
         <qv-navbar id="standalone-navbar" style="position:static; width:100%;">
           <qv-navbar-item value="home" label="Home">
@@ -755,6 +924,7 @@
           </qv-navbar>
         </qv-bar>
       </div>
+    </section>
 
     <!-- TABLE -->
     <section id="section-table">
@@ -896,5 +1066,7 @@
         </qv-carousel>
       </div>
     </section>
+
+    </main>
   </body>
 </html>

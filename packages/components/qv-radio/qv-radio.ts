@@ -12,9 +12,11 @@
 import { html, type PropertyValues } from "lit";
 import { property, customElement } from "lit/decorators.js";
 
-import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, type MixinConstructor, type FocusableInterface, type DisabledInterface } from "@quevy/core";
+import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin } from "@quevy/core";
 
 import { qvRadioStyles } from "./qv-radio.styles.js";
+
+export type QvRadioVariant = 'default' | 'card';
 
 abstract class QvRadioBase extends DisabledMixin(FocusableMixin(QvElement)) {}
 
@@ -25,10 +27,13 @@ export class QvRadio extends QvRadioBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvRadio',
         tagName: createTagName('radio'),
-        version: '0.1.2',
+        version: '0.2.0',
     });
 
     @property() public value = '';
+
+    @property({ reflect: true})
+    public variant: QvRadioVariant = 'default';
 
     /** Set imperatively by the parent qv-radio-group - do not bind this from outside. */
     @property({ type: Boolean, reflect: true})
@@ -74,6 +79,11 @@ export class QvRadio extends QvRadioBase {
     protected override render() {
         return html`
             <span class="dot-outer" part="dot-outer"><span class="dot-inner" part="dot-inner"></span></span>
+            <span class="check-badge" part="check-badge" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 10.5l3 3 7-7"/>
+                </svg>
+            </span>
             <slot></slot>
         `;
     }

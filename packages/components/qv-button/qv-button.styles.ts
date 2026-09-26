@@ -44,14 +44,18 @@ ${host()}{
     padding-block: var(--qv-spacing-xs, 4px);
 }
 
-.icon:empty {
+.icon[hidden] {
     display: none;
 }
     
 .label {
     display: inline-flex;
     align-items: center;
- }
+}
+
+${hostAttribute('icon-only')} .label {
+    display: none;
+}
 
 ::slotted(*) {
     width: calc(1em * var(--qv-line-height-tight, 1.25));
