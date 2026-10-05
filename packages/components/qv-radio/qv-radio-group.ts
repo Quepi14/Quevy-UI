@@ -111,11 +111,11 @@ export class QvRadioGroup extends QvRadioGroupBase {
         const radios = this.radios.filter((r) => !r.disabled);
         if (radios.length === 0) return;
 
-        const curretnIndex = radios.findIndex((r) => r.value === this.currentValue);
+        const currentIndex = radios.findIndex((r) => r.value === this.currentValue);
         const forward = event.key === 'ArrowDown' || event.key === 'ArrowRight';
         const nextIndex = forward
-            ? (curretnIndex + 1 + radios.length) % radios.length
-            : (curretnIndex - 1 + radios.length) % radios.length;
+            ? (currentIndex + 1 + radios.length) % radios.length
+            : (currentIndex - 1 + radios.length) % radios.length;
 
         event.preventDefault();
         const next = radios[nextIndex];

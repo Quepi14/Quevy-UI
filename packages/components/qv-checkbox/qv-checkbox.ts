@@ -22,7 +22,7 @@ import { property, customElement } from "lit/decorators.js";
 import { QvElement, createComponentMetadata, createTagName, FocusableMixin, DisabledMixin, FormAssociatedMixin, type MixinConstructor, type DisabledInterface, type FocusableInterface, type FormAssociatedInterface } from "@quevy/core";
 
 import { qvCheckboxStyles } from "./qv-checkbox.styles.js";
-import type { QvCheckboxChangeEventDetail } from "./qv-checkbox.types.js";
+import type { QvCheckboxChangeEventDetail, QvCheckboxVariant, QvCheckboxLayout } from "./qv-checkbox.types.js";
 import { createControllableValue } from "@quevy/state";
 
 abstract class QvCheckboxBase extends FormAssociatedMixin(DisabledMixin(FocusableMixin(QvElement))) {}
@@ -37,7 +37,7 @@ export class QvCheckbox extends QvCheckboxBase {
     public override readonly metadata = createComponentMetadata({
         name: 'QvCheckbox',
         tagName: createTagName('checkbox'),
-        version: '0.1.3',
+        version: '0.2.0',
     });
 
     /** Controlled prop. Leave unset for uncontrolled usage. */
@@ -46,6 +46,12 @@ export class QvCheckbox extends QvCheckboxBase {
 
     @property({ type: Boolean, reflect: true})
     public indeterminate = false;
+
+    @property({ reflect: true })
+    public variant: QvCheckboxVariant = 'default';
+
+    @property({ reflect: true })
+    public layout: QvCheckboxLayout = 'stack';
 
     @property() public name?: string;
     @property() public value = 'on';
@@ -100,6 +106,12 @@ export class QvCheckbox extends QvCheckboxBase {
 
     protected override render() {
         return html`
+            <span class="check-badge" part="check-badge" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 8l3.5 3.5L13 5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            
             <span class="box" part="box">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
                     ${this.indeterminate

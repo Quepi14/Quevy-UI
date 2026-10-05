@@ -67,6 +67,12 @@ ${hostAttribute('variant="card"')} {
     transition: background-color var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), border-color var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), color var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1));
 }
 
+${host('[variant="card"][layout="inline"]')} {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--qv-spacing-sm, 8px);
+}
+
 ${hostAttribute('variant="card"')} .dot-outer {
     display: none;
 }
@@ -85,7 +91,7 @@ ${hostAttribute('variant="card"')} .check-badge {
     color: var(--qv-color-foreground-inverse, #FFF);;
     opacity: 0;
     transform: scale(0.6);
-    transition: opacity var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duraiton-moderate, 240ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+    transition: opacity var(--qv-motion-duration-normal, 180ms) var(--qv-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)), transform var(--qv-motion-duration-moderate, 240ms) var(--qv-motion-easing-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 ${hostAttribute('variant="card"')} .check-badge svg {
@@ -97,10 +103,20 @@ ${hostAttribute('variant="card"')} .check-badge svg {
     border-color: var(--qv-color-border-strong, #D1D5DB);
 }
 
-${hostAttribute('variant="card"')}${hostAttribute('checked')} {
-    background: linear-gradient(135deg, var(--qv-color-brand-primary, #0027C4), var(--qv-color-brand-primary-strong, #0B4FE0));
-    border-color: transparent;
-    color: var(--qv-color-foreground-inverse, #FFF);
+${host('[variant="card"][checked]')} {
+     border-color: transparent;
+     color: var(--qv-color-foreground-inverse, #FFF);
+     background: linear-gradient(135deg, var(--qv-color-brand-primary, #0027C4), var(--qv-color-brand-primary-strong, #0B4FE0));
+ }
+
+${hostAttribute('variant="card"[checked]')} {
+    opacity: 1;
+    transform: scale(1);
+}
+
+${host('[variant="card"][layout="inline"]')} .check-badge {
+    position: static;
+    margin-inline-start: auto;
 }
 
 ${hostAttribute('variant="card"')}${hostAttribute('checked')} .check-badge {

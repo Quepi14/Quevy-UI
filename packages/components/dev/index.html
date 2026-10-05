@@ -631,6 +631,16 @@
         <qv-checkbox disabled>Disabled</qv-checkbox>
       </div>
 
+      <div class="row-label">qv-checkbox card </div>
+      <div class="row">
+        <qv-checkbox variant="card">
+            <strong>Setuju Syarat & Ketentuan</strong>
+            <span>Baca selengkapnya di halaman kebijakan privasi.</span>
+        </qv-checkbox>
+
+        <qv-checkbox variant="card" layout="inline">Ingat saya di perangkat ini</qv-checkbox>
+      </div>
+
       <div class="row-label">qv-switch</div><br>
       <div class="row">
         <qv-switch id="controlled-switch" checked>Checked</qv-switch>
@@ -660,6 +670,12 @@
             <strong>Enterprise</strong>
             <div style="font-size:12px; color:#6B7280;">32GB/12 CPUs · 1024 GB SSD disk</div>
           </qv-radio>
+        </qv-radio-group>
+
+        <!-- Card 1-baris, center -->
+        <qv-radio-group>
+            <qv-radio value="transfer" variant="card" layout="inline">Transfer Bank</qv-radio>
+            <qv-radio value="ewallet" variant="card" layout="inline">E-Wallet</qv-radio>
         </qv-radio-group>
       </div>
 

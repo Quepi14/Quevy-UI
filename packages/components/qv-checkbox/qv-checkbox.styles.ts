@@ -81,4 +81,78 @@ ${hostAttribute('disabled')} {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+${hostAttribute('variant="card"')} {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 2px;
+    padding: var(--qv-spacing-md, 16px) var(--qv-spacing-lg, 24px);
+    border: 1.5px solid var(--qv-color-border-default, #E5E7EB);
+    border-radius: var(--qv-radius-lg, 12px);
+    background-color: var(--qv-color-background-surface, #FFF);
+    transition: 
+        background-color var(--qv-motion-duration-moderate, 240ms) ease,
+        border-color var(--qv-motion-duration-moderate, 240ms) ease,
+        color var(--qv-motion-duration-moderate, 240ms) ease;
+}
+
+${host('[variant="card"][layout="inline"]')} {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--qv-spacing-sm, 8px);
+}
+
+${hostAttribute('variant="card"')} .box {
+    display: none;
+}
+
+${host('[variant="card"]:not([aria-checked="true"]):not([disabled])')}:hover {
+    border-color: var(--qv-color-brand-primary, #3157c7);
+}
+
+.check-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--qv-radius-full, 9999px);
+    background-color: rgba(255, 255, 255, 0.25);
+    opacity: 0;
+    transform: scale(0.6);
+    transition:
+        opacity var(--qv-motion-duration-moderate, 240ms) ease,
+        transform var(--qv-motion-duration-moderate, 240ms) ease;
+}
+
+.check-badge svg { width: 13px; height: 13px; }
+
+/* Hidden entirely outside card variant — default variant already
+   shows its own checkmark inside .box, this badge is card-only. */
+:host(:not([variant="card"])) .check-badge {
+    display: none;
+}
+
+${host('[variant="card"][layout="inline"]')} .check-badge {
+    position: static;
+    margin-inline-start: auto;
+}
+
+${host('[variant="card"][aria-checked="true"]')} {
+    border-color: transparent;
+    color: var(--qv-color-foreground-inverse, #FFF);
+    background: linear-gradient(135deg, var(--qv-color-brand-primary, #3157c7), var(--qv-color-brand-primary-strong, #1E3FA0));
+}
+
+${host('[variant="card"][aria-checked="true"]')} .check-badge {
+    opacity: 1;
+    transform: scale(1);
+}
 `)

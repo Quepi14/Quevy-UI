@@ -35,6 +35,14 @@ export class QvRadio extends QvRadioBase {
     @property({ reflect: true})
     public variant: QvRadioVariant = 'default';
 
+    /** 
+     * Only Meaningful when variant="card". Default "stack" keeps
+     * the current title+description vertical layout; "inline"
+     * puts everything on one line, vertically centered.
+     */
+    @property({ reflect: true })
+    public layout: 'stack' | 'inline' = 'stack';
+
     /** Set imperatively by the parent qv-radio-group - do not bind this from outside. */
     @property({ type: Boolean, reflect: true})
     public checked = false;
